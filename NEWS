@@ -1,3 +1,12 @@
+# Ptyxis 48.rc
+
+ * Fix VTE_VERSION envvar to use runtime version, not compile time version
+ * Check XDG_CURRENT_DESKTOP when setting xdg-terminals.list
+ * Add global GSetting to disable osc-title on tabs
+ * Implement x-terminal-emulator for Debian (and others)
+ * Fix exit code when communicating with pre-existing Ptyxis instance
+ * Translation updates
+
 # Ptyxis 48.beta
 
  * Styling improvements to fullscreen mode
