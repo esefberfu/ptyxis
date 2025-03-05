@@ -449,6 +449,7 @@
 
     <key name="search" type="s">
       <default>'&lt;ctrl&gt;&lt;shift&gt;f'</default>
+      <!-- Translators: Refers to searching the terminal scrollback -->
       <summary>Search History</summary>
       <description>Shortcut to begin searching the terminal history</description>
     </key>

@@ -693,6 +693,7 @@
           <object class="AdwPreferencesGroup">
             <child>
               <object class="PtyxisShortcutRow" id="shortcut_search">
+                <!-- Translators: Refers to searching the terminal scrollback -->
                 <property name="title" translatable="yes">Search History</property>
               </object>
             </child>

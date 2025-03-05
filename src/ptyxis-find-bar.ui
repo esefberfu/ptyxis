@@ -35,6 +35,7 @@
                 <property name="width-chars">10</property>
                 <property name="hexpand">true</property>
                 <property name="primary-icon-name">edit-find-symbolic</property>
+                <!-- Translators: Refers to searching the terminal scrollback -->
                 <property name="placeholder-text" translatable="yes">Search History</property>
                 <signal name="changed" handler="ptyxis_find_bar_entry_changed_cb" swapped="1"/>
                 <child>
