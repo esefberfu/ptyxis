@@ -150,6 +150,11 @@ The highlevel is that we should be able to support:
 I'd certainly love to see support for systemd-nspawn if that is something
 you're interested in and are aware of the mechanics to make that work.
 
+NOTE: Ptyxis currently assumes that containers are not used for security
+isolation, since most general-purpose container runtimes do not provide
+sufficient security isolation. Do not use ptyxis to start containers if you rely
+on sandboxing provided by a container runtime.
+
 
 ### Toolbox/Podman/Distrobox
 
