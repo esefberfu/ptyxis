@@ -47,13 +47,13 @@ and spawn processes (with the appropriate PTY) within the container.
 It should also update the list of available containers when they change
 without polling (a `GFileMonitor` to requery is a suitable solution).
 
-## I Have a Problem with My GPU
+### I Have a Problem with My GPU
 
 While the underlying terminal emulator (VTE) supports GPU rendering, we have
 very little to do with that from this application. Bugs filed here will almost
 certainly end up in either the GNOME/vte or GNOME/gtk projects.
 
-## I Have Weird Font Rendering
+### I Have Weird Font Rendering
 
 Currently (as of GTK 4.16) GTK has an oddity with rendering at 200% scale when
 the rounding for hinting is different between 1x and 2x scaling. This can cause
