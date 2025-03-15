@@ -1,3 +1,14 @@
+# Ptyxis 48.0
+
+ * Reset tab grid size when leaving maximized/fullscreen
+ * Reset RLIMIT_NOFILE from ptyxis-agent subprocess child setup
+ * Fix release of fullscreen controls under no mouse movement
+ * Be more defensive against potential file-system operation failures
+ * Tweak CSS styling for padding/margin to both reduce border padding
+   and increase grip area for selections
+ * Add a generated UUID to suffix to systemd unit scopes
+ * Translation updates
+
 # Ptyxis 48.rc
 
  * Fix VTE_VERSION envvar to use runtime version, not compile time version
