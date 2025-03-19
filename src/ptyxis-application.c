@@ -890,11 +890,11 @@ ptyxis_application_startup (GApplication *application)
   G_APPLICATION_CLASS (ptyxis_application_parent_class)->startup (application);
 
   if ((sandbox_agent = ptyxis_application_should_sandbox_agent (self)))
-    timeout_msec = 1500;
-  else
     timeout_msec = G_MAXINT;
+  else
+    timeout_msec = 2000;
 
-  /* Try to spawn ptyxis-agent on the host when possible, wait up to 1.5 seconds */
+  /* Try to spawn ptyxis-agent on the host when possible, wait up to timeout_msec */
   if (!(self->client = ptyxis_client_new (sandbox_agent, &error)) ||
       !ptyxis_client_ping (self->client, timeout_msec, &error))
     {
