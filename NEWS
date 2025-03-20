@@ -1,3 +1,10 @@
+# Ptyxis 48.1
+
+ * Unreveal fullscreen topbar upon user input into terminal
+ * Increase timeout for ptyxis-agent to start
+ * Improve shell discovery for safe-directory inheritance
+ * Respect gtk-decoration-layout for tab close buttons
+
 # Ptyxis 48.0
 
  * Reset tab grid size when leaving maximized/fullscreen

@@ -43,6 +43,16 @@
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
 
   <releases>
+    <release version="48.1" date="2025-03-19">
+      <description>
+        <ul>
+          <li>Unreveal fullscreen topbar upon user input into terminal</li>
+          <li>Increase timeout for ptyxis-agent to start</li>
+          <li>Improve shell discovery for safe-directory inheritance</li>
+          <li>Respect gtk-decoration-layout for tab close buttons</li>
+        </ul>
+      </description>
+    </release>
     <release version="48.0" date="2025-03-15"/>
   </releases>
 
