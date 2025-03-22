@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
 "POT-Creation-Date: 2025-03-20 06:12+0000\n"
-"PO-Revision-Date: 2025-03-20 19:36+0800\n"
+"PO-Revision-Date: 2025-03-22 21:56+0800\n"
 "Last-Translator: Shihfu Juan <xlion@xlion.tw>\n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -275,11 +275,11 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:167
 msgid "Scrollbar Policy"
-msgstr "捲動條方針"
+msgstr "捲動軸方針"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:168
 msgid "If scrollbars should be displayed"
-msgstr "是否應顯示捲動條"
+msgstr "是否應顯示捲動軸"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:177
 msgid "Text Blink Mode"
@@ -914,7 +914,10 @@ msgstr "[-- 命令引數]"
 
 #: src/ptyxis-application.c:1387
 msgid "translator-credits"
-msgstr "Shihfu Juan <xlion@xlion.tw>, 2024"
+msgstr ""
+"Shihfu Juan <xlion@xlion.tw>, 2024.\n"
+"Taijuin Lee <taijuin@gmail.com>, 2025.\n"
+"Cheng-Chia Tseng <zerngjia@gmail.com>, 2025."
 
 #: src/ptyxis-close-dialog.c:109
 msgid "_Close"
@@ -1086,7 +1089,7 @@ msgstr "超連結"
 
 #: src/ptyxis-palette-preview.ui:12
 msgid "The quick brown fox jumps over the lazy dog"
-msgstr "The quick brown fox jumps over the lazy dog 中文漢字測試"
+msgstr "The quick brown fox jumps over the lazy dog 南去經三國，東來過五湖"
 
 #: src/ptyxis-preferences-window.c:269
 msgid "Select Font"
@@ -1239,7 +1242,7 @@ msgstr "捲動"
 
 #: src/ptyxis-preferences-window.ui:426
 msgid "Use Scrollbars"
-msgstr "使用捲動條"
+msgstr "使用捲動軸"
 
 #: src/ptyxis-preferences-window.ui:462 src/ptyxis-profile-editor.ui:304
 msgid "Scroll to the bottom upon input keystroke"
