@@ -3,7 +3,7 @@ Name=Linux
 Primary=true
 
 [Light]
-Foreground=#000000
+Foreground=#555555
 Background=#ffffff
 Cursor=#000000
 Color0=#000000
@@ -24,7 +24,7 @@ Color14=#55ffff
 Color15=#ffffff
 
 [Dark]
-Foreground=#ffffff
+Foreground=#aaaaaa
 Background=#000000
 Cursor=#ffffff
 Color0=#000000
