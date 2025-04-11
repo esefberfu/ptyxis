@@ -215,10 +215,17 @@ ptyxis_user_palettes_monitor_changed_cb (PtyxisUserPalettes *self,
                                          GFileMonitorEvent   event_type,
                                          GFileMonitor       *monitor)
 {
+  g_autofree char *name = NULL;
+
   g_assert (PTYXIS_IS_USER_PALETTES (self));
   g_assert (G_IS_FILE (file));
   g_assert (!other_file || G_IS_FILE (other_file));
   g_assert (G_IS_FILE_MONITOR (monitor));
+
+  name = g_file_get_basename (file);
+
+  if (!g_str_has_suffix (name, ".palette"))
+    return;
 
   if (event_type == G_FILE_MONITOR_EVENT_DELETED)
     ptyxis_user_palettes_remove (self, g_file_peek_path (file));
