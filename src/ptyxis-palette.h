@@ -74,5 +74,6 @@ gboolean                 ptyxis_palette_use_system_accent      (PtyxisPalette  *
 gboolean                 ptyxis_palette_is_primary             (PtyxisPalette  *self);
 gboolean                 ptyxis_palette_has_dark               (PtyxisPalette  *self);
 gboolean                 ptyxis_palette_has_light              (PtyxisPalette  *self);
+char                    *ptyxis_get_user_palettes_dir          (void);
 
 G_END_DECLS

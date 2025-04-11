@@ -153,6 +153,12 @@ ptyxis_palette_get_face (PtyxisPalette *self,
   return &self->palette->faces[!!dark];
 }
 
+char *
+ptyxis_get_user_palettes_dir (void)
+{
+  return g_build_filename (g_get_user_data_dir (), APP_ID, "palettes", NULL);
+}
+
 GListModel *
 ptyxis_palette_get_all (void)
 {
@@ -161,7 +167,7 @@ ptyxis_palette_get_all (void)
   if (instance == NULL)
     {
       g_auto(GStrv) resources = g_resources_enumerate_children ("/org/gnome/Ptyxis/palettes/", 0, NULL);
-      g_autofree char *user_palettes_dir = g_build_filename (g_get_user_data_dir (), APP_ID, "palettes", NULL);
+      g_autofree char *user_palettes_dir = ptyxis_get_user_palettes_dir ();
       g_autoptr(PtyxisUserPalettes) user_palettes = ptyxis_user_palettes_new (user_palettes_dir);
       GListStore *builtin = g_list_store_new (PTYXIS_TYPE_PALETTE);
       GListStore *models = g_list_store_new (G_TYPE_LIST_MODEL);
