@@ -20,11 +20,13 @@
 
 #include "config.h"
 
+#include <errno.h>
 #include <sys/resource.h>
 
 #include <glib/gi18n.h>
 
 #include "ptyxis-application.h"
+#include "ptyxis-palette.h"
 #include "ptyxis-util.h"
 
 static gint64 default_rlimit_nofile;
@@ -35,9 +37,11 @@ check_early_opts (int        *argc,
                   gboolean   *standalone)
 {
   g_autoptr(GOptionContext) context = NULL;
+  g_autofree char *palette = NULL;
   gboolean version = FALSE;
   gboolean ignore_standalone = FALSE;
   GOptionEntry entries[] = {
+    { "import-palette", 0, 0, G_OPTION_ARG_FILENAME, &palette },
     { "standalone", 's', 0, G_OPTION_ARG_NONE, standalone },
     { "version", 0, 0, G_OPTION_ARG_NONE, &version },
     { NULL }
@@ -109,6 +113,48 @@ Copyright 2020-2024 Christian Hergert, et al.\n\
 This is free software; see the source for copying conditions. There is NO\n\
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\
 ");
+
+      exit (EXIT_SUCCESS);
+    }
+
+  /* We handle this here instead of in the main application so we can
+   * synchronously copy without blocking the main loop and also to not
+   * complicate the "activation" path that would normally need to
+   * happen in the remote instance.
+   */
+  if (palette != NULL)
+    {
+      g_autoptr(GError) error = NULL;
+      g_autofree char *contents = NULL;
+      g_autofree char *basename = g_path_get_basename (palette);
+      g_autofree char *user_palettes_dir = ptyxis_get_user_palettes_dir ();
+      g_autofree char *dest = g_build_filename (user_palettes_dir, basename, NULL);
+      gsize len;
+
+      if (!g_file_get_contents (palette, &contents, &len, &error))
+        {
+          g_printerr ("%s: %s\n", _("Error"), error->message);
+          exit (EXIT_FAILURE);
+        }
+
+      if (g_mkdir_with_parents (user_palettes_dir, 0750) != 0)
+        {
+          int errsv = errno;
+          g_printerr ("%s: %s\n", _("Error"), g_strerror (errsv));
+          exit (EXIT_FAILURE);
+        }
+
+      if (g_file_test (dest, G_FILE_TEST_EXISTS))
+        {
+          g_printerr (_("Error: %s already exists.\nPlease remove it first.\n"), dest);
+          exit (EXIT_FAILURE);
+        }
+
+      if (!g_file_set_contents (dest, contents, len, &error))
+        {
+          g_printerr ("%s: %s\n", _("Error"), error->message);
+          exit (EXIT_FAILURE);
+        }
 
       exit (EXIT_SUCCESS);
     }

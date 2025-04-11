@@ -1129,6 +1129,9 @@ ptyxis_application_init (PtyxisApplication *self)
     { "title", 'T', 0, G_OPTION_ARG_STRING, NULL, N_("Set title for new tab") },
     { "maximize", 0, 0, G_OPTION_ARG_NONE, NULL, N_("Maximize a newly created window") },
 
+    /* Import a custom .palette file. This works like dragging the file onto preferences */
+    { "import-palette", 0, 0, G_OPTION_ARG_STRING, NULL, N_("Import a Ptyxis palette file"), N_("FILE") },
+
     { NULL }
   };
 
@@ -1144,7 +1147,11 @@ ptyxis_application_init (PtyxisApplication *self)
   g_string_append_c (summary, '\n');
   g_string_append_printf (summary, "  %s\n", _("Run Custom Command in New Window"));
   g_string_append (summary, "    ptyxis -x \"bash -c 'sleep 3'\"\n");
-  g_string_append (summary, "    ptyxis -- bash -c 'sleep 3'");
+  g_string_append (summary, "    ptyxis -- bash -c 'sleep 3'\n");
+
+  g_string_append_c (summary, '\n');
+  g_string_append_printf (summary, "  %s\n", _("Import a custom palette"));
+  g_string_append (summary, "    ptyxis --import-palette my.palette");
 
   g_application_set_option_context_parameter_string (G_APPLICATION (self), _("[-- COMMAND ARGUMENTS]"));
   g_application_add_main_option_entries (G_APPLICATION (self), main_entries);
