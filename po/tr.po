@@ -4,21 +4,22 @@
 #
 # Sabri Ünal <yakushabb@gmail.com>, 2023, 2024.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2024-2025.
+# Muhammet Kara <muhammetk@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-03-22 14:01+0000\n"
-"PO-Revision-Date: 2025-04-03 08:00+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2025-04-11 21:18+0000\n"
+"PO-Revision-Date: 2025-04-13 23:35+0300\n"
+"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Gtranslator 47.1\n"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:3
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:6
@@ -185,6 +186,19 @@ msgstr "Uçbirim, yerel sistemde root olduğunuzu size hatırlatır"
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:112
 msgid "The terminal will remind you when you're on a remote system"
 msgstr "Terminal, uzak sistemde olduğunuzu size hatırlatır"
+
+#: src/main.c:136 src/main.c:143 src/main.c:155
+msgid "Error"
+msgstr "Hata"
+
+#: src/main.c:149
+#, c-format
+msgid ""
+"Error: %s already exists.\n"
+"Please remove it first.\n"
+msgstr ""
+"Hata: %s zaten var.\n"
+"Lütfen önce kaldırın.\n"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:101
 msgid "Default Profile UUID"
@@ -593,7 +607,7 @@ msgid "The shortcut to show application preferences"
 msgstr "Uygulama tercihlerini göstermek için kısayol"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:416 src/ptyxis-preferences-window.ui:880
-#: src/ptyxis-window.c:1412 src/ptyxis-window.c:1420
+#: src/ptyxis-window.c:1416 src/ptyxis-window.c:1424
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
@@ -602,7 +616,7 @@ msgid "The shortcut to zoom out"
 msgstr "Uzaklaştırma için kısayol"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:422 src/ptyxis-preferences-window.ui:885
-#: src/ptyxis-window.c:1429
+#: src/ptyxis-window.c:1433
 msgid "Reset Zoom"
 msgstr "Yakınlaştırmayı Sıfırla"
 
@@ -611,7 +625,7 @@ msgid "The shortcut to reset zoom"
 msgstr "Yakınlaştırmayı sıfırlamak için kısayol"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:428 src/ptyxis-preferences-window.ui:875
-#: src/ptyxis-window.c:1397 src/ptyxis-window.c:1405
+#: src/ptyxis-window.c:1401 src/ptyxis-window.c:1409
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
@@ -759,7 +773,7 @@ msgid "Shortcut to close the current window"
 msgstr "Geçerli pencereyi kapatmak için kısayol"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:732
-#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1139 src/ptyxis-window.ui:602
+#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1141 src/ptyxis-window.ui:602
 msgid "Set Title"
 msgstr "Başlığı Ayarla"
 
@@ -916,23 +930,36 @@ msgstr "Yeni sekme için başlık ayarla"
 msgid "Maximize a newly created window"
 msgstr "Yeni oluşturulan pencereyi büyüt"
 
-#: src/ptyxis-application.c:1137
+#. Import a custom .palette file. This works like dragging the file onto preferences
+#: src/ptyxis-application.c:1133
+msgid "Import a Ptyxis palette file"
+msgstr "Ptyxis palet dosyasını içe aktar"
+
+#: src/ptyxis-application.c:1133
+msgid "FILE"
+msgstr "DOSYA"
+
+#: src/ptyxis-application.c:1140
 msgid "Run Separate Instance"
 msgstr "Ayrı Örnek Çalıştır"
 
-#: src/ptyxis-application.c:1141
+#: src/ptyxis-application.c:1144
 msgid "Open Preferences"
 msgstr "Tercihleri Aç"
 
-#: src/ptyxis-application.c:1145
+#: src/ptyxis-application.c:1148
 msgid "Run Custom Command in New Window"
 msgstr "Özel Komutu Yeni Pencerede Çalıştır"
 
-#: src/ptyxis-application.c:1149
+#: src/ptyxis-application.c:1153
+msgid "Import a custom palette"
+msgstr "Özel paleti içe aktar"
+
+#: src/ptyxis-application.c:1156
 msgid "[-- COMMAND ARGUMENTS]"
 msgstr "[-- KOMUT ARGÜMANLARI]"
 
-#: src/ptyxis-application.c:1387
+#: src/ptyxis-application.c:1394
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <yakushabb@gmail.com>\n"
@@ -1483,7 +1510,7 @@ msgid "Show this preferences window"
 msgstr "Bu tercihler penceresini göster"
 
 #: src/ptyxis-preferences-window.ui:927 src/ptyxis-preferences-window.ui:931
-#: src/ptyxis-window.c:1535
+#: src/ptyxis-window.c:1539
 msgid "Profiles"
 msgstr "Profiller"
 
@@ -1778,15 +1805,15 @@ msgstr "Builder Uçbirimi"
 msgid "Ptyxis"
 msgstr "Ptyxis"
 
-#: src/ptyxis-window.c:1408
+#: src/ptyxis-window.c:1412
 msgid "Zoom in"
 msgstr "Yakınlaştır"
 
-#: src/ptyxis-window.c:1423
+#: src/ptyxis-window.c:1427
 msgid "Zoom out"
 msgstr "Uzaklaştır"
 
-#: src/ptyxis-window.c:1538
+#: src/ptyxis-window.c:1542
 msgid "Containers"
 msgstr "Konteynerler"
 
