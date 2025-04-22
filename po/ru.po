@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-02-18 00:09+0000\n"
-"PO-Revision-Date: 2025-02-18 17:15+0300\n"
+"POT-Creation-Date: 2025-04-11 21:18+0000\n"
+"PO-Revision-Date: 2025-04-21 13:41+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:3
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:6
@@ -30,7 +30,7 @@ msgid "A container-oriented terminal for GNOME"
 msgstr "Терминал ориентированный на контейнеры для GNOME"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:13 src/ptyxis-preferences-window.ui:651
-#: src/ptyxis-tab.c:1415 src/ptyxis-util.c:315
+#: src/ptyxis-tab.c:1440 src/ptyxis-util.c:312
 msgid "Terminal"
 msgstr "Терминал"
 
@@ -44,17 +44,17 @@ msgstr ""
 "podman;toolbox;distrobox;"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:21
-#: src/org.gnome.Ptyxis.gschema.xml.in:398 src/ptyxis-preferences-window.ui:715
+#: src/org.gnome.Ptyxis.gschema.xml.in:398 src/ptyxis-preferences-window.ui:716
 msgid "New Window"
 msgstr "Новое окно"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:25
-#: src/org.gnome.Ptyxis.gschema.xml.in:392 src/ptyxis-preferences-window.ui:741
+#: src/org.gnome.Ptyxis.gschema.xml.in:392 src/ptyxis-preferences-window.ui:742
 msgid "New Tab"
 msgstr "Новая вкладка"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:29
-#: src/org.gnome.Ptyxis.gschema.xml.in:410 src/ptyxis-preferences-window.ui:916
+#: src/org.gnome.Ptyxis.gschema.xml.in:410 src/ptyxis-preferences-window.ui:917
 msgid "Preferences"
 msgstr "Параметры"
 
@@ -137,61 +137,74 @@ msgstr ""
 msgid "Christian Hergert"
 msgstr "Christian Hergert"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:52
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:62
 msgid "A column and row size indicator is displayed when resizing the window"
 msgstr ""
 "Индикатор размера столбца и строки отображается при изменении размера окна"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:57
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:67
 msgid "Containers are automatically discovered and displayed"
 msgstr "Контейнеры автоматически обнаруживаются и отображаются"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:62
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:72
 msgid "Many behaviors of the terminal may be tweaked to user preference"
 msgstr ""
 "Многие функции терминала могут быть настроены в соответствии с "
 "предпочтениями пользователя"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:67
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:77
 msgid "You may rename a tab by providing a prefix to the title"
 msgstr "Вы можете переименовать вкладку, указав префикс к заголовку"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:72
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:82
 msgid "Palettes provide an integrated dark mode"
 msgstr "Палитры обеспечивают интегрированный темный режим"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:77
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:87
 msgid "You can see an overview of your tabs at any time"
 msgstr "Вы можете просмотреть обзор своих вкладок в любое время"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:82
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:92
 msgid "Many shortcuts may be remapped to user preference"
 msgstr ""
 "Многие комбинации клавиш могут быть переназначены в соответствии с "
 "предпочтениями пользователя"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:87
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:97
 msgid "Built-in color palettes provide both dark and light mode variants"
 msgstr ""
 "Встроенные цветовые палитры предоставляют варианты как для тёмного, так и "
 "для светлого режимов"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:92
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:102
 msgid ""
 "Profiles allow for overriding a number of features such as default container"
 msgstr ""
 "Профили позволяют переопределить ряд функций, таких как контейнер по "
 "умолчанию"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:97
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:107
 msgid "The terminal will remind you when you're root on the local system"
 msgstr ""
 "Терминал напомнит вам, когда вы являетесь пользователем root в локальной "
 "системе"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:102
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:112
 msgid "The terminal will remind you when you're on a remote system"
 msgstr "Терминал напомнит вам, когда вы находитесь на удалённой системе"
+
+#: src/main.c:136 src/main.c:143 src/main.c:155
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/main.c:149
+#, c-format
+msgid ""
+"Error: %s already exists.\n"
+"Please remove it first.\n"
+msgstr ""
+"Ошибка: %s уже существует.\n"
+"Пожалуйста, сначала удалите это.\n"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:101
 msgid "Default Profile UUID"
@@ -603,8 +616,8 @@ msgstr "Комбинация клавиш для отображения обзо
 msgid "The shortcut to show application preferences"
 msgstr "Комбинация клавиш для отображения настроек приложения"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:416 src/ptyxis-preferences-window.ui:879
-#: src/ptyxis-window.c:1376 src/ptyxis-window.c:1384
+#: src/org.gnome.Ptyxis.gschema.xml.in:416 src/ptyxis-preferences-window.ui:880
+#: src/ptyxis-window.c:1416 src/ptyxis-window.c:1424
 msgid "Zoom Out"
 msgstr "Уменьшить"
 
@@ -612,8 +625,8 @@ msgstr "Уменьшить"
 msgid "The shortcut to zoom out"
 msgstr "Комбинация клавиш для уменьшения масштаба"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:422 src/ptyxis-preferences-window.ui:884
-#: src/ptyxis-window.c:1393
+#: src/org.gnome.Ptyxis.gschema.xml.in:422 src/ptyxis-preferences-window.ui:885
+#: src/ptyxis-window.c:1433
 msgid "Reset Zoom"
 msgstr "Сбросить масштаб"
 
@@ -621,8 +634,8 @@ msgstr "Сбросить масштаб"
 msgid "The shortcut to reset zoom"
 msgstr "Комбинация клавиш для сброса масштаба"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:428 src/ptyxis-preferences-window.ui:874
-#: src/ptyxis-window.c:1361 src/ptyxis-window.c:1369
+#: src/org.gnome.Ptyxis.gschema.xml.in:428 src/ptyxis-preferences-window.ui:875
+#: src/ptyxis-window.c:1401 src/ptyxis-window.c:1409
 msgid "Zoom In"
 msgstr "Увеличить"
 
@@ -630,7 +643,7 @@ msgstr "Увеличить"
 msgid "The shortcut to zoom in"
 msgstr "Комбинация клавиш для увеличения масштаба"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:434 src/ptyxis-preferences-window.ui:894
+#: src/org.gnome.Ptyxis.gschema.xml.in:434 src/ptyxis-preferences-window.ui:895
 msgid "Toggle Fullscreen"
 msgstr "Переключить полноэкранный режим"
 
@@ -656,249 +669,250 @@ msgstr ""
 "Сброс состояния терминала и очистка истории для некорректно работающих "
 "клиентов"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:452 src/ptyxis-find-bar.ui:38
-#: src/ptyxis-preferences-window.ui:696
+#. Translators: Refers to searching the terminal scrollback
+#: src/org.gnome.Ptyxis.gschema.xml.in:453 src/ptyxis-find-bar.ui:39
+#: src/ptyxis-preferences-window.ui:697
 msgid "Search History"
 msgstr "Поиск в истории"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:453
+#: src/org.gnome.Ptyxis.gschema.xml.in:454
 msgid "Shortcut to begin searching the terminal history"
 msgstr "Комбинация клавиш для начала поиска в истории терминала"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:458 src/ptyxis-preferences-window.ui:668
+#: src/org.gnome.Ptyxis.gschema.xml.in:459 src/ptyxis-preferences-window.ui:668
 msgid "Select All"
 msgstr "Выделить всё"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:459
+#: src/org.gnome.Ptyxis.gschema.xml.in:460
 msgid "Shortcut to select all the entire terminal scrollback"
 msgstr "Комбинация клавиш для выделения всего буфера прокрутки терминала"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:464
+#: src/org.gnome.Ptyxis.gschema.xml.in:465
 msgid "Select None"
 msgstr "Снять выделение"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:465
+#: src/org.gnome.Ptyxis.gschema.xml.in:466
 msgid "Shortcut to clear the terminal selection"
 msgstr "Комбинация клавиш для снятия выделения терминала"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:470
+#: src/org.gnome.Ptyxis.gschema.xml.in:471
 msgid "Popup Menu"
 msgstr "Всплывающее меню"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:471
+#: src/org.gnome.Ptyxis.gschema.xml.in:472
 msgid "Shortcut to show the popup menu for the terminal"
 msgstr "Комбинация клавиш для отображения всплывающего меню терминала"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:476
+#: src/org.gnome.Ptyxis.gschema.xml.in:477
 msgid "Primary Menu"
 msgstr "Главное меню"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:477
+#: src/org.gnome.Ptyxis.gschema.xml.in:478
 msgid "Shortcut to show the primary menu for the window"
 msgstr "Комбинация клавиш для отображения основного меню окна"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:482
+#: src/org.gnome.Ptyxis.gschema.xml.in:483
 msgid "Tab Menu"
 msgstr "Меню вкладки"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:483
+#: src/org.gnome.Ptyxis.gschema.xml.in:484
 msgid "Shortcut to show the new tab menu"
 msgstr "Комбинация клавиш для отображения меню новой вкладки"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:488 src/ptyxis-preferences-window.ui:783
+#: src/org.gnome.Ptyxis.gschema.xml.in:489 src/ptyxis-preferences-window.ui:784
 msgid "Move to Previous Tab"
 msgstr "Перейти на предыдущую вкладку"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:489
+#: src/org.gnome.Ptyxis.gschema.xml.in:490
 msgid "Shortcut to move to the previous tab"
 msgstr "Комбинация клавиш для перехода на предыдущую вкладку"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:494 src/ptyxis-preferences-window.ui:788
+#: src/org.gnome.Ptyxis.gschema.xml.in:495 src/ptyxis-preferences-window.ui:789
 msgid "Move to Next Tab"
 msgstr "Перейти на следующую вкладку"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:495
+#: src/org.gnome.Ptyxis.gschema.xml.in:496
 msgid "Shortcut to move to the next tab"
 msgstr "Комбинация клавиш для перехода на следующую вкладку"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:500 src/ptyxis-preferences-window.ui:797
+#: src/org.gnome.Ptyxis.gschema.xml.in:501 src/ptyxis-preferences-window.ui:798
 msgid "Move Tab Left"
 msgstr "Переместить вкладку влево"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:501
+#: src/org.gnome.Ptyxis.gschema.xml.in:502
 msgid "Shortcut to move the current tab to the left one position"
 msgstr ""
 "Комбинация клавиш для перемещения текущей вкладки на одну позицию влево"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:506 src/ptyxis-preferences-window.ui:803
+#: src/org.gnome.Ptyxis.gschema.xml.in:507 src/ptyxis-preferences-window.ui:804
 msgid "Move Tab Right"
 msgstr "Переместить вкладку вправо"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:507
+#: src/org.gnome.Ptyxis.gschema.xml.in:508
 msgid "Shortcut to move the current tab to the right one position"
 msgstr ""
 "Комбинация клавиш для перемещения текущей вкладки на одну позицию вправо"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:512 src/ptyxis-preferences-window.ui:809
+#: src/org.gnome.Ptyxis.gschema.xml.in:513 src/ptyxis-preferences-window.ui:810
 msgid "Move Tab to New Window"
 msgstr "Переместить вкладку в новое окно"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:513
+#: src/org.gnome.Ptyxis.gschema.xml.in:514
 msgid "Shortcut to move the current tab into a new window"
 msgstr "Комбинация клавиш для перемещения текущей вкладки в новое окно"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:518 src/ptyxis-preferences-window.ui:761
+#: src/org.gnome.Ptyxis.gschema.xml.in:519 src/ptyxis-preferences-window.ui:762
 msgid "Close Tab"
 msgstr "Закрыть вкладку"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:519
+#: src/org.gnome.Ptyxis.gschema.xml.in:520
 msgid "Shortcut to close the current tab"
 msgstr "Комбинация клавиш для закрытия текущей вкладки"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:524 src/ptyxis-preferences-window.ui:767
+#: src/org.gnome.Ptyxis.gschema.xml.in:525 src/ptyxis-preferences-window.ui:768
 msgid "Close Other Tabs"
 msgstr "Закрыть другие вкладки"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:525
+#: src/org.gnome.Ptyxis.gschema.xml.in:526
 msgid "Shortcut to close all tabs in the window but the current one"
 msgstr "Комбинация клавиш для закрытия всех вкладок в окне, кроме текущей"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:530 src/ptyxis-preferences-window.ui:721
+#: src/org.gnome.Ptyxis.gschema.xml.in:531 src/ptyxis-preferences-window.ui:722
 msgid "Close Window"
 msgstr "Закрыть окно"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:531
+#: src/org.gnome.Ptyxis.gschema.xml.in:532
 msgid "Shortcut to close the current window"
 msgstr "Комбинация клавиш для закрытия текущего окна"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:536 src/ptyxis-preferences-window.ui:731
-#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1103 src/ptyxis-window.ui:602
+#: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:732
+#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1141 src/ptyxis-window.ui:602
 msgid "Set Title"
 msgstr "Задать название"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:537
+#: src/org.gnome.Ptyxis.gschema.xml.in:538
 msgid "The shortcut to show set title"
 msgstr "Комбинация клавиш для отображения диалога задания названия"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:542
+#: src/org.gnome.Ptyxis.gschema.xml.in:543
 msgid "Focus Tab 1"
 msgstr "Фокус на вкладку 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:543
+#: src/org.gnome.Ptyxis.gschema.xml.in:544
 msgid "Shortcut to focus tab 1"
 msgstr "Комбинация клавиш для фокуса на вкладку 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:548
+#: src/org.gnome.Ptyxis.gschema.xml.in:549
 msgid "Focus Tab 2"
 msgstr "Фокус на вкладку 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:549
+#: src/org.gnome.Ptyxis.gschema.xml.in:550
 msgid "Shortcut to focus tab 2"
 msgstr "Комбинация клавиш для фокуса на вкладку 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:554
+#: src/org.gnome.Ptyxis.gschema.xml.in:555
 msgid "Focus Tab 3"
 msgstr "Фокус на вкладку 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:555
+#: src/org.gnome.Ptyxis.gschema.xml.in:556
 msgid "Shortcut to focus tab 3"
 msgstr "Комбинация клавиш для фокуса на вкладку 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:560
+#: src/org.gnome.Ptyxis.gschema.xml.in:561
 msgid "Focus Tab 4"
 msgstr "Фокус на вкладку 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:561
+#: src/org.gnome.Ptyxis.gschema.xml.in:562
 msgid "Shortcut to focus tab 4"
 msgstr "Комбинация клавиш для фокуса на вкладку 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:566
+#: src/org.gnome.Ptyxis.gschema.xml.in:567
 msgid "Focus Tab 5"
 msgstr "Фокус на вкладку 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:567
+#: src/org.gnome.Ptyxis.gschema.xml.in:568
 msgid "Shortcut to focus tab 5"
 msgstr "Комбинация клавиш для фокуса на вкладку 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:572
+#: src/org.gnome.Ptyxis.gschema.xml.in:573
 msgid "Focus Tab 6"
 msgstr "Фокус на вкладку 6"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:573
+#: src/org.gnome.Ptyxis.gschema.xml.in:574
 msgid "Shortcut to focus tab 6"
 msgstr "Комбинация клавиш для фокуса на вкладку 6"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:578
+#: src/org.gnome.Ptyxis.gschema.xml.in:579
 msgid "Focus Tab 7"
 msgstr "Фокус на вкладку 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:579
+#: src/org.gnome.Ptyxis.gschema.xml.in:580
 msgid "Shortcut to focus tab 7"
 msgstr "Комбинация клавиш для фокуса на вкладку 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:584
+#: src/org.gnome.Ptyxis.gschema.xml.in:585
 msgid "Focus Tab 8"
 msgstr "Фокус на вкладку 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:585
+#: src/org.gnome.Ptyxis.gschema.xml.in:586
 msgid "Shortcut to focus tab 8"
 msgstr "Комбинация клавиш для фокуса на вкладку 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:590
+#: src/org.gnome.Ptyxis.gschema.xml.in:591
 msgid "Focus Tab 9"
 msgstr "Фокус на вкладку 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:591
+#: src/org.gnome.Ptyxis.gschema.xml.in:592
 msgid "Shortcut to focus tab 9"
 msgstr "Комбинация клавиш для фокуса на вкладку 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:596
+#: src/org.gnome.Ptyxis.gschema.xml.in:597
 msgid "Focus Tab 10"
 msgstr "Фокус на вкладку 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:597
+#: src/org.gnome.Ptyxis.gschema.xml.in:598
 msgid "Shortcut to focus tab 10"
 msgstr "Комбинация клавиш для фокуса на вкладку 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:602 src/ptyxis-preferences-window.ui:773
+#: src/org.gnome.Ptyxis.gschema.xml.in:603 src/ptyxis-preferences-window.ui:774
 msgid "Undo Close Tab"
-msgstr "Отменить Закрыть вкладку"
+msgstr "Вернуть закрытую вкладку"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:603
+#: src/org.gnome.Ptyxis.gschema.xml.in:604
 msgid "Undo closing of last tab"
 msgstr "Отменить закрытие последней вкладки"
 
-#: src/ptyxis-application.c:438
+#: src/ptyxis-application.c:450
 msgid "--tab, --tab-with-profile, or --new-window may not be used together"
 msgstr ""
 "--tab, --tab-with-profile, или --new-window не могут быть использованы вместе"
 
-#: src/ptyxis-application.c:484
+#: src/ptyxis-application.c:496
 #, c-format
 msgid "Cannot parse command: %s"
 msgstr "Невозможно разобрать команду: %s"
 
-#: src/ptyxis-application.c:1093
+#: src/ptyxis-application.c:1109
 msgid "Examples:"
 msgstr "Примеры:"
 
-#: src/ptyxis-application.c:1095
+#: src/ptyxis-application.c:1111
 msgid "Show the application preferences"
 msgstr "Показать параметры приложения"
 
 #. Used for new tabs/windows/etc when specified
-#: src/ptyxis-application.c:1098
+#: src/ptyxis-application.c:1114
 msgid "Use DIR for --tab, --tab-with-profile, --new-window, or -x"
 msgstr "Использовать DIR для --tab, --tab-with-profile, --new-window, или -x"
 
-#: src/ptyxis-application.c:1098
+#: src/ptyxis-application.c:1114
 msgid "DIR"
 msgstr "DIR"
 
 #. By default, this implies a new ptyxis instance unless the options
 #. * below are provided to override that.
 #.
-#: src/ptyxis-application.c:1103
+#: src/ptyxis-application.c:1119
 msgid "Command to execute in new window"
 msgstr "Команда для выполнения в новом окне"
 
@@ -906,47 +920,60 @@ msgstr "Команда для выполнения в новом окне"
 #. * short command options for these to make it easier to sniff them in early args
 #. * checking from `main.c`.
 #.
-#: src/ptyxis-application.c:1109
+#: src/ptyxis-application.c:1125
 msgid "New terminal window"
 msgstr "Новое окно терминала"
 
-#: src/ptyxis-application.c:1110
+#: src/ptyxis-application.c:1126
 msgid "New terminal tab in active window"
 msgstr "Новая вкладка терминала в активном окне"
 
-#: src/ptyxis-application.c:1111
+#: src/ptyxis-application.c:1127
 msgid "New terminal tab in active window using the profile UUID"
 msgstr "Новая вкладка терминала в активном окне используя UUID профиля"
 
-#: src/ptyxis-application.c:1111
+#: src/ptyxis-application.c:1127
 msgid "PROFILE_UUID"
-msgstr "PROFILE_UUID"
+msgstr "UUID_ПРОФИЛЬ"
 
-#: src/ptyxis-application.c:1113
+#: src/ptyxis-application.c:1129
 msgid "Set title for new tab"
 msgstr "Задать название для новой вкладки"
 
-#: src/ptyxis-application.c:1114
+#: src/ptyxis-application.c:1130
 msgid "Maximize a newly created window"
 msgstr "Развернуть только что созданное окно"
 
-#: src/ptyxis-application.c:1121
+#. Import a custom .palette file. This works like dragging the file onto preferences
+#: src/ptyxis-application.c:1133
+msgid "Import a Ptyxis palette file"
+msgstr "Импортировать файл палитры Ptyxis"
+
+#: src/ptyxis-application.c:1133
+msgid "FILE"
+msgstr "ФАЙЛ"
+
+#: src/ptyxis-application.c:1140
 msgid "Run Separate Instance"
 msgstr "Запустить отдельный экземпляр"
 
-#: src/ptyxis-application.c:1125
+#: src/ptyxis-application.c:1144
 msgid "Open Preferences"
 msgstr "Открыть параметры"
 
-#: src/ptyxis-application.c:1129
+#: src/ptyxis-application.c:1148
 msgid "Run Custom Command in New Window"
 msgstr "Запустить пользовательскую команду в новом окне"
 
-#: src/ptyxis-application.c:1133
+#: src/ptyxis-application.c:1153
+msgid "Import a custom palette"
+msgstr "Импортировать пользовательскую палитру"
+
+#: src/ptyxis-application.c:1156
 msgid "[-- COMMAND ARGUMENTS]"
 msgstr "[-- COMMAND ARGUMENTS]"
 
-#: src/ptyxis-application.c:1371
+#: src/ptyxis-application.c:1394
 msgid "translator-credits"
 msgstr "vadim kavetskiy <kve1989@ya.ru>"
 
@@ -979,36 +1006,36 @@ msgstr "Процесс %d"
 msgid "Unknown Container"
 msgstr "Неизвестный контейнер"
 
-#: src/ptyxis-find-bar.ui:68
+#: src/ptyxis-find-bar.ui:69
 msgid "Search Up"
 msgstr "Искать вверх"
 
-#: src/ptyxis-find-bar.ui:75
+#: src/ptyxis-find-bar.ui:76
 msgid "Search Down"
 msgstr "Искать вниз"
 
-#: src/ptyxis-find-bar.ui:84
+#: src/ptyxis-find-bar.ui:85
 msgid "Search Options"
 msgstr "Опции поиска"
 
-#: src/ptyxis-find-bar.ui:95
+#: src/ptyxis-find-bar.ui:96
 msgid "Match _Case"
 msgstr "Учитывать _регистр"
 
-#: src/ptyxis-find-bar.ui:101
+#: src/ptyxis-find-bar.ui:102
 msgid "Whole _Words"
 msgstr "Целые _слова"
 
-#: src/ptyxis-find-bar.ui:107
+#: src/ptyxis-find-bar.ui:108
 msgid "Use _Regular Expressions"
 msgstr "Использовать регулярные _выражения"
 
-#: src/ptyxis-find-bar.ui:127 src/ptyxis-preferences-window.ui:567
+#: src/ptyxis-find-bar.ui:128 src/ptyxis-preferences-window.ui:567
 #: src/ptyxis-profile-editor.ui:288
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/ptyxis-find-bar.ui:128
+#: src/ptyxis-find-bar.ui:129
 msgid "Close the search bar"
 msgstr "Закрыть панель поиска"
 
@@ -1365,160 +1392,160 @@ msgstr "Сброс"
 msgid "Reset and Clear"
 msgstr "Сброс и очистка"
 
-#: src/ptyxis-preferences-window.ui:705
+#: src/ptyxis-preferences-window.ui:706
 msgid "Show Context Menu"
 msgstr "Показать контекстное меню"
 
-#: src/ptyxis-preferences-window.ui:712
+#: src/ptyxis-preferences-window.ui:713
 msgid "Windows"
 msgstr "Окна"
 
-#: src/ptyxis-preferences-window.ui:716
+#: src/ptyxis-preferences-window.ui:717
 msgid "Open a new tab in a new window"
 msgstr "Открыть новую вкладку в новом окне"
 
-#: src/ptyxis-preferences-window.ui:722
+#: src/ptyxis-preferences-window.ui:723
 msgid "Close the current window"
 msgstr "Закрыть текущее окно"
 
-#: src/ptyxis-preferences-window.ui:738
+#: src/ptyxis-preferences-window.ui:739
 msgid "Tabs"
 msgstr "Вкладки"
 
-#: src/ptyxis-preferences-window.ui:742
+#: src/ptyxis-preferences-window.ui:743
 msgid "Open a new tab in the current window"
 msgstr "Открыть новую вкладку в текущем окне"
 
-#: src/ptyxis-preferences-window.ui:751
+#: src/ptyxis-preferences-window.ui:752
 msgid "View Tab Overview"
 msgstr "Перейти в режим обзора вкладок"
 
-#: src/ptyxis-preferences-window.ui:752
+#: src/ptyxis-preferences-window.ui:753
 msgid "Show an overview of all tabs within the window"
 msgstr "Показать обзор всех вкладок в окне"
 
-#: src/ptyxis-preferences-window.ui:762
+#: src/ptyxis-preferences-window.ui:763
 msgid "Close the current tab"
 msgstr "Закрыть текущую вкладку"
 
-#: src/ptyxis-preferences-window.ui:768
+#: src/ptyxis-preferences-window.ui:769
 msgid "Close all tabs except the active tab"
 msgstr "Закрыть все вкладки, кроме активной"
 
-#: src/ptyxis-preferences-window.ui:774
+#: src/ptyxis-preferences-window.ui:775
 msgid "Undo closing the last tab"
 msgstr "Отменить закрытие последней вкладки"
 
-#: src/ptyxis-preferences-window.ui:798
+#: src/ptyxis-preferences-window.ui:799
 msgid "Move the tab one position to the left"
 msgstr "Переместить вкладку на одну позицию влево"
 
-#: src/ptyxis-preferences-window.ui:804
+#: src/ptyxis-preferences-window.ui:805
 msgid "Move the tab one position to the right"
 msgstr "Переместить вкладку на одну позицию вправо"
 
-#: src/ptyxis-preferences-window.ui:810
+#: src/ptyxis-preferences-window.ui:811
 msgid "Detach the current tab and move it to a new window"
 msgstr "Отсоединить текущую вкладку и переместить её в новое окно"
 
-#: src/ptyxis-preferences-window.ui:819
+#: src/ptyxis-preferences-window.ui:820
 msgid "Switch to Tab 1"
 msgstr "Переключиться на вкладку 1"
 
-#: src/ptyxis-preferences-window.ui:824
+#: src/ptyxis-preferences-window.ui:825
 msgid "Switch to Tab 2"
 msgstr "Переключиться на вкладку 2"
 
-#: src/ptyxis-preferences-window.ui:829
+#: src/ptyxis-preferences-window.ui:830
 msgid "Switch to Tab 3"
 msgstr "Переключиться на вкладку 3"
 
-#: src/ptyxis-preferences-window.ui:834
+#: src/ptyxis-preferences-window.ui:835
 msgid "Switch to Tab 4"
 msgstr "Переключиться на вкладку 4"
 
-#: src/ptyxis-preferences-window.ui:839
+#: src/ptyxis-preferences-window.ui:840
 msgid "Switch to Tab 5"
 msgstr "Переключиться на вкладку 5"
 
-#: src/ptyxis-preferences-window.ui:844
+#: src/ptyxis-preferences-window.ui:845
 msgid "Switch to Tab 6"
 msgstr "Переключиться на вкладку 6"
 
-#: src/ptyxis-preferences-window.ui:849
+#: src/ptyxis-preferences-window.ui:850
 msgid "Switch to Tab 7"
 msgstr "Переключиться на вкладку 7"
 
-#: src/ptyxis-preferences-window.ui:854
+#: src/ptyxis-preferences-window.ui:855
 msgid "Switch to Tab 8"
 msgstr "Переключиться на вкладку 8"
 
-#: src/ptyxis-preferences-window.ui:859
+#: src/ptyxis-preferences-window.ui:860
 msgid "Switch to Tab 9"
 msgstr "Переключиться на вкладку 9"
 
-#: src/ptyxis-preferences-window.ui:864
+#: src/ptyxis-preferences-window.ui:865
 msgid "Switch to Tab 10"
 msgstr "Переключиться на вкладку 10"
 
-#: src/ptyxis-preferences-window.ui:871
+#: src/ptyxis-preferences-window.ui:872
 msgid "Zoom"
 msgstr "Масштаб"
 
-#: src/ptyxis-preferences-window.ui:891
+#: src/ptyxis-preferences-window.ui:892
 msgid "Application"
 msgstr "Приложение"
 
-#: src/ptyxis-preferences-window.ui:895
+#: src/ptyxis-preferences-window.ui:896
 msgid "Toggle in and out of fullscreen"
 msgstr "Переключение в полноэкранный режим и выход из него"
 
-#: src/ptyxis-preferences-window.ui:904
+#: src/ptyxis-preferences-window.ui:905
 msgid "Show Primary Menu"
 msgstr "Показать основное меню"
 
-#: src/ptyxis-preferences-window.ui:905
+#: src/ptyxis-preferences-window.ui:906
 msgid "Displays the primary menu for the terminal window"
 msgstr "Отображает главное меню окна терминала"
 
-#: src/ptyxis-preferences-window.ui:910
+#: src/ptyxis-preferences-window.ui:911
 msgid "Show New Tab Menu"
 msgstr "Показать меню новой вкладки"
 
-#: src/ptyxis-preferences-window.ui:911
+#: src/ptyxis-preferences-window.ui:912
 msgid "Displays the new tab menu for the terminal window"
 msgstr "Отображает меню новой вкладки для окна терминала"
 
-#: src/ptyxis-preferences-window.ui:917
+#: src/ptyxis-preferences-window.ui:918
 msgid "Show this preferences window"
 msgstr "Показать это окно настроек"
 
-#: src/ptyxis-preferences-window.ui:926 src/ptyxis-preferences-window.ui:930
-#: src/ptyxis-window.c:1474
+#: src/ptyxis-preferences-window.ui:927 src/ptyxis-preferences-window.ui:931
+#: src/ptyxis-window.c:1539
 msgid "Profiles"
 msgstr "Профили"
 
-#: src/ptyxis-preferences-window.ui:937
+#: src/ptyxis-preferences-window.ui:938
 msgid "_Add Profile"
 msgstr "_Добавить профиль"
 
-#: src/ptyxis-preferences-window.ui:964 src/ptyxis-profile-editor.ui:415
+#: src/ptyxis-preferences-window.ui:965 src/ptyxis-profile-editor.ui:415
 msgid "Automatic"
 msgstr "Автоматически"
 
-#: src/ptyxis-preferences-window.ui:970 src/ptyxis-profile-editor.ui:421
+#: src/ptyxis-preferences-window.ui:971 src/ptyxis-profile-editor.ui:421
 msgid "Control-H"
 msgstr "Control-H"
 
-#: src/ptyxis-preferences-window.ui:976 src/ptyxis-profile-editor.ui:427
+#: src/ptyxis-preferences-window.ui:977 src/ptyxis-profile-editor.ui:427
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
-#: src/ptyxis-preferences-window.ui:982 src/ptyxis-profile-editor.ui:433
+#: src/ptyxis-preferences-window.ui:983 src/ptyxis-profile-editor.ui:433
 msgid "Escape Sequence"
 msgstr "Escape-последовательность"
 
-#: src/ptyxis-preferences-window.ui:988 src/ptyxis-profile-editor.ui:439
+#: src/ptyxis-preferences-window.ui:989 src/ptyxis-profile-editor.ui:439
 msgid "TTY Erase"
 msgstr "TTY Erase"
 
@@ -1526,8 +1553,8 @@ msgstr "TTY Erase"
 msgid "Untitled Profile"
 msgstr "Безымянный профиль"
 
-#: src/ptyxis-profile-editor.c:149 src/ptyxis-terminal.c:420
-#: src/ptyxis-terminal.c:452
+#: src/ptyxis-profile-editor.c:149 src/ptyxis-terminal.c:423
+#: src/ptyxis-terminal.c:455
 msgid "Copied to clipboard"
 msgstr "Скопировано в буфер обмена"
 
@@ -1544,7 +1571,7 @@ msgstr "Вернуть"
 msgid "My Computer"
 msgstr "Мой компьютер"
 
-#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:392 src/ptyxis-tab.c:449
+#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:393 src/ptyxis-tab.c:450
 msgid "Edit Profile"
 msgstr "Редактировать профиль"
 
@@ -1636,12 +1663,12 @@ msgstr "Задать комбинацию клавиш"
 msgid "disabled"
 msgstr "отключено"
 
-#: src/ptyxis-tab.c:302
+#: src/ptyxis-tab.c:303
 #, c-format
 msgid "Process Exited from Signal %d"
 msgstr "Процесс завершился из-за сигнала %d"
 
-#: src/ptyxis-tab.c:305 src/ptyxis-tab.c:328
+#: src/ptyxis-tab.c:306 src/ptyxis-tab.c:329
 msgid "_Restart"
 msgstr "_Перезапуск"
 
@@ -1649,32 +1676,32 @@ msgstr "_Перезапуск"
 #. * display it again if the tab is removed from the parking lot and
 #. * restored into the window.
 #.
-#: src/ptyxis-tab.c:327
+#: src/ptyxis-tab.c:328
 msgid "Process Exited"
 msgstr "Процесс завершился"
 
-#: src/ptyxis-tab.c:391
+#: src/ptyxis-tab.c:392
 msgid "Failed to launch terminal"
 msgstr "Не удалось запустить терминал"
 
-#: src/ptyxis-tab.c:447
+#: src/ptyxis-tab.c:448
 #, c-format
 msgid "Cannot locate container “%s”"
 msgstr "Не удалось найти контейнер  “%s”"
 
-#: src/ptyxis-tab.c:471
+#: src/ptyxis-tab.c:472
 msgid "Failed to create pseudo terminal device"
 msgstr "Не удалось создать псевдотерминальное устройство"
 
-#: src/ptyxis-tab.c:1418
+#: src/ptyxis-tab.c:1443
 msgid "Exited"
 msgstr "Завершено"
 
-#: src/ptyxis-tab.c:1420
+#: src/ptyxis-tab.c:1445
 msgid "Failed"
 msgstr "Ошибка"
 
-#: src/ptyxis-tab.c:1985
+#: src/ptyxis-tab.c:2010
 msgid "Failed to open link"
 msgstr "Не удалось открыть ссылку"
 
@@ -1780,23 +1807,23 @@ msgid "Append title from Shell application"
 msgstr "Добавить название из оболочки приложения"
 
 #. translators: Builder Terminal means this is a terminal bundled with GNOME Builder
-#: src/ptyxis-util.c:313
+#: src/ptyxis-util.c:310
 msgid "Builder Terminal"
 msgstr "Builder Terminal"
 
-#: src/ptyxis-util.c:317
+#: src/ptyxis-util.c:314
 msgid "Ptyxis"
 msgstr "Ptyxis"
 
-#: src/ptyxis-window.c:1372
+#: src/ptyxis-window.c:1412
 msgid "Zoom in"
 msgstr "Увеличить"
 
-#: src/ptyxis-window.c:1387
+#: src/ptyxis-window.c:1427
 msgid "Zoom out"
 msgstr "Уменьшить"
 
-#: src/ptyxis-window.c:1477
+#: src/ptyxis-window.c:1542
 msgid "Containers"
 msgstr "Контейнеры"
 
