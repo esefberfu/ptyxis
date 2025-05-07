@@ -52,7 +52,6 @@ struct _PtyxisPreferencesWindow
   GtkButton            *add_profile_button;
   AdwSwitchRow         *audible_bell;
   AdwComboRow          *backspace_binding;
-  AdwSwitchRow         *bold_is_bright;
   AdwSpinRow           *cell_height_scale;
   AdwComboRow          *cjk_ambiguous_width;
   GListModel           *cjk_ambiguous_widths;
@@ -509,9 +508,6 @@ ptyxis_preferences_window_notify_default_profile_cb (PtyxisPreferencesWindow *se
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_object_bind_property (profile, "scrollback-lines",
                           self->scrollback_lines, "value",
-                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-  g_object_bind_property (profile, "bold-is-bright",
-                          self->bold_is_bright, "active",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_object_bind_property (profile, "cell-height-scale",
                           self->cell_height_scale, "value",
@@ -1012,7 +1008,6 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, add_profile_button);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, audible_bell);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, backspace_binding);
-  gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, bold_is_bright);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_height_scale);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cjk_ambiguous_width);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cjk_ambiguous_widths);
