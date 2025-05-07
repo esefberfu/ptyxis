@@ -220,7 +220,7 @@ main (int   argc,
   check_early_opts (&argc, &argv, &standalone);
 
   if (standalone)
-    flags |= G_APPLICATION_NON_UNIQUE;
+    flags |= G_APPLICATION_NON_UNIQUE | G_APPLICATION_CAN_OVERRIDE_APP_ID;
 
   default_rlimit_nofile = get_current_fd_limit ();
   bump_to_max_fd_limit ();

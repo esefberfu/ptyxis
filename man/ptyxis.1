@@ -112,8 +112,18 @@ preferences dialog.
 
 .TP
 .BR \-s ", " \-\-standalone
-Run a new instance of Ptyxis, ignoring any instances already
-running.
+Start a new instance of Ptyxis, in single instance mode,
+ignoring any instances already running.
+
+Single instance mode is implied when running a
+.BR \-\-
+command.
+
+.TP
+.BR \-s ", " \-\-gapplication\-app\-id=ID
+Override the application
+.B ID
+in single instance mode.
 
 .TP
 .BR \-h ", " \-\-help

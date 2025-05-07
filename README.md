@@ -126,7 +126,7 @@ Otherwise, it is built as any other meson-based project.
    the retained render tree. This allows for appropriate padding around the
    terminal while still keeping scrollback from looking cut off.
  * User customizable keyboard shortcuts.
- * "Single application mode" allows you to run an application in a ptyxis
+ * "Single instance mode" allows you to run an application in a ptyxis
    instance but just for that command. Useful when integrating with
    .desktop files containing Terminal=true.
  * Pinned tab profile/container/directory are saved across sessions so that
