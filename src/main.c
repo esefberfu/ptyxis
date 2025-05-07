@@ -40,6 +40,7 @@ check_early_opts (int        *argc,
   g_autofree char *palette = NULL;
   gboolean version = FALSE;
   gboolean ignore_standalone = FALSE;
+  gboolean real_standalone = FALSE;
   GOptionEntry entries[] = {
     { "import-palette", 0, 0, G_OPTION_ARG_FILENAME, &palette },
     { "standalone", 's', 0, G_OPTION_ARG_NONE, standalone },
@@ -63,6 +64,9 @@ check_early_opts (int        *argc,
           (g_str_equal (arg, "--tab-with-profile") || g_str_has_prefix (arg, "--tab-with-profile=")))
         ignore_standalone = TRUE;
 
+      if (g_str_equal (arg, "-x") || g_str_equal (arg, "--execute"))
+        real_standalone = TRUE;
+
       /* Convert -e to -- for x-terminal-emulator */
       if (strcmp (arg, "-e") == 0)
         arg[1] = '-';
@@ -84,12 +88,14 @@ check_early_opts (int        *argc,
           (*argv)[i] = g_strdup ("-x");
           (*argv)[i+1] = g_string_free (str, FALSE);
 
-          if (!ignore_standalone)
-            *standalone = TRUE;
+          real_standalone = TRUE;
 
           break;
         }
     }
+
+  if (!ignore_standalone && real_standalone)
+    *standalone = real_standalone;
 
   context = g_option_context_new (NULL);
   g_option_context_set_ignore_unknown_options (context, TRUE);
