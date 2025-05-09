@@ -64,7 +64,7 @@ check_early_opts (int        *argc,
           (g_str_equal (arg, "--tab-with-profile") || g_str_has_prefix (arg, "--tab-with-profile=")))
         ignore_standalone = TRUE;
 
-      if (g_str_equal (arg, "-x") || g_str_equal (arg, "--execute"))
+      if (g_str_equal (arg, "-x") || g_str_equal (arg, "--execute") || g_str_has_prefix (arg, "--execute="))
         real_standalone = TRUE;
 
       /* Convert -e to -- for x-terminal-emulator */
