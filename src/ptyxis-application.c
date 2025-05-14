@@ -105,6 +105,7 @@ G_DEFINE_FINAL_TYPE (PtyxisApplication, ptyxis_application, ADW_TYPE_APPLICATION
 
 enum {
   PROP_0,
+  PROP_CONTAINERS,
   PROP_DEFAULT_PROFILE,
   PROP_OS_NAME,
   PROP_OVERLAY_SCROLLBARS,
@@ -1041,6 +1042,10 @@ ptyxis_application_get_property (GObject    *object,
 
   switch (prop_id)
     {
+    case PROP_CONTAINERS:
+      g_value_take_object (value, ptyxis_application_list_containers (self));
+      break;
+
     case PROP_DEFAULT_PROFILE:
       g_value_take_object (value, ptyxis_application_dup_default_profile (self));
       break;
@@ -1075,6 +1080,12 @@ ptyxis_application_class_init (PtyxisApplicationClass *klass)
   app_class->shutdown = ptyxis_application_shutdown;
   app_class->command_line = ptyxis_application_command_line;
   app_class->open = ptyxis_application_open;
+
+  properties[PROP_CONTAINERS] =
+    g_param_spec_object ("containers", NULL, NULL,
+                         G_TYPE_LIST_MODEL,
+                         (G_PARAM_READABLE |
+                          G_PARAM_STATIC_STRINGS));
 
   properties[PROP_DEFAULT_PROFILE] =
     g_param_spec_object ("default-profile", NULL, NULL,
