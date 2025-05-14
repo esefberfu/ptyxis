@@ -10,6 +10,7 @@ src/ptyxis-container-menu.c
 src/ptyxis-find-bar.ui
 src/ptyxis-inspector.c
 src/ptyxis-inspector.ui
+src/ptyxis-menu-row.c
 src/ptyxis-palette.c
 src/ptyxis-palette-preview.ui
 src/ptyxis-preferences-window.c

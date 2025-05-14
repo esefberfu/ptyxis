@@ -30,9 +30,7 @@
 #include "ptyxis-application.h"
 #include "ptyxis-build-ident.h"
 #include "ptyxis-client.h"
-#include "ptyxis-container-menu.h"
 #include "ptyxis-preferences-window.h"
-#include "ptyxis-profile-menu.h"
 #include "ptyxis-session.h"
 #include "ptyxis-settings.h"
 #include "ptyxis-util.h"
@@ -48,8 +46,6 @@ struct _PtyxisApplication
   GListStore          *profiles;
   PtyxisSettings      *settings;
   PtyxisShortcuts     *shortcuts;
-  PtyxisContainerMenu *container_menu;
-  PtyxisProfileMenu   *profile_menu;
   char                *next_title_prefix;
   char                *system_font_name;
   GDBusProxy          *portal;
@@ -757,13 +753,6 @@ ptyxis_application_notify_profile_uuids_cb (PtyxisApplication *self,
   g_list_store_splice (self->profiles, 0, n_items, array->pdata, array->len);
 }
 
-static gboolean
-filter_session_container (gpointer item,
-                          gpointer user_data)
-{
-  return g_strcmp0 ("session", ptyxis_ipc_container_get_id (item)) != 0;
-}
-
 static void
 xdg_terminals_list_changed_cb (PtyxisApplication *self,
                                GFile             *file,
@@ -857,8 +846,6 @@ ptyxis_application_startup (GApplication *application)
 {
   static const char *patterns[] = { "org.gnome.*", NULL };
   PtyxisApplication *self = (PtyxisApplication *)application;
-  g_autoptr(GtkFilterListModel) filter_model = NULL;
-  g_autoptr(GtkCustomFilter) filter = NULL;
   g_autoptr(GFile) session_file = get_session_file ();
   g_autoptr(GBytes) session_bytes = NULL;
   g_autoptr(GError) error = NULL;
@@ -931,13 +918,6 @@ ptyxis_application_startup (GApplication *application)
                            G_CALLBACK (ptyxis_application_client_process_exited_cb),
                            self,
                            G_CONNECT_SWAPPED);
-
-  self->profile_menu = ptyxis_profile_menu_new (self->settings);
-
-  filter = gtk_custom_filter_new (filter_session_container, NULL, NULL);
-  filter_model = gtk_filter_list_model_new (g_object_ref (G_LIST_MODEL (self->client)),
-                                            g_object_ref (GTK_FILTER (filter)));
-  self->container_menu = ptyxis_container_menu_new (G_LIST_MODEL (filter_model));
 
   g_action_map_add_action_entries (G_ACTION_MAP (self),
                                    action_entries,
@@ -1021,7 +1001,6 @@ ptyxis_application_shutdown (GApplication *application)
   G_APPLICATION_CLASS (ptyxis_application_parent_class)->shutdown (application);
 
   g_clear_object (&self->xdg_terminals_list_monitor);
-  g_clear_object (&self->profile_menu);
   g_clear_object (&self->profiles);
   g_clear_object (&self->portal);
   g_clear_object (&self->shortcuts);
@@ -1634,22 +1613,6 @@ ptyxis_application_get_system_font_name (PtyxisApplication *self)
   g_return_val_if_fail (PTYXIS_IS_APPLICATION (self), NULL);
 
   return self->system_font_name;
-}
-
-GMenuModel *
-ptyxis_application_dup_profile_menu (PtyxisApplication *self)
-{
-  g_return_val_if_fail (PTYXIS_IS_APPLICATION (self), NULL);
-
-  return g_object_ref (G_MENU_MODEL (self->profile_menu));
-}
-
-GMenuModel *
-ptyxis_application_dup_container_menu (PtyxisApplication *self)
-{
-  g_return_val_if_fail (PTYXIS_IS_APPLICATION (self), NULL);
-
-  return g_object_ref (G_MENU_MODEL (self->container_menu));
 }
 
 /**

@@ -1,7 +1,7 @@
 /*
- * ptyxis-container-menu.h
+ * ptyxis-menu-row.h
  *
- * Copyright 2023 Christian Hergert <chergert@redhat.com>
+ * Copyright 2025 Christian Hergert <chergert@redhat.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,14 +21,16 @@
 
 #pragma once
 
-#include <gio/gio.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define PTYXIS_TYPE_CONTAINER_MENU (ptyxis_container_menu_get_type())
+#define PTYXIS_TYPE_MENU_ROW (ptyxis_menu_row_get_type())
 
-G_DECLARE_FINAL_TYPE (PtyxisContainerMenu, ptyxis_container_menu, PTYXIS, CONTAINER_MENU, GMenuModel)
+G_DECLARE_FINAL_TYPE (PtyxisMenuRow, ptyxis_menu_row, PTYXIS, MENU_ROW, GtkWidget)
 
-PtyxisContainerMenu *ptyxis_container_menu_new (GListModel *containers);
+gpointer ptyxis_menu_row_get_item (PtyxisMenuRow *self);
+void     ptyxis_menu_row_set_item (PtyxisMenuRow *self,
+                                   gpointer       item);
 
 G_END_DECLS

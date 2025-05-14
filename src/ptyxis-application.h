@@ -53,8 +53,6 @@ void                ptyxis_application_set_default_profile        (PtyxisApplica
                                                                    PtyxisProfile        *profile);
 PtyxisProfile      *ptyxis_application_dup_profile                (PtyxisApplication    *self,
                                                                    const char           *profile_uuid);
-GMenuModel         *ptyxis_application_dup_profile_menu           (PtyxisApplication    *self);
-GMenuModel         *ptyxis_application_dup_container_menu         (PtyxisApplication    *self);
 GListModel         *ptyxis_application_list_profiles              (PtyxisApplication    *self);
 GListModel         *ptyxis_application_list_containers            (PtyxisApplication    *self);
 PtyxisIpcContainer *ptyxis_application_lookup_container           (PtyxisApplication    *self,

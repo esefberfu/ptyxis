@@ -28,7 +28,6 @@
 #include "ptyxis-application.h"
 #include "ptyxis-enums.h"
 #include "ptyxis-profile.h"
-#include "ptyxis-profile-menu.h"
 #include "ptyxis-util.h"
 
 struct _PtyxisProfile
@@ -591,10 +590,6 @@ ptyxis_profile_set_label (PtyxisProfile *self,
     label = "";
 
   g_settings_set_string (self->settings, PTYXIS_PROFILE_KEY_LABEL, label);
-
-  /* So menu titles get updated */
-  if ((menu = ptyxis_application_dup_profile_menu PTYXIS_APPLICATION_DEFAULT))
-    ptyxis_profile_menu_invalidate (PTYXIS_PROFILE_MENU (menu));
 }
 
 gboolean

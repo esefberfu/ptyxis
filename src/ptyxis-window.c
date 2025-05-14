@@ -26,6 +26,8 @@
 #include "ptyxis-close-dialog.h"
 #include "ptyxis-find-bar.h"
 #include "ptyxis-fullscreen-box.h"
+#include "ptyxis-gated-list-model.h"
+#include "ptyxis-menu-row.h"
 #include "ptyxis-parking-lot.h"
 #include "ptyxis-preferences-window.h"
 #include "ptyxis-settings.h"
@@ -51,7 +53,6 @@ struct _PtyxisWindow
   PtyxisFindBar         *find_bar;
   GtkRevealer           *find_bar_revealer;
   AdwHeaderBar          *header_bar;
-  GMenu                 *my_computer_menu;
   GMenu                 *primary_menu;
   GtkMenuButton         *primary_menu_button;
   AdwTabBar             *tab_bar;
@@ -62,6 +63,13 @@ struct _PtyxisWindow
   GtkWidget             *tab_overview_button;
   GtkWidget             *new_tab_box;
   PtyxisFullscreenBox   *fullscreen_box;
+  GtkStack              *menu_search_stack;
+  GtkSearchEntry        *menu_search;
+  GtkListView           *menu_list_view;
+  GtkFilterListModel    *maybe_containers;
+  GtkCustomFilter       *maybe_containers_filter;
+  GtkFilterListModel    *not_containers;
+  GtkCustomFilter       *not_containers_filter;
 
   GBindingGroup         *profile_bindings;
   GBindingGroup         *active_tab_bindings;
@@ -1520,7 +1528,6 @@ static void
 ptyxis_window_constructed (GObject *object)
 {
   PtyxisWindow *self = (PtyxisWindow *)object;
-  PtyxisApplication *app = PTYXIS_APPLICATION_DEFAULT;
   g_autoptr(GListModel) profiles = NULL;
   g_autoptr(GListModel) containers = NULL;
   g_autoptr(GMenuModel) profile_menu = NULL;
@@ -1542,16 +1549,6 @@ ptyxis_window_constructed (GObject *object)
 
   ptyxis_window_add_theme_controls (self);
   ptyxis_window_add_zoom_controls (self);
-
-  menu = g_menu_new ();
-  profile_menu = ptyxis_application_dup_profile_menu (app);
-  g_menu_append_section (menu, _("Profiles"), profile_menu);
-  g_menu_append_section (menu, NULL, G_MENU_MODEL (self->my_computer_menu));
-  container_menu = ptyxis_application_dup_container_menu (app);
-  g_menu_append_section (menu, _("Containers"), container_menu);
-
-  gtk_menu_button_set_menu_model (self->new_terminal_menu_button,
-                                  G_MENU_MODEL (menu));
 
   containers = ptyxis_application_list_containers (PTYXIS_APPLICATION_DEFAULT);
   g_signal_connect_object (containers,
@@ -1612,6 +1609,201 @@ ptyxis_window_my_computer_action (GtkWidget  *widget,
   g_assert (PTYXIS_IS_WINDOW (widget));
 
   gtk_widget_activate_action (widget, "win.new-terminal", "(ss)", "", "session");
+}
+
+static gboolean
+ptyxis_window_check_singular (gpointer instance,
+                              guint    n_items)
+{
+  return n_items <= 1;
+}
+
+static char *
+ptyxis_window_get_header_title (gpointer instance,
+                                gpointer item)
+{
+  if (PTYXIS_IPC_IS_CONTAINER (item))
+    {
+      const char *str = ptyxis_ipc_container_get_display_name (item);
+
+      if (str && str[0])
+        return g_strdup (_("Containers"));
+
+      return NULL;
+    }
+
+  if (PTYXIS_IS_PROFILE (item))
+    return g_strdup (_("Profiles"));
+
+  return NULL;
+}
+
+static char *
+ptyxis_window_get_container_title (gpointer first,
+                                   gpointer second)
+{
+  PtyxisIpcContainer *container;
+  const char *title;
+
+  g_assert (PTYXIS_IPC_IS_CONTAINER (first) || PTYXIS_IPC_IS_CONTAINER (second));
+
+  if (PTYXIS_IPC_IS_CONTAINER (first))
+    container = first;
+  else if (PTYXIS_IPC_IS_CONTAINER (second))
+    container = second;
+  else
+    g_assert_not_reached ();
+
+  title = ptyxis_ipc_container_get_display_name (container);
+
+  if (title && title[0])
+    return g_strdup (title);
+
+  return g_strdup (_("My Computer"));
+}
+
+static void
+ptyxis_window_menu_stop_search (PtyxisWindow   *self,
+                                GtkSearchEntry *entry)
+{
+  PtyxisTab *tab;
+
+  g_assert (PTYXIS_IS_WINDOW (self));
+  g_assert (GTK_IS_SEARCH_ENTRY (entry));
+
+  gtk_editable_set_text (GTK_EDITABLE (entry), "");
+  gtk_menu_button_popdown (self->new_terminal_menu_button);
+
+  if ((tab = ptyxis_window_get_active_tab (self)))
+    gtk_widget_grab_focus (GTK_WIDGET (tab));
+}
+
+static void
+ptyxis_window_menu_activate_cb (PtyxisWindow *self,
+                                guint         position,
+                                GtkListView  *list_view)
+{
+  GtkSelectionModel *model;
+  g_autoptr(GObject) item = NULL;
+  PtyxisTab *tab;
+
+  g_assert (PTYXIS_IS_WINDOW (self));
+  g_assert (GTK_IS_LIST_VIEW (list_view));
+
+  model = gtk_list_view_get_model (list_view);
+  item = g_list_model_get_item (G_LIST_MODEL (model), position);
+
+  gtk_menu_button_popdown (self->new_terminal_menu_button);
+  gtk_editable_set_text (GTK_EDITABLE (self->menu_search), "");
+
+  /* First return focus before we make changes so that if we
+   * come back to this window we get proper focus which is not
+   * on the button itself.
+   */
+  if ((tab = ptyxis_window_get_active_tab (self)))
+    gtk_widget_grab_focus (GTK_WIDGET (tab));
+
+  if (PTYXIS_IS_PROFILE (item))
+    {
+      const char *uuid = ptyxis_profile_get_uuid (PTYXIS_PROFILE (item));
+
+      gtk_widget_activate_action (GTK_WIDGET (self), "win.new-terminal", "(ss)", uuid, "");
+    }
+  else if (PTYXIS_IPC_IS_CONTAINER (item))
+    {
+      const char *id = ptyxis_ipc_container_get_id (PTYXIS_IPC_CONTAINER (item));
+
+      gtk_widget_activate_action (GTK_WIDGET (self), "win.new-terminal", "(ss)", "", id);
+    }
+  else
+    {
+      g_warning ("Unknown object type %s", G_OBJECT_TYPE_NAME (item));
+    }
+}
+
+static void
+ptyxis_window_menu_search_activate_cb (PtyxisWindow *self,
+                                       GtkSearchEntry *entry)
+{
+  GtkSelectionModel *model;
+
+  g_assert (PTYXIS_IS_WINDOW (self));
+  g_assert (GTK_IS_SEARCH_ENTRY (entry));
+
+  model = gtk_list_view_get_model (self->menu_list_view);
+
+  if (g_list_model_get_n_items (G_LIST_MODEL (model)) > 0)
+    ptyxis_window_menu_activate_cb (self, 0, self->menu_list_view);
+}
+
+
+static void
+ptyxis_window_notify_menu_n_items_cb (PtyxisWindow *self,
+                                      GParamSpec   *pspec,
+                                      GListModel   *model)
+{
+  g_assert (PTYXIS_IS_WINDOW (self));
+  g_assert (G_IS_LIST_MODEL (model));
+
+  if (g_list_model_get_n_items (model) == 0)
+    gtk_stack_set_visible_child_name (self->menu_search_stack, "empty");
+  else
+    gtk_stack_set_visible_child_name (self->menu_search_stack, "results");
+}
+
+static gboolean
+nonempty_display_name (gpointer item,
+                       gpointer user_data)
+{
+  const char *str = ptyxis_ipc_container_get_display_name (item);
+
+  return str && str[0];
+}
+
+static gboolean
+empty_display_name (gpointer item,
+                    gpointer user_data)
+{
+  const char *str = ptyxis_ipc_container_get_display_name (item);
+
+  return !str || !str[0];
+}
+
+static void
+ptyxis_window_bind_section_title (PtyxisWindow             *self,
+                                  GtkListHeader            *header,
+                                  GtkSignalListItemFactory *factory)
+{
+  const char *str;
+  GtkWidget *child;
+  GObject *item;
+  gboolean visible = TRUE;
+
+  g_assert (PTYXIS_IS_WINDOW (self));
+  g_assert (GTK_IS_LIST_HEADER (header));
+  g_assert (GTK_IS_SIGNAL_LIST_ITEM_FACTORY (factory));
+
+  if (!(child = gtk_list_header_get_child (header)))
+    {
+      child = gtk_label_new (NULL);
+      gtk_label_set_xalign (GTK_LABEL (child), .5);
+      gtk_widget_add_css_class (child, "dimmed");
+      gtk_widget_add_css_class (child, "title");
+      gtk_list_header_set_child (header, child);
+    }
+
+  item = gtk_list_header_get_item (header);
+
+  if (PTYXIS_IS_PROFILE (item))
+    gtk_label_set_label (GTK_LABEL (child), _("Profiles"));
+  else if (PTYXIS_IPC_IS_CONTAINER (item) &&
+           (str = ptyxis_ipc_container_get_display_name (PTYXIS_IPC_CONTAINER (item))) &&
+           (str && str[0]))
+    gtk_label_set_label (GTK_LABEL (child), _("Containers"));
+  else
+    visible = FALSE;
+
+  gtk_widget_set_visible (child, visible);
 }
 
 static void
@@ -1758,22 +1950,36 @@ ptyxis_window_class_init (PtyxisWindowClass *klass)
 
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, find_bar);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, find_bar_revealer);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, fullscreen_box);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, header_bar);
-  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, primary_menu);
-  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, primary_menu_button);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, maybe_containers);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, maybe_containers_filter);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, menu_list_view);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, menu_search);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, menu_search_stack);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, new_tab_box);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, new_terminal_button);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, new_terminal_menu_button);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, new_terminal_separator);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, not_containers);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, not_containers_filter);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, primary_menu);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, primary_menu_button);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, tab_bar);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, tab_menu);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, tab_overview);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, tab_overview_button);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, tab_view);
   gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, visual_bell);
-  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, my_computer_menu);
-  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, tab_overview_button);
-  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, new_tab_box);
-  gtk_widget_class_bind_template_child (widget_class, PtyxisWindow, fullscreen_box);
 
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_bind_section_title);
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_check_singular);
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_get_container_title);
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_get_header_title);
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_menu_activate_cb);
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_menu_search_activate_cb);
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_menu_stop_search);
+  gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_notify_menu_n_items_cb);
   gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_page_attached_cb);
   gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_page_detached_cb);
   gtk_widget_class_bind_template_callback (widget_class, ptyxis_window_notify_selected_page_cb);
@@ -1814,6 +2020,8 @@ ptyxis_window_class_init (PtyxisWindowClass *klass)
 
   g_type_ensure (PTYXIS_TYPE_FIND_BAR);
   g_type_ensure (PTYXIS_TYPE_FULLSCREEN_BOX);
+  g_type_ensure (PTYXIS_TYPE_GATED_LIST_MODEL);
+  g_type_ensure (PTYXIS_TYPE_MENU_ROW);
   g_type_ensure (PTYXIS_TYPE_SHRINKER);
 }
 
@@ -1906,6 +2114,11 @@ ptyxis_window_init (PtyxisWindow *self)
                            G_CONNECT_SWAPPED);
   gtk_widget_add_controller (GTK_WIDGET (self->tab_bar),
                              GTK_EVENT_CONTROLLER (g_steal_pointer (&click)));
+
+  gtk_custom_filter_set_filter_func (self->not_containers_filter,
+                                     empty_display_name, NULL, NULL);
+  gtk_custom_filter_set_filter_func (self->maybe_containers_filter,
+                                     nonempty_display_name, NULL, NULL);
 }
 
 PtyxisTab *

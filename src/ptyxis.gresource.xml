@@ -4,6 +4,7 @@
   <!-- UI files -->
     <file preprocess="xml-stripblanks">ptyxis-find-bar.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-inspector.ui</file>
+    <file preprocess="xml-stripblanks">ptyxis-menu-row.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-palette-preview.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-preferences-window.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-profile-editor.ui</file>
