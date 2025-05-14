@@ -1102,7 +1102,7 @@ ptyxis_application_class_init (PtyxisApplicationClass *klass)
   properties [PROP_OVERLAY_SCROLLBARS] =
     g_param_spec_boolean ("overlay-scrollbars", NULL, NULL,
                           FALSE,
-                         (G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
+                          (G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
 
   properties [PROP_SYSTEM_FONT_NAME] =
     g_param_spec_string ("system-font-name",
