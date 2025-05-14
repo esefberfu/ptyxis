@@ -7,6 +7,7 @@ ptyxis_sources = [
   'ptyxis-container-menu.c',
   'ptyxis-find-bar.c',
   'ptyxis-fullscreen-box.c',
+  'ptyxis-gated-list-model.c',
   'ptyxis-inspector.c',
   'ptyxis-palette.c',
   'ptyxis-palette-preview.c',
