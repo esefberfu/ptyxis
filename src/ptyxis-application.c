@@ -109,6 +109,7 @@ enum {
   PROP_DEFAULT_PROFILE,
   PROP_OS_NAME,
   PROP_OVERLAY_SCROLLBARS,
+  PROP_PROFILES,
   PROP_SYSTEM_FONT_NAME,
   N_PROPS
 };
@@ -1058,6 +1059,10 @@ ptyxis_application_get_property (GObject    *object,
       g_value_set_boolean (value, self->overlay_scrollbars);
       break;
 
+    case PROP_PROFILES:
+      g_value_take_object (value, ptyxis_application_list_profiles (self));
+      break;
+
     case PROP_SYSTEM_FONT_NAME:
       g_value_set_string (value, self->system_font_name);
       break;
@@ -1103,6 +1108,12 @@ ptyxis_application_class_init (PtyxisApplicationClass *klass)
     g_param_spec_boolean ("overlay-scrollbars", NULL, NULL,
                           FALSE,
                           (G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
+
+  properties[PROP_PROFILES] =
+    g_param_spec_object ("profiles", NULL, NULL,
+                         G_TYPE_LIST_MODEL,
+                         (G_PARAM_READABLE |
+                          G_PARAM_STATIC_STRINGS));
 
   properties [PROP_SYSTEM_FONT_NAME] =
     g_param_spec_string ("system-font-name",
