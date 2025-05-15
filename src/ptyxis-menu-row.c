@@ -32,6 +32,7 @@ struct _PtyxisMenuRow
   GtkWidget  parent_instance;
 
   gpointer   item;
+  GBinding  *binding;
 
   GtkLabel  *label;
 };
@@ -57,6 +58,7 @@ ptyxis_menu_row_dispose (GObject *object)
   while ((child = gtk_widget_get_first_child (GTK_WIDGET (self))))
     gtk_widget_unparent (child);
 
+  g_clear_object (&self->binding);
   g_clear_object (&self->item);
 
   G_OBJECT_CLASS (ptyxis_menu_row_parent_class)->dispose (object);
@@ -145,26 +147,32 @@ ptyxis_menu_row_set_item (PtyxisMenuRow *self,
   g_return_if_fail (PTYXIS_IS_MENU_ROW (self));
   g_return_if_fail (!item || G_IS_OBJECT (item));
 
-  if (g_set_object (&self->item, item))
+  if (self->item == item)
+    return;
+
+  if (self->binding)
     {
-      g_autofree char *title = NULL;
-
-      if (PTYXIS_IPC_IS_CONTAINER (self->item))
-        {
-          const char *id = ptyxis_ipc_container_get_id (self->item);
-
-          if (g_strcmp0 (id, "session") == 0)
-            g_set_str (&title, _("My Computer"));
-          else
-            g_set_str (&title, ptyxis_ipc_container_get_display_name (self->item));
-        }
-      else if (PTYXIS_IS_PROFILE (self->item))
-        {
-          title = ptyxis_profile_dup_label (self->item);
-        }
-
-      gtk_label_set_label (self->label, title);
-
-      g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ITEM]);
+      g_binding_unbind (self->binding);
+      g_clear_object (&self->binding);
     }
+
+  g_set_object (&self->item, item);
+
+  if (PTYXIS_IPC_IS_CONTAINER (self->item))
+    {
+      const char *id = ptyxis_ipc_container_get_id (self->item);
+
+      if (g_strcmp0 (id, "session") == 0)
+        gtk_label_set_label (self->label, _("My Computer"));
+      else
+        gtk_label_set_label (self->label,
+                             ptyxis_ipc_container_get_display_name (self->item));
+
+    }
+  else if (PTYXIS_IS_PROFILE (self->item))
+    {
+      self->binding = g_object_ref (g_object_bind_property (self->item, "label", self->label, "label", G_BINDING_SYNC_CREATE));
+    }
+
+  g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ITEM]);
 }
