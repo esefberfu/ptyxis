@@ -712,11 +712,22 @@
     <property name="filter">
       <object class="GtkCustomFilter" id="maybe_containers_filter"/>
     </property>
-    <binding name="model">
-      <lookup name="containers" type="PtyxisApplication">
-        <lookup name="application">PtyxisWindow</lookup>
-      </lookup>
-    </binding>
+    <property name="model">
+      <object class="GtkSortListModel">
+        <property name="sorter">
+          <object class="GtkStringSorter">
+            <property name="expression">
+              <lookup name="display-name" type="PtyxisIpcContainer"/>
+            </property>
+          </object>
+        </property>
+        <binding name="model">
+          <lookup name="containers" type="PtyxisApplication">
+            <lookup name="application">PtyxisWindow</lookup>
+          </lookup>
+        </binding>
+      </object>
+    </property>
   </object>
   <menu id="primary_menu">
     <section>
