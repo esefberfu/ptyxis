@@ -6,7 +6,6 @@ src/main.c
 src/org.gnome.Ptyxis.gschema.xml.in
 src/ptyxis-application.c
 src/ptyxis-close-dialog.c
-src/ptyxis-container-menu.c
 src/ptyxis-find-bar.ui
 src/ptyxis-inspector.c
 src/ptyxis-inspector.ui
