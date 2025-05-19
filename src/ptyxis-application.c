@@ -57,6 +57,7 @@ struct _PtyxisApplication
   guint                overlay_scrollbars : 1;
   guint                client_is_fallback : 1;
   guint                maximize : 1;
+  guint                fullscreen : 1;
 };
 
 static void ptyxis_application_about             (GSimpleAction *action,
@@ -137,18 +138,24 @@ should_ignore_osc_title (PtyxisApplication *self,
 }
 
 static void
-maybe_maximize (PtyxisApplication *self,
-                PtyxisWindow      *window)
+maybe_maximize_or_fullscreen (PtyxisApplication *self,
+                              PtyxisWindow      *window)
 {
   g_assert (PTYXIS_IS_APPLICATION (self));
   g_assert (PTYXIS_IS_WINDOW (window));
 
-  if (self->maximize)
+  if (self->maximize || self->fullscreen)
     {
-      /*  unset maximize so it doesn't stick unless it's added again */
-      self->maximize = FALSE;
+      gboolean fullscreen = self->fullscreen;
 
-      gtk_window_maximize (GTK_WINDOW (window));
+      /* unset command-line state */
+      self->maximize = FALSE;
+      self->fullscreen = FALSE;
+
+      if (fullscreen)
+        gtk_window_fullscreen (GTK_WINDOW (window));
+      else
+        gtk_window_maximize (GTK_WINDOW (window));
     }
 }
 
@@ -343,7 +350,7 @@ ptyxis_application_activate (GApplication *app)
       ptyxis_tab_set_ignore_osc_title (tab, should_ignore_osc_title (self, self->next_title_prefix));
       g_clear_pointer (&self->next_title_prefix, g_free);
 
-      maybe_maximize (self, window);
+      maybe_maximize_or_fullscreen (self, window);
 
       gtk_window_present (GTK_WINDOW (window));
     }
@@ -406,6 +413,7 @@ ptyxis_application_command_line (GApplication            *app,
   gboolean new_tab = FALSE;
   gboolean new_window = FALSE;
   gboolean did_restore = FALSE;
+  gboolean fullscreen = FALSE;
   gboolean maximize = FALSE;
   int argc;
 
@@ -428,6 +436,15 @@ ptyxis_application_command_line (GApplication            *app,
 
   if (g_variant_dict_lookup (dict, "maximize", "b", &maximize))
     self->maximize = !!maximize;
+
+  if (g_variant_dict_lookup (dict, "fullscreen", "b", &fullscreen))
+    self->fullscreen = !!fullscreen;
+
+  if (self->fullscreen && self->maximize)
+    {
+      g_warning ("Both maximize and fullscreen specified, preferring fullscreen");
+      self->maximize = FALSE;
+    }
 
   if (!g_variant_dict_lookup (dict, "tab", "b", &new_tab))
     new_tab = FALSE;
@@ -542,7 +559,7 @@ ptyxis_application_command_line (GApplication            *app,
           ptyxis_tab_set_initial_working_directory_uri (tab, cwd_uri);
           ptyxis_window_set_active_tab (window, tab);
 
-          maybe_maximize (self, window);
+          maybe_maximize_or_fullscreen (self, window);
 
           gtk_window_present (GTK_WINDOW (window));
         }
@@ -622,7 +639,7 @@ ptyxis_application_command_line (GApplication            *app,
       ptyxis_window_add_tab (window, tab);
       ptyxis_window_set_active_tab (window, tab);
 
-      maybe_maximize (self, window);
+      maybe_maximize_or_fullscreen (self, window);
 
       gtk_window_present (GTK_WINDOW (window));
     }
@@ -1132,6 +1149,7 @@ ptyxis_application_init (PtyxisApplication *self)
 
     { "title", 'T', 0, G_OPTION_ARG_STRING, NULL, N_("Set title for new tab") },
     { "maximize", 0, 0, G_OPTION_ARG_NONE, NULL, N_("Maximize a newly created window") },
+    { "fullscreen", 0, 0, G_OPTION_ARG_NONE, NULL, N_("Fullscreen a newly created window") },
 
     /* Import a custom .palette file. This works like dragging the file onto preferences */
     { "import-palette", 0, 0, G_OPTION_ARG_STRING, NULL, N_("Import a Ptyxis palette file"), N_("FILE") },
