@@ -574,6 +574,8 @@ ptyxis_application_command_line (GApplication            *app,
           ptyxis_tab_set_title_prefix (tab, title);
           ptyxis_tab_set_ignore_osc_title (tab, should_ignore_osc_title (self, title));
 
+          maybe_maximize_or_fullscreen (self, window);
+
           gtk_application_add_window (GTK_APPLICATION (self), GTK_WINDOW (window));
           gtk_window_present (GTK_WINDOW (window));
         }
