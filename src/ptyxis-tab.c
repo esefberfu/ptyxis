@@ -271,8 +271,10 @@ ptyxis_tab_wait_cb (GObject      *object,
   g_autoptr(PtyxisTab) self = user_data;
   g_autoptr(GError) error = NULL;
   PtyxisExitAction exit_action;
+  PtyxisWindow *window;
   AdwTabPage *page = NULL;
   GtkWidget *tab_view;
+  gboolean is_front = FALSE;
   int exit_code;
 
   g_assert (PTYXIS_IS_APPLICATION (app));
@@ -295,6 +297,9 @@ ptyxis_tab_wait_cb (GObject      *object,
 
   if (self->forced_exit)
     return;
+
+  if ((window = PTYXIS_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (self), PTYXIS_TYPE_WINDOW))))
+    is_front = self == ptyxis_window_get_active_tab (window);
 
   if (WIFSIGNALED (exit_code))
     {
@@ -356,6 +361,8 @@ ptyxis_tab_wait_cb (GObject      *object,
 
     case PTYXIS_EXIT_ACTION_NONE:
       gtk_widget_set_visible (GTK_WIDGET (self->banner), TRUE);
+      if (is_front)
+        gtk_widget_child_focus (GTK_WIDGET (self->banner), GTK_DIR_TAB_FORWARD);
       break;
 
     default:
