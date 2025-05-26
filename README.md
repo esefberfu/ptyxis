@@ -1,236 +1,168 @@
-# Ptyxis
+# Ptyxis: Your Container-Oriented Terminal for GNOME
 
-Ptyxis is a terminal for GNOME with first-class support for containers.
+Ptyxis is a terminal emulator for the GNOME desktop, engineered for first-class integration with local containerized environments such as Podman, Toolbox, and Distrobox. It aims to simplify and enhance your interaction with these tools, making them a natural extension of the terminal workflow.
 
-Flatpak is the intended and preferred distribution mechanism.
-
-
-## Feature Requests and Design Changes
-
-Ptyxis uses the issue tracker for tracking engineering defects only.
-
-Feature requests tend to be long, drawn out, and never fully solvable.
-Therefore we request that you file an issue with the
-[Whiteboards project](https://gitlab.gnome.org/Teams/Design/whiteboards/)
-and progress towards designing the feature you'd like to see. I will not design
-the feature for you.
-
-The outcome of the design process should be a specification which includes:
-
- * How the feature should work
- * How the feature should not work
- * How the feature interacts with the existing features
- * If any existing features should be changed or removed
- * Any necessary migration strategies for existing users
- * UI mock-ups (if necessary)
- * How the feature should be tested
- * What are the risks and security gotchas involved?
- * Who is going to implement the feature
-
-After that process has completed, you may file an issue referencing it.
-
-
-## FAQ
-
-### Notifications Don't Work
-
-Make sure your supported shell sources `/etc/profile.d/vte.sh` which contains
-the necessary shell-side components for notification plumbing for VTE. It
-ensures the proper OSC sequence is emitted at the right points.
-
-### My Favorite Container Technology is not Supported
-
-See the sources in `agent/` and implement a `PtyxisContainerProvider` and
-`PtyxisContainer` for your technology. It needs to know how to query them
-and spawn processes (with the appropriate PTY) within the container.
-
-It should also update the list of available containers when they change
-without polling (a `GFileMonitor` to requery is a suitable solution).
-
-### I Have a Problem with My GPU
-
-While the underlying terminal emulator (VTE) supports GPU rendering, we have
-very little to do with that from this application. Bugs filed here will almost
-certainly end up in either the GNOME/vte or GNOME/gtk projects.
-
-### I Have Weird Font Rendering
-
-Currently (as of GTK 4.16) GTK has an oddity with rendering at 200% scale when
-the rounding for hinting is different between 1x and 2x scaling. This can cause
-overly constrained clipping. This must be addressed in GTK.
-
-
-## Authors Note
-
-Ptyxis is a combination of work I've done across multiple projects. The
-container abstractions came from a prototype I did many years ago for GNOME
-Builder around a "Terminal Workspace". The motivation to finally push this
-over the line was some recent (Fall '23) work on making VTE feel
-fast/low-latency on GTK 4 with GNOME Shell as a Wayland compositor.
-
-It's probably not the fastest thing out there, but it should be close enough
-that other features are of more value.  Some of those include robust
-clipboard support, drag-n-drop integration, scrollbars, kinetic scrolling,
-tabs with overviews, a modern interface, configurable color palettes, menus,
-accessibility, encrypted scrollback buffers, you get the idea.
-
+![Ptyxis Screenshot - Tab Overview](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/tab-overview.png)
+*Fig 1: Tab overview for managing multiple terminal sessions.*
 
 ## Installation
 
-You can install the Nightly version of Ptyxis using the gnome-nightly
-Flatpak repository.
+**Recommended: Flatpak (Nightly)**
+Ptyxis is designed with Flatpak as its primary distribution method. You can install the development version from the GNOME Nightly repository:
 
-```sh
+```bash
 flatpak install --user --from https://nightly.gnome.org/repo/appstream/org.gnome.Ptyxis.Devel.flatpakref
 ```
 
+**Building from Source**
+Ptyxis uses the Meson build system.
+1.  Ensure you have all necessary dependencies: C compiler, Meson (>=1.0.0), Ninja, GLib (>=2.80), GTK4 (>=4.14), Adwaita (>=1.6), JSON-GLib (>=1.6), VTE (>=0.79), and libportal-gtk4 (on Linux).
+2.  Clone the repository: `git clone https://gitlab.gnome.org/chergert/ptyxis.git`
+3.  Navigate into the directory: `cd ptyxis`
+4.  Configure the build: `meson setup _build` (add options like `--prefix=/usr/local` if needed)
+5.  Compile: `meson compile -C _build`
+6.  Install: `sudo meson install -C _build`
 
-## Building
+[GNOME Builder](https://apps.gnome.org/Builder/) is also recommended. You can open the cloned `ptyxis/` directory directly in Builder (`flatpak run org.gnome.Builder -p ptyxis/`) for an integrated build and development experience.
 
-Ptyxis is designed for Flatpak.
+## Basic Usage & Command-Line Options
 
-The easiest way to build and test your changes to Ptyxis is by opening the
-project in GNOME Builder and clicking the Run button.
+Launch Ptyxis by running `ptyxis` from your application launcher or another terminal.
 
-Otherwise, it is built as any other meson-based project.
+**Common Command-Line Options:**
 
+*   `--version`: Show the program version.
+*   `--preferences`: Open the preferences window.
+*   `--new-window`: Open a new window in an existing instance.
+*   `--tab`: Open a new tab in the most-recently-used window.
+*   `--tab-with-profile=PROFILE_UUID`: Open a new tab using the specified profile UUID.
+*   `-x "COMMAND"`, `--execute "COMMAND"`: Execute a custom command string in a new window (implies standalone mode).
+*   `-- PROGRAM [ARGUMENTS...]`: Execute `PROGRAM` with `ARGUMENTS` in a new window (implies standalone mode).
+*   `-d DIR`, `--working-directory DIR`: Set the working directory for a new tab/window or custom command.
+*   `--title=TITLE`: Set the initial title for a new tab/window.
+*   `--maximize`: Maximize a newly created window.
+*   `--fullscreen`: Fullscreen a newly created window.
+*   `--import-palette=FILE`: Import a Ptyxis `.palette` file into your user configuration.
+*   `-s`, `--standalone`: Start a new instance of Ptyxis, ignoring any already running.
+*   `-h`, `--help`: Show a summary of options.
 
-## Features
+## Core Functionality & Design
 
- * We recognize that there are a number of situations where users have
-   particular needs for integrating with external systems. Preferences allow
-   for tweaking a number of these compatibility options.
- * Built-in support for profiles allows for many of those preferences to
-   be tweaked on a more fine-grained basis.
- * You can specify a default container per-profile or to inherit the current
-   terminal's container. Recently, toolbox gained support to always emit the
-   necessary escape sequence. But you'll need a very recent version of
-   toolbox for this. Podman does not inherently emit the escape sequence and
-   therefore discovery of current container may be limited.
- * Flatpak'able without losing features! This works through the use of a
-   specialized `ptyxis-agent` that runs on the host to provide Ptyxis the
-   ability to create PTY devices which integrate better with containers.
-   Care is taken for this agent to run on systems as far back as CentOS 7.
- * A number of palettes are provided with native support for light/dark mode
-   and can update with your desktop style preference.
- * Due to how `ptyxis-agent` works, we can do various foreground process
-   tracking for things like sudo or SSH without significant overhead. This
-   requires some improvements in various container systems which is in the
-   process of merging at the time of writing.
- * Tab overview using modern libadwaita features.
- * Transparency support does exist but must be tweaked manually using GSettings
-   until better transitions can be implemented in libadwaita.
- * Use of libadwaita "Toasts" to notify the user when the clipboard has been
-   updated as well as other operations.
- * There are various tweaks to how VTE draws which are performed by rewriting
-   the retained render tree. This allows for appropriate padding around the
-   terminal while still keeping scrollback from looking cut off.
- * User customizable keyboard shortcuts.
- * "Single instance mode" allows you to run an application in a ptyxis
-   instance but just for that command. Useful when integrating with
-   .desktop files containing Terminal=true.
- * Pinned tab profile/container/directory are saved across sessions so that
-   you can get back to your projects quickly. Currently this is restricted
-   to a single window but may change in the future.
- * `ptyxis-agent` will automatically create systemd scopes for your tab
-   when available to help reduce the chances that the whole app would be
-   killed by the OOM killer instead of the tab taking up resources.
- * An terminal inspector to help you debug issues when writing applications
-   for the terminal.
+Ptyxis provides robust terminal emulation capabilities via the VTE widget, enhanced with a GTK4/Adwaita user interface. Its architecture is two-part:
+
+1.  **UI Application:** Manages windows, tabs, profiles, theming (palettes), keyboard shortcuts, and user preferences.
+2.  **`ptyxis-agent`:** A distinct helper process running on the host (or sandboxed as a fallback). It handles operations requiring broader system access: PTY creation, direct interaction with container runtimes, and host-level process monitoring. The UI communicates with the agent via D-Bus.
 
 
-## Container Support
+## Container Integration: Technical Details
 
-The highlevel is that we should be able to support:
+Ptyxis interacts directly with container management tools installed on the host system through its `ptyxis-agent`:
 
- * Native "user session" even when in Flatpak
- * Podman/Toolbox/Distrobox (See caveat below)
- * JHBuild (See caveat below)
+1.  **Discovery:** The agent queries the host for available containers (e.g., `podman ps --all --format=json`) and monitors system files (like `containers.json` or Podman's `db.sql`) for dynamic updates to the container list presented in the UI.
+2.  **Spawning:** When launching a terminal in a container, the agent constructs and executes the appropriate CLI commands for the target runtime (e.g., `podman exec -it ...`, `toolbox enter ...`, `distrobox enter --no-tty ... --`). It manages PTY setup and I/O redirection.
+3.  **Context Management:**
+    *   The agent and VTE terminal properties (termprops like `vte.container.name`) identify the active container.
+    *   Working directories and selected environment variables (e.g., host proxies if `use-proxy` is enabled in the profile) can be propagated into containers.
+    *   Profiles can specify a default container and behavior for inheriting container context or CWD in new tabs.
+    *   URI translation is supported for actions like "Open Link" from within containers.
 
-I'd certainly love to see support for systemd-nspawn if that is something
-you're interested in and are aware of the mechanics to make that work.
+![Container Selection Menu](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/containers-menu.png)
+*Fig 2: Containers are automatically discovered and displayed in the "New Tab" menu.*
 
-NOTE: Ptyxis currently assumes that containers are not used for security
-isolation, since most general-purpose container runtimes do not provide
-sufficient security isolation. Do not use ptyxis to start containers if you rely
-on sandboxing provided by a container runtime.
+## `ptyxis-agent` Functions
 
+The `ptyxis-agent` is a critical component that:
+*   Manages PTY creation and setup.
+*   Spawns processes on the host and, more importantly, inside containers.
+*   Interacts with container runtimes for discovery and command execution.
+*   Retrieves host system information (default shell, OS name, proxy settings).
+*   Monitors spawned processes, tracks foreground processes, and reports their status/exit codes to the UI.
+*   Is designed for portability, especially on x86_64, using GLIBC symbol versioning to target older systems like GLIBC 2.17.
+*   Exposes its functionalities via D-Bus for the UI to consume.
 
-### Toolbox/Podman/Distrobox
+## Supported Container Technologies
 
-Until very recently `toolbox` would only emit the escape sequences notifying
-the terminal emulator of the current container when on certain Fedora hosts.
-This has been changed but is not available in all distributions yet.
+Ptyxis offers direct support for seamless interaction with several local container technologies:
+*   **Podman:** Full support.
+*   **Toolbox:** Supported.
+*   **Distrobox:** Supported.
+*   **JHBuild:** Supported as a special environment; commands are prefixed with `jhbuild run`.
+    *   For optimal JHBuild session persistence with Ptyxis, add the following to your `~/.bashrc` (or equivalent shell startup file):
+        ```bash
+        if [ -t 1 -a x$UNDER_JHBUILD != x ]; then
+            printf "\033]777;container;push;%s;jhbuild\033\\" "JHBuild"
+            function pop_container {
+                printf "\033]777;container;pop;;\033\\"
+            }
+            trap pop_container EXIT
+        fi
+        ```
+*   **Docker:** Direct, dedicated support for the Docker daemon is **not currently implemented**.
 
-Podman inherently does not emit the specific escape sequence.
+**Note on Container Security:** Ptyxis currently assumes that containers are not used for strict security isolation, as most general-purpose container runtimes may not provide sufficient hardening for all untrusted workloads.
 
-Distrobox does not appear to emit the escape sequence.
+## Key Features Overview
 
-Of course, you can get a similar effect by doing something similar to what
-the `jhbuild` example below does.
+*   **Container Integration:** Automatic discovery, direct spawning, context preservation (container, CWD), visual indicators for containerized/sudo/remote processes.
+*   **UI & UX:** Modern Adwaita/GTK4 interface, tabbed browsing with a **searchable tab overview**, pinned tabs, session restore.
+*   **Profiles & Customization:** Named profiles for customizing default container, commands, appearance, various terminal behaviors, and **robust compatibility modes**.
+*   **Theming:**
+    *   Extensive built-in color palettes with automatic light/dark mode switching.
+    *   User-installable custom `.palette` files (placed in `~/.local/share/ptyxis/palettes` or `~/.local/share/org.gnome.Ptyxis.Devel/palettes`).
+    *   "Window Dressing" feature dynamically applies palette colors to the entire window theme.
+    *   Optional terminal background transparency.
+*   **Terminal Emulation (VTE):** Scrollback search, hyperlink handling, configurable key bindings, CJK ambiguous width character support, text blinking modes.
+*   **Accessibility:** Designed with accessibility at its core, leveraging GTK4's accessibility stack enhancements contributed to VTE, making the terminal usable for everyone.
+*   **High-Performance Rendering:** Utilizes VTE, which has received significant performance improvements including GPU-accelerated rendering (via Vulkan or OpenGL), ensuring a responsive and fluid user experience.
+*   **Shortcuts:** Highly configurable keyboard shortcuts.
+*   **`ptyxis-agent`:** Manages privileged operations and host system interactions, allowing for cleaner separation of concerns and facilitating Flatpak distribution.
+*   **Systemd Scopes:** Terminal tabs run in separate systemd user scopes (if `systemd-run` is available and sufficiently new) for better resource isolation.
+*   **Terminal Inspector:** A developer tool for debugging terminal-based applications, allowing users to peek at details like **OSC hyperlinks, mouse event coordinates**, and other diagnostic information.
 
+![Preferences: Behavior Settings](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/change-behavior.png)
+*Fig 3: Many behaviors of the terminal may be tweaked to user preference.*
 
-### JHBuild
+![Keyboard Shortcut Customization](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/shortcut-editing.png)
+*Fig 4: Many shortcuts may be remapped to user preference.*
 
-If you use `jhbuild` for GNOME development, you can make that work by adding
-this to your `.bashrc` to have your jhbuild session persisted between tabs
-automatically. Otherwise you'll need to create a jhbuild tab using the menu
-item which is less convenient.
+![Palette Selector](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/palette-selector.png)
+*Fig 5: Built-in color palettes provide both dark and light mode variants.*
 
-```sh
-if [ -t 1 -a x$UNDER_JHBUILD != x ]; then
-    printf "\033]777;container;push;%s;jhbuild\033\\" "JHBuild"
-    function pop_container {
-        printf "\033]777;container;pop;;\033\\"
-    }
-    trap pop_container EXIT
-fi
-```
+![Profile Editor](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/edit-profile.png)
+*Fig 6: Profiles allow for overriding a number of features such as default container.*
 
+![Sudo Process Indication](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/sudo-tracking.png)
+*Fig 7: The terminal visually indicates when you're operating as root.*
 
-## How it Works
+![SSH Remote Process Indication](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/ssh-tracking.png)
+*Fig 8: Visual cue when connected to a remote system via SSH.*
 
-Ptyxis has a small `ptyxis-agent` that manages PTY, PID tracking, and
-container monitoring. This is spawned on the host-system similar to how you
-would execute a new shell. However, it communicates with the UI via D-Bus
-serialization over a point-to-point `socketpair()`.
+## How It Works (Agent-UI Interaction & Fallbacks)
 
-It is able to do this because `ptyxis-agent`, on `x86` and `x86_64` will
-restrict its `glibc` usage to what is available on fairly old Linux
-installs such as CentOS 7. It does use GLib as well for D-Bus communication
-but is limited to what is available with Flatpak on the targetted platforms.
+Ptyxis UI communicates with `ptyxis-agent` via D-Bus over a `socketpair()`. The agent is designed for portability to run on the host system. Even when the Ptyxis UI is run as a Flatpak, it requires permissions (like `org.freedesktop.Flatpak` for `flatpak-spawn --host`) that grant it significant access to the host system to enable its agent and container features. If host execution of the agent fails (e.g., due to incompatible GLIBC on systems like Alpine, or non-standard linker paths on NixOS), Ptyxis attempts to run `ptyxis-agent` within its own Flatpak sandbox as a fallback. This fallback may limit some host-interaction features but ensures basic functionality.
 
-Doing so allows Ptyxis to support Flatpak natively while also traversing
-container PTY and PID namespaces in an efficient manner.
+## Feature Requests and Design Changes
 
-If your host system does not support GLibc (such as Alpine or PostmarketOS) or
-lacks a functioning dynamic linker from the session (NixOS) then Ptyxis will
-detect this and fallback to running `ptyxis-agent` within the Flatpak sandbox.
-This will naturally restrict the capability of some features.
+Ptyxis uses its GitLab issue tracker primarily for engineering defects. For new features or significant design changes:
 
+1.  **Initiate Discussion:** Start by discussing your idea or proposal, preferably through the [GNOME Design Whiteboards project](https://gitlab.gnome.org/Teams/Design/whiteboards/) or by opening a discussion-focused issue on the Ptyxis GitLab.
+2.  **Develop a Specification:** For larger features, a detailed specification is required. This should cover:
+    *   How the feature should work and not work.
+    *   Interaction with existing features.
+    *   Any necessary migration strategies.
+    *   UI mock-ups (if applicable).
+    *   Testing strategy.
+    *   Potential risks and security considerations.
+    *   Ideally, an indication of who might implement it.
 
-## Screenshots
+Once a design is well-defined, an issue can be filed on the Ptyxis tracker referencing the design discussion/specification.
 
-![Shows a menu with available containers](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/containers-menu.png "Containers are automatically discovered and displayed")
+## Known Issues & Troubleshooting
 
-![A dialog showing options for behavior change such as scrollback, bell, and more](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/change-behavior.png "Many behaviors of the terminal may be tweaked to user preference")
+*   **Notifications Don't Work:** Ensure your shell (e.g., in `~/.bashrc` or `~/.zshrc`) sources `/etc/profile.d/vte.sh`. This file provides the necessary shell-side hooks for VTE's terminal property escape sequences, which Ptyxis uses for features like command completion notifications.
+*   **GPU/Font Rendering Issues:** Problems with GPU rendering or font rendering are often rooted in the underlying GTK or VTE libraries. Consider reporting such issues to the respective GNOME/gtk or GNOME/vte projects.
 
-![A dialog allowing the user to rename a tab](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/rename-tab.png "You may rename a tab by providing a prefix to the title")
+## License
 
-![A menu showing the options for light/dark/follow system style](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/integrated-dark-mode.png "Palettes provide an integrated dark mode")
-
-![All terminals displayed as a grid](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/tab-overview.png "You can see an overview of your tabs at any time")
-
-![A window containing a list of shortcuts which may be remapped to new values](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/shortcut-editing.png "Many shortcuts may be remapped to user preference")
-
-![A dialog providing appearance preferences such as color palette](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/palette-selector.png "Built-in color palettes provide both dark and light mode variants")
-
-![A dialog providing per-profile overrides](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/edit-profile.png "Profiles allow for overriding a number of features such as default container")
-
-![The terminal showing an overlay when the column or row size changes](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/columns-and-rows.png "A column and row size indicator is displayed when resizing the window")
-
-![A scarf is displayed on the top of a window indicating root access](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/sudo-tracking.png "The terminal will remind you when you're root on the local system")
-
-![A scarf is displayed on the top of a window indicating remote SSH access](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/ssh-tracking.png "The terminal will remind you when you're on a remote system")
-
-![A terminal with a partially transparent background](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/screenshots/transparency.png "Transparency support is available for the daring")
+Ptyxis is licensed under the **GNU General Public License v3.0 or later**.
+The source code includes a copy of the license in the `COPYING` file.
