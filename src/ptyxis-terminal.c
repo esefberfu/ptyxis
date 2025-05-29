@@ -98,6 +98,7 @@ static const char * const url_regexes_str[] = {
   REGEX_URL_AS_IS,
   REGEX_URL_HTTP,
   REGEX_URL_FILE,
+  REGEX_EMAIL,
 };
 static VteRegex *url_regexes[G_N_ELEMENTS(url_regexes_str)];
 
