@@ -2085,6 +2085,10 @@ ptyxis_tab_open_uri (PtyxisTab  *self,
           uri = translated = g_uri_to_string (rewritten);
         }
     }
+  else if (!g_utf8_strchr (uri, -1, ':') && g_utf8_strchr (uri, -1, '@'))
+    {
+      uri = translated = g_strconcat ("mailto:", uri, NULL);
+    }
 
   if (portal == NULL)
     portal = xdp_portal_new ();
