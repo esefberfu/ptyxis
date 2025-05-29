@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-05-14 20:11+0000\n"
-"PO-Revision-Date: 2025-05-15 07:31-0300\n"
+"POT-Creation-Date: 2025-05-29 00:17+0000\n"
+"PO-Revision-Date: 2025-05-28 21:49-0300\n"
 "Last-Translator: Álvaro Burns <>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
@@ -30,7 +30,7 @@ msgid "A container-oriented terminal for GNOME"
 msgstr "Um terminal orientado a contêineres para GNOME"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:13 src/ptyxis-preferences-window.ui:642
-#: src/ptyxis-tab.c:1440 src/ptyxis-util.c:312
+#: src/ptyxis-tab.c:1447 src/ptyxis-util.c:312
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -44,17 +44,17 @@ msgstr ""
 "contêiner;podman;toolbox;distrobox;"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:21
-#: src/org.gnome.Ptyxis.gschema.xml.in:398 src/ptyxis-preferences-window.ui:707
+#: src/org.gnome.Ptyxis.gschema.xml.in:399 src/ptyxis-preferences-window.ui:707
 msgid "New Window"
 msgstr "Nova janela"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:25
-#: src/org.gnome.Ptyxis.gschema.xml.in:392 src/ptyxis-preferences-window.ui:733
+#: src/org.gnome.Ptyxis.gschema.xml.in:393 src/ptyxis-preferences-window.ui:733
 msgid "New Tab"
 msgstr "Nova aba"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:29
-#: src/org.gnome.Ptyxis.gschema.xml.in:410 src/ptyxis-preferences-window.ui:908
+#: src/org.gnome.Ptyxis.gschema.xml.in:411 src/ptyxis-preferences-window.ui:908
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -399,148 +399,149 @@ msgstr ""
 "Se a aba (ou janela) estiver fechada com processos ativos em primeiro plano, "
 "o solicita confirmação do usuário."
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:243
+#. Translators: OSC stands for "Operating System Command" and is referencing in-band escape sequences from the child process to set the title
+#: src/org.gnome.Ptyxis.gschema.xml.in:244
 msgid "Ignore OSC Title"
 msgstr "Ignorar título do OSC"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:244
+#: src/org.gnome.Ptyxis.gschema.xml.in:245
 msgid "If OSC title should be ignored in tab titles."
 msgstr ""
 "Se o título do OSC (Comando de Sistema Operacional) deve ser ignorado nos "
 "títulos das abas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:253
+#: src/org.gnome.Ptyxis.gschema.xml.in:254
 msgid "Label"
 msgstr "Rótulo"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:254
+#: src/org.gnome.Ptyxis.gschema.xml.in:255
 msgid "The label for the profile"
 msgstr "O rótulo do perfil"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:259
+#: src/org.gnome.Ptyxis.gschema.xml.in:260
 msgid "Login Shell"
 msgstr "Login"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:260
+#: src/org.gnome.Ptyxis.gschema.xml.in:261
 msgid "Use a login shell"
 msgstr "Usa um shell de login"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:265 src/ptyxis-preferences-window.ui:468
+#: src/org.gnome.Ptyxis.gschema.xml.in:266 src/ptyxis-preferences-window.ui:468
 #: src/ptyxis-profile-editor.ui:319
 msgid "Limit Scrollback"
 msgstr "Limitar rolagem"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:266
+#: src/org.gnome.Ptyxis.gschema.xml.in:267
 msgid "Limit the number of lines to keep for scrollback"
 msgstr "Limita o número de linhas a serem mantidas para rolagem"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:272 src/ptyxis-preferences-window.ui:477
+#: src/org.gnome.Ptyxis.gschema.xml.in:273 src/ptyxis-preferences-window.ui:477
 #: src/ptyxis-profile-editor.ui:328
 msgid "Scrollback Lines"
 msgstr "Linhas de rolagem"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:273
+#: src/org.gnome.Ptyxis.gschema.xml.in:274
 msgid "The number of lines to keep in the scrollback, zero for no scrollback"
 msgstr ""
 "O número de linhas a serem mantidas na rolagem, zero para nenhuma rolagem"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:278 src/ptyxis-preferences-window.ui:458
+#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:458
 #: src/ptyxis-profile-editor.ui:309
 msgid "Scroll on Output"
 msgstr "Rolar ao ter saída"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:279
+#: src/org.gnome.Ptyxis.gschema.xml.in:280
 msgid "Scroll to the bottom upon new output"
 msgstr "Rola até o final ao surgir nova saída"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:284 src/ptyxis-preferences-window.ui:452
+#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:452
 #: src/ptyxis-profile-editor.ui:303
 msgid "Scroll on Keystroke"
 msgstr "Rolar com o pressionar de tecla"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:285
+#: src/org.gnome.Ptyxis.gschema.xml.in:286
 msgid "Scroll to the bottom upon user keystroke"
 msgstr "Rola até a parte inferior quando o usuário pressiona uma tecla"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:290 src/ptyxis-profile-editor.ui:173
+#: src/org.gnome.Ptyxis.gschema.xml.in:291 src/ptyxis-profile-editor.ui:173
 msgid "Use Custom Command"
 msgstr "Usar comando personalizado"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:291
+#: src/org.gnome.Ptyxis.gschema.xml.in:292
 msgid "If a custom command should be used"
 msgstr "Se um comando personalizado deve ser usado"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:296
+#: src/org.gnome.Ptyxis.gschema.xml.in:297
 msgid "Use Proxy"
 msgstr "Usar proxy"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:297
+#: src/org.gnome.Ptyxis.gschema.xml.in:298
 msgid "Apply proxy settings from the host in the container"
 msgstr "Aplica configurações de proxy do host no contêiner"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:302 src/ptyxis-profile-editor.ui:178
+#: src/org.gnome.Ptyxis.gschema.xml.in:303 src/ptyxis-profile-editor.ui:178
 msgid "Custom Command"
 msgstr "Comando personalizado"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:303
+#: src/org.gnome.Ptyxis.gschema.xml.in:304
 msgid "A custom command for the shell"
 msgstr "Um comando personalizado para o shell"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:308 src/ptyxis-profile-editor.ui:197
+#: src/org.gnome.Ptyxis.gschema.xml.in:309 src/ptyxis-profile-editor.ui:197
 msgid "Default Container"
 msgstr "Contêiner padrão"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:309
+#: src/org.gnome.Ptyxis.gschema.xml.in:310
 msgid "The default container to run the command in"
 msgstr "O contêiner padrão para executar o comando"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:314 src/ptyxis-profile-editor.ui:206
+#: src/org.gnome.Ptyxis.gschema.xml.in:315 src/ptyxis-profile-editor.ui:206
 msgid "Preserve Container"
 msgstr "Preservar contêiner"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:315
+#: src/org.gnome.Ptyxis.gschema.xml.in:316
 msgid "Preserve the active container when creating new tabs and windows"
 msgstr "Preservar o contêiner ativo ao criar novas abas e janelas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:320 src/ptyxis-preferences-window.ui:537
+#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-preferences-window.ui:537
 #: src/ptyxis-profile-editor.ui:267
 msgid "Exit Action"
 msgstr "Ação de saída"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:321
+#: src/org.gnome.Ptyxis.gschema.xml.in:322
 msgid "The action to take when the shell exits"
 msgstr "A ação a ser tomada quando o shell é encerrado"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:326
+#: src/org.gnome.Ptyxis.gschema.xml.in:327
 msgid "Preserve Directory"
 msgstr "Preservar diretório"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:327
+#: src/org.gnome.Ptyxis.gschema.xml.in:328
 msgid "If the directory should be preserved for new terminals"
 msgstr "Se o diretório deve ser preservado para novos terminais"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:332 src/ptyxis-inspector.ui:102
+#: src/org.gnome.Ptyxis.gschema.xml.in:333 src/ptyxis-inspector.ui:102
 #: src/ptyxis-preferences-window.ui:40 src/ptyxis-profile-editor.ui:65
 msgid "Palette"
 msgstr "Paleta"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:333
+#: src/org.gnome.Ptyxis.gschema.xml.in:334
 msgid "The color palette to use for the profile, by name"
 msgstr "A paleta de cores a ser usada no perfil, por nome"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:339
+#: src/org.gnome.Ptyxis.gschema.xml.in:340
 msgid "Opacity"
 msgstr "Opacidade"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:340
+#: src/org.gnome.Ptyxis.gschema.xml.in:341
 msgid "The opacity of the palette background"
 msgstr "A opacidade do fundo da paleta"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:345
+#: src/org.gnome.Ptyxis.gschema.xml.in:346
 msgid "Bold is Bright"
 msgstr "Negrito é brilhante"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:346
+#: src/org.gnome.Ptyxis.gschema.xml.in:347
 msgid ""
 "Setting bold on one of the lower 8 colors in the palette will use bright "
 "variant (upper 8 colors)"
@@ -548,364 +549,368 @@ msgstr ""
 "Definir negrito em uma das 8 cores inferiores da paleta usará a variante "
 "brilhante (8 cores superiores)"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:352 src/ptyxis-preferences-window.ui:175
+#: src/org.gnome.Ptyxis.gschema.xml.in:353 src/ptyxis-preferences-window.ui:175
 #: src/ptyxis-profile-editor.ui:143
 msgid "Line Spacing"
 msgstr "Espaçamento de linha"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:353
+#: src/org.gnome.Ptyxis.gschema.xml.in:354
 msgid "The terminal’s cell height scale"
 msgstr "A escala de altura de célula do terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:358
+#: src/org.gnome.Ptyxis.gschema.xml.in:359
 msgid "CJK Ambiguous Width"
 msgstr "Largura ambígua de CJK"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:359
+#: src/org.gnome.Ptyxis.gschema.xml.in:360
 msgid "The size to apply to ambiguous width characters"
 msgstr "O tamanho a ser aplicado a caracteres de largura ambígua"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:364
-#: src/org.gnome.Ptyxis.gschema.xml.in:370
+#: src/org.gnome.Ptyxis.gschema.xml.in:365
+#: src/org.gnome.Ptyxis.gschema.xml.in:371
 msgid "Backspace Binding"
 msgstr "Vinculação com backspace"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:365
-#: src/org.gnome.Ptyxis.gschema.xml.in:371
+#: src/org.gnome.Ptyxis.gschema.xml.in:366
+#: src/org.gnome.Ptyxis.gschema.xml.in:372
 msgid "What to send to the PTY when a backspace is entered"
 msgstr "O que enviar para o pseudoterminal quando um backspace é inserido"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:380 src/ptyxis-preferences-window.ui:645
+#: src/org.gnome.Ptyxis.gschema.xml.in:381 src/ptyxis-preferences-window.ui:645
 msgid "Copy to Clipboard"
 msgstr "Copiar para área de transferência"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:381
+#: src/org.gnome.Ptyxis.gschema.xml.in:382
 msgid "The shortcut to copy to clipboard"
 msgstr "O atalho para copiar para a área de transferência"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:386 src/ptyxis-preferences-window.ui:650
+#: src/org.gnome.Ptyxis.gschema.xml.in:387 src/ptyxis-preferences-window.ui:650
 msgid "Paste from Clipboard"
 msgstr "Colar da área de transferência"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:387
+#: src/org.gnome.Ptyxis.gschema.xml.in:388
 msgid "The shortcut to paste from the clipboard"
 msgstr "O atalho para colar da área de transferência"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:393
+#: src/org.gnome.Ptyxis.gschema.xml.in:394
 msgid "The shortcut to create a new tab in the current window"
 msgstr "O atalho para criar uma nova aba na janela atual"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:399
+#: src/org.gnome.Ptyxis.gschema.xml.in:400
 msgid "The shortcut to create a new tab in a new window"
 msgstr "O atalho para criar uma nova aba em uma nova janela"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:404
+#: src/org.gnome.Ptyxis.gschema.xml.in:405
 msgid "Tab Overview"
 msgstr "Visão geral de abas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:405
+#: src/org.gnome.Ptyxis.gschema.xml.in:406
 msgid "The shortcut to show the tab overview"
 msgstr "O atalho para mostrar a visão geral de abas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:411
+#: src/org.gnome.Ptyxis.gschema.xml.in:412
 msgid "The shortcut to show application preferences"
 msgstr "O atalho para mostrar as preferências do aplicativo"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:416 src/ptyxis-preferences-window.ui:871
-#: src/ptyxis-window.c:1425 src/ptyxis-window.c:1433
+#: src/org.gnome.Ptyxis.gschema.xml.in:417 src/ptyxis-preferences-window.ui:871
+#: src/ptyxis-window.c:1433 src/ptyxis-window.c:1441
 msgid "Zoom Out"
 msgstr "Reduzir a ampliação"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:417
+#: src/org.gnome.Ptyxis.gschema.xml.in:418
 msgid "The shortcut to zoom out"
 msgstr "O atalho para diminuir a ampliação"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:422 src/ptyxis-preferences-window.ui:876
-#: src/ptyxis-window.c:1442
+#: src/org.gnome.Ptyxis.gschema.xml.in:423 src/ptyxis-preferences-window.ui:876
+#: src/ptyxis-window.c:1450
 msgid "Reset Zoom"
 msgstr "Redefinir a ampliação"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:423
+#: src/org.gnome.Ptyxis.gschema.xml.in:424
 msgid "The shortcut to reset zoom"
 msgstr "O atalho para redefinir a ampliação"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:428 src/ptyxis-preferences-window.ui:866
-#: src/ptyxis-window.c:1410 src/ptyxis-window.c:1418
+#: src/org.gnome.Ptyxis.gschema.xml.in:429 src/ptyxis-preferences-window.ui:866
+#: src/ptyxis-window.c:1418 src/ptyxis-window.c:1426
 msgid "Zoom In"
 msgstr "Aumentar ampliação"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:429
+#: src/org.gnome.Ptyxis.gschema.xml.in:430
 msgid "The shortcut to zoom in"
 msgstr "O atalho para aumentar a ampliação"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:434 src/ptyxis-preferences-window.ui:886
+#: src/org.gnome.Ptyxis.gschema.xml.in:435 src/ptyxis-preferences-window.ui:886
 msgid "Toggle Fullscreen"
 msgstr "Alternar tela cheia"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:435
+#: src/org.gnome.Ptyxis.gschema.xml.in:436
 msgid "The shortcut to toggle fullscreen"
 msgstr "O atalho para entrar na ou sair da tela cheia"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:440
+#: src/org.gnome.Ptyxis.gschema.xml.in:441
 msgid "Reset Terminal"
 msgstr "Redefinir terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:441
+#: src/org.gnome.Ptyxis.gschema.xml.in:442
 msgid "Reset the terminal state for misbehaving clients"
 msgstr ""
 "Redefine o estado do terminal para clientes com comportamento inadequado"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:446
+#: src/org.gnome.Ptyxis.gschema.xml.in:447
 msgid "Reset Terminal and Clear History"
 msgstr "Redefinir terminal e limpar histórico"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:447
+#: src/org.gnome.Ptyxis.gschema.xml.in:448
 msgid "Reset the terminal state and clear history for misbehaving clients"
 msgstr ""
 "Redefine o estado do terminal e limpa o histórico de clientes com "
 "comportamento inadequado"
 
 #. Translators: Refers to searching the terminal scrollback
-#: src/org.gnome.Ptyxis.gschema.xml.in:453 src/ptyxis-find-bar.ui:39
+#: src/org.gnome.Ptyxis.gschema.xml.in:454 src/ptyxis-find-bar.ui:39
 #: src/ptyxis-preferences-window.ui:688
 msgid "Search History"
 msgstr "Pesquisar histórico"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:454
+#: src/org.gnome.Ptyxis.gschema.xml.in:455
 msgid "Shortcut to begin searching the terminal history"
 msgstr "Atalho para começar a pesquisar o histórico do terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:459 src/ptyxis-preferences-window.ui:659
+#: src/org.gnome.Ptyxis.gschema.xml.in:460 src/ptyxis-preferences-window.ui:659
 msgid "Select All"
 msgstr "Selecionar tudo"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:460
+#: src/org.gnome.Ptyxis.gschema.xml.in:461
 msgid "Shortcut to select all the entire terminal scrollback"
 msgstr "Atalho para selecionar toda a rolagem do terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:465
+#: src/org.gnome.Ptyxis.gschema.xml.in:466
 msgid "Select None"
 msgstr "Selecionar nada"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:466
+#: src/org.gnome.Ptyxis.gschema.xml.in:467
 msgid "Shortcut to clear the terminal selection"
 msgstr "Atalho para limpar a seleção do terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:471
+#: src/org.gnome.Ptyxis.gschema.xml.in:472
 msgid "Popup Menu"
 msgstr "Menu popup"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:472
+#: src/org.gnome.Ptyxis.gschema.xml.in:473
 msgid "Shortcut to show the popup menu for the terminal"
 msgstr "Atalho para mostrar o menu popup do terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:477
+#: src/org.gnome.Ptyxis.gschema.xml.in:478
 msgid "Primary Menu"
 msgstr "Menu primário"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:478
+#: src/org.gnome.Ptyxis.gschema.xml.in:479
 msgid "Shortcut to show the primary menu for the window"
 msgstr "Atalho para mostrar o menu primário do terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:483
+#: src/org.gnome.Ptyxis.gschema.xml.in:484
 msgid "Tab Menu"
 msgstr "Menu de aba"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:484
+#: src/org.gnome.Ptyxis.gschema.xml.in:485
 msgid "Shortcut to show the new tab menu"
 msgstr "Atalho para mostrar o menu da nova aba"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:489 src/ptyxis-preferences-window.ui:775
+#. Translators: in this context, "Move" means to switch tabs
+#: src/org.gnome.Ptyxis.gschema.xml.in:491 src/ptyxis-preferences-window.ui:775
 msgid "Move to Previous Tab"
 msgstr "Mover para aba anterior"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:490
+#. Translators: in this context, "Move" means to switch tabs
+#: src/org.gnome.Ptyxis.gschema.xml.in:493
 msgid "Shortcut to move to the previous tab"
 msgstr "Atalho para ir para a aba anterior"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:495 src/ptyxis-preferences-window.ui:780
+#. Translators: in this context, "Move" means to switch tabs
+#: src/org.gnome.Ptyxis.gschema.xml.in:499 src/ptyxis-preferences-window.ui:780
 msgid "Move to Next Tab"
 msgstr "Mover para próxima aba"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:496
+#. Translators: in this context, "Move" means to switch tabs
+#: src/org.gnome.Ptyxis.gschema.xml.in:501
 msgid "Shortcut to move to the next tab"
 msgstr "Atalho para ir para a próxima aba"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:501 src/ptyxis-preferences-window.ui:789
+#: src/org.gnome.Ptyxis.gschema.xml.in:506 src/ptyxis-preferences-window.ui:789
 msgid "Move Tab Left"
 msgstr "Mover aba para a esquerda"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:502
+#: src/org.gnome.Ptyxis.gschema.xml.in:507
 msgid "Shortcut to move the current tab to the left one position"
 msgstr "Atalho para mover a aba atual para uma posição à esquerda"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:507 src/ptyxis-preferences-window.ui:795
+#: src/org.gnome.Ptyxis.gschema.xml.in:512 src/ptyxis-preferences-window.ui:795
 msgid "Move Tab Right"
 msgstr "Mover aba para a direita"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:508
+#: src/org.gnome.Ptyxis.gschema.xml.in:513
 msgid "Shortcut to move the current tab to the right one position"
 msgstr "Atalho para mover a aba atual para a posição direita"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:513 src/ptyxis-preferences-window.ui:801
+#: src/org.gnome.Ptyxis.gschema.xml.in:518 src/ptyxis-preferences-window.ui:801
 msgid "Move Tab to New Window"
 msgstr "Mover aba para nova janela"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:514
+#: src/org.gnome.Ptyxis.gschema.xml.in:519
 msgid "Shortcut to move the current tab into a new window"
 msgstr "Atalho para mover a aba atual para uma nova janela"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:519 src/ptyxis-preferences-window.ui:753
+#: src/org.gnome.Ptyxis.gschema.xml.in:524 src/ptyxis-preferences-window.ui:753
 msgid "Close Tab"
 msgstr "Fechar aba"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:520
+#: src/org.gnome.Ptyxis.gschema.xml.in:525
 msgid "Shortcut to close the current tab"
 msgstr "Atalho para fechar a aba atual"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:525 src/ptyxis-preferences-window.ui:759
+#: src/org.gnome.Ptyxis.gschema.xml.in:530 src/ptyxis-preferences-window.ui:759
 msgid "Close Other Tabs"
 msgstr "Fechar outras abas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:526
+#: src/org.gnome.Ptyxis.gschema.xml.in:531
 msgid "Shortcut to close all tabs in the window but the current one"
 msgstr "Atalho para fechar todas as abas da janela, exceto a atual"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:531 src/ptyxis-preferences-window.ui:713
+#: src/org.gnome.Ptyxis.gschema.xml.in:536 src/ptyxis-preferences-window.ui:713
 msgid "Close Window"
 msgstr "Fechar janela"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:532
+#: src/org.gnome.Ptyxis.gschema.xml.in:537
 msgid "Shortcut to close the current window"
 msgstr "Atalho para fechar a janela atual"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:723
-#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1150 src/ptyxis-window.ui:602
+#: src/org.gnome.Ptyxis.gschema.xml.in:542 src/ptyxis-preferences-window.ui:723
+#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1158 src/ptyxis-window.ui:830
 msgid "Set Title"
 msgstr "Definir título"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:538
+#: src/org.gnome.Ptyxis.gschema.xml.in:543
 msgid "The shortcut to show set title"
 msgstr "O atalho para mostrar “Definir título”"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:543
+#: src/org.gnome.Ptyxis.gschema.xml.in:548
 msgid "Focus Tab 1"
 msgstr "Foco na aba 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:544
+#: src/org.gnome.Ptyxis.gschema.xml.in:549
 msgid "Shortcut to focus tab 1"
 msgstr "Atalho para mudar o foco para a aba 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:549
+#: src/org.gnome.Ptyxis.gschema.xml.in:554
 msgid "Focus Tab 2"
 msgstr "Foco na aba 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:550
+#: src/org.gnome.Ptyxis.gschema.xml.in:555
 msgid "Shortcut to focus tab 2"
 msgstr "Atalho para mudar o foco para a aba 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:555
+#: src/org.gnome.Ptyxis.gschema.xml.in:560
 msgid "Focus Tab 3"
 msgstr "Foco na aba 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:556
+#: src/org.gnome.Ptyxis.gschema.xml.in:561
 msgid "Shortcut to focus tab 3"
 msgstr "Atalho para mudar o foco para a aba 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:561
+#: src/org.gnome.Ptyxis.gschema.xml.in:566
 msgid "Focus Tab 4"
 msgstr "Foco na aba 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:562
+#: src/org.gnome.Ptyxis.gschema.xml.in:567
 msgid "Shortcut to focus tab 4"
 msgstr "Atalho para mudar o foco para a aba 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:567
+#: src/org.gnome.Ptyxis.gschema.xml.in:572
 msgid "Focus Tab 5"
 msgstr "Foco na aba 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:568
+#: src/org.gnome.Ptyxis.gschema.xml.in:573
 msgid "Shortcut to focus tab 5"
 msgstr "Atalho para mudar o foco para a aba 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:573
+#: src/org.gnome.Ptyxis.gschema.xml.in:578
 msgid "Focus Tab 6"
 msgstr "Foco na aba 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:574
+#: src/org.gnome.Ptyxis.gschema.xml.in:579
 msgid "Shortcut to focus tab 6"
 msgstr "Atalho para mudar o foco para a aba 6"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:579
+#: src/org.gnome.Ptyxis.gschema.xml.in:584
 msgid "Focus Tab 7"
 msgstr "Foco na aba 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:580
+#: src/org.gnome.Ptyxis.gschema.xml.in:585
 msgid "Shortcut to focus tab 7"
 msgstr "Atalho para mudar o foco para a aba 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:585
+#: src/org.gnome.Ptyxis.gschema.xml.in:590
 msgid "Focus Tab 8"
 msgstr "Foco na aba 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:586
+#: src/org.gnome.Ptyxis.gschema.xml.in:591
 msgid "Shortcut to focus tab 8"
 msgstr "Atalho para mudar o foco para a aba 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:591
+#: src/org.gnome.Ptyxis.gschema.xml.in:596
 msgid "Focus Tab 9"
 msgstr "Foco na aba 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:592
+#: src/org.gnome.Ptyxis.gschema.xml.in:597
 msgid "Shortcut to focus tab 9"
 msgstr "Atalho para mudar o foco para a aba 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:597
+#: src/org.gnome.Ptyxis.gschema.xml.in:602
 msgid "Focus Tab 10"
 msgstr "Foco na aba 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:598
+#: src/org.gnome.Ptyxis.gschema.xml.in:603
 msgid "Shortcut to focus tab 10"
 msgstr "Atalho para mudar o foco para a aba 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:603 src/ptyxis-preferences-window.ui:765
+#: src/org.gnome.Ptyxis.gschema.xml.in:608 src/ptyxis-preferences-window.ui:765
 msgid "Undo Close Tab"
 msgstr "Desfazer fechar aba"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:604
+#: src/org.gnome.Ptyxis.gschema.xml.in:609
 msgid "Undo closing of last tab"
 msgstr "Desfaz o fechamento da última aba"
 
-#: src/ptyxis-application.c:452
+#: src/ptyxis-application.c:465
 msgid "--tab, --tab-with-profile, or --new-window may not be used together"
 msgstr "--tab, --tab-with-profile ou --new-window podem não ser usados juntos"
 
-#: src/ptyxis-application.c:498
+#: src/ptyxis-application.c:511
 #, c-format
 msgid "Cannot parse command: %s"
 msgstr "Não foi possível analisar o comando: %s"
 
-#: src/ptyxis-application.c:1131
+#: src/ptyxis-application.c:1145
 msgid "Examples:"
 msgstr "Exemplos:"
 
-#: src/ptyxis-application.c:1133
+#: src/ptyxis-application.c:1147
 msgid "Show the application preferences"
 msgstr "Mostra as preferências do aplicativo"
 
 #. Used for new tabs/windows/etc when specified
-#: src/ptyxis-application.c:1136
+#: src/ptyxis-application.c:1150
 msgid "Use DIR for --tab, --tab-with-profile, --new-window, or -x"
 msgstr "Usa DIR para --tab, --tab-with-profile, --new-window ou -x"
 
-#: src/ptyxis-application.c:1136
+#: src/ptyxis-application.c:1150
 msgid "DIR"
 msgstr "DIR"
 
 #. By default, this implies a new ptyxis instance unless the options
 #. * below are provided to override that.
 #.
-#: src/ptyxis-application.c:1141
+#: src/ptyxis-application.c:1155
 msgid "Command to execute in new window"
 msgstr "Comando para executar em uma nova janela"
 
@@ -913,65 +918,69 @@ msgstr "Comando para executar em uma nova janela"
 #. * short command options for these to make it easier to sniff them in early args
 #. * checking from `main.c`.
 #.
-#: src/ptyxis-application.c:1147
+#: src/ptyxis-application.c:1161
 msgid "New terminal window"
 msgstr "Nova janela de terminal"
 
-#: src/ptyxis-application.c:1148
+#: src/ptyxis-application.c:1162
 msgid "New terminal tab in active window"
 msgstr "Nova aba de terminal na janela ativa"
 
-#: src/ptyxis-application.c:1149
+#: src/ptyxis-application.c:1163
 msgid "New terminal tab in active window using the profile UUID"
 msgstr "Nova aba de terminal na janela ativa usando o UUID do perfil"
 
-#: src/ptyxis-application.c:1149
+#: src/ptyxis-application.c:1163
 msgid "PROFILE_UUID"
 msgstr "UUID_DO_PERFIL"
 
 #. Standalone (single instance mode)
-#: src/ptyxis-application.c:1152
+#: src/ptyxis-application.c:1166
 msgid "Start a new instance, ignoring existing instances"
 msgstr "Inicie uma nova instância ignorando instâncias existentes"
 
-#: src/ptyxis-application.c:1154
+#: src/ptyxis-application.c:1168
 msgid "Set title for new tab"
 msgstr "Define o título da nova aba"
 
-#: src/ptyxis-application.c:1155
+#: src/ptyxis-application.c:1169
 msgid "Maximize a newly created window"
 msgstr "Maximizar uma janela recém-criada"
 
+#: src/ptyxis-application.c:1170
+msgid "Fullscreen a newly created window"
+msgstr "Maximizar uma janela recém-criada"
+
 #. Import a custom .palette file. This works like dragging the file onto preferences
-#: src/ptyxis-application.c:1158
+#: src/ptyxis-application.c:1173
 msgid "Import a Ptyxis palette file"
 msgstr "Importar um arquivo de paleta do Ptyxis"
 
-#: src/ptyxis-application.c:1158
+#: src/ptyxis-application.c:1173
 msgid "FILE"
 msgstr "ARQUIVO"
 
-#: src/ptyxis-application.c:1165
+#: src/ptyxis-application.c:1180
 msgid "Run Separate Instance"
 msgstr "Executa uma instância separada"
 
-#: src/ptyxis-application.c:1169
+#: src/ptyxis-application.c:1184
 msgid "Open Preferences"
 msgstr "Abre as preferências"
 
-#: src/ptyxis-application.c:1173
+#: src/ptyxis-application.c:1188
 msgid "Run Custom Command in New Window"
 msgstr "Executa um comando personalizado em uma nova janela"
 
-#: src/ptyxis-application.c:1178
+#: src/ptyxis-application.c:1193
 msgid "Import a custom palette"
 msgstr "Importar uma paleta personalizada"
 
-#: src/ptyxis-application.c:1181
+#: src/ptyxis-application.c:1196
 msgid "[-- COMMAND ARGUMENTS]"
 msgstr "[-- ARGUMENTOS DO COMANDO]"
 
-#: src/ptyxis-application.c:1419
+#: src/ptyxis-application.c:1434
 msgid "translator-credits"
 msgstr "Rafael Fontenelle <rafaelff@gnome.org>"
 
@@ -999,10 +1008,6 @@ msgstr "_Cancelar"
 #, c-format
 msgid "Process %d"
 msgstr "Processo %d"
-
-#: src/ptyxis-container-menu.c:102
-msgid "Unknown Container"
-msgstr "Contêiner desconhecido"
 
 #: src/ptyxis-find-bar.ui:69
 msgid "Search Up"
@@ -1142,6 +1147,11 @@ msgstr "Mouse"
 #: src/ptyxis-inspector.ui:270
 msgid "Hyperlink"
 msgstr "Hiperlink"
+
+#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:211
+#: src/ptyxis-window.c:1662
+msgid "My Computer"
+msgstr "Meu computador"
 
 #: src/ptyxis-palette-preview.ui:12
 msgid "The quick brown fox jumps over the lazy dog"
@@ -1516,7 +1526,7 @@ msgid "Show this preferences window"
 msgstr "Mostra as janela de preferências"
 
 #: src/ptyxis-preferences-window.ui:918 src/ptyxis-preferences-window.ui:922
-#: src/ptyxis-window.c:1548
+#: src/ptyxis-window.c:1636 src/ptyxis-window.c:1798
 msgid "Profiles"
 msgstr "Perfis"
 
@@ -1544,7 +1554,7 @@ msgstr "Sequência de escape"
 msgid "TTY Erase"
 msgstr "Erase do TTY"
 
-#: src/ptyxis-profile.c:577
+#: src/ptyxis-profile.c:576
 msgid "Untitled Profile"
 msgstr "Perfil sem nome"
 
@@ -1562,11 +1572,7 @@ msgstr "O perfil “%s” foi removido"
 msgid "Undo"
 msgstr "Desfazer"
 
-#: src/ptyxis-profile-editor.c:211
-msgid "My Computer"
-msgstr "Meu computador"
-
-#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:393 src/ptyxis-tab.c:450
+#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:400 src/ptyxis-tab.c:457
 msgid "Edit Profile"
 msgstr "Editar perfil"
 
@@ -1662,12 +1668,12 @@ msgstr "Definir atalho"
 msgid "disabled"
 msgstr "desabilitado"
 
-#: src/ptyxis-tab.c:303
+#: src/ptyxis-tab.c:308
 #, c-format
 msgid "Process Exited from Signal %d"
 msgstr "O processo foi encerrado com sinal %d"
 
-#: src/ptyxis-tab.c:306 src/ptyxis-tab.c:329
+#: src/ptyxis-tab.c:311 src/ptyxis-tab.c:334
 msgid "_Restart"
 msgstr "_Reiniciar"
 
@@ -1675,32 +1681,32 @@ msgstr "_Reiniciar"
 #. * display it again if the tab is removed from the parking lot and
 #. * restored into the window.
 #.
-#: src/ptyxis-tab.c:328
+#: src/ptyxis-tab.c:333
 msgid "Process Exited"
 msgstr "Processo encerrado"
 
-#: src/ptyxis-tab.c:392
+#: src/ptyxis-tab.c:399
 msgid "Failed to launch terminal"
 msgstr "Falha ao iniciar o terminal"
 
-#: src/ptyxis-tab.c:448
+#: src/ptyxis-tab.c:455
 #, c-format
 msgid "Cannot locate container “%s”"
 msgstr "Não foi possível localizar o contêiner “%s”"
 
-#: src/ptyxis-tab.c:472
+#: src/ptyxis-tab.c:479
 msgid "Failed to create pseudo terminal device"
 msgstr "Falha ao criar o dispositivo de pseudoterminal"
 
-#: src/ptyxis-tab.c:1443
+#: src/ptyxis-tab.c:1450
 msgid "Exited"
 msgstr "Encerrado"
 
-#: src/ptyxis-tab.c:1445
+#: src/ptyxis-tab.c:1452
 msgid "Failed"
 msgstr "Falhou"
 
-#: src/ptyxis-tab.c:2010
+#: src/ptyxis-tab.c:2034
 msgid "Failed to open link"
 msgstr "Falha ao abrir link"
 
@@ -1761,7 +1767,7 @@ msgstr "Selecionar _nada"
 msgid "Read-Only"
 msgstr "Somente leitura"
 
-#: src/ptyxis-terminal.ui:251 src/ptyxis-window.ui:385 src/ptyxis-window.ui:548
+#: src/ptyxis-terminal.ui:251 src/ptyxis-window.ui:385 src/ptyxis-window.ui:776
 msgid "Leave Fullscreen"
 msgstr "Sair da tela cheia"
 
@@ -1814,15 +1820,15 @@ msgstr "Terminal do Builder"
 msgid "Ptyxis"
 msgstr "Ptyxis"
 
-#: src/ptyxis-window.c:1421
+#: src/ptyxis-window.c:1429
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: src/ptyxis-window.c:1436
+#: src/ptyxis-window.c:1444
 msgid "Zoom out"
 msgstr "Reduz"
 
-#: src/ptyxis-window.c:1551
+#: src/ptyxis-window.c:1630 src/ptyxis-window.c:1802
 msgid "Containers"
 msgstr "Contêineres"
 
@@ -1834,69 +1840,79 @@ msgstr "Novo terminal"
 msgid "Show Profiles and Containers"
 msgstr "Mostrar perfis e contêineres"
 
-#: src/ptyxis-window.ui:440
+#: src/ptyxis-window.ui:433
+msgid "Filter…"
+msgstr "Filtrar…"
+
+#: src/ptyxis-window.ui:595
+msgid "No Matching Results"
+msgstr "Sem resultados correspondentes"
+
+#: src/ptyxis-window.ui:637
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: src/ptyxis-window.ui:448 src/ptyxis-window.ui:534
+#: src/ptyxis-window.ui:645 src/ptyxis-window.ui:762
 msgid "Show Open Tabs"
 msgstr "Mostra abas abertas"
 
-#: src/ptyxis-window.ui:518
+#: src/ptyxis-window.ui:746
 msgid "New _Tab"
 msgstr "Nova _aba"
 
-#: src/ptyxis-window.ui:525
+#: src/ptyxis-window.ui:753
 msgid "New _Window"
 msgstr "Nova _janela"
 
-#: src/ptyxis-window.ui:542
+#: src/ptyxis-window.ui:770
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
-#: src/ptyxis-window.ui:556
+#: src/ptyxis-window.ui:784
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: src/ptyxis-window.ui:560
+#: src/ptyxis-window.ui:788
 msgid "_Keyboard Shortcuts"
 msgstr "Atalhos de _teclado"
 
-#: src/ptyxis-window.ui:564
+#: src/ptyxis-window.ui:792
 msgid "_About"
 msgstr "_Sobre"
 
-#: src/ptyxis-window.ui:573
+#: src/ptyxis-window.ui:801
 msgid "Move _Left"
 msgstr "Mover para _esquerda"
 
-#: src/ptyxis-window.ui:578
+#: src/ptyxis-window.ui:806
 msgid "Move _Right"
 msgstr "Mover para _direita"
 
-#: src/ptyxis-window.ui:583
+#: src/ptyxis-window.ui:811
 msgid "Move to New _Window"
 msgstr "Mover para nova _janela"
 
-#: src/ptyxis-window.ui:589
+#: src/ptyxis-window.ui:817
 msgid "_Pin Tab"
 msgstr "_Fixar aba"
 
-#: src/ptyxis-window.ui:594
+#: src/ptyxis-window.ui:822
 msgid "Un_pin Tab"
 msgstr "Desfi_xar aba"
 
-#: src/ptyxis-window.ui:609
+#: src/ptyxis-window.ui:837
 msgid "Close _Other Tabs"
 msgstr "Fechar _outras abas"
 
-#: src/ptyxis-window.ui:614
+#: src/ptyxis-window.ui:842
 msgid "_Close Tab"
 msgstr "_Fechar aba"
 
-#: src/ptyxis-window.ui:621
-msgid "_My Computer"
-msgstr "_Meu computador"
+#~ msgid "Unknown Container"
+#~ msgstr "Contêiner desconhecido"
+
+#~ msgid "_My Computer"
+#~ msgstr "_Meu computador"
 
 #~ msgid "Search up to next result"
 #~ msgstr "Pesquisa para cima o próximo resultado"
