@@ -14,6 +14,8 @@ GenericName=Terminal
 Keywords=terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;podman;toolbox;distrobox;
 Actions=new-window;new-tab;preferences;
 X-ExecArg=--
+X-TerminalArgTitle=--title
+X-TerminalArgDir=--working-directory
 X-KDE-AuthorizeAction=shell_access
 
 [Desktop Action new-window]
