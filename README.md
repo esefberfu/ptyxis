@@ -391,8 +391,8 @@ referencing the design discussion/specification.
 
 ## License
 
-Ptyxis is licensed under the **GNU General Public License v3.0 or later
-(GPL-3.0+)**. A copy of the license is in the `COPYING` file.
+Ptyxis is licensed under the **GNU General Public License v3.0 or later**.
+The source code includes a copy of the license in the `COPYING` file.
 ---
 
 ## Acknowledgments
