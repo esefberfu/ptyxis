@@ -16,6 +16,7 @@ Actions=new-window;new-tab;preferences;
 X-ExecArg=--
 X-TerminalArgTitle=--title
 X-TerminalArgDir=--working-directory
+X-TerminalArgAppId=--gapplication-app-id
 X-KDE-AuthorizeAction=shell_access
 
 [Desktop Action new-window]
