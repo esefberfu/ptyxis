@@ -361,11 +361,8 @@ host-interaction features might be limited.
 Ptyxis uses its GitLab issue tracker primarily for engineering defects. For new
 features or significant design changes:
 
-1. **Initiate Discussion:** Start by discussing your idea or proposal,
-    preferably through the
+1. **Initiate Discussion:** Start by discussing your idea or proposal, using the
     [GNOME Design Whiteboards project](https://gitlab.gnome.org/Teams/Design/whiteboards/)
-    or by opening a discussion-focused issue on the
-    [Ptyxis GitLab](https://gitlab.gnome.org/chergert/ptyxis/-/issues).
 2. **Develop a Specification:** For larger features, a detailed specification
     is required. This should cover:
     - How the feature should work and not work.
@@ -381,7 +378,7 @@ referencing the design discussion/specification.
 
 ---
 
-## Known Issues & Troubleshooting
+## Troubleshooting Issues
 
 - **Notifications Don't Work (e.g., command completion):**
   Ensure your shell (e.g., `~/.bashrc`, `~/.zshrc`) sources
