@@ -179,7 +179,7 @@
     </key>
 
     <key name="interface-style" enum="@APP_SCHEMA_ID@.InterfaceStyle">
-      <default>'system'</default>
+      <default>'dark'</default>
       <summary>Interface Style</summary>
       <description>If light or dark interface style should be used</description>
     </key>
