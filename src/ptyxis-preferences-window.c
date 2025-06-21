@@ -25,6 +25,8 @@
 
 #include <glib/gi18n.h>
 
+#include "ptyxis-add-button-list-item.h"
+#include "ptyxis-add-button-list-model.h"
 #include "ptyxis-application.h"
 #include "ptyxis-palette-preview.h"
 #include "ptyxis-preferences-list-item.h"
@@ -49,7 +51,6 @@ struct _PtyxisPreferencesWindow
   GtkFilterListModel   *filter_palettes;
   guint                 filter_show_more : 1;
 
-  GtkButton            *add_profile_button;
   AdwSwitchRow         *audible_bell;
   AdwComboRow          *backspace_binding;
   AdwSpinRow           *cell_height_scale;
@@ -358,7 +359,23 @@ static GtkWidget *
 ptyxis_preferences_window_create_profile_row_cb (gpointer item,
                                                  gpointer user_data)
 {
-  return ptyxis_profile_row_new (PTYXIS_PROFILE (item));
+  PtyxisAddButtonListItem *add_button_item = PTYXIS_ADD_BUTTON_LIST_ITEM (item);
+  GObject *wrapped_item;
+
+  wrapped_item = ptyxis_add_button_list_item_get_wrapped_item (add_button_item);
+
+  if (wrapped_item != NULL)
+    {
+      return ptyxis_profile_row_new (PTYXIS_PROFILE (wrapped_item));
+    }
+  else
+    {
+      return g_object_new (ADW_TYPE_BUTTON_ROW,
+                           "title", _("Add Profile"),
+                           "start-icon-name", "list-add-symbolic",
+                           "action-name", "profile.add",
+                           NULL);
+    }
 }
 
 static gboolean
@@ -681,6 +698,7 @@ ptyxis_preferences_window_constructed (GObject *object)
   GSettings *gsettings = ptyxis_settings_get_settings (settings);
   AdwStyleManager *style_manager = adw_style_manager_get_default ();
   g_autoptr(GListModel) profiles = NULL;
+  g_autoptr(PtyxisAddButtonListModel) profiles_list_model = NULL;
 
   G_OBJECT_CLASS (ptyxis_preferences_window_parent_class)->constructed (object);
 
@@ -757,11 +775,12 @@ ptyxis_preferences_window_constructed (GObject *object)
                                 g_object_unref);
 
   profiles = ptyxis_application_list_profiles (app);
-
+  profiles_list_model = ptyxis_add_button_list_model_new (profiles);
+  
   gtk_list_box_bind_model (self->profiles_list_box,
-                           profiles,
-                           ptyxis_preferences_window_create_profile_row_cb,
-                           NULL, NULL);
+                            G_LIST_MODEL (profiles_list_model),
+                            ptyxis_preferences_window_create_profile_row_cb,
+                            NULL, NULL);
 
   g_object_bind_property (settings, "audible-bell",
                           self->audible_bell, "active",
@@ -1005,7 +1024,6 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
 
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Ptyxis/ptyxis-preferences-window.ui");
 
-  gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, add_profile_button);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, audible_bell);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, backspace_binding);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_height_scale);

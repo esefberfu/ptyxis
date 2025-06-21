@@ -920,21 +920,6 @@
         <child>
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">Profiles</property>
-            <child type="header-suffix">
-              <object class="GtkButton" id="add_profile_button">
-                <property name="action-name">profile.add</property>
-                <child>
-                  <object class="AdwButtonContent">
-                    <property name="icon-name">list-add-symbolic</property>
-                    <property name="label" translatable="yes">_Add Profile</property>
-                    <property name="use-underline">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="flat"/>
-                </style>
-              </object>
-            </child>
             <child>
               <object class="GtkListBox" id="profiles_list_box">
                 <style>
