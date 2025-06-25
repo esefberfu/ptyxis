@@ -46,6 +46,12 @@
 
 #define APP_ID_DESKTOP APP_ID ".desktop"
 
+/* XDG Default Terminal Execution Specification allows selecting a
+   Desktop Action as a suffix delimited by ':'
+ * https://gitlab.freedesktop.org/Vladimir-csp/xdg-terminal-exec/-/tree/v0.13.2?ref_type=tags#default-terminal-execution-specification
+ */
+#define XDG_TERMINAL_EXEC_ENTRY APP_ID_DESKTOP ":new-window"
+
 static PtyxisProcessKind kind = PTYXIS_PROCESS_KIND_HOST;
 
 G_DEFINE_CONSTRUCTOR(ptyxis_init_ctor)
@@ -331,7 +337,7 @@ ptyxis_variant_new_toast (const char *title,
 static gboolean
 line_is_ptyxis (const char *line)
 {
-  return strcmp (line, APP_ID_DESKTOP) == 0 && line[strlen(APP_ID_DESKTOP)] == 0;
+  return strcmp (line, XDG_TERMINAL_EXEC_ENTRY) == 0 && line[strlen(XDG_TERMINAL_EXEC_ENTRY)] == 0;
 }
 
 static char **
@@ -414,7 +420,7 @@ ptyxis_is_default (void)
 static void
 ptyxis_make_default_in_file (const char *path)
 {
-  g_autoptr(GString) replace = g_string_new (APP_ID_DESKTOP "\n");
+  g_autoptr(GString) replace = g_string_new (XDG_TERMINAL_EXEC_ENTRY "\n");
   g_autofree char *contents = NULL;
   gsize contents_len = 0;
 
