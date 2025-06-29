@@ -1,3 +1,19 @@
+# Ptyxis 49.alpha
+
+ * New searchable menu for containers and profiles (via Alt+comma)
+ * Various .desktop file integration points
+ * Add --fullscreen option to start Ptyxis fullscreen
+ * Avoid saving state twice during shutdown
+ * Add --import-palette command line argument
+ * Improved handling of --standalone and --execute to support specifying
+   a non-default application-id.
+ * Various palette updates
+ * Handle mailto: URLs
+ * Check for X_OK before potential chdir
+ * Remove bold-is-bright from preferences UI (but maintain GSetting)
+ * Updated documentation
+ * Translation updates
+
 # Ptyxis 48.1
 
  * Unreveal fullscreen topbar upon user input into terminal
