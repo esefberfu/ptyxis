@@ -28,8 +28,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (PtyxisAddButtonListItem, ptyxis_add_button_list_item, PTYXIS, ADD_BUTTON_LIST_ITEM, GObject)
 
-PtyxisAddButtonListItem *ptyxis_add_button_list_item_new              (GObject                 *wrapped_item);
-gpointer                 ptyxis_add_button_list_item_get_wrapped_item (PtyxisAddButtonListItem *self);
+PtyxisAddButtonListItem *ptyxis_add_button_list_item_new              (GObject                 *item);
+gpointer                 ptyxis_add_button_list_item_get_item         (PtyxisAddButtonListItem *self);
 gboolean                 ptyxis_add_button_list_item_is_add_button    (PtyxisAddButtonListItem *self);
 
 G_END_DECLS

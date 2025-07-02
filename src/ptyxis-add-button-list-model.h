@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (PtyxisAddButtonListModel, ptyxis_add_button_list_model, PTYXIS, ADD_BUTTON_LIST_MODEL, GObject)
 
-PtyxisAddButtonListModel *ptyxis_add_button_list_model_new       (GListModel               *wrapped_model);
+PtyxisAddButtonListModel *ptyxis_add_button_list_model_new       (GListModel               *model);
 GListModel               *ptyxis_add_button_list_model_get_model (PtyxisAddButtonListModel *self);
 
 G_END_DECLS

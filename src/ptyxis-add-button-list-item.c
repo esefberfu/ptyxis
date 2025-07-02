@@ -24,12 +24,12 @@ struct _PtyxisAddButtonListItem
 {
   GObject  parent_instance;
 
-  GObject *wrapped_item;
+  GObject *item;
 };
 
 enum {
   PROP_0,
-  PROP_WRAPPED_ITEM,
+  PROP_ITEM,
   N_PROPS
 };
 
@@ -42,7 +42,7 @@ ptyxis_add_button_list_item_dispose (GObject *object)
 {
   PtyxisAddButtonListItem *self = PTYXIS_ADD_BUTTON_LIST_ITEM (object);
 
-  g_clear_object (&self->wrapped_item);
+  g_clear_object (&self->item);
 
   G_OBJECT_CLASS (ptyxis_add_button_list_item_parent_class)->dispose (object);
 }
@@ -57,8 +57,8 @@ ptyxis_add_button_list_item_get_property (GObject    *object,
 
   switch (prop_id)
     {
-    case PROP_WRAPPED_ITEM:
-      g_value_set_object (value, self->wrapped_item);
+    case PROP_ITEM:
+      g_value_set_object (value, self->item);
       break;
 
     default:
@@ -76,8 +76,8 @@ ptyxis_add_button_list_item_set_property (GObject      *object,
 
   switch (prop_id)
     {
-    case PROP_WRAPPED_ITEM:
-      g_set_object (&self->wrapped_item, g_value_get_object (value));
+    case PROP_ITEM:
+      g_set_object (&self->item, g_value_get_object (value));
       break;
 
     default:
@@ -94,8 +94,8 @@ ptyxis_add_button_list_item_class_init (PtyxisAddButtonListItemClass *klass)
   object_class->get_property = ptyxis_add_button_list_item_get_property;
   object_class->set_property = ptyxis_add_button_list_item_set_property;
 
-  properties[PROP_WRAPPED_ITEM] =
-    g_param_spec_object ("wrapped-item", NULL, NULL,
+  properties[PROP_ITEM] =
+    g_param_spec_object ("item", NULL, NULL,
                          G_TYPE_OBJECT,
                          (G_PARAM_READWRITE |
                           G_PARAM_CONSTRUCT_ONLY |
@@ -110,19 +110,19 @@ ptyxis_add_button_list_item_init (PtyxisAddButtonListItem *self)
 }
 
 PtyxisAddButtonListItem *
-ptyxis_add_button_list_item_new (GObject *wrapped_item)
+ptyxis_add_button_list_item_new (GObject *item)
 {
   return g_object_new (PTYXIS_TYPE_ADD_BUTTON_LIST_ITEM,
-                       "wrapped-item", wrapped_item,
+                       "item", item,
                        NULL);
 }
 
 gpointer
-ptyxis_add_button_list_item_get_wrapped_item (PtyxisAddButtonListItem *self)
+ptyxis_add_button_list_item_get_item (PtyxisAddButtonListItem *self)
 {
   g_return_val_if_fail (PTYXIS_IS_ADD_BUTTON_LIST_ITEM (self), NULL);
 
-  return self->wrapped_item;
+  return self->item;
 }
 
 gboolean
@@ -130,5 +130,5 @@ ptyxis_add_button_list_item_is_add_button (PtyxisAddButtonListItem *self)
 {
   g_return_val_if_fail (PTYXIS_IS_ADD_BUTTON_LIST_ITEM (self), FALSE);
 
-  return self->wrapped_item == NULL;
+  return self->item == NULL;
 }

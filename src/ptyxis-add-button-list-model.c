@@ -25,7 +25,7 @@ struct _PtyxisAddButtonListModel
 {
   GObject     parent_instance;
 
-  GListModel *wrapped_model;
+  GListModel *model;
   GType       item_type;
 };
 
@@ -59,15 +59,15 @@ ptyxis_add_button_list_model_constructed (GObject *object)
 
   G_OBJECT_CLASS (ptyxis_add_button_list_model_parent_class)->constructed (object);
 
-  if (self->wrapped_model)
+  if (self->model)
     {
-      g_signal_connect_object (self->wrapped_model,
+      g_signal_connect_object (self->model,
                                "items-changed",
                                G_CALLBACK (ptyxis_add_button_list_model_items_changed_cb),
                                self,
                                G_CONNECT_SWAPPED);
 
-      self->item_type = g_list_model_get_item_type (self->wrapped_model);
+      self->item_type = g_list_model_get_item_type (self->model);
     }
   else
     {
@@ -80,7 +80,7 @@ ptyxis_add_button_list_model_dispose (GObject *object)
 {
   PtyxisAddButtonListModel *self = PTYXIS_ADD_BUTTON_LIST_MODEL (object);
 
-  g_clear_object (&self->wrapped_model);
+  g_clear_object (&self->model);
 
   G_OBJECT_CLASS (ptyxis_add_button_list_model_parent_class)->dispose (object);
 }
@@ -96,7 +96,7 @@ ptyxis_add_button_list_model_get_property (GObject    *object,
   switch (prop_id)
     {
     case PROP_MODEL:
-      g_value_set_object (value, self->wrapped_model);
+      g_value_set_object (value, self->model);
       break;
 
     default:
@@ -115,7 +115,7 @@ ptyxis_add_button_list_model_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_MODEL:
-      g_set_object (&self->wrapped_model, g_value_get_object (value));
+      g_set_object (&self->model, g_value_get_object (value));
       break;
 
     default:
@@ -160,8 +160,8 @@ ptyxis_add_button_list_model_get_n_items (GListModel *model)
 {
   PtyxisAddButtonListModel *self = PTYXIS_ADD_BUTTON_LIST_MODEL (model);
 
-  if (self->wrapped_model)
-    return g_list_model_get_n_items (self->wrapped_model) + 1;
+  if (self->model)
+    return g_list_model_get_n_items (self->model) + 1;
   else
     return 1;
 }
@@ -171,17 +171,17 @@ ptyxis_add_button_list_model_get_item (GListModel *model,
                                        guint       position)
 {
   PtyxisAddButtonListModel *self = PTYXIS_ADD_BUTTON_LIST_MODEL (model);
-  guint wrapped_n_items = 0;
+  guint n_items = 0;
 
-  if (self->wrapped_model)
-    wrapped_n_items = g_list_model_get_n_items (self->wrapped_model);
+  if (self->model)
+    n_items = g_list_model_get_n_items (self->model);
 
-  if (position < wrapped_n_items)
+  if (position < n_items)
     {
-      g_autoptr(GObject) item = g_list_model_get_item (self->wrapped_model, position);
+      g_autoptr(GObject) item = g_list_model_get_item (self->model, position);
       return ptyxis_add_button_list_item_new (item);
     }
-  else if (position == wrapped_n_items)
+  else if (position == n_items)
     {
       return ptyxis_add_button_list_item_new (NULL);
     }
@@ -198,10 +198,10 @@ list_model_iface_init (GListModelInterface *iface)
 }
 
 PtyxisAddButtonListModel *
-ptyxis_add_button_list_model_new (GListModel *wrapped_model)
+ptyxis_add_button_list_model_new (GListModel *model)
 {
   return g_object_new (PTYXIS_TYPE_ADD_BUTTON_LIST_MODEL,
-                       "model", wrapped_model,
+                       "model", model,
                        NULL);
 }
 
@@ -210,5 +210,5 @@ ptyxis_add_button_list_model_get_model (PtyxisAddButtonListModel *self)
 {
   g_return_val_if_fail (PTYXIS_IS_ADD_BUTTON_LIST_MODEL (self), NULL);
 
-  return self->wrapped_model;
+  return self->model;
 }

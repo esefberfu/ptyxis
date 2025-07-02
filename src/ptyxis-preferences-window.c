@@ -362,7 +362,7 @@ ptyxis_preferences_window_create_profile_row_cb (gpointer item,
   PtyxisAddButtonListItem *add_button_item = PTYXIS_ADD_BUTTON_LIST_ITEM (item);
   GObject *wrapped_item;
 
-  wrapped_item = ptyxis_add_button_list_item_get_wrapped_item (add_button_item);
+  wrapped_item = ptyxis_add_button_list_item_get_item (add_button_item);
 
   if (wrapped_item != NULL)
     {
