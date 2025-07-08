@@ -24,7 +24,31 @@
     <property name="activatable">true</property>
     <property name="action-name">shortcut.select</property>
     <child type="suffix">
-      <object class="GtkLabel" id="label">
+      <object class="GtkStack" id="stack">
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">disabled</property>
+            <property name="child">
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">disabled</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">label</property>
+            <property name="child">
+              <object class="AdwShortcutLabel" id="label">
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+              </object>
+            </property>
+          </object>
+        </child>
       </object>
     </child>
   </template>

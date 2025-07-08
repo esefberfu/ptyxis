@@ -28,11 +28,12 @@
 
 struct _PtyxisShortcutRow
 {
-  AdwActionRow parent_instance;
+  AdwActionRow      parent_instance;
 
-  char *accelerator;
+  char             *accelerator;
 
-  GtkLabel *label;
+  AdwShortcutLabel *label;
+  GtkStack         *stack;
 };
 
 enum {
@@ -152,6 +153,7 @@ ptyxis_shortcut_row_class_init (PtyxisShortcutRowClass *klass)
 
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Ptyxis/ptyxis-shortcut-row.ui");
   gtk_widget_class_bind_template_child (widget_class, PtyxisShortcutRow, label);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisShortcutRow, stack);
   gtk_widget_class_install_action (widget_class, "shortcut.select", NULL, ptyxis_shortcut_row_select_shortcut);
 }
 
@@ -177,23 +179,19 @@ ptyxis_shortcut_row_set_accelerator (PtyxisShortcutRow *self,
 
   if (g_set_str (&self->accelerator, accelerator))
     {
-      g_autofree char *label = NULL;
+      gboolean disabled = TRUE;
       GdkModifierType state;
       guint keyval;
 
       if (accelerator && accelerator[0] && gtk_accelerator_parse (accelerator, &keyval, &state))
-        label = gtk_accelerator_get_label (keyval, state);
+        disabled = FALSE;
 
-      if (label != NULL)
-        {
-          gtk_label_set_label (self->label, label);
-          gtk_widget_remove_css_class (GTK_WIDGET (self->label), "dim-label");
-        }
+      adw_shortcut_label_set_accelerator (self->label, accelerator);
+
+      if (disabled)
+        gtk_stack_set_visible_child_name (self->stack, "disabled");
       else
-        {
-          gtk_label_set_label (self->label, _("disabled"));
-          gtk_widget_add_css_class (GTK_WIDGET (self->label), "dim-label");
-        }
+        gtk_stack_set_visible_child_name (self->stack, "label");
 
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ACCELERATOR]);
     }
