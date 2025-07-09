@@ -252,6 +252,17 @@ ptyxis_tab_update_cell_height_scale (PtyxisTab *self)
   vte_terminal_set_cell_height_scale (VTE_TERMINAL (self->terminal), cell_height_scale);
 }
 
+static void
+ptyxis_tab_update_custom_links (PtyxisTab *self)
+{
+  g_autoptr(GListModel) custom_links_list = NULL;
+
+  g_assert (PTYXIS_IS_TAB (self));
+
+  custom_links_list = ptyxis_profile_list_custom_links(self->profile);
+  ptyxis_terminal_update_custom_links_list(self->terminal, custom_links_list);
+}
+
 static gboolean
 ptyxis_tab_grab_focus (GtkWidget *widget)
 {
@@ -850,6 +861,13 @@ ptyxis_tab_constructed (GObject *object)
                            self,
                            G_CONNECT_SWAPPED);
   ptyxis_tab_update_word_char_exceptions (self, NULL, settings);
+
+  g_signal_connect_object (G_OBJECT (self->profile),
+                           "custom-links-changed",
+                           G_CALLBACK (ptyxis_tab_update_custom_links),
+                           self,
+                           G_CONNECT_SWAPPED);
+  ptyxis_tab_update_custom_links (self);
 
   self->monitor = ptyxis_tab_monitor_new (self);
 }

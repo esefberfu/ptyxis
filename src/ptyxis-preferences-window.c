@@ -28,6 +28,8 @@
 #include "ptyxis-add-button-list-item.h"
 #include "ptyxis-add-button-list-model.h"
 #include "ptyxis-application.h"
+#include "ptyxis-custom-link-editor.h"
+#include "ptyxis-custom-link-row.h"
 #include "ptyxis-palette-preview.h"
 #include "ptyxis-preferences-list-item.h"
 #include "ptyxis-preferences-window.h"
@@ -35,6 +37,7 @@
 #include "ptyxis-profile-row.h"
 #include "ptyxis-shortcut-row.h"
 #include "ptyxis-util.h"
+
 
 /* This will not transition to AdwDialog until there is a way for
  * toplevel windows _with_ transient-for set to maintain window
@@ -130,6 +133,7 @@ struct _PtyxisPreferencesWindow
   GListModel           *text_blink_modes;
   AdwSwitchRow         *use_system_font;
   AdwSwitchRow         *visual_bell;
+  GtkListBox           *custom_links_list_box;
 };
 
 G_DEFINE_FINAL_TYPE (PtyxisPreferencesWindow, ptyxis_preferences_window, ADW_TYPE_PREFERENCES_WINDOW)
@@ -456,6 +460,29 @@ opacity_to_label (GBinding     *binding,
   return TRUE;
 }
 
+static GtkWidget *
+ptyxis_preferences_window_create_custom_link_row_cb (gpointer item,
+                                                     gpointer user_data)
+{
+  PtyxisAddButtonListItem *add_button_item = PTYXIS_ADD_BUTTON_LIST_ITEM (item);
+  GObject *wrapped_item;
+
+  g_assert (PTYXIS_IS_ADD_BUTTON_LIST_ITEM (add_button_item));
+
+  if ((wrapped_item = ptyxis_add_button_list_item_get_item (add_button_item)))
+    {
+      g_autoptr(PtyxisProfile) profile = ptyxis_application_dup_default_profile (PTYXIS_APPLICATION_DEFAULT);
+
+      return ptyxis_custom_link_row_new (profile, PTYXIS_CUSTOM_LINK (wrapped_item));
+    }
+
+  return g_object_new (ADW_TYPE_BUTTON_ROW,
+                       "title", _("Add Link"),
+                       "start-icon-name", "list-add-symbolic",
+                       "action-name", "custom-link.add",
+                       NULL);
+}
+
 static void
 ptyxis_preferences_window_notify_default_profile_cb (PtyxisPreferencesWindow *self,
                                                      GParamSpec              *pspec,
@@ -465,6 +492,8 @@ ptyxis_preferences_window_notify_default_profile_cb (PtyxisPreferencesWindow *se
   g_autoptr(GPropertyAction) palette_action = NULL;
   g_autoptr(GSettings) gsettings = NULL;
   g_autoptr(GSimpleActionGroup) group = NULL;
+  g_autoptr(GListModel) custom_links_list = NULL;
+  g_autoptr(PtyxisAddButtonListModel) custom_links_list_model = NULL;
 
   g_assert (PTYXIS_IS_PREFERENCES_WINDOW (self));
   g_assert (PTYXIS_IS_APPLICATION (app));
@@ -582,6 +611,15 @@ ptyxis_preferences_window_notify_default_profile_cb (PtyxisPreferencesWindow *se
                                 index_to_string,
                                 g_object_ref (self->preserve_directories),
                                 g_object_unref);
+
+  custom_links_list = ptyxis_profile_list_custom_links (profile);
+  custom_links_list_model = ptyxis_add_button_list_model_new (custom_links_list);
+
+  gtk_list_box_bind_model (self->custom_links_list_box,
+                           G_LIST_MODEL (custom_links_list_model),
+                           ptyxis_preferences_window_create_custom_link_row_cb,
+                           g_object_ref(self),
+                           g_object_unref);
 }
 
 static gboolean
@@ -689,6 +727,27 @@ create_palette_preview (gpointer item,
 }
 
 static void
+ptyxis_preferences_window_add_custom_link (GtkWidget  *widget,
+                                           const char *action_name,
+                                           GVariant   *param)
+{
+  PtyxisPreferencesWindow *self = (PtyxisPreferencesWindow *)widget;
+  g_autoptr(PtyxisProfile) default_profile = NULL;
+  g_autoptr(PtyxisCustomLink) custom_link = NULL;
+  PtyxisCustomLinkEditor *editor;
+
+  g_assert (PTYXIS_IS_PREFERENCES_WINDOW (self));
+
+  default_profile = ptyxis_application_dup_default_profile (PTYXIS_APPLICATION_DEFAULT);
+  custom_link = ptyxis_custom_link_new ();
+  ptyxis_profile_add_custom_link (default_profile, custom_link);
+
+  editor = ptyxis_custom_link_editor_new (default_profile, custom_link);
+  adw_preferences_window_push_subpage (ADW_PREFERENCES_WINDOW (self),
+                                       ADW_NAVIGATION_PAGE (editor));
+}
+
+static void
 ptyxis_preferences_window_constructed (GObject *object)
 {
   PtyxisPreferencesWindow *self = (PtyxisPreferencesWindow *)object;
@@ -776,11 +835,11 @@ ptyxis_preferences_window_constructed (GObject *object)
 
   profiles = ptyxis_application_list_profiles (app);
   profiles_list_model = ptyxis_add_button_list_model_new (profiles);
-  
+
   gtk_list_box_bind_model (self->profiles_list_box,
-                            G_LIST_MODEL (profiles_list_model),
-                            ptyxis_preferences_window_create_profile_row_cb,
-                            NULL, NULL);
+                           G_LIST_MODEL (profiles_list_model),
+                           ptyxis_preferences_window_create_profile_row_cb,
+                           NULL, NULL);
 
   g_object_bind_property (settings, "audible-bell",
                           self->audible_bell, "active",
@@ -1033,6 +1092,7 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cursor_blink_modes);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cursor_shape);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cursor_shapes);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, custom_links_list_box);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, delete_binding);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, enable_a11y);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, erase_bindings);
@@ -1108,6 +1168,10 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
   gtk_widget_class_bind_template_callback (widget_class, ptyxis_preferences_window_show_all_cb);
   gtk_widget_class_bind_template_callback (widget_class, ptyxis_preferences_window_spin_row_show_decimal_cb);
 
+  gtk_widget_class_install_action (widget_class,
+                                   "custom-link.add",
+                                   NULL,
+                                   ptyxis_preferences_window_add_custom_link);
   gtk_widget_class_install_action (widget_class,
                                    "profile.add",
                                    NULL,

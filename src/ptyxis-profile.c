@@ -35,6 +35,7 @@ struct _PtyxisProfile
   GObject parent_instance;
   GSettings *settings;
   char *uuid;
+  GListStore *custom_links;
 };
 
 enum {
@@ -61,12 +62,120 @@ enum {
   PROP_USE_CUSTOM_COMMAND,
   PROP_USE_PROXY,
   PROP_UUID,
+  PROP_CUSTOM_LINKS,
   N_PROPS
+};
+
+enum {
+  CUSTOM_LINKS_CHANGED,
+  N_SIGNALS
 };
 
 G_DEFINE_FINAL_TYPE (PtyxisProfile, ptyxis_profile, G_TYPE_OBJECT)
 
 static GParamSpec *properties [N_PROPS];
+static guint signals[N_SIGNALS];
+
+static void
+read_custom_links_from_settings (PtyxisProfile *self)
+{
+  g_autoptr(GListModel) custom_links = NULL;
+  g_autoptr(GVariant) variant = NULL;
+  const char *pattern, *target;
+  GVariantIter iter;
+  gboolean changed = FALSE;
+
+  g_assert (PTYXIS_IS_PROFILE (self));
+
+  custom_links = ptyxis_profile_list_custom_links (self);
+  variant = g_settings_get_value (self->settings, PTYXIS_PROFILE_KEY_CUSTOM_LINKS);
+
+  if (variant == NULL)
+    {
+      g_warning ("Invalid variant type for custom-links: variant is null");
+      return;
+    }
+
+  if (!g_variant_is_of_type (variant, G_VARIANT_TYPE ("a(ss)")))
+    {
+      g_warning ("Invalid variant type for custom-links: %s",
+                g_variant_get_type_string (variant));
+      return;
+    }
+
+  /* Check if there are actual changes */
+  g_variant_iter_init (&iter, variant);
+
+  changed = g_variant_iter_n_children (&iter) != (gsize)g_list_model_get_n_items (custom_links);
+
+  if (!changed)
+    {
+      guint index = 0;
+
+      while (g_variant_iter_next (&iter, "(&s&s)", &pattern, &target))
+        {
+          g_autoptr(PtyxisCustomLink) custom_link = g_list_model_get_item (custom_links, index);
+          g_autofree char *this_pattern = ptyxis_custom_link_dup_pattern (custom_link);
+          g_autofree char *this_target = ptyxis_custom_link_dup_target (custom_link);
+
+          if (g_strcmp0 (this_pattern, pattern) != 0 ||
+              g_strcmp0 (this_target, target) != 0)
+            {
+              changed = TRUE;
+              break;
+            }
+
+          index++;
+        }
+
+      g_variant_iter_init (&iter, variant);
+    }
+
+  /* If there are changes, regenerate all custom link objects */
+  if (changed)
+    {
+      g_list_store_remove_all (self->custom_links);
+
+      while (g_variant_iter_next (&iter, "(&s&s)", &pattern, &target))
+        {
+          PtyxisCustomLink *custom_link = ptyxis_custom_link_new_with_strings (pattern, target);
+
+          g_list_store_append (self->custom_links, custom_link);
+        }
+    }
+
+  /* We emit the signal in all cases, because we might be the origin of the update
+     and already have the correct copy of custom links
+  */
+  g_debug ("Custom links have changed, emitting signal (changed = %d)", changed);
+  g_signal_emit (self, signals[CUSTOM_LINKS_CHANGED], 0);
+}
+
+static void
+write_custom_links_to_settings (PtyxisProfile *self)
+{
+  g_autoptr(GVariantBuilder) builder = NULL;
+  g_autoptr(GListModel) custom_links = NULL;
+
+  g_assert (PTYXIS_IS_PROFILE (self));
+
+  builder = g_variant_builder_new (G_VARIANT_TYPE ("a(ss)"));
+  custom_links = ptyxis_profile_list_custom_links (self);
+
+  for (guint i = 0, len = g_list_model_get_n_items (custom_links); i < len; i++)
+    {
+      g_autoptr(PtyxisCustomLink) link = g_list_model_get_item (custom_links, i);
+      g_autofree char *pattern = ptyxis_custom_link_dup_pattern (link);
+      g_autofree char *target = ptyxis_custom_link_dup_target (link);
+
+      g_variant_builder_add (builder, "(ss)", pattern, target);
+    }
+
+  g_settings_set_value (self->settings,
+                        PTYXIS_PROFILE_KEY_CUSTOM_LINKS,
+                        g_variant_new ("a(ss)", builder));
+}
+
 
 static void
 ptyxis_profile_changed_cb (PtyxisProfile *self,
@@ -113,6 +222,8 @@ ptyxis_profile_changed_cb (PtyxisProfile *self,
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_USE_CUSTOM_COMMAND]);
   else if (g_str_equal (key, PTYXIS_PROFILE_KEY_USE_PROXY))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_USE_PROXY]);
+  else if (g_str_equal (key, PTYXIS_PROFILE_KEY_CUSTOM_LINKS))
+    read_custom_links_from_settings (self);
 }
 
 static void
@@ -126,6 +237,8 @@ ptyxis_profile_constructed (GObject *object)
   if (self->uuid == NULL)
     self->uuid = g_dbus_generate_guid ();
 
+  self->custom_links = g_list_store_new (PTYXIS_TYPE_CUSTOM_LINK);
+
   path = g_strdup_printf (APP_SCHEMA_PATH"Profiles/%s/", self->uuid);
   self->settings = g_settings_new_with_path (APP_SCHEMA_PROFILE_ID, path);
 
@@ -134,6 +247,8 @@ ptyxis_profile_constructed (GObject *object)
                            G_CALLBACK (ptyxis_profile_changed_cb),
                            self,
                            G_CONNECT_SWAPPED);
+
+  read_custom_links_from_settings (self);
 }
 
 static void
@@ -142,6 +257,7 @@ ptyxis_profile_dispose (GObject *object)
   PtyxisProfile *self = (PtyxisProfile *)object;
 
   g_clear_object (&self->settings);
+  g_clear_object (&self->custom_links);
   g_clear_pointer (&self->uuid, g_free);
 
   G_OBJECT_CLASS (ptyxis_profile_parent_class)->dispose (object);
@@ -352,6 +468,10 @@ ptyxis_profile_set_property (GObject      *object,
       ptyxis_profile_set_use_proxy (self, g_value_get_boolean (value));
       break;
 
+    case PROP_CUSTOM_LINKS:
+      self->custom_links = g_value_get_object (value);
+      break;
+
     case PROP_UUID:
       self->uuid = g_value_dup_string (value);
       break;
@@ -531,7 +651,22 @@ ptyxis_profile_class_init (PtyxisProfileClass *klass)
                           G_PARAM_CONSTRUCT_ONLY |
                           G_PARAM_STATIC_STRINGS));
 
+  properties[PROP_CUSTOM_LINKS] =
+    g_param_spec_object ("custom-links", NULL, NULL,
+                         G_TYPE_LIST_STORE,
+                         (G_PARAM_READABLE |
+                          G_PARAM_STATIC_STRINGS));
+
   g_object_class_install_properties (object_class, N_PROPS, properties);
+
+  signals[CUSTOM_LINKS_CHANGED] = g_signal_new ("custom-links-changed",
+                                                G_TYPE_FROM_CLASS (klass),
+                                                G_SIGNAL_RUN_LAST,
+                                                0,
+                                                NULL, NULL,
+                                                NULL,
+                                                G_TYPE_NONE, 0);
+
 }
 
 static void
@@ -1014,4 +1149,68 @@ ptyxis_profile_set_custom_command (PtyxisProfile *self,
     custom_command = "";
 
   g_settings_set_string (self->settings, PTYXIS_PROFILE_KEY_CUSTOM_COMMAND, custom_command);
+}
+
+/**
+ * ptyxis_profile_list_custom_links:
+ * @self: a [class@Ptyxis.Profile]
+ *
+ * Returns: (transfer full):
+ */
+GListModel *
+ptyxis_profile_list_custom_links (PtyxisProfile *self)
+{
+  g_return_val_if_fail (PTYXIS_IS_PROFILE (self), NULL);
+
+  return g_object_ref (G_LIST_MODEL (self->custom_links));
+}
+
+void
+ptyxis_profile_add_custom_link (PtyxisProfile    *self,
+                                PtyxisCustomLink *custom_link)
+{
+  g_return_if_fail (PTYXIS_IS_PROFILE (self));
+  g_return_if_fail (PTYXIS_IS_CUSTOM_LINK (custom_link));
+
+  g_list_store_append (self->custom_links, custom_link);
+}
+
+void
+ptyxis_profile_undo_remove_custom_link (PtyxisProfile    *self,
+                                        PtyxisCustomLink *custom_link,
+                                        guint             index)
+{
+  g_return_if_fail (PTYXIS_IS_PROFILE (self));
+  g_return_if_fail (PTYXIS_IS_CUSTOM_LINK (custom_link));
+
+  if (index <= g_list_model_get_n_items (G_LIST_MODEL (self->custom_links)))
+    g_list_store_insert (self->custom_links, index, custom_link);
+  else
+    g_list_store_append (self->custom_links, custom_link);
+}
+
+gboolean
+ptyxis_profile_remove_custom_link (PtyxisProfile    *self,
+                                   PtyxisCustomLink *custom_link,
+                                   guint            *index)
+{
+  g_return_val_if_fail (PTYXIS_IS_PROFILE (self), FALSE);
+
+  if (!g_list_store_find (self->custom_links, custom_link, index))
+    {
+      g_warning ("Custom link %p not found in profile %s", custom_link, self->uuid);
+      return FALSE;
+    }
+
+  g_list_store_remove (self->custom_links, *index);
+
+  return TRUE;
+}
+
+void
+ptyxis_profile_save_custom_link_changes (PtyxisProfile *self)
+{
+  g_return_if_fail (PTYXIS_IS_PROFILE (self));
+
+  write_custom_links_to_settings (self);
 }

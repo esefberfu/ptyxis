@@ -617,6 +617,19 @@
         </child>
         <child>
           <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Custom Links</property>
+            <child>
+              <object class="GtkListBox" id="custom_links_list_box">
+                <style>
+                  <class name="boxed-list"/>
+                </style>
+                <property name="selection-mode">none</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
             <child>
               <object class="GtkButton">
                 <style>
@@ -968,4 +981,3 @@
     </child>
   </object>
 </interface>
-

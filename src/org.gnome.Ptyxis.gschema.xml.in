@@ -372,6 +372,12 @@
       <description>What to send to the PTY when a backspace is entered</description>
     </key>
 
+    <key name="custom-links" type="a(ss)">
+      <default>[]</default>
+      <summary>Custom Links</summary>
+      <description>A list of custom hyperlinks, each defined by a regular expression matching the text, and a replacement pattern</description>
+    </key>
+
   </schema>
 
   <schema id="@APP_SCHEMA_SHORTCUTS_ID@" path="@APP_SCHEMA_SHORTCUTS_PATH@">

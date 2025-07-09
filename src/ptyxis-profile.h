@@ -25,6 +25,7 @@
 #include <vte/vte.h>
 
 #include "ptyxis-palette.h"
+#include "ptyxis-custom-link.h"
 
 G_BEGIN_DECLS
 
@@ -48,6 +49,7 @@ G_BEGIN_DECLS
 #define PTYXIS_PROFILE_KEY_SCROLLBACK_LINES    "scrollback-lines"
 #define PTYXIS_PROFILE_KEY_USE_PROXY           "use-proxy"
 #define PTYXIS_PROFILE_KEY_USE_CUSTOM_COMMAND  "use-custom-command"
+#define PTYXIS_PROFILE_KEY_CUSTOM_LINKS        "custom-links"
 
 typedef enum _PtyxisExitAction
 {
@@ -79,70 +81,80 @@ typedef enum _PtyxisCjkAmbiguousWidth
 
 G_DECLARE_FINAL_TYPE (PtyxisProfile, ptyxis_profile, PTYXIS, PROFILE, GObject)
 
-PtyxisProfile           *ptyxis_profile_new                     (const char               *uuid);
-PtyxisProfile           *ptyxis_profile_duplicate               (PtyxisProfile            *self);
-GSettings               *ptyxis_profile_dup_settings            (PtyxisProfile            *self);
-const char              *ptyxis_profile_get_uuid                (PtyxisProfile            *self);
-char                    *ptyxis_profile_dup_default_container   (PtyxisProfile            *self);
-void                     ptyxis_profile_set_default_container   (PtyxisProfile            *self,
-                                                                 const char               *default_container);
-char                    *ptyxis_profile_dup_label               (PtyxisProfile            *self);
-void                     ptyxis_profile_set_label               (PtyxisProfile            *self,
-                                                                 const char               *label);
-gboolean                 ptyxis_profile_get_limit_scrollback    (PtyxisProfile            *self);
-void                     ptyxis_profile_set_limit_scrollback    (PtyxisProfile            *self,
-                                                                 gboolean                  limit_scrollback);
-int                      ptyxis_profile_get_scrollback_lines    (PtyxisProfile            *self);
-void                     ptyxis_profile_set_scrollback_lines    (PtyxisProfile            *self,
-                                                                 int                       scrollback_lines);
-gboolean                 ptyxis_profile_get_scroll_on_keystroke (PtyxisProfile            *self);
-void                     ptyxis_profile_set_scroll_on_keystroke (PtyxisProfile            *self,
-                                                                 gboolean                  scroll_on_keystroke);
-gboolean                 ptyxis_profile_get_scroll_on_output    (PtyxisProfile            *self);
-void                     ptyxis_profile_set_scroll_on_output    (PtyxisProfile            *self,
-                                                                 gboolean                  scroll_on_output);
-gboolean                 ptyxis_profile_get_bold_is_bright      (PtyxisProfile            *self);
-void                     ptyxis_profile_set_bold_is_bright      (PtyxisProfile            *self,
-                                                                 gboolean                  bold_is_bright);
-double                   ptyxis_profile_get_cell_height_scale   (PtyxisProfile            *self);
-void                     ptyxis_profile_set_cell_height_scale   (PtyxisProfile            *self,
-                                                                 double                    cell_height_scale);
-PtyxisExitAction         ptyxis_profile_get_exit_action         (PtyxisProfile            *self);
-void                     ptyxis_profile_set_exit_action         (PtyxisProfile            *self,
-                                                                 PtyxisExitAction          exit_action);
-PtyxisPreserveContainer  ptyxis_profile_get_preserve_container  (PtyxisProfile            *self);
-void                     ptyxis_profile_set_preserve_container  (PtyxisProfile            *self,
-                                                                 PtyxisPreserveContainer   preserve_container);
-PtyxisPreserveDirectory  ptyxis_profile_get_preserve_directory  (PtyxisProfile            *self);
-void                     ptyxis_profile_set_preserve_directory  (PtyxisProfile            *self,
-                                                                 PtyxisPreserveDirectory   preserve_directory);
-char                    *ptyxis_profile_dup_palette_id          (PtyxisProfile            *self);
-PtyxisPalette           *ptyxis_profile_dup_palette             (PtyxisProfile            *self);
-void                     ptyxis_profile_set_palette             (PtyxisProfile            *self,
-                                                                 PtyxisPalette            *palette);
-double                   ptyxis_profile_get_opacity             (PtyxisProfile            *self);
-void                     ptyxis_profile_set_opacity             (PtyxisProfile            *self,
-                                                                 double                    opacity);
-VteEraseBinding          ptyxis_profile_get_backspace_binding   (PtyxisProfile            *self);
-void                     ptyxis_profile_set_backspace_binding   (PtyxisProfile            *self,
-                                                                 VteEraseBinding           backspace_binding);
-VteEraseBinding          ptyxis_profile_get_delete_binding      (PtyxisProfile            *self);
-void                     ptyxis_profile_set_delete_binding      (PtyxisProfile            *self,
-                                                                 VteEraseBinding           delete_binding);
-PtyxisCjkAmbiguousWidth  ptyxis_profile_get_cjk_ambiguous_width (PtyxisProfile            *self);
-void                     ptyxis_profile_set_cjk_ambiguous_width (PtyxisProfile            *self,
-                                                                 PtyxisCjkAmbiguousWidth   cjk_ambiguous_width);
-gboolean                 ptyxis_profile_get_login_shell         (PtyxisProfile            *self);
-void                     ptyxis_profile_set_login_shell         (PtyxisProfile            *self,
-                                                                 gboolean                  login_shell);
-char                    *ptyxis_profile_dup_custom_command      (PtyxisProfile            *self);
-void                     ptyxis_profile_set_custom_command      (PtyxisProfile            *self,
-                                                                 const char               *custom_command);
-gboolean                 ptyxis_profile_get_use_custom_command  (PtyxisProfile            *self);
-void                     ptyxis_profile_set_use_custom_command  (PtyxisProfile            *self,
-                                                                 gboolean                  use_custom_command);
-gboolean                 ptyxis_profile_get_use_proxy           (PtyxisProfile            *self);
-void                     ptyxis_profile_set_use_proxy           (PtyxisProfile            *self,
-                                                                 gboolean                  use_proxy);
+PtyxisProfile           *ptyxis_profile_new                      (const char              *uuid);
+PtyxisProfile           *ptyxis_profile_duplicate                (PtyxisProfile           *self);
+GSettings               *ptyxis_profile_dup_settings             (PtyxisProfile           *self);
+const char              *ptyxis_profile_get_uuid                 (PtyxisProfile           *self);
+char                    *ptyxis_profile_dup_default_container    (PtyxisProfile           *self);
+void                     ptyxis_profile_set_default_container    (PtyxisProfile           *self,
+                                                                  const char              *default_container);
+char                    *ptyxis_profile_dup_label                (PtyxisProfile           *self);
+void                     ptyxis_profile_set_label                (PtyxisProfile           *self,
+                                                                  const char              *label);
+gboolean                 ptyxis_profile_get_limit_scrollback     (PtyxisProfile           *self);
+void                     ptyxis_profile_set_limit_scrollback     (PtyxisProfile           *self,
+                                                                  gboolean                 limit_scrollback);
+int                      ptyxis_profile_get_scrollback_lines     (PtyxisProfile           *self);
+void                     ptyxis_profile_set_scrollback_lines     (PtyxisProfile           *self,
+                                                                  int                      scrollback_lines);
+gboolean                 ptyxis_profile_get_scroll_on_keystroke  (PtyxisProfile           *self);
+void                     ptyxis_profile_set_scroll_on_keystroke  (PtyxisProfile           *self,
+                                                                  gboolean                 scroll_on_keystroke);
+gboolean                 ptyxis_profile_get_scroll_on_output     (PtyxisProfile           *self);
+void                     ptyxis_profile_set_scroll_on_output     (PtyxisProfile           *self,
+                                                                  gboolean                 scroll_on_output);
+gboolean                 ptyxis_profile_get_bold_is_bright       (PtyxisProfile           *self);
+void                     ptyxis_profile_set_bold_is_bright       (PtyxisProfile           *self,
+                                                                  gboolean                 bold_is_bright);
+double                   ptyxis_profile_get_cell_height_scale    (PtyxisProfile           *self);
+void                     ptyxis_profile_set_cell_height_scale    (PtyxisProfile           *self,
+                                                                  double                   cell_height_scale);
+PtyxisExitAction         ptyxis_profile_get_exit_action          (PtyxisProfile           *self);
+void                     ptyxis_profile_set_exit_action          (PtyxisProfile           *self,
+                                                                  PtyxisExitAction         exit_action);
+PtyxisPreserveContainer  ptyxis_profile_get_preserve_container   (PtyxisProfile           *self);
+void                     ptyxis_profile_set_preserve_container   (PtyxisProfile           *self,
+                                                                  PtyxisPreserveContainer  preserve_container);
+PtyxisPreserveDirectory  ptyxis_profile_get_preserve_directory   (PtyxisProfile           *self);
+void                     ptyxis_profile_set_preserve_directory   (PtyxisProfile           *self,
+                                                                  PtyxisPreserveDirectory  preserve_directory);
+char                    *ptyxis_profile_dup_palette_id           (PtyxisProfile           *self);
+PtyxisPalette           *ptyxis_profile_dup_palette              (PtyxisProfile           *self);
+void                     ptyxis_profile_set_palette              (PtyxisProfile           *self,
+                                                                  PtyxisPalette           *palette);
+double                   ptyxis_profile_get_opacity              (PtyxisProfile           *self);
+void                     ptyxis_profile_set_opacity              (PtyxisProfile           *self,
+                                                                  double                   opacity);
+VteEraseBinding          ptyxis_profile_get_backspace_binding    (PtyxisProfile           *self);
+void                     ptyxis_profile_set_backspace_binding    (PtyxisProfile           *self,
+                                                                  VteEraseBinding          backspace_binding);
+VteEraseBinding          ptyxis_profile_get_delete_binding       (PtyxisProfile           *self);
+void                     ptyxis_profile_set_delete_binding       (PtyxisProfile           *self,
+                                                                  VteEraseBinding          delete_binding);
+PtyxisCjkAmbiguousWidth  ptyxis_profile_get_cjk_ambiguous_width  (PtyxisProfile           *self);
+void                     ptyxis_profile_set_cjk_ambiguous_width  (PtyxisProfile           *self,
+                                                                  PtyxisCjkAmbiguousWidth  cjk_ambiguous_width);
+gboolean                 ptyxis_profile_get_login_shell          (PtyxisProfile           *self);
+void                     ptyxis_profile_set_login_shell          (PtyxisProfile           *self,
+                                                                  gboolean                 login_shell);
+char                    *ptyxis_profile_dup_custom_command       (PtyxisProfile           *self);
+void                     ptyxis_profile_set_custom_command       (PtyxisProfile           *self,
+                                                                  const char              *custom_command);
+gboolean                 ptyxis_profile_get_use_custom_command   (PtyxisProfile           *self);
+void                     ptyxis_profile_set_use_custom_command   (PtyxisProfile           *self,
+                                                                  gboolean                 use_custom_command);
+gboolean                 ptyxis_profile_get_use_proxy            (PtyxisProfile           *self);
+void                     ptyxis_profile_set_use_proxy            (PtyxisProfile           *self,
+                                                                  gboolean                 use_proxy);
+GListModel              *ptyxis_profile_list_custom_links        (PtyxisProfile           *self);
+void                     ptyxis_profile_add_custom_link          (PtyxisProfile           *self,
+                                                                  PtyxisCustomLink        *custom_link);
+void                     ptyxis_profile_undo_remove_custom_link  (PtyxisProfile           *self,
+                                                                  PtyxisCustomLink        *custom_link,
+                                                                  guint                    index);
+gboolean                 ptyxis_profile_remove_custom_link       (PtyxisProfile           *self,
+                                                                  PtyxisCustomLink        *custom_link,
+                                                                  guint                   *index);
+void                     ptyxis_profile_save_custom_link_changes (PtyxisProfile           *self);
 
 G_END_DECLS

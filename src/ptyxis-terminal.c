@@ -31,6 +31,7 @@
 #include <glib/gi18n.h>
 
 #include "ptyxis-application.h"
+#include "ptyxis-custom-link.h"
 #include "ptyxis-shortcuts.h"
 #include "ptyxis-tab.h"
 #include "ptyxis-terminal.h"
@@ -55,6 +56,7 @@ struct _PtyxisTerminal
   PtyxisShortcuts    *shortcuts;
   PtyxisPalette      *palette;
   char               *url;
+  GHashTable         *custom_links;
 
   GtkPopover         *popover;
   GMenu              *terminal_menu;
@@ -100,7 +102,7 @@ static const char * const url_regexes_str[] = {
   REGEX_URL_FILE,
   REGEX_EMAIL,
 };
-static VteRegex *url_regexes[G_N_ELEMENTS(url_regexes_str)];
+static VteRegex *url_regexes[G_N_ELEMENTS (url_regexes_str)];
 
 static void
 ptyxis_terminal_update_colors (PtyxisTerminal *self)
@@ -294,7 +296,19 @@ ptyxis_terminal_capture_click_pressed_cb (PtyxisTerminal  *self,
       if (hyperlink != NULL)
         handled = ptyxis_terminal_match_clicked (self, x, y, button, state, hyperlink);
       else if (match != NULL)
-        handled = ptyxis_terminal_match_clicked (self, x, y, button, state, match);
+        {
+          PtyxisCustomLink *custom_link = g_hash_table_lookup (self->custom_links, GINT_TO_POINTER (tag));
+
+          if (custom_link != NULL)
+            {
+              g_autofree gchar *subst = ptyxis_custom_link_substitute (custom_link, match);
+
+              if (subst != NULL)
+                handled = ptyxis_terminal_match_clicked (self, x, y, button, state, subst);
+            }
+          else
+            handled = ptyxis_terminal_match_clicked (self, x, y, button, state, match);
+        }
     }
 
   if (handled)
@@ -1117,6 +1131,11 @@ ptyxis_terminal_constructed (GObject *object)
                            G_CALLBACK (ptyxis_terminal_update_colors),
                            self,
                            G_CONNECT_SWAPPED);
+
+  self->custom_links = g_hash_table_new_full (g_direct_hash,
+                                              g_direct_equal,
+                                              NULL,
+                                              g_object_unref);
 }
 
 static void
@@ -1131,6 +1150,7 @@ ptyxis_terminal_dispose (GObject *object)
   g_clear_object (&self->palette);
   g_clear_object (&self->shortcuts);
   g_clear_handle_id (&self->size_dismiss_source, g_source_remove);
+  g_clear_pointer (&self->custom_links, g_hash_table_unref);
   g_clear_pointer (&self->url, g_free);
 
   G_OBJECT_CLASS (ptyxis_terminal_parent_class)->dispose (object);
@@ -1341,16 +1361,6 @@ ptyxis_terminal_init (PtyxisTerminal *self)
                            G_CONNECT_SWAPPED);
   ptyxis_terminal_shortcuts_notify_cb (self, NULL, shortcuts);
 
-  for (guint i = 0; i < G_N_ELEMENTS (url_regexes); i++)
-    {
-      int tag = vte_terminal_match_add_regex (VTE_TERMINAL (self),
-                                              url_regexes[i],
-                                              0);
-      vte_terminal_match_set_cursor_name (VTE_TERMINAL (self),
-                                          tag,
-                                          URL_MATCH_CURSOR_NAME);
-    }
-
   builder = gdk_content_formats_builder_new ();
   gdk_content_formats_builder_add_gtype (builder, G_TYPE_STRING);
   gdk_content_formats_builder_add_gtype (builder, GDK_TYPE_FILE_LIST);
@@ -1511,4 +1521,44 @@ ptyxis_terminal_reset_for_size (PtyxisTerminal *self)
   rows = height / self->cell_height;
 
   vte_terminal_set_size (VTE_TERMINAL (self), cols, rows);
+}
+
+void
+ptyxis_terminal_update_custom_links_list (PtyxisTerminal *self,
+                                          GListModel     *custom_links)
+{
+  guint n_items;
+
+  g_return_if_fail (PTYXIS_IS_TERMINAL (self));
+  g_return_if_fail (G_IS_LIST_MODEL (custom_links));
+
+  /* Clean-up previous regexes added to VTE */
+  vte_terminal_match_remove_all (VTE_TERMINAL(self));
+  g_hash_table_remove_all (self->custom_links);
+
+  n_items = g_list_model_get_n_items (custom_links);
+
+  /* First put custom links in order */
+  for (guint i = 0; i < n_items; i++)
+    {
+      g_autoptr(PtyxisCustomLink) custom_link = g_list_model_get_item (custom_links, i);
+      g_autoptr(VteRegex) regex = ptyxis_custom_link_compile (custom_link);
+      int tag;
+
+      if (regex == NULL)
+        continue;
+
+      tag = vte_terminal_match_add_regex (VTE_TERMINAL (self), regex, 0);
+      vte_terminal_match_set_cursor_name (VTE_TERMINAL (self), tag, URL_MATCH_CURSOR_NAME);
+      g_hash_table_insert (self->custom_links, GINT_TO_POINTER (tag), g_steal_pointer (&custom_link));
+    }
+
+  /* Then the predefined regexes */
+  for (guint i = 0; i < G_N_ELEMENTS (url_regexes); i++)
+    {
+      int tag;
+
+      tag = vte_terminal_match_add_regex (VTE_TERMINAL (self), url_regexes[i], 0);
+      vte_terminal_match_set_cursor_name (VTE_TERMINAL (self), tag, URL_MATCH_CURSOR_NAME);
+    }
 }

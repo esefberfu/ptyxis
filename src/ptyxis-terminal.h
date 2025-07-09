@@ -41,5 +41,7 @@ char          *ptyxis_terminal_dup_current_file_uri          (PtyxisTerminal *se
 gboolean       ptyxis_terminal_can_paste                     (PtyxisTerminal *self);
 void           ptyxis_terminal_paste                         (PtyxisTerminal *self);
 void           ptyxis_terminal_reset_for_size                (PtyxisTerminal *self);
+void           ptyxis_terminal_update_custom_links_list      (PtyxisTerminal *self,
+                                                              GListModel     *custom_links);
 
 G_END_DECLS

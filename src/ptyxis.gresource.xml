@@ -3,6 +3,8 @@
   <gresource prefix="/org/gnome/Ptyxis">
   <!-- UI files -->
     <file preprocess="xml-stripblanks">ptyxis-find-bar.ui</file>
+    <file preprocess="xml-stripblanks">ptyxis-custom-link-editor.ui</file>
+    <file preprocess="xml-stripblanks">ptyxis-custom-link-row.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-inspector.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-menu-row.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-palette-preview.ui</file>

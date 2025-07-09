@@ -27,7 +27,11 @@
 
 #include "ptyxis-agent-ipc.h"
 
+#include "ptyxis-add-button-list-item.h"
+#include "ptyxis-add-button-list-model.h"
 #include "ptyxis-application.h"
+#include "ptyxis-custom-link-editor.h"
+#include "ptyxis-custom-link-row.h"
 #include "ptyxis-profile-editor.h"
 #include "ptyxis-preferences-list-item.h"
 #include "ptyxis-util.h"
@@ -66,6 +70,7 @@ struct _PtyxisProfileEditor
   AdwComboRow       *delete_binding;
   AdwComboRow       *cjk_ambiguous_width;
   GListStore        *cjk_ambiguous_widths;
+  GtkListBox        *custom_links_list_box;
 };
 
 enum {
@@ -244,6 +249,29 @@ opacity_to_label (GBinding     *binding,
   return TRUE;
 }
 
+static GtkWidget *
+ptyxis_profile_editor_create_custom_link_row_cb (gpointer item,
+                                                 gpointer user_data)
+{
+  PtyxisAddButtonListItem *add_button_item = PTYXIS_ADD_BUTTON_LIST_ITEM (item);
+  GObject *wrapped_item;
+
+  g_assert (PTYXIS_IS_ADD_BUTTON_LIST_ITEM (add_button_item));
+
+  if ((wrapped_item = ptyxis_add_button_list_item_get_item (add_button_item)))
+    {
+      g_autoptr(PtyxisProfile) profile = ptyxis_application_dup_default_profile (PTYXIS_APPLICATION_DEFAULT);
+
+      return ptyxis_custom_link_row_new (profile, PTYXIS_CUSTOM_LINK (wrapped_item));
+    }
+
+  return g_object_new (ADW_TYPE_BUTTON_ROW,
+                       "title", _("Add Link"),
+                       "start-icon-name", "list-add-symbolic",
+                       "action-name", "custom-link.add",
+                       NULL);
+}
+
 static void
 ptyxis_profile_editor_constructed (GObject *object)
 {
@@ -252,6 +280,8 @@ ptyxis_profile_editor_constructed (GObject *object)
   g_autoptr(GSettings) gsettings = NULL;
   g_autoptr(GListModel) containers = NULL;
   g_autoptr(GtkMapListModel) mapped_containers = NULL;
+  g_autoptr(GListModel) custom_links_list = NULL;
+  g_autoptr(PtyxisAddButtonListModel) custom_links_list_model = NULL;
 
   G_OBJECT_CLASS (ptyxis_profile_editor_parent_class)->constructed (object);
 
@@ -390,7 +420,17 @@ ptyxis_profile_editor_constructed (GObject *object)
                                 index_to_string,
                                 g_object_ref (self->exit_actions),
                                 g_object_unref);
+
+  custom_links_list = ptyxis_profile_list_custom_links(self->profile);
+  custom_links_list_model = ptyxis_add_button_list_model_new (custom_links_list);
+
+  gtk_list_box_bind_model (self->custom_links_list_box,
+                           G_LIST_MODEL (custom_links_list_model),
+                           ptyxis_profile_editor_create_custom_link_row_cb,
+                           g_object_ref(self),
+                           g_object_unref);
 }
+
 
 static void
 ptyxis_profile_editor_dispose (GObject *object)
@@ -443,6 +483,30 @@ ptyxis_profile_editor_set_property (GObject      *object,
 }
 
 static void
+ptyxis_profile_editor_add_custom_link (GtkWidget  *widget,
+                                       const char *action_name,
+                                       GVariant   *param)
+{
+  PtyxisProfileEditor *self = (PtyxisProfileEditor *)widget;
+  g_autoptr(PtyxisCustomLink) custom_link = NULL;
+
+  g_assert (PTYXIS_IS_PROFILE_EDITOR (self));
+
+  custom_link = ptyxis_custom_link_new ();
+  ptyxis_profile_add_custom_link (self->profile, custom_link);
+
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS {
+    AdwPreferencesWindow *window;
+    PtyxisCustomLinkEditor *editor;
+
+    window = ADW_PREFERENCES_WINDOW (gtk_widget_get_ancestor (widget, ADW_TYPE_PREFERENCES_WINDOW));
+    editor = ptyxis_custom_link_editor_new (self->profile, custom_link);
+
+    adw_preferences_window_push_subpage (window, ADW_NAVIGATION_PAGE (editor));
+  } G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+static void
 ptyxis_profile_editor_class_init (PtyxisProfileEditorClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -471,6 +535,7 @@ ptyxis_profile_editor_class_init (PtyxisProfileEditorClass *klass)
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, cjk_ambiguous_widths);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, containers);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, custom_commmand);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, custom_links_list_box);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, delete_binding);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, erase_bindings);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, exit_action);
@@ -498,6 +563,7 @@ ptyxis_profile_editor_class_init (PtyxisProfileEditorClass *klass)
 
   gtk_widget_class_install_action (widget_class, "uuid.copy", NULL, ptyxis_profile_editor_uuid_copy);
   gtk_widget_class_install_action (widget_class, "profile.delete", NULL, ptyxis_profile_editor_profile_delete);
+  gtk_widget_class_install_action (widget_class, "custom-link.add", NULL, ptyxis_profile_editor_add_custom_link);
 }
 
 static void
