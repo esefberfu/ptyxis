@@ -318,9 +318,11 @@ security posture.
 - **Color Palettes:**
   - Built-in schemes, auto-switching with system light/dark mode.
   - Install custom `.palette` files in:
-    - Native: `~/.local/share/ptyxis/palettes/`
+    - Native: `~/.local/share/org.gnome.Ptyxis/palettes/`
     - Flatpak (Stable): `~/.var/app/app.devsuite.Ptyxis/data/ptyxis/palettes/`
     - Flatpak (Nightly): `~/.var/app/org.gnome.Ptyxis.Devel/data/ptyxis/palettes/`
+    - In Ptyxis 49, you can use the `--install-palette FILENAME` option to
+      install a palette to the correct location.
   - "Window Dressing" applies palette colors to the window theme.
 - **Keyboard Shortcuts:**
   - Most actions have configurable shortcuts via Preferences.
