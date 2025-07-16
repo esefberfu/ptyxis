@@ -26,6 +26,7 @@ src/ptyxis-profile-row.ui
 src/ptyxis-shortcut-accel-dialog.c
 src/ptyxis-shortcut-accel-dialog.ui
 src/ptyxis-shortcut-row.c
+src/ptyxis-shortcut-row.ui
 src/ptyxis-tab.c
 src/ptyxis-tab-notify.h
 src/ptyxis-terminal.c
