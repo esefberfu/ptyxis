@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-07-09 00:36+0000\n"
+"POT-Creation-Date: 2025-07-16 16:40+0000\n"
 "PO-Revision-Date: 2025-07-11 07:30+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
@@ -1174,7 +1174,7 @@ msgstr "超链接"
 msgid "My Computer"
 msgstr "我的计算机"
 
-#: src/ptyxis-palette-preview.ui:12
+#: src/ptyxis-palette-preview.ui:32
 msgid "The quick brown fox jumps over the lazy dog"
 msgstr "The quick brown fox jumps over the lazy dog"
 
@@ -1670,6 +1670,10 @@ msgstr "按 Esc 以取消或 Backspace 以禁用。"
 msgid "Set Shortcut"
 msgstr "设置快捷键"
 
+#: src/ptyxis-shortcut-row.ui:33
+msgid "disabled"
+msgstr "已禁用"
+
 #: src/ptyxis-tab.c:319
 #, c-format
 msgid "Process Exited from Signal %d"
@@ -1908,9 +1912,6 @@ msgstr "关闭其它标签页(_O)"
 #: src/ptyxis-window.ui:842
 msgid "_Close Tab"
 msgstr "关闭标签页(_C)"
-
-#~ msgid "disabled"
-#~ msgstr "已禁用"
 
 #~ msgid "Unknown Container"
 #~ msgstr "未知容器"
