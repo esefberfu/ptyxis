@@ -193,7 +193,12 @@ ptyxis_custom_link_set_pattern (PtyxisCustomLink *self,
     pattern = "";
 
   if (g_set_str (&self->pattern, pattern))
-    g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_PATTERN]);
+    {
+      self->compiled = FALSE;
+      g_clear_pointer (&self->compiled_regex, vte_regex_unref);
+
+      g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_PATTERN]);
+    }
 }
 
 VteRegex *
