@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-07-16 16:40+0000\n"
-"PO-Revision-Date: 2025-07-11 07:30+0800\n"
+"POT-Creation-Date: 2025-08-11 21:24+0000\n"
+"PO-Revision-Date: 2025-08-12 07:29+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -19,22 +19,22 @@ msgstr ""
 "X-Generator: Gtranslator 48.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:3
+#: data/org.gnome.Ptyxis.desktop.in.in:2
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:6
 msgid "@APP_NAME@"
 msgstr "@APP_NAME@"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:4
+#: data/org.gnome.Ptyxis.desktop.in.in:3
 msgid "A container-oriented terminal for GNOME"
 msgstr "一款面向容器的 GNOME 终端"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:13 src/ptyxis-preferences-window.ui:655
+#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:655
 #: src/ptyxis-tab.c:1465 src/ptyxis-util.c:318
 msgid "Terminal"
 msgstr "终端"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Ptyxis.desktop.in.in:15
+#: data/org.gnome.Ptyxis.desktop.in.in:14
 msgid ""
 "terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;"
 "podman;toolbox;distrobox;"
@@ -42,17 +42,17 @@ msgstr ""
 "terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;"
 "podman;toolbox;distrobox;终端;提示符;命令;命令行;控制台;容器;"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:24
+#: data/org.gnome.Ptyxis.desktop.in.in:23
 #: src/org.gnome.Ptyxis.gschema.xml.in:405 src/ptyxis-preferences-window.ui:720
 msgid "New Window"
 msgstr "新建窗口"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:28
+#: data/org.gnome.Ptyxis.desktop.in.in:27
 #: src/org.gnome.Ptyxis.gschema.xml.in:399 src/ptyxis-preferences-window.ui:746
 msgid "New Tab"
 msgstr "新建标签页"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:32
+#: data/org.gnome.Ptyxis.desktop.in.in:31
 #: src/org.gnome.Ptyxis.gschema.xml.in:417 src/ptyxis-preferences-window.ui:921
 msgid "Preferences"
 msgstr "首选项"
@@ -1000,13 +1000,22 @@ msgstr "编辑自定义链接"
 msgid "Custom Link"
 msgstr "自定义链接"
 
-#: src/ptyxis-custom-link-editor.ui:34
-msgid "Pattern"
-msgstr "模式"
+#: src/ptyxis-custom-link-editor.ui:30
+msgid ""
+"A clickable link in the terminal that matches text patterns and opens custom "
+"URLs. Uses regex capture groups to build the final URL (e.g., $1 becomes the "
+"first matched group)."
+msgstr ""
+"终端中匹配文本模式和打开自定义 URL 的可点击链接。使用正则表达式捕获组来构建最"
+"终 URL（比如：$1 成为首个匹配的组）。"
 
-#: src/ptyxis-custom-link-editor.ui:39
-msgid "Target"
-msgstr "目标"
+#: src/ptyxis-custom-link-editor.ui:35
+msgid "Regex Pattern"
+msgstr "正则表达式模式"
+
+#: src/ptyxis-custom-link-editor.ui:40
+msgid "Target URL"
+msgstr "目标 URL"
 
 #: src/ptyxis-custom-link-row.c:131
 #, c-format
