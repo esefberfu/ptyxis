@@ -152,10 +152,11 @@ ptyxis_window_dressing_update (PtyxisWindowDressing *self)
       g_string_append_printf (string,
                               "window.%s .window-contents banner > revealer > widget { background-color: %s; color: %s; }\n",
                               self->css_class, bell_bg, bell_fg);
+
       g_string_append_printf (string,
-                              "window.%s taboverview.window-contents tabthumbnail button { background-color: alpha(%s,.15); color: %s; }\n"
-                              "window.%s taboverview.window-contents tabthumbnail button:hover { background-color: alpha(%s,.25); }\n"
-                              "window.%s taboverview.window-contents tabthumbnail button:active { background-color: alpha(%s,.55); }\n",
+                              "window.%s taboverview.window-contents tabthumbnail .tab-close-button image { background-color: alpha(%s,.15); color: %s; }\n"
+                              "window.%s taboverview.window-contents tabthumbnail .tab-close-button:hover image { background-color: alpha(%s,.25); }\n"
+                              "window.%s taboverview.window-contents tabthumbnail .tab-close-button:active image { background-color: alpha(%s,.55); }\n",
                               self->css_class, fg, fg,
                               self->css_class, fg,
                               self->css_class, fg);
