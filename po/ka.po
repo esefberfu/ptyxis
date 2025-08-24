@@ -7,47 +7,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-07-16 16:40+0000\n"
-"PO-Revision-Date: 2025-07-20 04:57+0200\n"
+"POT-Creation-Date: 2025-08-23 23:51+0000\n"
+"PO-Revision-Date: 2025-08-24 14:02+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:3
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:6
+#: data/org.gnome.Ptyxis.desktop.in.in:2 data/org.gnome.Ptyxis.metainfo.xml.in.in:6
 msgid "@APP_NAME@"
 msgstr "@APP_NAME@"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:4
+#: data/org.gnome.Ptyxis.desktop.in.in:3
 msgid "A container-oriented terminal for GNOME"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.desktop.in.in:13 src/ptyxis-preferences-window.ui:655
-#: src/ptyxis-tab.c:1465 src/ptyxis-util.c:318
+#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:655 src/ptyxis-tab.c:1465
+#: src/ptyxis-util.c:318
 msgid "Terminal"
 msgstr "ტერმინალი"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Ptyxis.desktop.in.in:15
+#: data/org.gnome.Ptyxis.desktop.in.in:14
 msgid "terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;podman;toolbox;distrobox;"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.desktop.in.in:24
-#: src/org.gnome.Ptyxis.gschema.xml.in:405 src/ptyxis-preferences-window.ui:720
+#: data/org.gnome.Ptyxis.desktop.in.in:23 src/org.gnome.Ptyxis.gschema.xml.in:405
+#: src/ptyxis-preferences-window.ui:720
 msgid "New Window"
 msgstr "ახალი ფანჯარა"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:28
-#: src/org.gnome.Ptyxis.gschema.xml.in:399 src/ptyxis-preferences-window.ui:746
+#: data/org.gnome.Ptyxis.desktop.in.in:27 src/org.gnome.Ptyxis.gschema.xml.in:399
+#: src/ptyxis-preferences-window.ui:746
 msgid "New Tab"
 msgstr "ახალი ჩანართი"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:32
-#: src/org.gnome.Ptyxis.gschema.xml.in:417 src/ptyxis-preferences-window.ui:921
+#: data/org.gnome.Ptyxis.desktop.in.in:31 src/org.gnome.Ptyxis.gschema.xml.in:417
+#: src/ptyxis-preferences-window.ui:921
 msgid "Preferences"
 msgstr "მორგება"
 
@@ -56,9 +55,7 @@ msgid "Container-oriented terminal"
 msgstr "კონტეინერებზე ორიენტირებული ტერმინალი"
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:9
-msgid ""
-"Ptyxis is a terminal for GNOME that focuses on ease-of-use in a world of "
-"containers."
+msgid "Ptyxis is a terminal for GNOME that focuses on ease-of-use in a world of containers."
 msgstr ""
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:13
@@ -67,8 +64,7 @@ msgstr "თვისებები:"
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:15
 msgid ""
-"Remembers current container when opening a new tab with support for podman, "
-"toolbox, distrobox, and more"
+"Remembers current container when opening a new tab with support for podman, toolbox, distrobox, and more"
 msgstr ""
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:16
@@ -157,8 +153,7 @@ msgid "Built-in color palettes provide both dark and light mode variants"
 msgstr ""
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:92
-msgid ""
-"Profiles allow for overriding a number of features such as default container"
+msgid "Profiles allow for overriding a number of features such as default container"
 msgstr ""
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:97
@@ -225,9 +220,7 @@ msgid "Visual Process Leader"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:132
-msgid ""
-"Display a visual window highlight when process leader is SSH, sudo, or other "
-"specialized tooling"
+msgid "Display a visual window highlight when process leader is SSH, sudo, or other specialized tooling"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:137
@@ -268,9 +261,8 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:162
 msgid ""
-"By default, when doing word-wise selection, most punctuation breaks up word "
-"boundaries. This list of exceptions will instead be treated as part of the "
-"word."
+"By default, when doing word-wise selection, most punctuation breaks up word boundaries. This list of "
+"exceptions will instead be treated as part of the word."
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:167
@@ -317,8 +309,7 @@ msgstr ""
 msgid "Default Column Size"
 msgstr "ნაგულისხმევი სვეტის ზომა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:207
-#: src/org.gnome.Ptyxis.gschema.xml.in:214
+#: src/org.gnome.Ptyxis.gschema.xml.in:207 src/org.gnome.Ptyxis.gschema.xml.in:214
 msgid "Default window size when restore-window-size is not true."
 msgstr ""
 
@@ -339,9 +330,7 @@ msgid "Enable Accessibility"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:226
-msgid ""
-"Currently experimental feature to send accessibility information to screen "
-"readers."
+msgid "Currently experimental feature to send accessibility information to screen readers."
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:231
@@ -350,8 +339,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:232
 msgid ""
-"Do not pad around the terminal emulator widget. Setting to true may have "
-"significant performance impacts."
+"Do not pad around the terminal emulator widget. Setting to true may have significant performance impacts."
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:237
@@ -359,9 +347,7 @@ msgid "Prompt when active tab is closed"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:238
-msgid ""
-"If a tab (or window) is closed with active foreground processes, prompt the "
-"user for confirmation."
+msgid "If a tab (or window) is closed with active foreground processes, prompt the user for confirmation."
 msgstr ""
 
 #. Translators: OSC stands for "Operating System Command" and is referencing in-band escape sequences from the child process to set the title
@@ -482,8 +468,8 @@ msgstr ""
 msgid "If the directory should be preserved for new terminals"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:333 src/ptyxis-inspector.ui:102
-#: src/ptyxis-preferences-window.ui:40 src/ptyxis-profile-editor.ui:65
+#: src/org.gnome.Ptyxis.gschema.xml.in:333 src/ptyxis-inspector.ui:102 src/ptyxis-preferences-window.ui:40
+#: src/ptyxis-profile-editor.ui:65
 msgid "Palette"
 msgstr "პალიტრა"
 
@@ -504,9 +490,7 @@ msgid "Bold is Bright"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:347
-msgid ""
-"Setting bold on one of the lower 8 colors in the palette will use bright "
-"variant (upper 8 colors)"
+msgid "Setting bold on one of the lower 8 colors in the palette will use bright variant (upper 8 colors)"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:353 src/ptyxis-preferences-window.ui:175
@@ -526,13 +510,11 @@ msgstr ""
 msgid "The size to apply to ambiguous width characters"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:365
-#: src/org.gnome.Ptyxis.gschema.xml.in:371
+#: src/org.gnome.Ptyxis.gschema.xml.in:365 src/org.gnome.Ptyxis.gschema.xml.in:371
 msgid "Backspace Binding"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:366
-#: src/org.gnome.Ptyxis.gschema.xml.in:372
+#: src/org.gnome.Ptyxis.gschema.xml.in:366 src/org.gnome.Ptyxis.gschema.xml.in:372
 msgid "What to send to the PTY when a backspace is entered"
 msgstr ""
 
@@ -543,8 +525,8 @@ msgstr "მორგებული ბმულები"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:378
 msgid ""
-"A list of custom hyperlinks, each defined by a regular expression matching "
-"the text, and a replacement pattern"
+"A list of custom hyperlinks, each defined by a regular expression matching the text, and a replacement "
+"pattern"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:387 src/ptyxis-preferences-window.ui:658
@@ -583,8 +565,8 @@ msgstr ""
 msgid "The shortcut to show application preferences"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:423 src/ptyxis-preferences-window.ui:884
-#: src/ptyxis-window.c:1427 src/ptyxis-window.c:1435
+#: src/org.gnome.Ptyxis.gschema.xml.in:423 src/ptyxis-preferences-window.ui:884 src/ptyxis-window.c:1427
+#: src/ptyxis-window.c:1435
 msgid "Zoom Out"
 msgstr "დაპატარავება"
 
@@ -592,8 +574,7 @@ msgstr "დაპატარავება"
 msgid "The shortcut to zoom out"
 msgstr "მალსახმობი გასადიდებლად"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:429 src/ptyxis-preferences-window.ui:889
-#: src/ptyxis-window.c:1444
+#: src/org.gnome.Ptyxis.gschema.xml.in:429 src/ptyxis-preferences-window.ui:889 src/ptyxis-window.c:1444
 msgid "Reset Zoom"
 msgstr "გადიდების საწყისი პარამეტრები"
 
@@ -601,8 +582,8 @@ msgstr "გადიდების საწყისი პარამეტ�
 msgid "The shortcut to reset zoom"
 msgstr "მალსახმობი მასშტაბის გასანულებლად"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:435 src/ptyxis-preferences-window.ui:879
-#: src/ptyxis-window.c:1412 src/ptyxis-window.c:1420
+#: src/org.gnome.Ptyxis.gschema.xml.in:435 src/ptyxis-preferences-window.ui:879 src/ptyxis-window.c:1412
+#: src/ptyxis-window.c:1420
 msgid "Zoom In"
 msgstr "გადიდება"
 
@@ -635,8 +616,7 @@ msgid "Reset the terminal state and clear history for misbehaving clients"
 msgstr ""
 
 #. Translators: Refers to searching the terminal scrollback
-#: src/org.gnome.Ptyxis.gschema.xml.in:460 src/ptyxis-find-bar.ui:39
-#: src/ptyxis-preferences-window.ui:701
+#: src/org.gnome.Ptyxis.gschema.xml.in:460 src/ptyxis-find-bar.ui:39 src/ptyxis-preferences-window.ui:701
 msgid "Search History"
 msgstr "ძებნის ისტორია"
 
@@ -752,8 +732,8 @@ msgstr "ფანჯრის დახურვა"
 msgid "Shortcut to close the current window"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:548 src/ptyxis-preferences-window.ui:736
-#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1152 src/ptyxis-window.ui:830
+#: src/org.gnome.Ptyxis.gschema.xml.in:548 src/ptyxis-preferences-window.ui:736 src/ptyxis-terminal.ui:244
+#: src/ptyxis-window.c:1152 src/ptyxis-window.ui:830
 msgid "Set Title"
 msgstr "სათაურის მითითება"
 
@@ -985,21 +965,26 @@ msgstr ""
 msgid "Custom Link"
 msgstr "მორგებული ბმული"
 
-#: src/ptyxis-custom-link-editor.ui:34
-msgid "Pattern"
-msgstr "შაბლონი"
+#: src/ptyxis-custom-link-editor.ui:30
+msgid ""
+"A clickable link in the terminal that matches text patterns and opens custom URLs. Uses regex capture "
+"groups to build the final URL (e.g., $1 becomes the first matched group)."
+msgstr ""
 
-#: src/ptyxis-custom-link-editor.ui:39
-msgid "Target"
-msgstr "სამიზნე"
+#: src/ptyxis-custom-link-editor.ui:35
+msgid "Regex Pattern"
+msgstr "რეგგამოსის შაბლონი"
+
+#: src/ptyxis-custom-link-editor.ui:40
+msgid "Target URL"
+msgstr "სამიზნე URL"
 
 #: src/ptyxis-custom-link-row.c:131
 #, c-format
 msgid "Removed custom link “%s”"
 msgstr ""
 
-#: src/ptyxis-custom-link-row.c:133 src/ptyxis-profile-editor.c:185
-#: src/ptyxis-profile-row.c:106
+#: src/ptyxis-custom-link-row.c:133 src/ptyxis-profile-editor.c:185 src/ptyxis-profile-row.c:106
 msgid "Undo"
 msgstr "დაბრუნება"
 
@@ -1039,8 +1024,7 @@ msgstr ""
 msgid "Use _Regular Expressions"
 msgstr ""
 
-#: src/ptyxis-find-bar.ui:128 src/ptyxis-preferences-window.ui:558
-#: src/ptyxis-profile-editor.ui:288
+#: src/ptyxis-find-bar.ui:128 src/ptyxis-preferences-window.ui:558 src/ptyxis-profile-editor.ui:288
 msgid "Close"
 msgstr "დახურვა"
 
@@ -1068,8 +1052,8 @@ msgstr "სვეტები"
 #. * This is fine for now, but I'd like it to be better and actually
 #. * show the proper `tcgetpgrp()` foreground.
 #.
-#: src/ptyxis-inspector.c:177 src/ptyxis-inspector.c:197
-#: src/ptyxis-preferences-window.ui:494 src/ptyxis-profile-editor.ui:170
+#: src/ptyxis-inspector.c:177 src/ptyxis-inspector.c:197 src/ptyxis-preferences-window.ui:494
+#: src/ptyxis-profile-editor.ui:170
 msgid "Shell"
 msgstr "გარსი"
 
@@ -1109,8 +1093,7 @@ msgstr "კონტეინერი"
 msgid "Runtime"
 msgstr "გაშვების დრო"
 
-#: src/ptyxis-inspector.ui:74 src/ptyxis-inspector.ui:228
-#: src/ptyxis-profile-editor.ui:36
+#: src/ptyxis-inspector.ui:74 src/ptyxis-inspector.ui:228 src/ptyxis-profile-editor.ui:36
 msgid "Name"
 msgstr "სახელი"
 
@@ -1154,8 +1137,7 @@ msgstr "თაგუნა"
 msgid "Hyperlink"
 msgstr "ჰიპერბმული"
 
-#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:216
-#: src/ptyxis-window.c:1656
+#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:216 src/ptyxis-window.c:1656
 msgid "My Computer"
 msgstr "ჩემი კომპიუტერი"
 
@@ -1204,8 +1186,7 @@ msgid "Blinking Text"
 msgstr ""
 
 #: src/ptyxis-preferences-window.ui:202 src/ptyxis-preferences-window.ui:426
-#: src/ptyxis-preferences-window.ui:515 src/ptyxis-profile-editor.ui:216
-#: src/ptyxis-profile-editor.ui:245
+#: src/ptyxis-preferences-window.ui:515 src/ptyxis-profile-editor.ui:216 src/ptyxis-profile-editor.ui:245
 msgid "Never"
 msgstr "არასდროს"
 
@@ -1218,8 +1199,7 @@ msgid "Unfocused"
 msgstr ""
 
 #: src/ptyxis-preferences-window.ui:220 src/ptyxis-preferences-window.ui:438
-#: src/ptyxis-preferences-window.ui:527 src/ptyxis-profile-editor.ui:222
-#: src/ptyxis-profile-editor.ui:257
+#: src/ptyxis-preferences-window.ui:527 src/ptyxis-profile-editor.ui:222 src/ptyxis-profile-editor.ui:257
 msgid "Always"
 msgstr "ყოველთვის"
 
@@ -1292,8 +1272,7 @@ msgid "Allow Screen Readers"
 msgstr ""
 
 #: src/ptyxis-preferences-window.ui:390
-msgid ""
-"Permit screen readers such as Orca to read terminal content and typed text"
+msgid "Permit screen readers such as Orca to read terminal content and typed text"
 msgstr ""
 
 #: src/ptyxis-preferences-window.ui:397
@@ -1536,8 +1515,8 @@ msgstr ""
 msgid "Show this preferences window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:931 src/ptyxis-preferences-window.ui:935
-#: src/ptyxis-window.c:1630 src/ptyxis-window.c:1792
+#: src/ptyxis-preferences-window.ui:931 src/ptyxis-preferences-window.ui:935 src/ptyxis-window.c:1630
+#: src/ptyxis-window.c:1792
 msgid "Profiles"
 msgstr "პროფილები"
 
@@ -1565,8 +1544,7 @@ msgstr "TTY წაშლა"
 msgid "Untitled Profile"
 msgstr ""
 
-#: src/ptyxis-profile-editor.c:154 src/ptyxis-terminal.c:438
-#: src/ptyxis-terminal.c:470
+#: src/ptyxis-profile-editor.c:154 src/ptyxis-terminal.c:438 src/ptyxis-terminal.c:470
 msgid "Copied to clipboard"
 msgstr "დაკოპირდა გაცვლის ბაფერში"
 
