@@ -36,8 +36,8 @@ terminal emulator—it's engineered from the ground up for modern development
 workflows within the GNOME desktop, where local containers are first-class
 citizens. It simplifies and enhances your interaction with tools like Podman,
 Toolbox, and Distrobox, making them a natural extension of your terminal
-experience. Ptyxis is becoming the default terminal in Fedora Workstation and is
-under consideration for future Ubuntu releases, highlighting its robust design
+experience. Ptyxis is the default terminal in Fedora Workstation,
+Red Hat Enterprise Linux, and Ubuntu, highlighting its robust design
 and performance.
 
 ## Key Features
