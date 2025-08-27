@@ -331,7 +331,7 @@ security posture.
     Example (set 15% transparency, schema ID may vary):
 
     ```bash
-    # If using Fedora packaging
+    # If using distro packaging
     gsettings set org.gnome.Ptyxis.Profile:/org/gnome/Ptyxis/Profiles/$PTYXIS_PROFILE/ opacity .85
 
     # If using app.devsuite.Ptyxis from Flathub
