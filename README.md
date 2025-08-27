@@ -328,11 +328,17 @@ security posture.
   - Most actions have configurable shortcuts via Preferences.
 - **Transparency:**
   - Optional background transparency, adjustable via GSettings.
-    Example (set 10% transparency, schema ID may vary):
+    Example (set 15% transparency, schema ID may vary):
 
     ```bash
-    gsettings set app.devsuite.Ptyxis.Settings background-transparency 0.1
-    # For nightly: gsettings set org.gnome.Ptyxis.Devel.Settings background-transparency 0.1
+    # If using Fedora packaging
+    gsettings set org.gnome.Ptyxis.Profile:/org/gnome/Ptyxis/Profiles/$PTYXIS_PROFILE/ opacity .85
+
+    # If using app.devsuite.Ptyxis from Flathub
+    flatpak run --command=gsettings app.devsuite.Ptyxis set org.gnome.Ptyxis.Profile:/org/gnome/Ptyxis/Profiles/$PTYXIS_PROFILE/ opacity .85
+
+    # If using org.gnome.Ptyxis.Devel Nightly Flatpak
+    flatpak run --command=gsettings org.gnome.Ptyxis.Devel set org.gnome.Ptyxis.Devel.Profile:/org/gnome/Ptyxis/Devel/Profiles/$PTYXIS_PROFILE/ opacity .85
     ```
 
 - **User Profiles:**
