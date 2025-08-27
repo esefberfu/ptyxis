@@ -345,7 +345,7 @@ security posture.
 
 Ptyxis UI and `ptyxis-agent` communicate via D-Bus messages over a `socketpair()`.
 The agent handles PTY creation and container interaction. It's designed for
-portability (e.g., GLIBC symbol versioning for x86_64, targeting GLIBC 2.17)
+portability (e.g., GLIBC symbol versioning for `x86_64`, targeting GLIBC 2.17)
 to run on older host systems.
 
 When Ptyxis UI is a Flatpak, it uses permissions like `org.freedesktop.Flatpak`
