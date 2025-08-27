@@ -1,3 +1,12 @@
+# Ptyxis 49.rc
+
+ * Fix some incorrect README information
+ * Fix theming to track changes in libadwaita
+ * Use new AdwShortcutLabel in preferences UI
+ * Add palette titles to preview
+ * Improve custom URL regex wording
+ * Translation updates
+
 # Ptyxis 49.alpha
 
  * New searchable menu for containers and profiles (via Alt+comma)
