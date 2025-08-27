@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis gnome-47\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-08-25 09:13+0000\n"
-"PO-Revision-Date: 2025-08-26 16:43+0700\n"
+"POT-Creation-Date: 2025-08-26 09:47+0000\n"
+"PO-Revision-Date: 2025-08-27 19:39+0700\n"
 "Last-Translator: Atirut Wattanamongkol <atirut.wattanamongkol@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -64,8 +64,7 @@ msgid "Features:"
 msgstr ""
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:15
-msgid ""
-"Remembers current container when opening a new tab with support for podman, toolbox, distrobox, and more"
+msgid "Remembers current container when opening a new tab with support for podman, toolbox, distrobox, and more"
 msgstr ""
 
 #: data/org.gnome.Ptyxis.metainfo.xml.in.in:16
@@ -180,19 +179,19 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:101
 msgid "Default Profile UUID"
-msgstr ""
+msgstr "UUID ของโปรไฟล์ปัจจุบัน"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:102
 msgid "The UUID of the default profile"
-msgstr ""
+msgstr "UUID สำหรับโปรไฟล์ปัจจุบัน"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:107
 msgid "UUIDs of all Profiles"
-msgstr ""
+msgstr "UUID ของทุกโปรไฟล์"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:108
 msgid "A list of UUID for every profile"
-msgstr ""
+msgstr "รายการ UUID สำหรับทุกโปรไฟล์"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:113 src/ptyxis-preferences-window.ui:308
 msgid "New Tab Position"
@@ -200,7 +199,7 @@ msgstr "ตำแหน่งแท็บใหม่"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:114
 msgid "Where to place new tabs"
-msgstr ""
+msgstr "ตำแหน่งที่จะให้วางแท็บใหม่"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:119 src/ptyxis-preferences-window.ui:400
 msgid "Audible Bell"
@@ -208,19 +207,19 @@ msgstr "สัญญาณเตือนแบบเสียง"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:120
 msgid "If an audible bell should be used"
-msgstr ""
+msgstr "กำหนดว่าจะใช้สัญญาณเตือนแบบเสียงหรือไม่"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:125
 msgid "Visible Bell"
-msgstr ""
+msgstr "สัญญาณเตือนแบบภาพ"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:126
 msgid "If a visual bell should be used"
-msgstr ""
+msgstr "กำหนดว่าจะใช้สัญญาณเตือนแบบภาพหรือไม่"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:131
 msgid "Visual Process Leader"
-msgstr ""
+msgstr "ตัวนำโปรเซสแบบเห็นภาพ"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:132
 msgid "Display a visual window highlight when process leader is SSH, sudo, or other specialized tooling"
@@ -228,7 +227,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:137
 msgid "Use System Font"
-msgstr ""
+msgstr "ใช้แบบอักษรระบบ"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:138
 msgid "If the default system monospace font should be used"
@@ -236,7 +235,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:143
 msgid "Font Name"
-msgstr ""
+msgstr "ชื่อแบบอักษร"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:144
 msgid "The font description to use if use-system-font is set to False"
@@ -252,7 +251,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:155
 msgid "Cursor Blink Mode"
-msgstr ""
+msgstr "โหมดการกะพริบเคอร์เซอร์"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:156
 msgid "The default blink mode cursor"
@@ -270,7 +269,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:167
 msgid "Scrollbar Policy"
-msgstr ""
+msgstr "กฎสำหรับแถบเลื่อน"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:168
 msgid "If scrollbars should be displayed"
@@ -278,7 +277,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:177
 msgid "Text Blink Mode"
-msgstr ""
+msgstr "โหมดการกะพริบข้อความ"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:178
 msgid "When text blinking is allowed"
@@ -286,7 +285,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:183
 msgid "Interface Style"
-msgstr ""
+msgstr "รูปแบบส่วนติดต่อ"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:184
 msgid "If light or dark interface style should be used"
@@ -310,7 +309,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:206
 msgid "Default Column Size"
-msgstr ""
+msgstr "ขนาดคอลัมน์เริ่มต้น"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:207 src/org.gnome.Ptyxis.gschema.xml.in:214
 msgid "Default window size when restore-window-size is not true."
@@ -318,11 +317,11 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:213
 msgid "Default Row Size"
-msgstr ""
+msgstr "ขนาดแถวเริ่มต้น"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:219
 msgid "Toast on Copy Clipboard"
-msgstr ""
+msgstr "แสดงโทสต์เมื่อคัดลอกลงคลิปบอร์ด"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:220
 msgid "Show the user when text has copied to the clipboard."
@@ -330,7 +329,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:225
 msgid "Enable Accessibility"
-msgstr ""
+msgstr "เปิดใช้สิ่งอำนวยความสะดวก"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:226
 msgid "Currently experimental feature to send accessibility information to screen readers."
@@ -378,8 +377,7 @@ msgstr ""
 msgid "Use a login shell"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:266 src/ptyxis-preferences-window.ui:468
-#: src/ptyxis-profile-editor.ui:319
+#: src/org.gnome.Ptyxis.gschema.xml.in:266 src/ptyxis-preferences-window.ui:468 src/ptyxis-profile-editor.ui:319
 msgid "Limit Scrollback"
 msgstr "จำกัดการเลื่อนกลับ"
 
@@ -387,17 +385,15 @@ msgstr "จำกัดการเลื่อนกลับ"
 msgid "Limit the number of lines to keep for scrollback"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:273 src/ptyxis-preferences-window.ui:477
-#: src/ptyxis-profile-editor.ui:328
+#: src/org.gnome.Ptyxis.gschema.xml.in:273 src/ptyxis-preferences-window.ui:477 src/ptyxis-profile-editor.ui:328
 msgid "Scrollback Lines"
-msgstr "บรรัดการเลื่อนกลับ"
+msgstr "บรรทัดการเลื่อนกลับ"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:274
 msgid "The number of lines to keep in the scrollback, zero for no scrollback"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:458
-#: src/ptyxis-profile-editor.ui:309
+#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:458 src/ptyxis-profile-editor.ui:309
 msgid "Scroll on Output"
 msgstr "เลื่อนเมื่อมีเอาต์พุต"
 
@@ -405,8 +401,7 @@ msgstr "เลื่อนเมื่อมีเอาต์พุต"
 msgid "Scroll to the bottom upon new output"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:452
-#: src/ptyxis-profile-editor.ui:303
+#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:452 src/ptyxis-profile-editor.ui:303
 msgid "Scroll on Keystroke"
 msgstr "เลื่อนเมื่อกดแป้นพิมพ์"
 
@@ -424,7 +419,7 @@ msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:297
 msgid "Use Proxy"
-msgstr ""
+msgstr "ใช้พร็อกซี"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:298
 msgid "Apply proxy settings from the host in the container"
@@ -454,8 +449,7 @@ msgstr "รักษาคอนเทนเนอร์"
 msgid "Preserve the active container when creating new tabs and windows"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-preferences-window.ui:537
-#: src/ptyxis-profile-editor.ui:267
+#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-preferences-window.ui:537 src/ptyxis-profile-editor.ui:267
 msgid "Exit Action"
 msgstr "การกระทำเมื่อออก"
 
@@ -496,8 +490,7 @@ msgstr ""
 msgid "Setting bold on one of the lower 8 colors in the palette will use bright variant (upper 8 colors)"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:353 src/ptyxis-preferences-window.ui:175
-#: src/ptyxis-profile-editor.ui:143
+#: src/org.gnome.Ptyxis.gschema.xml.in:353 src/ptyxis-preferences-window.ui:175 src/ptyxis-profile-editor.ui:143
 msgid "Line Spacing"
 msgstr "ระยะห่างบรรทัด"
 
@@ -521,15 +514,13 @@ msgstr ""
 msgid "What to send to the PTY when a backspace is entered"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:377 src/ptyxis-preferences-window.ui:620
-#: src/ptyxis-profile-editor.ui:395
+#: src/org.gnome.Ptyxis.gschema.xml.in:377 src/ptyxis-preferences-window.ui:620 src/ptyxis-profile-editor.ui:395
 msgid "Custom Links"
 msgstr "ลิงก์กำหนดเอง"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:378
 msgid ""
-"A list of custom hyperlinks, each defined by a regular expression matching the text, and a replacement "
-"pattern"
+"A list of custom hyperlinks, each defined by a regular expression matching the text, and a replacement pattern"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:387 src/ptyxis-preferences-window.ui:658
@@ -969,15 +960,13 @@ msgid "Edit Custom Link"
 msgstr ""
 
 #: src/ptyxis-custom-link-editor.ui:29
-#, fuzzy
-#| msgid "Custom Font"
 msgid "Custom Link"
-msgstr "แบบอักษรกำหนดเอง"
+msgstr "ลิงก์กำหนดเอง"
 
 #: src/ptyxis-custom-link-editor.ui:30
 msgid ""
-"A clickable link in the terminal that matches text patterns and opens custom URLs. Uses regex capture "
-"groups to build the final URL (e.g., $1 becomes the first matched group)."
+"A clickable link in the terminal that matches text patterns and opens custom URLs. Uses regex capture groups "
+"to build the final URL (e.g., $1 becomes the first matched group)."
 msgstr ""
 
 #: src/ptyxis-custom-link-editor.ui:35
@@ -991,11 +980,11 @@ msgstr ""
 #: src/ptyxis-custom-link-row.c:131
 #, c-format
 msgid "Removed custom link “%s”"
-msgstr ""
+msgstr "เอาลิงก์กำหนดเอง “%s” ออกแล้ว"
 
 #: src/ptyxis-custom-link-row.c:133 src/ptyxis-profile-editor.c:185 src/ptyxis-profile-row.c:106
 msgid "Undo"
-msgstr ""
+msgstr "เลิกทำ"
 
 #: src/ptyxis-custom-link-row.ui:26 src/ptyxis-profile-row.ui:33
 msgid "View More"
@@ -1010,32 +999,28 @@ msgid "_Remove"
 msgstr "_ลบ"
 
 #: src/ptyxis-find-bar.ui:69
-#, fuzzy
-#| msgid "Search…"
 msgid "Search Up"
-msgstr "ค้นหา…"
+msgstr "ค้นหาด้านบน"
 
 #: src/ptyxis-find-bar.ui:76
-#, fuzzy
-#| msgid "Search History"
 msgid "Search Down"
-msgstr "ค้นหาในประวัติ"
+msgstr "ค้นหาด้านล่าง"
 
 #: src/ptyxis-find-bar.ui:85
 msgid "Search Options"
-msgstr ""
+msgstr "ตัวเลือกการค้นหา"
 
 #: src/ptyxis-find-bar.ui:96
 msgid "Match _Case"
-msgstr ""
+msgstr "แ_ยกตัวพิมพ์ใหญ่-เล็ก"
 
 #: src/ptyxis-find-bar.ui:102
 msgid "Whole _Words"
-msgstr ""
+msgstr "_ทั้งคำ"
 
 #: src/ptyxis-find-bar.ui:108
 msgid "Use _Regular Expressions"
-msgstr ""
+msgstr "ใช้_นิพจน์ปรกติ"
 
 #: src/ptyxis-find-bar.ui:128 src/ptyxis-preferences-window.ui:558 src/ptyxis-profile-editor.ui:288
 msgid "Close"
@@ -1043,7 +1028,7 @@ msgstr "ปิด"
 
 #: src/ptyxis-find-bar.ui:129
 msgid "Close the search bar"
-msgstr ""
+msgstr "ปิดแถบค้นหา"
 
 #: src/ptyxis-inspector.c:95 src/ptyxis-inspector.c:357
 msgid "unset"
@@ -1564,7 +1549,7 @@ msgstr "คัดลอกไปยังคลิปบอร์ดแล้ว
 #: src/ptyxis-profile-editor.c:183 src/ptyxis-profile-row.c:104
 #, c-format
 msgid "Removed profile “%s”"
-msgstr ""
+msgstr "ลบโปรไฟล์ “%s” ออกแล้ว"
 
 #: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:411 src/ptyxis-tab.c:468
 msgid "Edit Profile"
@@ -1572,7 +1557,7 @@ msgstr "แก้ไขโปรไฟล์"
 
 #: src/ptyxis-profile-editor.ui:31
 msgid "Profile"
-msgstr "โปลไฟล์"
+msgstr "โปรไฟล์"
 
 #: src/ptyxis-profile-editor.ui:41
 msgid "Identifier"
@@ -1626,21 +1611,21 @@ msgstr "_ทำซ้ำ"
 #: src/ptyxis-shortcut-accel-dialog.c:455
 #, c-format
 msgid "Enter new shortcut to change <b>%s</b>."
-msgstr ""
+msgstr "ป้อนปุ่มลัดใหม่เพื่อเปลี่ยน <b>%s</b>"
 
 #. do not use underline as it prevents alt+c as an accelerator
 #: src/ptyxis-shortcut-accel-dialog.ui:42
 msgid "Cancel"
-msgstr ""
+msgstr "ยกเลิก"
 
 #. do not use underline as it prevents alt+s as an accelerator
 #: src/ptyxis-shortcut-accel-dialog.ui:49
 msgid "Set"
-msgstr ""
+msgstr "ตั้ง"
 
 #: src/ptyxis-shortcut-accel-dialog.ui:89
 msgid "Press Escape to cancel or Backspace to disable."
-msgstr ""
+msgstr "กด Escape เพื่อยกเลิก หรือกด Backspace เพื่อปิดใช้"
 
 #: src/ptyxis-shortcut-row.c:75
 msgid "Set Shortcut"
@@ -1648,7 +1633,7 @@ msgstr "ตั้งปุ่มลัด"
 
 #: src/ptyxis-shortcut-row.ui:33
 msgid "disabled"
-msgstr ""
+msgstr "ปิดใช้งาน"
 
 #: src/ptyxis-tab.c:319
 #, c-format
@@ -1694,7 +1679,7 @@ msgstr "เปิดลิงก์ไม่สำเร็จ"
 
 #: src/ptyxis-tab-notify.h:89
 msgid "Command completed"
-msgstr ""
+msgstr "คำสั่งทำงานเสร็จสมบูรณ์"
 
 #: src/ptyxis-terminal.ui:170
 msgid "Search…"
@@ -1710,15 +1695,15 @@ msgstr "_คัดลอก"
 
 #: src/ptyxis-terminal.ui:185
 msgid "Copy selection from terminal to clipboard"
-msgstr ""
+msgstr "คัดลอกส่วนที่เลือกจากเทอร์มินัลไปยังคลิปบอร์ด"
 
 #: src/ptyxis-terminal.ui:189
 msgid "Copy as _HTML"
-msgstr ""
+msgstr "คัดลอกเป็น _HTML"
 
 #: src/ptyxis-terminal.ui:190
 msgid "Copy selection from terminal to clipboard with HTML formatting"
-msgstr ""
+msgstr "คัดลอกส่วนที่เลือกจากเทอร์มินัลไปยังคลิปบอร์ดพร้อมการจัดรูปแบบ HTML"
 
 #: src/ptyxis-terminal.ui:195
 msgid "_Copy Link"
@@ -1730,7 +1715,7 @@ msgstr "_วาง"
 
 #: src/ptyxis-terminal.ui:202
 msgid "Paste from clipboard into the terminal"
-msgstr ""
+msgstr "วางจากคลิปบอร์ดลงในเทอร์มินัล"
 
 #: src/ptyxis-terminal.ui:209
 msgid "Select _All"
@@ -1738,11 +1723,11 @@ msgstr "เลือก_ทั้งหมด"
 
 #: src/ptyxis-terminal.ui:210
 msgid "Selection all text from terminal including scrollback"
-msgstr ""
+msgstr "เลือกข้อความทั้งหมดจากเทอร์มินัลรวมถึงการเลื่อนกลับด้วย"
 
 #: src/ptyxis-terminal.ui:216
 msgid "Select _None"
-msgstr ""
+msgstr "ไ_ม่เลือกเลย"
 
 #: src/ptyxis-terminal.ui:223
 msgid "Read-Only"
@@ -1821,15 +1806,15 @@ msgstr "เทอร์มินัลใหม่"
 
 #: src/ptyxis-window.ui:413
 msgid "Show Profiles and Containers"
-msgstr ""
+msgstr "แสดงโปรไฟล์และคอนเทนเนอร์"
 
 #: src/ptyxis-window.ui:433
 msgid "Filter…"
-msgstr ""
+msgstr "กรอง…"
 
 #: src/ptyxis-window.ui:595
 msgid "No Matching Results"
-msgstr ""
+msgstr "ไม่มีผลลัพธ์ที่ตรงกัน"
 
 #: src/ptyxis-window.ui:637
 msgid "Main Menu"
@@ -1857,7 +1842,7 @@ msgstr "_ปรับแต่ง"
 
 #: src/ptyxis-window.ui:788
 msgid "_Keyboard Shortcuts"
-msgstr "_ปุ่มลัดแป้นพิมพ์"
+msgstr "ปุ่_มลัดแป้นพิมพ์"
 
 #: src/ptyxis-window.ui:792
 msgid "_About"
@@ -1865,28 +1850,28 @@ msgstr "เ_กี่ยวกับ"
 
 #: src/ptyxis-window.ui:801
 msgid "Move _Left"
-msgstr ""
+msgstr "ย้ายไปทาง_ซ้าย"
 
 #: src/ptyxis-window.ui:806
 msgid "Move _Right"
-msgstr ""
+msgstr "ย้ายไปทาง_ขวา"
 
 #: src/ptyxis-window.ui:811
 msgid "Move to New _Window"
-msgstr ""
+msgstr "ย้ายไปยัง_หน้าต่างใหม่"
 
 #: src/ptyxis-window.ui:817
 msgid "_Pin Tab"
-msgstr ""
+msgstr "ปักหมุ_ดแท็บ"
 
 #: src/ptyxis-window.ui:822
 msgid "Un_pin Tab"
-msgstr ""
+msgstr "_ถอนหมุดแท็บ"
 
 #: src/ptyxis-window.ui:837
 msgid "Close _Other Tabs"
-msgstr ""
+msgstr "ปิดแท็บ_อื่น ๆ"
 
 #: src/ptyxis-window.ui:842
 msgid "_Close Tab"
-msgstr ""
+msgstr "ปิด_แท็บ"
