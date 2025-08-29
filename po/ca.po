@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
 "POT-Creation-Date: 2024-11-11 18:15+0000\n"
-"PO-Revision-Date: 2024-11-12 21:55+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2025-08-29 21:55+0100\n"
+"Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org> \n"
 "Language-Team: Catalan <Catalan>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -684,7 +684,7 @@ msgstr "Drecera per a canviar a la pestanya anterior"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:471 src/ptyxis-preferences-window.ui:770
 msgid "Move to Next Tab"
-msgstr "Vés a la pestanya següent"
+msgstr "Mou a la pestanya següent"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:472
 msgid "Shortcut to move to the next tab"
@@ -692,7 +692,7 @@ msgstr "Drecera per a canviar a la pestanya següent"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:477 src/ptyxis-preferences-window.ui:779
 msgid "Move Tab Left"
-msgstr "Vés a la pestanya de l'esquerra"
+msgstr "Mou la pestanya a l'esquerra"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:478
 msgid "Shortcut to move the current tab to the left one position"
@@ -700,7 +700,7 @@ msgstr "Drecera per a canviar a la pestanya a l'esquerra de l'actual"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:483 src/ptyxis-preferences-window.ui:785
 msgid "Move Tab Right"
-msgstr "Vés a la pestanya de la dreta"
+msgstr "Mou la pestanya a la dreta"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:484
 msgid "Shortcut to move the current tab to the right one position"
