@@ -161,3 +161,13 @@ popover.tab-menu listview header > * {
 popover.tab-menu listview row > * {
   padding: 0 12px;
 }
+
+/* Keep padding within visual bell area, not outside it */
+fullscreenbox > toolbarview > revealer.top-bar > windowhandle > box {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.visual-bell-area {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

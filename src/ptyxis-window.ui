@@ -369,6 +369,9 @@
           <object class="PtyxisFullscreenBox" id="fullscreen_box">
             <child type="top">
               <object class="GtkBox" id="visual_bell">
+                <style>
+                  <class name="visual-bell-area"/>
+                </style>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="PtyxisShrinker">
