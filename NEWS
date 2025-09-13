@@ -1,3 +1,9 @@
+# Ptyxis 49.0
+
+ * Fix padding around visual-bell when tabs are visible
+ * Increase contrast for solarized titlebar foreground
+ * Translation updates
+
 # Ptyxis 49.rc
 
  * Fix some incorrect README information
