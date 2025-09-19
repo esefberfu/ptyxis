@@ -636,7 +636,9 @@ ptyxis_application_command_line (GApplication            *app,
        * This can happen when `--new-window` is used as a keybinding to ensure
        * a new window is added whether or not there is an existing instance.
        */
-      if (window != NULL && did_restore)
+      if (window != NULL &&
+          did_restore &&
+          !g_variant_dict_contains (dict, "working-directory"))
         {
           gtk_window_present (GTK_WINDOW (window));
           return EXIT_SUCCESS;
