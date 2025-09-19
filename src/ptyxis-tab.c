@@ -253,6 +253,19 @@ ptyxis_tab_update_cell_height_scale (PtyxisTab *self)
 }
 
 static void
+ptyxis_tab_update_cell_width_scale (PtyxisTab *self)
+{
+  double cell_width_scale = 1.0;
+
+  g_assert (PTYXIS_IS_TAB (self));
+
+  if (ptyxis_profile_get_cell_width_scale (self->profile))
+    cell_width_scale = ptyxis_profile_get_cell_width_scale (self->profile);
+
+  vte_terminal_set_cell_width_scale (VTE_TERMINAL (self->terminal), cell_width_scale);
+}
+
+static void
 ptyxis_tab_update_custom_links (PtyxisTab *self)
 {
   g_autoptr(GListModel) custom_links_list = NULL;
@@ -854,6 +867,13 @@ ptyxis_tab_constructed (GObject *object)
                            self,
                            G_CONNECT_SWAPPED);
   ptyxis_tab_update_cell_height_scale (self);
+
+  g_signal_connect_object (G_OBJECT (self->profile),
+                           "notify::cell-width-scale",
+                           G_CALLBACK (ptyxis_tab_update_cell_width_scale),
+                           self,
+                           G_CONNECT_SWAPPED);
+  ptyxis_tab_update_cell_width_scale (self);
 
   g_signal_connect_object (settings,
                            "notify::word-char-exceptions",

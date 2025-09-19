@@ -43,6 +43,7 @@ enum {
   PROP_BACKSPACE_BINDING,
   PROP_BOLD_IS_BRIGHT,
   PROP_CELL_HEIGHT_SCALE,
+  PROP_CELL_WIDTH_SCALE,
   PROP_CJK_AMBIGUOUS_WIDTH,
   PROP_CUSTOM_COMMAND,
   PROP_DEFAULT_CONTAINER,
@@ -214,6 +215,8 @@ ptyxis_profile_changed_cb (PtyxisProfile *self,
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_BOLD_IS_BRIGHT]);
   else if (g_str_equal (key, PTYXIS_PROFILE_KEY_CELL_HEIGHT_SCALE))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_CELL_HEIGHT_SCALE]);
+  else if (g_str_equal (key, PTYXIS_PROFILE_KEY_CELL_WIDTH_SCALE))
+    g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_CELL_WIDTH_SCALE]);
   else if (g_str_equal (key, PTYXIS_PROFILE_KEY_LOGIN_SHELL))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_LOGIN_SHELL]);
   else if (g_str_equal (key, PTYXIS_PROFILE_KEY_CUSTOM_COMMAND))
@@ -287,6 +290,10 @@ ptyxis_profile_get_property (GObject    *object,
 
     case PROP_CELL_HEIGHT_SCALE:
       g_value_set_double (value, ptyxis_profile_get_cell_height_scale (self));
+      break;
+
+    case PROP_CELL_WIDTH_SCALE:
+      g_value_set_double (value, ptyxis_profile_get_cell_width_scale (self));
       break;
 
     case PROP_CUSTOM_COMMAND:
@@ -390,6 +397,10 @@ ptyxis_profile_set_property (GObject      *object,
 
     case PROP_CELL_HEIGHT_SCALE:
       ptyxis_profile_set_cell_height_scale (self, g_value_get_double (value));
+      break;
+
+    case PROP_CELL_WIDTH_SCALE:
+      ptyxis_profile_set_cell_width_scale (self, g_value_get_double (value));
       break;
 
     case PROP_CUSTOM_COMMAND:
@@ -523,6 +534,13 @@ ptyxis_profile_class_init (PtyxisProfileClass *klass)
 
   properties[PROP_CELL_HEIGHT_SCALE] =
     g_param_spec_double ("cell-height-scale", NULL, NULL,
+                         1.0, 2.0, 1.0,
+                         (G_PARAM_READWRITE |
+                          G_PARAM_EXPLICIT_NOTIFY |
+                          G_PARAM_STATIC_STRINGS));
+
+  properties[PROP_CELL_WIDTH_SCALE] =
+    g_param_spec_double ("cell-width-scale", NULL, NULL,
                          1.0, 2.0, 1.0,
                          (G_PARAM_READWRITE |
                           G_PARAM_EXPLICIT_NOTIFY |
@@ -1071,6 +1089,25 @@ ptyxis_profile_set_cell_height_scale (PtyxisProfile *self,
   g_settings_set_double (self->settings,
                          PTYXIS_PROFILE_KEY_CELL_HEIGHT_SCALE,
                          cell_height_scale);
+}
+
+double
+ptyxis_profile_get_cell_width_scale (PtyxisProfile *self)
+{
+  g_return_val_if_fail (PTYXIS_IS_PROFILE (self), 0);
+
+  return g_settings_get_double (self->settings, PTYXIS_PROFILE_KEY_CELL_WIDTH_SCALE);
+}
+
+void
+ptyxis_profile_set_cell_width_scale (PtyxisProfile *self,
+                                     double         cell_width_scale)
+{
+  g_return_if_fail (PTYXIS_IS_PROFILE (self));
+
+  g_settings_set_double (self->settings,
+                         PTYXIS_PROFILE_KEY_CELL_WIDTH_SCALE,
+                         cell_width_scale);
 }
 
 gboolean

@@ -354,6 +354,13 @@
       <description>The terminal’s cell height scale</description>
     </key>
 
+    <key name="cell-width-scale" type="d">
+      <default>1.0</default>
+      <range min="1.0" max="2.0"/>
+      <summary>Column Spacing</summary>
+      <description>The terminal’s cell width scale</description>
+    </key>
+
     <key name="cjk-ambiguous-width" enum="@APP_SCHEMA_ID@.CjkAmbiguousWidth">
       <default>'narrow'</default>
       <summary>CJK Ambiguous Width</summary>

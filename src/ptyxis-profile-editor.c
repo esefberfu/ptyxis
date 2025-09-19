@@ -45,6 +45,7 @@ struct _PtyxisProfileEditor
   AdwEntryRow       *label;
   AdwSwitchRow      *bold_is_bright;
   AdwSpinRow        *cell_height_scale;
+  AdwSpinRow        *cell_width_scale;
   AdwComboRow       *containers;
   AdwSwitchRow      *use_custom_commmand;
   AdwSwitchRow      *login_shell;
@@ -321,6 +322,9 @@ ptyxis_profile_editor_constructed (GObject *object)
   g_object_bind_property (self->profile, "cell-height-scale",
                           self->cell_height_scale, "value",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  g_object_bind_property (self->profile, "cell-width-scale",
+                          self->cell_width_scale, "value",
+                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_object_bind_property (self->profile, "login-shell",
                           self->login_shell, "active",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
@@ -531,6 +535,7 @@ ptyxis_profile_editor_class_init (PtyxisProfileEditorClass *klass)
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, backspace_binding);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, bold_is_bright);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, cell_height_scale);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, cell_width_scale);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, cjk_ambiguous_width);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, cjk_ambiguous_widths);
   gtk_widget_class_bind_template_child (widget_class, PtyxisProfileEditor, containers);

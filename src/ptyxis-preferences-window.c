@@ -57,6 +57,7 @@ struct _PtyxisPreferencesWindow
   AdwSwitchRow         *audible_bell;
   AdwComboRow          *backspace_binding;
   AdwSpinRow           *cell_height_scale;
+  AdwSpinRow           *cell_width_scale;
   AdwComboRow          *cjk_ambiguous_width;
   GListModel           *cjk_ambiguous_widths;
   AdwComboRow          *cursor_blink_mode;
@@ -557,6 +558,9 @@ ptyxis_preferences_window_notify_default_profile_cb (PtyxisPreferencesWindow *se
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_object_bind_property (profile, "cell-height-scale",
                           self->cell_height_scale, "value",
+                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  g_object_bind_property (profile, "cell-width-scale",
+                          self->cell_width_scale, "value",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_object_bind_property (profile, "login-shell",
                           self->login_shell, "active",
@@ -1086,6 +1090,7 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, audible_bell);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, backspace_binding);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_height_scale);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_width_scale);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cjk_ambiguous_width);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cjk_ambiguous_widths);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cursor_blink_mode);
