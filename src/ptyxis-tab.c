@@ -83,6 +83,8 @@ struct _PtyxisTab
   guint                    forced_exit : 1;
   guint                    ignore_osc_title : 1;
   guint                    ignore_snapshot : 1;
+
+  guint                    inhibit_cookie;
 };
 
 enum {
@@ -276,6 +278,48 @@ ptyxis_tab_update_custom_links (PtyxisTab *self)
   ptyxis_terminal_update_custom_links_list(self->terminal, custom_links_list);
 }
 
+static void
+ptyxis_tab_update_inhibit (PtyxisTab *self)
+{
+  gboolean inhibit = FALSE;
+  GtkWidget *window;
+
+  g_assert (PTYXIS_IS_TAB (self));
+
+  /* Only inhibit if there's a foreground process running and it's not a shell */
+  if (self->has_foreground_process &&
+      self->program_name != NULL &&
+      !ptyxis_is_shell (self->program_name))
+    inhibit = TRUE;
+
+  /* Check if we need to change the inhibit state */
+  if ((inhibit && self->inhibit_cookie != 0) ||
+      (!inhibit && self->inhibit_cookie == 0))
+    return;
+
+  /* Get the window to use for the inhibit call */
+  window = gtk_widget_get_ancestor (GTK_WIDGET (self), GTK_TYPE_WINDOW);
+
+  if (inhibit)
+    {
+      /* Only inhibit if we have a valid window reference */
+      if (window != NULL)
+        {
+          self->inhibit_cookie =
+            gtk_application_inhibit (GTK_APPLICATION (PTYXIS_APPLICATION_DEFAULT),
+                                     GTK_WINDOW (window),
+                                     GTK_APPLICATION_INHIBIT_LOGOUT,
+                                     _("A foreground process is running"));
+        }
+    }
+  else
+    {
+      gtk_application_uninhibit (GTK_APPLICATION (PTYXIS_APPLICATION_DEFAULT),
+                                 self->inhibit_cookie);
+      self->inhibit_cookie = 0;
+    }
+}
+
 static gboolean
 ptyxis_tab_grab_focus (GtkWidget *widget)
 {
@@ -307,6 +351,9 @@ ptyxis_tab_wait_cb (GObject      *object,
   g_assert (self->state == PTYXIS_TAB_STATE_RUNNING);
 
   g_clear_object (&self->process);
+
+  /* Update inhibit state when process exits */
+  ptyxis_tab_update_inhibit (self);
 
   exit_code = ptyxis_application_wait_finish (app, result, &error);
 
@@ -1038,6 +1085,24 @@ ptyxis_tab_root (GtkWidget *widget)
 }
 
 static void
+ptyxis_tab_unroot (GtkWidget *widget)
+{
+  PtyxisTab *self = PTYXIS_TAB (widget);
+
+  /* Clear inhibit cookie when widget is unrooted since the window
+   * reference may no longer be valid.
+   */
+  if (self->inhibit_cookie != 0)
+    {
+      gtk_application_uninhibit (GTK_APPLICATION (PTYXIS_APPLICATION_DEFAULT),
+                                 self->inhibit_cookie);
+      self->inhibit_cookie = 0;
+    }
+
+  GTK_WIDGET_CLASS (ptyxis_tab_parent_class)->unroot (widget);
+}
+
+static void
 ptyxis_tab_commit_cb (PtyxisTab      *self,
                       const char     *str,
                       guint           length,
@@ -1071,6 +1136,13 @@ ptyxis_tab_dispose (GObject *object)
   g_clear_object (&self->process);
   g_clear_object (&self->monitor);
   g_clear_object (&self->container_at_creation);
+
+  if (self->inhibit_cookie != 0)
+    {
+      gtk_application_uninhibit (GTK_APPLICATION (PTYXIS_APPLICATION_DEFAULT),
+                                 self->inhibit_cookie);
+      self->inhibit_cookie = 0;
+    }
 
   g_clear_pointer (&self->initial_working_directory_uri, g_free);
   g_clear_pointer (&self->previous_working_directory_uri, g_free);
@@ -1220,6 +1292,7 @@ ptyxis_tab_class_init (PtyxisTabClass *klass)
   widget_class->snapshot = ptyxis_tab_snapshot;
   widget_class->size_allocate = ptyxis_tab_size_allocate;
   widget_class->root = ptyxis_tab_root;
+  widget_class->unroot = ptyxis_tab_unroot;
 
   properties[PROP_COMMAND_LINE] =
     g_param_spec_string ("command-line", NULL, NULL,
@@ -1911,6 +1984,9 @@ ptyxis_tab_poll_agent_cb (GObject      *object,
 
   if (changed)
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_TITLE]);
+
+  /* Update inhibit state when foreground process changes */
+  ptyxis_tab_update_inhibit (self);
 
   g_task_return_boolean (task, changed);
 }
