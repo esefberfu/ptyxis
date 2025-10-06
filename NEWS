@@ -1,3 +1,13 @@
+# Ptyxis 50.alpha
+
+ * Add a logout inhibitor when tabs have active programs running that
+   are not the shell process. Can be disabled by toggling a GSetting
+   named 'inhibit-logout'.
+ * Improvements to --working-directory support.
+ * cell-width-scale profile option.
+ * Fix visual bell area padding.
+ * Fix foreground in linux.palette.
+
 # Ptyxis 49.0
 
  * Fix padding around visual-bell when tabs are visible
