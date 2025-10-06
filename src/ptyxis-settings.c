@@ -60,6 +60,7 @@ enum {
   PROP_VISUAL_BELL,
   PROP_VISUAL_PROCESS_LEADER,
   PROP_WORD_CHAR_EXCEPTIONS,
+  PROP_INHIBIT_LOGOUT,
   N_PROPS
 };
 
@@ -116,6 +117,8 @@ ptyxis_settings_changed_cb (PtyxisSettings *self,
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ENABLE_A11Y]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_IGNORE_OSC_TITLE))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_IGNORE_OSC_TITLE]);
+  else if (g_str_equal (key, PTYXIS_SETTING_KEY_INHIBIT_LOGOUT))
+    g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_INHIBIT_LOGOUT]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_FONT_NAME))
     {
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_FONT_NAME]);
@@ -176,6 +179,10 @@ ptyxis_settings_get_property (GObject    *object,
 
     case PROP_IGNORE_OSC_TITLE:
       g_value_set_boolean (value, ptyxis_settings_get_ignore_osc_title (self));
+      break;
+
+    case PROP_INHIBIT_LOGOUT:
+      g_value_set_boolean (value, ptyxis_settings_get_inhibit_logout (self));
       break;
 
     case PROP_FONT_DESC:
@@ -279,6 +286,10 @@ ptyxis_settings_set_property (GObject      *object,
 
     case PROP_IGNORE_OSC_TITLE:
       ptyxis_settings_set_ignore_osc_title (self, g_value_get_boolean (value));
+      break;
+
+    case PROP_INHIBIT_LOGOUT:
+      ptyxis_settings_set_inhibit_logout (self, g_value_get_boolean (value));
       break;
 
     case PROP_FONT_NAME:
@@ -391,6 +402,13 @@ ptyxis_settings_class_init (PtyxisSettingsClass *klass)
 
   properties[PROP_IGNORE_OSC_TITLE] =
     g_param_spec_boolean (PTYXIS_SETTING_KEY_IGNORE_OSC_TITLE, NULL, NULL,
+                          FALSE,
+                          (G_PARAM_READWRITE |
+                           G_PARAM_EXPLICIT_NOTIFY |
+                           G_PARAM_STATIC_STRINGS));
+
+  properties[PROP_INHIBIT_LOGOUT] =
+    g_param_spec_boolean (PTYXIS_SETTING_KEY_INHIBIT_LOGOUT, NULL, NULL,
                           FALSE,
                           (G_PARAM_READWRITE |
                            G_PARAM_EXPLICIT_NOTIFY |
@@ -1143,4 +1161,24 @@ ptyxis_settings_get_ignore_osc_title (PtyxisSettings *self)
 
   return g_settings_get_boolean (self->settings,
                                  PTYXIS_SETTING_KEY_IGNORE_OSC_TITLE);
+}
+
+void
+ptyxis_settings_set_inhibit_logout (PtyxisSettings *self,
+                                    gboolean        inhibit_logout)
+{
+  g_return_if_fail (PTYXIS_IS_SETTINGS (self));
+
+  g_settings_set_boolean (self->settings,
+                          PTYXIS_SETTING_KEY_INHIBIT_LOGOUT,
+                          !!inhibit_logout);
+}
+
+gboolean
+ptyxis_settings_get_inhibit_logout (PtyxisSettings *self)
+{
+  g_return_val_if_fail (PTYXIS_IS_SETTINGS (self), FALSE);
+
+  return g_settings_get_boolean (self->settings,
+                                 PTYXIS_SETTING_KEY_INHIBIT_LOGOUT);
 }

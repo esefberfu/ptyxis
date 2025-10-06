@@ -281,10 +281,26 @@ ptyxis_tab_update_custom_links (PtyxisTab *self)
 static void
 ptyxis_tab_update_inhibit (PtyxisTab *self)
 {
+  PtyxisSettings *settings;
   gboolean inhibit = FALSE;
   GtkWidget *window;
 
   g_assert (PTYXIS_IS_TAB (self));
+
+  settings = ptyxis_application_get_settings (PTYXIS_APPLICATION_DEFAULT);
+
+  /* Clear if the user has disabled logout inhibition */
+  if (!ptyxis_settings_get_inhibit_logout (settings))
+    {
+      if (self->inhibit_cookie)
+        {
+          gtk_application_uninhibit (GTK_APPLICATION (PTYXIS_APPLICATION_DEFAULT),
+                                     self->inhibit_cookie);
+          self->inhibit_cookie = 0;
+        }
+
+      return;
+    }
 
   /* Only inhibit if there's a foreground process running and it's not a shell */
   if (self->has_foreground_process &&
@@ -928,6 +944,13 @@ ptyxis_tab_constructed (GObject *object)
                            self,
                            G_CONNECT_SWAPPED);
   ptyxis_tab_update_word_char_exceptions (self, NULL, settings);
+
+  g_signal_connect_object (settings,
+                           "notify::inhibit-logout",
+                           G_CALLBACK (ptyxis_tab_update_inhibit),
+                           self,
+                           G_CONNECT_SWAPPED);
+  ptyxis_tab_update_inhibit (self);
 
   g_signal_connect_object (G_OBJECT (self->profile),
                            "custom-links-changed",

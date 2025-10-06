@@ -245,6 +245,12 @@
       <description>If OSC title should be ignored in tab titles.</description>
     </key>
 
+    <key name="inhibit-logout" type="b">
+      <default>true</default>
+      <summary>Inhibit Logout</summary>
+      <description>Inhibit desktop logout when a foreground process is running in a tab.</description>
+    </key>
+
   </schema>
 
   <schema id="@APP_SCHEMA_PROFILE_ID@">
