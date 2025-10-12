@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-09-19 21:42+0000\n"
-"PO-Revision-Date: 2025-09-20 08:25+0900\n"
+"POT-Creation-Date: 2025-10-09 18:54+0000\n"
+"PO-Revision-Date: 2025-10-10 08:25+0900\n"
 "Last-Translator: Makoto Sakaguchi <ycco34vx@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.gnome.org/teams/ja/>\n"
 "Language: ja\n"
@@ -26,7 +26,7 @@ msgstr "@APP_NAME@"
 msgid "A container-oriented terminal for GNOME"
 msgstr "コンテナ志向の GNOME 向けターミナル"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:669 src/ptyxis-tab.c:1485
+#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:669 src/ptyxis-tab.c:1581
 #: src/ptyxis-util.c:318
 msgid "Terminal"
 msgstr "ターミナル"
@@ -38,17 +38,17 @@ msgstr ""
 "terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;podman;toolbox;distrobox;ターミ"
 "ナル;端末;プロンプト;シェル;コマンド;コマンドライン;コンテナー;"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:23 src/org.gnome.Ptyxis.gschema.xml.in:412
+#: data/org.gnome.Ptyxis.desktop.in.in:23 src/org.gnome.Ptyxis.gschema.xml.in:418
 #: src/ptyxis-preferences-window.ui:734
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:27 src/org.gnome.Ptyxis.gschema.xml.in:406
+#: data/org.gnome.Ptyxis.desktop.in.in:27 src/org.gnome.Ptyxis.gschema.xml.in:412
 #: src/ptyxis-preferences-window.ui:760
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:31 src/org.gnome.Ptyxis.gschema.xml.in:424
+#: data/org.gnome.Ptyxis.desktop.in.in:31 src/org.gnome.Ptyxis.gschema.xml.in:430
 #: src/ptyxis-preferences-window.ui:935
 msgid "Preferences"
 msgstr "設定"
@@ -368,482 +368,490 @@ msgstr "OSC タイトル設定を無視"
 msgid "If OSC title should be ignored in tab titles."
 msgstr "OSC によるタブタイトル変更を無視。"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:254
+#: src/org.gnome.Ptyxis.gschema.xml.in:250
+msgid "Inhibit Logout"
+msgstr "ログアウトを抑制"
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:251
+msgid "Inhibit desktop logout when a foreground process is running in a tab."
+msgstr "タブでフォアグラウンドプロセスが実行中の場合、デスクトップのログアウトを抑制する。"
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:260
 msgid "Label"
 msgstr "ラベル"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:255
+#: src/org.gnome.Ptyxis.gschema.xml.in:261
 msgid "The label for the profile"
 msgstr "プロファイルのラベル"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:260
+#: src/org.gnome.Ptyxis.gschema.xml.in:266
 msgid "Login Shell"
 msgstr "ログインシェル"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:261
+#: src/org.gnome.Ptyxis.gschema.xml.in:267
 msgid "Use a login shell"
 msgstr "ログインシェルを使用"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:266 src/ptyxis-preferences-window.ui:482
+#: src/org.gnome.Ptyxis.gschema.xml.in:272 src/ptyxis-preferences-window.ui:482
 #: src/ptyxis-profile-editor.ui:333
 msgid "Limit Scrollback"
 msgstr "スクロールバックを制限"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:267
+#: src/org.gnome.Ptyxis.gschema.xml.in:273
 msgid "Limit the number of lines to keep for scrollback"
 msgstr "スクロールバックのために保持する行数を制限"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:273 src/ptyxis-preferences-window.ui:491
+#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:491
 #: src/ptyxis-profile-editor.ui:342
 msgid "Scrollback Lines"
 msgstr "スクロールバックの行"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:274
+#: src/org.gnome.Ptyxis.gschema.xml.in:280
 msgid "The number of lines to keep in the scrollback, zero for no scrollback"
 msgstr "スクロールバックで保持する行数。0 の場合、スクロールバックはオフ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:472
+#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:472
 #: src/ptyxis-profile-editor.ui:323
 msgid "Scroll on Output"
 msgstr "出力時にスクロール"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:280
+#: src/org.gnome.Ptyxis.gschema.xml.in:286
 msgid "Scroll to the bottom upon new output"
 msgstr "新しい出力される度に下へスクロール"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:466
+#: src/org.gnome.Ptyxis.gschema.xml.in:291 src/ptyxis-preferences-window.ui:466
 #: src/ptyxis-profile-editor.ui:317
 msgid "Scroll on Keystroke"
 msgstr "キー入力時にスクロール"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:286
+#: src/org.gnome.Ptyxis.gschema.xml.in:292
 msgid "Scroll to the bottom upon user keystroke"
 msgstr "ユーザーのキー入力の度に下へスクロール"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:291 src/ptyxis-profile-editor.ui:187
+#: src/org.gnome.Ptyxis.gschema.xml.in:297 src/ptyxis-profile-editor.ui:187
 msgid "Use Custom Command"
 msgstr "カスタムコマンドを使用"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:292
+#: src/org.gnome.Ptyxis.gschema.xml.in:298
 msgid "If a custom command should be used"
 msgstr "カスタムコマンドが使用されている場合"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:297
+#: src/org.gnome.Ptyxis.gschema.xml.in:303
 msgid "Use Proxy"
 msgstr "プロキシを使用"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:298
+#: src/org.gnome.Ptyxis.gschema.xml.in:304
 msgid "Apply proxy settings from the host in the container"
 msgstr "コンテナでホストのプロキシ設定を適用"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:303 src/ptyxis-profile-editor.ui:192
+#: src/org.gnome.Ptyxis.gschema.xml.in:309 src/ptyxis-profile-editor.ui:192
 msgid "Custom Command"
 msgstr "カスタムコマンド"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:304
+#: src/org.gnome.Ptyxis.gschema.xml.in:310
 msgid "A custom command for the shell"
 msgstr "シェルのカスタムコマンド"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:309 src/ptyxis-profile-editor.ui:211
+#: src/org.gnome.Ptyxis.gschema.xml.in:315 src/ptyxis-profile-editor.ui:211
 msgid "Default Container"
 msgstr "デフォルトのコンテナ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:310
+#: src/org.gnome.Ptyxis.gschema.xml.in:316
 msgid "The default container to run the command in"
 msgstr "コマンドを実行するデフォルトのコンテナ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:315 src/ptyxis-profile-editor.ui:220
+#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-profile-editor.ui:220
 msgid "Preserve Container"
 msgstr "持続するコンテナ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:316
+#: src/org.gnome.Ptyxis.gschema.xml.in:322
 msgid "Preserve the active container when creating new tabs and windows"
 msgstr "新しいタブやウィンドウが開かれたときに、アクティブなコンテナを持続する"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-preferences-window.ui:551
+#: src/org.gnome.Ptyxis.gschema.xml.in:327 src/ptyxis-preferences-window.ui:551
 #: src/ptyxis-profile-editor.ui:281
 msgid "Exit Action"
 msgstr "終了時のアクション"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:322
+#: src/org.gnome.Ptyxis.gschema.xml.in:328
 msgid "The action to take when the shell exits"
 msgstr "シェルが終了したときに取るアクション"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:327
+#: src/org.gnome.Ptyxis.gschema.xml.in:333
 msgid "Preserve Directory"
 msgstr "記憶するディレクトリ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:328
+#: src/org.gnome.Ptyxis.gschema.xml.in:334
 msgid "If the directory should be preserved for new terminals"
 msgstr "新しいターミナルのためにディレクトリ保存する場合"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:333 src/ptyxis-inspector.ui:102 src/ptyxis-preferences-window.ui:40
+#: src/org.gnome.Ptyxis.gschema.xml.in:339 src/ptyxis-inspector.ui:102 src/ptyxis-preferences-window.ui:40
 #: src/ptyxis-profile-editor.ui:65
 msgid "Palette"
 msgstr "パレット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:334
+#: src/org.gnome.Ptyxis.gschema.xml.in:340
 msgid "The color palette to use for the profile, by name"
 msgstr "プロファイルで使用するカラーパレットの名前"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:340
+#: src/org.gnome.Ptyxis.gschema.xml.in:346
 msgid "Opacity"
 msgstr "不透明度"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:341
+#: src/org.gnome.Ptyxis.gschema.xml.in:347
 msgid "The opacity of the palette background"
 msgstr "パレットの背景の不透明度"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:346
+#: src/org.gnome.Ptyxis.gschema.xml.in:352
 msgid "Bold is Bright"
 msgstr "太字テキストを明るく"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:347
+#: src/org.gnome.Ptyxis.gschema.xml.in:353
 msgid "Setting bold on one of the lower 8 colors in the palette will use bright variant (upper 8 colors)"
 msgstr "太字のテキストをパレットの下位８色に設定した場合、パレットの明るい色（上位８色）が使用される"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:353 src/ptyxis-preferences-window.ui:175
+#: src/org.gnome.Ptyxis.gschema.xml.in:359 src/ptyxis-preferences-window.ui:175
 #: src/ptyxis-profile-editor.ui:143
 msgid "Line Spacing"
 msgstr "行間隔"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:354
+#: src/org.gnome.Ptyxis.gschema.xml.in:360
 msgid "The terminal’s cell height scale"
 msgstr "文字の高さ倍率"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:360 src/ptyxis-preferences-window.ui:189
+#: src/org.gnome.Ptyxis.gschema.xml.in:366 src/ptyxis-preferences-window.ui:189
 #: src/ptyxis-profile-editor.ui:157
 msgid "Column Spacing"
 msgstr "列間隔"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:361
+#: src/org.gnome.Ptyxis.gschema.xml.in:367
 msgid "The terminal’s cell width scale"
 msgstr "文字幅の倍率"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:366
+#: src/org.gnome.Ptyxis.gschema.xml.in:372
 msgid "CJK Ambiguous Width"
 msgstr "曖昧な CJK テキストの幅"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:367
+#: src/org.gnome.Ptyxis.gschema.xml.in:373
 msgid "The size to apply to ambiguous width characters"
 msgstr "曖昧な幅の文字に適用するサイズ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:372 src/org.gnome.Ptyxis.gschema.xml.in:378
+#: src/org.gnome.Ptyxis.gschema.xml.in:378 src/org.gnome.Ptyxis.gschema.xml.in:384
 msgid "Backspace Binding"
 msgstr "バックスペースキーの割り当て"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:373 src/org.gnome.Ptyxis.gschema.xml.in:379
+#: src/org.gnome.Ptyxis.gschema.xml.in:379 src/org.gnome.Ptyxis.gschema.xml.in:385
 msgid "What to send to the PTY when a backspace is entered"
 msgstr "バックスペースが押されたとき PTY に送信する内容"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:384 src/ptyxis-preferences-window.ui:634
+#: src/org.gnome.Ptyxis.gschema.xml.in:390 src/ptyxis-preferences-window.ui:634
 #: src/ptyxis-profile-editor.ui:409
 msgid "Custom Links"
 msgstr "カスタムリンク"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:385
+#: src/org.gnome.Ptyxis.gschema.xml.in:391
 msgid ""
 "A list of custom hyperlinks, each defined by a regular expression matching the text, and a replacement "
 "pattern"
 msgstr "カスタムハイパーリンクの一覧。各項目は、テキストにマッチする正規表現と置換パターンで定義される"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:394 src/ptyxis-preferences-window.ui:672
+#: src/org.gnome.Ptyxis.gschema.xml.in:400 src/ptyxis-preferences-window.ui:672
 msgid "Copy to Clipboard"
 msgstr "クリップボードにコピー"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:395
+#: src/org.gnome.Ptyxis.gschema.xml.in:401
 msgid "The shortcut to copy to clipboard"
 msgstr "クリップボードにコピーするショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:400 src/ptyxis-preferences-window.ui:677
+#: src/org.gnome.Ptyxis.gschema.xml.in:406 src/ptyxis-preferences-window.ui:677
 msgid "Paste from Clipboard"
 msgstr "クリップボードから貼り付け"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:401
+#: src/org.gnome.Ptyxis.gschema.xml.in:407
 msgid "The shortcut to paste from the clipboard"
 msgstr "クリップボードから貼り付けるショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:407
+#: src/org.gnome.Ptyxis.gschema.xml.in:413
 msgid "The shortcut to create a new tab in the current window"
 msgstr "現在のウィンドウで新しいタブを開くショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:413
+#: src/org.gnome.Ptyxis.gschema.xml.in:419
 msgid "The shortcut to create a new tab in a new window"
 msgstr "新しいウィンドウで新しいタブを開くショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:418
+#: src/org.gnome.Ptyxis.gschema.xml.in:424
 msgid "Tab Overview"
 msgstr "タブ一覧"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:419
+#: src/org.gnome.Ptyxis.gschema.xml.in:425
 msgid "The shortcut to show the tab overview"
 msgstr "タブ一覧を表示するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:425
+#: src/org.gnome.Ptyxis.gschema.xml.in:431
 msgid "The shortcut to show application preferences"
 msgstr "アプリケーションの設定を表示するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:430 src/ptyxis-preferences-window.ui:898 src/ptyxis-window.c:1427
-#: src/ptyxis-window.c:1435
+#: src/org.gnome.Ptyxis.gschema.xml.in:436 src/ptyxis-preferences-window.ui:898 src/ptyxis-window.c:1432
+#: src/ptyxis-window.c:1440
 msgid "Zoom Out"
 msgstr "縮小"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:431
+#: src/org.gnome.Ptyxis.gschema.xml.in:437
 msgid "The shortcut to zoom out"
 msgstr "ターミナルを縮小するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:436 src/ptyxis-preferences-window.ui:903 src/ptyxis-window.c:1444
+#: src/org.gnome.Ptyxis.gschema.xml.in:442 src/ptyxis-preferences-window.ui:903 src/ptyxis-window.c:1449
 msgid "Reset Zoom"
 msgstr "拡大縮小をリセット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:437
+#: src/org.gnome.Ptyxis.gschema.xml.in:443
 msgid "The shortcut to reset zoom"
 msgstr "拡大縮小をリセットするショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:442 src/ptyxis-preferences-window.ui:893 src/ptyxis-window.c:1412
-#: src/ptyxis-window.c:1420
+#: src/org.gnome.Ptyxis.gschema.xml.in:448 src/ptyxis-preferences-window.ui:893 src/ptyxis-window.c:1417
+#: src/ptyxis-window.c:1425
 msgid "Zoom In"
 msgstr "拡大"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:443
+#: src/org.gnome.Ptyxis.gschema.xml.in:449
 msgid "The shortcut to zoom in"
 msgstr "ターミナルを拡大するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:448 src/ptyxis-preferences-window.ui:913
+#: src/org.gnome.Ptyxis.gschema.xml.in:454 src/ptyxis-preferences-window.ui:913
 msgid "Toggle Fullscreen"
 msgstr "全画面表示の切り替え"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:449
+#: src/org.gnome.Ptyxis.gschema.xml.in:455
 msgid "The shortcut to toggle fullscreen"
 msgstr "全画面表示を行うショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:454
+#: src/org.gnome.Ptyxis.gschema.xml.in:460
 msgid "Reset Terminal"
 msgstr "ターミナルをリセット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:455
+#: src/org.gnome.Ptyxis.gschema.xml.in:461
 msgid "Reset the terminal state for misbehaving clients"
 msgstr "うまく動かないクライアントに対してターミナルの状態をリセット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:460
+#: src/org.gnome.Ptyxis.gschema.xml.in:466
 msgid "Reset Terminal and Clear History"
 msgstr "ターミナルをリセットして履歴を削除"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:461
+#: src/org.gnome.Ptyxis.gschema.xml.in:467
 msgid "Reset the terminal state and clear history for misbehaving clients"
 msgstr "うまく動かないクライアントに対してターミナルの状態をリセットして履歴を削除"
 
 #. Translators: Refers to searching the terminal scrollback
-#: src/org.gnome.Ptyxis.gschema.xml.in:467 src/ptyxis-find-bar.ui:39 src/ptyxis-preferences-window.ui:715
+#: src/org.gnome.Ptyxis.gschema.xml.in:473 src/ptyxis-find-bar.ui:39 src/ptyxis-preferences-window.ui:715
 msgid "Search History"
 msgstr "検索履歴"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:468
+#: src/org.gnome.Ptyxis.gschema.xml.in:474
 msgid "Shortcut to begin searching the terminal history"
 msgstr "ターミナルの履歴の検索を始めるショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:473 src/ptyxis-preferences-window.ui:686
+#: src/org.gnome.Ptyxis.gschema.xml.in:479 src/ptyxis-preferences-window.ui:686
 msgid "Select All"
 msgstr "すべて選択"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:474
+#: src/org.gnome.Ptyxis.gschema.xml.in:480
 msgid "Shortcut to select all the entire terminal scrollback"
 msgstr "ターミナルのスクロールバック全体を選択範囲にするショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:479
+#: src/org.gnome.Ptyxis.gschema.xml.in:485
 msgid "Select None"
 msgstr "選択を解除"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:480
+#: src/org.gnome.Ptyxis.gschema.xml.in:486
 msgid "Shortcut to clear the terminal selection"
 msgstr "ターミナルの選択範囲をクリアするスクリーンショット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:485
+#: src/org.gnome.Ptyxis.gschema.xml.in:491
 msgid "Popup Menu"
 msgstr "ポップアップメニュー"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:486
+#: src/org.gnome.Ptyxis.gschema.xml.in:492
 msgid "Shortcut to show the popup menu for the terminal"
 msgstr "ターミナルのポップアップメニューを表示するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:491
+#: src/org.gnome.Ptyxis.gschema.xml.in:497
 msgid "Primary Menu"
 msgstr "プライマリーメニュー"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:492
+#: src/org.gnome.Ptyxis.gschema.xml.in:498
 msgid "Shortcut to show the primary menu for the window"
 msgstr "プライマリーメニューをウィンドウに表示するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:497
+#: src/org.gnome.Ptyxis.gschema.xml.in:503
 msgid "Tab Menu"
 msgstr "タブメニュー"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:498
+#: src/org.gnome.Ptyxis.gschema.xml.in:504
 msgid "Shortcut to show the new tab menu"
 msgstr "新しいタブメニューを表示するショートカット"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:504 src/ptyxis-preferences-window.ui:802
+#: src/org.gnome.Ptyxis.gschema.xml.in:510 src/ptyxis-preferences-window.ui:802
 msgid "Move to Previous Tab"
 msgstr "前のタブに戻る"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:506
+#: src/org.gnome.Ptyxis.gschema.xml.in:512
 msgid "Shortcut to move to the previous tab"
 msgstr "前のタブに戻るショートカット"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:512 src/ptyxis-preferences-window.ui:807
+#: src/org.gnome.Ptyxis.gschema.xml.in:518 src/ptyxis-preferences-window.ui:807
 msgid "Move to Next Tab"
 msgstr "次のタブに進む"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:514
+#: src/org.gnome.Ptyxis.gschema.xml.in:520
 msgid "Shortcut to move to the next tab"
 msgstr "次のタブに進むショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:519 src/ptyxis-preferences-window.ui:816
+#: src/org.gnome.Ptyxis.gschema.xml.in:525 src/ptyxis-preferences-window.ui:816
 msgid "Move Tab Left"
 msgstr "左にタブを移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:520
+#: src/org.gnome.Ptyxis.gschema.xml.in:526
 msgid "Shortcut to move the current tab to the left one position"
 msgstr "現在のタブを一つ左の位置に移動ショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:525 src/ptyxis-preferences-window.ui:822
+#: src/org.gnome.Ptyxis.gschema.xml.in:531 src/ptyxis-preferences-window.ui:822
 msgid "Move Tab Right"
 msgstr "右にタブを移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:526
+#: src/org.gnome.Ptyxis.gschema.xml.in:532
 msgid "Shortcut to move the current tab to the right one position"
 msgstr "現在のタブを一つ右の位置に移動ショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:531 src/ptyxis-preferences-window.ui:828
+#: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:828
 msgid "Move Tab to New Window"
 msgstr "新しいウィンドウにタブを移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:532
+#: src/org.gnome.Ptyxis.gschema.xml.in:538
 msgid "Shortcut to move the current tab into a new window"
 msgstr "現在のタブを新しいウィンドウに移すショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:780
+#: src/org.gnome.Ptyxis.gschema.xml.in:543 src/ptyxis-preferences-window.ui:780
 msgid "Close Tab"
 msgstr "タブを閉じる"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:538
+#: src/org.gnome.Ptyxis.gschema.xml.in:544
 msgid "Shortcut to close the current tab"
 msgstr "現在のタブを閉じるショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:543 src/ptyxis-preferences-window.ui:786
+#: src/org.gnome.Ptyxis.gschema.xml.in:549 src/ptyxis-preferences-window.ui:786
 msgid "Close Other Tabs"
 msgstr "他のタブを閉じる"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:544
+#: src/org.gnome.Ptyxis.gschema.xml.in:550
 msgid "Shortcut to close all tabs in the window but the current one"
 msgstr "現在のタブ以外のすべてのタブを閉じるショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:549 src/ptyxis-preferences-window.ui:740
+#: src/org.gnome.Ptyxis.gschema.xml.in:555 src/ptyxis-preferences-window.ui:740
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:550
+#: src/org.gnome.Ptyxis.gschema.xml.in:556
 msgid "Shortcut to close the current window"
 msgstr "現在のウィンドウを閉じるショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:555 src/ptyxis-preferences-window.ui:750 src/ptyxis-terminal.ui:244
-#: src/ptyxis-window.c:1152 src/ptyxis-window.ui:833
+#: src/org.gnome.Ptyxis.gschema.xml.in:561 src/ptyxis-preferences-window.ui:750 src/ptyxis-terminal.ui:244
+#: src/ptyxis-window.c:1157 src/ptyxis-window.ui:833
 msgid "Set Title"
 msgstr "タイトルを設定"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:556
+#: src/org.gnome.Ptyxis.gschema.xml.in:562
 msgid "The shortcut to show set title"
 msgstr "タイトルを設定するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:561
+#: src/org.gnome.Ptyxis.gschema.xml.in:567
 msgid "Focus Tab 1"
 msgstr "タブ1に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:562
+#: src/org.gnome.Ptyxis.gschema.xml.in:568
 msgid "Shortcut to focus tab 1"
 msgstr "タブ1に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:567
+#: src/org.gnome.Ptyxis.gschema.xml.in:573
 msgid "Focus Tab 2"
 msgstr "タブ2に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:568
+#: src/org.gnome.Ptyxis.gschema.xml.in:574
 msgid "Shortcut to focus tab 2"
 msgstr "タブ2に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:573
+#: src/org.gnome.Ptyxis.gschema.xml.in:579
 msgid "Focus Tab 3"
 msgstr "タブ3に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:574
+#: src/org.gnome.Ptyxis.gschema.xml.in:580
 msgid "Shortcut to focus tab 3"
 msgstr "タブ3に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:579
+#: src/org.gnome.Ptyxis.gschema.xml.in:585
 msgid "Focus Tab 4"
 msgstr "タブ4に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:580
+#: src/org.gnome.Ptyxis.gschema.xml.in:586
 msgid "Shortcut to focus tab 4"
 msgstr "タブ4に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:585
+#: src/org.gnome.Ptyxis.gschema.xml.in:591
 msgid "Focus Tab 5"
 msgstr "タブ5に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:586
+#: src/org.gnome.Ptyxis.gschema.xml.in:592
 msgid "Shortcut to focus tab 5"
 msgstr "タブ5に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:591
+#: src/org.gnome.Ptyxis.gschema.xml.in:597
 msgid "Focus Tab 6"
 msgstr "タブ6に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:592
+#: src/org.gnome.Ptyxis.gschema.xml.in:598
 msgid "Shortcut to focus tab 6"
 msgstr "タブ6に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:597
+#: src/org.gnome.Ptyxis.gschema.xml.in:603
 msgid "Focus Tab 7"
 msgstr "タブ7に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:598
+#: src/org.gnome.Ptyxis.gschema.xml.in:604
 msgid "Shortcut to focus tab 7"
 msgstr "タブ7に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:603
+#: src/org.gnome.Ptyxis.gschema.xml.in:609
 msgid "Focus Tab 8"
 msgstr "タブ8に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:604
+#: src/org.gnome.Ptyxis.gschema.xml.in:610
 msgid "Shortcut to focus tab 8"
 msgstr "タブ8に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:609
+#: src/org.gnome.Ptyxis.gschema.xml.in:615
 msgid "Focus Tab 9"
 msgstr "タブ9に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:610
+#: src/org.gnome.Ptyxis.gschema.xml.in:616
 msgid "Shortcut to focus tab 9"
 msgstr "タブ9に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:615
+#: src/org.gnome.Ptyxis.gschema.xml.in:621
 msgid "Focus Tab 10"
 msgstr "タブ10に移動"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:616
+#: src/org.gnome.Ptyxis.gschema.xml.in:622
 msgid "Shortcut to focus tab 10"
 msgstr "タブ10に移動するショートカット"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:621 src/ptyxis-preferences-window.ui:792
+#: src/org.gnome.Ptyxis.gschema.xml.in:627 src/ptyxis-preferences-window.ui:792
 msgid "Undo Close Tab"
 msgstr "閉じたタブを取り消し"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:622
+#: src/org.gnome.Ptyxis.gschema.xml.in:628
 msgid "Undo closing of last tab"
 msgstr "最後に閉じたタブを取り消す"
 
@@ -1159,7 +1167,7 @@ msgstr "マウス"
 msgid "Hyperlink"
 msgstr "ハイパーリンク"
 
-#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:217 src/ptyxis-window.c:1656
+#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:217 src/ptyxis-window.c:1661
 msgid "My Computer"
 msgstr "このコンピューター"
 
@@ -1538,8 +1546,8 @@ msgstr "ターミナルウィンドウの新しいタブメニューを表示す
 msgid "Show this preferences window"
 msgstr "この設定メニューを表示する"
 
-#: src/ptyxis-preferences-window.ui:945 src/ptyxis-preferences-window.ui:949 src/ptyxis-window.c:1630
-#: src/ptyxis-window.c:1792
+#: src/ptyxis-preferences-window.ui:945 src/ptyxis-preferences-window.ui:949 src/ptyxis-window.c:1635
+#: src/ptyxis-window.c:1797
 msgid "Profiles"
 msgstr "プロファイル"
 
@@ -1576,7 +1584,7 @@ msgstr "クリップボードにコピーされました"
 msgid "Removed profile “%s”"
 msgstr "プロファイル “%s” を削除"
 
-#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:424 src/ptyxis-tab.c:481
+#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:487 src/ptyxis-tab.c:544
 msgid "Edit Profile"
 msgstr "プロファイルを編集"
 
@@ -1660,12 +1668,16 @@ msgstr "ショートカットを設定"
 msgid "disabled"
 msgstr "無効"
 
-#: src/ptyxis-tab.c:332
+#: src/ptyxis-tab.c:328
+msgid "A foreground process is running"
+msgstr "フォアグラウンドプロセスが実行中"
+
+#: src/ptyxis-tab.c:395
 #, c-format
 msgid "Process Exited from Signal %d"
 msgstr "プロセスがシグナル %d で終了しました"
 
-#: src/ptyxis-tab.c:335 src/ptyxis-tab.c:358
+#: src/ptyxis-tab.c:398 src/ptyxis-tab.c:421
 msgid "_Restart"
 msgstr "再起動 (_R)"
 
@@ -1673,32 +1685,32 @@ msgstr "再起動 (_R)"
 #. * display it again if the tab is removed from the parking lot and
 #. * restored into the window.
 #.
-#: src/ptyxis-tab.c:357
+#: src/ptyxis-tab.c:420
 msgid "Process Exited"
 msgstr "プロセス終了"
 
-#: src/ptyxis-tab.c:423
+#: src/ptyxis-tab.c:486
 msgid "Failed to launch terminal"
 msgstr "ターミナルの起動に失敗しました"
 
-#: src/ptyxis-tab.c:479
+#: src/ptyxis-tab.c:542
 #, c-format
 msgid "Cannot locate container “%s”"
 msgstr "コンテナー “%s” が見つかりません"
 
-#: src/ptyxis-tab.c:503
+#: src/ptyxis-tab.c:566
 msgid "Failed to create pseudo terminal device"
 msgstr "疑似ターミナルデバイスの作成に失敗しました"
 
-#: src/ptyxis-tab.c:1488
+#: src/ptyxis-tab.c:1584
 msgid "Exited"
 msgstr "終了しました"
 
-#: src/ptyxis-tab.c:1490
+#: src/ptyxis-tab.c:1586
 msgid "Failed"
 msgstr "失敗"
 
-#: src/ptyxis-tab.c:2072
+#: src/ptyxis-tab.c:2171
 msgid "Failed to open link"
 msgstr "リンクを開けませんでした"
 
@@ -1811,15 +1823,15 @@ msgstr "Builder ターミナル"
 msgid "Ptyxis"
 msgstr "Ptyxis"
 
-#: src/ptyxis-window.c:1423
+#: src/ptyxis-window.c:1428
 msgid "Zoom in"
 msgstr "拡大"
 
-#: src/ptyxis-window.c:1438
+#: src/ptyxis-window.c:1443
 msgid "Zoom out"
 msgstr "縮小"
 
-#: src/ptyxis-window.c:1624 src/ptyxis-window.c:1796
+#: src/ptyxis-window.c:1629 src/ptyxis-window.c:1801
 msgid "Containers"
 msgstr "コンテナ"
 
