@@ -1029,13 +1029,11 @@ ptyxis_application_startup (GApplication *application)
 }
 
 static void
-ptyxis_application_shutdown (GApplication *application)
+ptyxis_application_finalize (GObject *object)
 {
-  PtyxisApplication *self = (PtyxisApplication *)application;
+  PtyxisApplication *self = (PtyxisApplication *)object;
 
-  g_assert (PTYXIS_IS_APPLICATION (self));
-
-  G_APPLICATION_CLASS (ptyxis_application_parent_class)->shutdown (application);
+  g_hash_table_remove_all (self->exited);
 
   g_clear_object (&self->xdg_terminals_list_monitor);
   g_clear_object (&self->profiles);
@@ -1043,10 +1041,12 @@ ptyxis_application_shutdown (GApplication *application)
   g_clear_object (&self->shortcuts);
   g_clear_object (&self->settings);
   g_clear_object (&self->client);
+
   g_clear_pointer (&self->next_title_prefix, g_free);
   g_clear_pointer (&self->exited, g_hash_table_unref);
-
   g_clear_pointer (&self->system_font_name, g_free);
+
+  G_OBJECT_CLASS (ptyxis_application_parent_class)->finalize (object);
 }
 
 static void
@@ -1095,10 +1095,10 @@ ptyxis_application_class_init (PtyxisApplicationClass *klass)
   GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
 
   object_class->get_property = ptyxis_application_get_property;
+  object_class->finalize = ptyxis_application_finalize;
 
   app_class->activate = ptyxis_application_activate;
   app_class->startup = ptyxis_application_startup;
-  app_class->shutdown = ptyxis_application_shutdown;
   app_class->command_line = ptyxis_application_command_line;
   app_class->open = ptyxis_application_open;
 
