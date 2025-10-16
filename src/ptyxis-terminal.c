@@ -986,6 +986,9 @@ ptyxis_terminal_size_allocate (GtkWidget *widget,
                   vte_terminal_get_column_count (VTE_TERMINAL (self)),
                   vte_terminal_get_row_count (VTE_TERMINAL (self)));
       gtk_label_set_label (self->size_label, format);
+      gtk_accessible_announce (GTK_ACCESSIBLE (self->size_label),
+                               format,
+                               GTK_ACCESSIBLE_ANNOUNCEMENT_PRIORITY_MEDIUM);
 
       gtk_revealer_set_reveal_child (self->size_revealer, TRUE);
 
