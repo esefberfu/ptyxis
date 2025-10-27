@@ -5,10 +5,10 @@
 static void
 test_podman_json (void)
 {
-  g_autofree char *dirname = g_build_filename (g_getenv ("G_TEST_SRCDIR"), "podman", NULL);
-  g_autoptr(GDir) dir = g_dir_open (dirname, 0, NULL);
   g_autoptr(PtyxisContainerProvider) provider = NULL;
+  g_autoptr(GDir) dir = NULL;
   g_autoptr(GError) error = NULL;
+  g_autofree char *dirname = NULL;
   const char *name;
 
   dirname = g_build_filename (g_getenv ("G_TEST_SRCDIR"), "podman", NULL);
