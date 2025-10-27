@@ -1357,11 +1357,8 @@ generate_debug_info (PtyxisApplication *self)
   g_string_append (str, "** DEVELOPMENT BUILD **\n");
 #endif
 
-  if (strstr (APP_ID, "Devel") != NULL)
-    {
-      g_string_append_c (str, '\n');
-      g_string_append_printf (str, "App ID: %s\n", APP_ID);
-    }
+  g_string_append_c (str, '\n');
+  g_string_append_printf (str, "App ID: %s\n", APP_ID);
 
   if (ptyxis_get_process_kind () == PTYXIS_PROCESS_KIND_FLATPAK)
     vte_sh_path = "/var/run/host/etc/profile.d/vte.sh";
