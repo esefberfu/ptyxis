@@ -28,7 +28,7 @@
 #include "ptyxis-agent-compat.h"
 #include "ptyxis-agent-util.h"
 #include "ptyxis-podman-container.h"
-#include "ptyxis-podman-provider.h"
+#include "ptyxis-podman-provider-private.h"
 #include "ptyxis-run-context.h"
 
 #define PODMAN_RELOAD_DELAY_SECONDS 3
@@ -266,43 +266,23 @@ container_is_infra (JsonObject *object)
       json_node_get_boolean (is_infra);
 }
 
-static void
-ptyxis_podman_provider_communicate_cb (GObject      *object,
-                                       GAsyncResult *result,
-                                       gpointer      user_data)
+gboolean
+_ptyxis_podman_provider_parse_json (PtyxisPodmanProvider  *self,
+                                    const char            *json,
+                                    GError               **error)
 {
-  GSubprocess *subprocess = (GSubprocess *)object;
-  PtyxisPodmanProvider *self;
   g_autoptr(JsonParser) parser = NULL;
-  g_autoptr(GTask) task = user_data;
   g_autoptr(GPtrArray) containers = NULL;
-  g_autoptr(GError) error = NULL;
-  g_autofree char *stdout_buf = NULL;
   JsonArray *root_array;
   JsonNode *root;
 
-  g_assert (G_IS_SUBPROCESS (subprocess));
-  g_assert (G_IS_ASYNC_RESULT (result));
-  g_assert (G_IS_TASK (task));
-
-  self = g_task_get_source_object (task);
-  self->is_updating = FALSE;
-
-  if (!g_subprocess_communicate_utf8_finish (subprocess, result, &stdout_buf, NULL, &error))
-    {
-      g_debug ("Failed to run podman ps: %s", error->message);
-      g_task_return_boolean (task, FALSE);
-      return;
-    }
+  g_assert (PTYXIS_IS_PODMAN_PROVIDER (self));
+  g_assert (json != NULL);
 
   parser = json_parser_new ();
 
-  if (!json_parser_load_from_data (parser, stdout_buf, -1, &error))
-    {
-      g_critical ("Failed to load podman JSON: %s", error->message);
-      g_task_return_boolean (task, FALSE);
-      return;
-    }
+  if (!json_parser_load_from_data (parser, json, -1, error))
+    return FALSE;
 
   containers = g_ptr_array_new_with_free_func (g_object_unref);
 
@@ -311,6 +291,8 @@ ptyxis_podman_provider_communicate_cb (GObject      *object,
       (root_array = json_node_get_array (root)))
     {
       guint n_elements = json_array_get_length (root_array);
+
+      g_printerr ("Looking through %d elements\n", n_elements);
 
       for (guint i = 0; i < n_elements; i++)
         {
@@ -327,6 +309,41 @@ ptyxis_podman_provider_communicate_cb (GObject      *object,
     }
 
   ptyxis_container_provider_merge (PTYXIS_CONTAINER_PROVIDER (self), containers);
+
+  return TRUE;
+}
+
+static void
+ptyxis_podman_provider_communicate_cb (GObject      *object,
+                                       GAsyncResult *result,
+                                       gpointer      user_data)
+{
+  GSubprocess *subprocess = (GSubprocess *)object;
+  PtyxisPodmanProvider *self;
+  g_autoptr(GTask) task = user_data;
+  g_autoptr(GError) error = NULL;
+  g_autofree char *stdout_buf = NULL;
+
+  g_assert (G_IS_SUBPROCESS (subprocess));
+  g_assert (G_IS_ASYNC_RESULT (result));
+  g_assert (G_IS_TASK (task));
+
+  self = g_task_get_source_object (task);
+  self->is_updating = FALSE;
+
+  if (!g_subprocess_communicate_utf8_finish (subprocess, result, &stdout_buf, NULL, &error))
+    {
+      g_debug ("Failed to run podman ps: %s", error->message);
+      g_task_return_boolean (task, FALSE);
+      return;
+    }
+
+  if (!_ptyxis_podman_provider_parse_json (self, stdout_buf, &error))
+    {
+      g_critical ("Failed to load podman JSON: %s", error->message);
+      g_task_return_boolean (task, FALSE);
+      return;
+    }
 
   g_task_return_boolean (task, TRUE);
 }

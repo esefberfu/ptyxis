@@ -13,26 +13,29 @@ ptyxis_agent_deps = [
   dependency('json-glib-1.0'),
 ]
 
-ptyxis_agent_sources = [
-  'ptyxis-agent.c',
-  'ptyxis-agent-impl.c',
-  'ptyxis-agent-util.c',
-  'ptyxis-container-provider.c',
-  'ptyxis-distrobox-container.c',
-  'ptyxis-podman-container.c',
-  'ptyxis-podman-provider.c',
-  'ptyxis-process-impl.c',
-  'ptyxis-run-context.c',
-  'ptyxis-session-container.c',
-  'ptyxis-toolbox-container.c',
-  'ptyxis-unix-fd-map.c',
-]
-
 ptyxis_agent_ipc = gnome.gdbus_codegen('ptyxis-agent-ipc',
            sources: 'org.gnome.Ptyxis.Agent.xml',
   interface_prefix: 'org.gnome.Ptyxis.',
          namespace: 'PtyxisIpc',
 )
+
+ptyxis_agent_sources = [
+  ptyxis_agent_ipc,
+  files([
+    'ptyxis-agent-util.c',
+    'ptyxis-container-provider.c',
+    'ptyxis-distrobox-container.c',
+    'ptyxis-podman-container.c',
+    'ptyxis-podman-provider.c',
+    'ptyxis-process-impl.c',
+    'ptyxis-run-context.c',
+    'ptyxis-session-container.c',
+    'ptyxis-toolbox-container.c',
+    'ptyxis-unix-fd-map.c',
+    'ptyxis-agent.c',
+    'ptyxis-agent-impl.c',
+  ]),
+]
 
 ptyxis_agent_link_args = []
 
@@ -54,7 +57,7 @@ if libc_compat
   ptyxis_agent_link_args += ['-Wl,--wrap=__libc_start_main']
 endif
 
-executable('ptyxis-agent', ptyxis_agent_sources + ptyxis_agent_ipc,
+executable('ptyxis-agent', ptyxis_agent_sources,
          dependencies: ptyxis_agent_deps,
               install: true,
           install_dir: get_option('libexecdir'),

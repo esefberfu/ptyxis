@@ -187,6 +187,7 @@ subdir('agent')
 subdir('src')
 subdir('po')
 subdir('man')
+subdir('testsuite')
 
 configure_file(output: 'config.h', configuration: config_h)
 

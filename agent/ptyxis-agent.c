@@ -62,6 +62,7 @@ ptyxis_agent_quit (PtyxisAgent *agent,
   g_main_loop_quit (agent->main_loop);
 }
 
+G_GNUC_UNUSED
 static gboolean
 ptyxis_agent_init (PtyxisAgent  *agent,
                    int           socket_fd,
@@ -158,6 +159,7 @@ ptyxis_agent_init (PtyxisAgent  *agent,
   return TRUE;
 }
 
+G_GNUC_UNUSED
 static int
 ptyxis_agent_run (PtyxisAgent *agent)
 {
@@ -165,6 +167,7 @@ ptyxis_agent_run (PtyxisAgent *agent)
   return agent->exit_code;
 }
 
+G_GNUC_UNUSED
 static void
 ptyxis_agent_destroy (PtyxisAgent *agent)
 {
@@ -181,6 +184,7 @@ ptyxis_agent_get_default_rlimit_nofile (void)
   return default_rlimit_nofile;
 }
 
+#ifndef DISABLE_AGENT_ENTRY_POINT
 int
 main (int   argc,
       char *argv[])
@@ -216,3 +220,4 @@ main (int   argc,
 
   return ret;
 }
+#endif
