@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-10-09 18:54+0000\n"
-"PO-Revision-Date: 2025-10-10 08:25+0900\n"
+"POT-Creation-Date: 2025-10-14 19:42+0000\n"
+"PO-Revision-Date: 2025-10-15 04:59+0900\n"
 "Last-Translator: Makoto Sakaguchi <ycco34vx@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.gnome.org/teams/ja/>\n"
 "Language: ja\n"
@@ -1575,7 +1575,7 @@ msgstr "TTY 消去"
 msgid "Untitled Profile"
 msgstr "無題のプロファイル"
 
-#: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:438 src/ptyxis-terminal.c:470
+#: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:440 src/ptyxis-terminal.c:472
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーされました"
 
@@ -1717,6 +1717,10 @@ msgstr "リンクを開けませんでした"
 #: src/ptyxis-tab-notify.h:89
 msgid "Command completed"
 msgstr "コマンドが完了しました"
+
+#: src/ptyxis-terminal.c:563
+msgid "Document Portal"
+msgstr "ドキュメントポータル"
 
 #: src/ptyxis-terminal.ui:170
 msgid "Search…"
