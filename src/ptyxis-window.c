@@ -1529,8 +1529,6 @@ ptyxis_window_constructed (GObject *object)
   PtyxisWindow *self = (PtyxisWindow *)object;
   g_autoptr(GListModel) profiles = NULL;
   g_autoptr(GListModel) containers = NULL;
-  g_autoptr(GMenuModel) profile_menu = NULL;
-  g_autoptr(GMenuModel) container_menu = NULL;
   g_autoptr(GMenu) menu = NULL;
   GtkSettings *gtk_settings;
 
