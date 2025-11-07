@@ -36,6 +36,7 @@
 #include "ptyxis-tab-private.h"
 #include "ptyxis-theme-selector.h"
 #include "ptyxis-title-dialog.h"
+#include "ptyxis-profile-dialog.h"
 #include "ptyxis-util.h"
 #include "ptyxis-window.h"
 #include "ptyxis-window-dressing.h"
@@ -498,6 +499,18 @@ ptyxis_window_notify_selected_page_cb (PtyxisWindow *self,
     }
 
   gtk_widget_action_set_enabled (GTK_WIDGET (self), "win.search", has_page);
+
+  /* Update "Change Profile" action state based on number of profiles */
+  {
+    g_autoptr(GListModel) profiles = NULL;
+    guint n_profiles;
+
+    profiles = ptyxis_application_list_profiles (PTYXIS_APPLICATION_DEFAULT);
+    n_profiles = g_list_model_get_n_items (profiles);
+    gtk_widget_action_set_enabled (GTK_WIDGET (self),
+                                   "win.set-profile",
+                                   has_page && n_profiles > 1);
+  }
 
   g_action_map_remove_action (G_ACTION_MAP (self), "tab.read-only");
   if (read_only != NULL)
@@ -1162,6 +1175,28 @@ ptyxis_window_set_title_action (GtkWidget  *widget,
 }
 
 static void
+ptyxis_window_set_profile_action (GtkWidget  *widget,
+                                  const char *action_name,
+                                  GVariant   *param)
+{
+  PtyxisWindow *self = (PtyxisWindow *)widget;
+  AdwDialog *dialog;
+  PtyxisTab *active_tab;
+
+  g_assert (PTYXIS_IS_WINDOW (self));
+
+  if (!(active_tab = ptyxis_window_get_active_tab (self)))
+    return;
+
+  dialog = g_object_new (PTYXIS_TYPE_PROFILE_DIALOG,
+                         "tab", active_tab,
+                         NULL);
+
+  adw_dialog_set_presentation_mode (dialog, ADW_DIALOG_FLOATING);
+  adw_dialog_present (ADW_DIALOG (dialog), GTK_WIDGET (self));
+}
+
+static void
 ptyxis_window_search_action (GtkWidget  *widget,
                              const char *action_name,
                              GVariant   *param)
@@ -1483,17 +1518,24 @@ ptyxis_window_update_menu_visibility (PtyxisWindow *self)
   g_autoptr(GListModel) containers = NULL;
   g_autoptr(GListModel) profiles = NULL;
   gboolean visible;
+  guint n_profiles;
 
   g_assert (PTYXIS_IS_WINDOW (self));
 
   containers = ptyxis_application_list_containers (PTYXIS_APPLICATION_DEFAULT);
   profiles = ptyxis_application_list_profiles (PTYXIS_APPLICATION_DEFAULT);
+  n_profiles = g_list_model_get_n_items (profiles);
   visible = g_list_model_get_n_items (containers) > 1 ||
-            g_list_model_get_n_items (profiles) > 1;
+            n_profiles > 1;
 
   gtk_widget_action_set_enabled (GTK_WIDGET (self),
                                  "my-computer",
                                  g_list_model_get_n_items (containers) > 1);
+
+  /* Disable "Change Profile" action when there's only one profile */
+  gtk_widget_action_set_enabled (GTK_WIDGET (self),
+                                 "win.set-profile",
+                                 n_profiles > 1);
 
   gtk_widget_set_visible (GTK_WIDGET (self->new_terminal_separator), visible);
   gtk_widget_set_visible (GTK_WIDGET (self->new_terminal_menu_button), visible);
@@ -2013,6 +2055,7 @@ ptyxis_window_class_init (PtyxisWindowClass *klass)
   gtk_widget_class_install_action (widget_class, "page.next", NULL, ptyxis_window_page_next_action);
   gtk_widget_class_install_action (widget_class, "page.previous", NULL, ptyxis_window_page_previous_action);
   gtk_widget_class_install_action (widget_class, "win.set-title", NULL, ptyxis_window_set_title_action);
+  gtk_widget_class_install_action (widget_class, "win.set-profile", NULL, ptyxis_window_set_profile_action);
   gtk_widget_class_install_action (widget_class, "win.search", NULL, ptyxis_window_search_action);
   gtk_widget_class_install_action (widget_class, "win.undo-close-tab", NULL, ptyxis_window_undo_close_tab_action);
   gtk_widget_class_install_action (widget_class, "my-computer", NULL, ptyxis_window_my_computer_action);

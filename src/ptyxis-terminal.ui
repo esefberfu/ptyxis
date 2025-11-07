@@ -244,6 +244,12 @@
         <attribute name="label" translatable="yes">Set Title</attribute>
         <attribute name="action">win.set-title</attribute>
       </item>
+      <item>
+        <attribute name="id">change-profile</attribute>
+        <attribute name="label" translatable="yes">Change Profile</attribute>
+        <attribute name="action">win.set-profile</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
     </section>
     <section>
       <item>

@@ -34,6 +34,7 @@ ptyxis_sources = [
   'ptyxis-terminal.c',
   'ptyxis-theme-selector.c',
   'ptyxis-title-dialog.c',
+  'ptyxis-profile-dialog.c',
   'ptyxis-user-palettes.c',
   'ptyxis-util.c',
   'ptyxis-window-dressing.c',

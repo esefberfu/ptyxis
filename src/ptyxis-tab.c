@@ -71,6 +71,7 @@ struct _PtyxisTab
   char                    *command_line;
   char                    *program_name;
   PtyxisTabNotify          notify;
+  GSignalGroup            *profile_signals;
 
   PtyxisTabState           state;
   GPid                     pid;
@@ -114,6 +115,9 @@ enum {
 };
 
 static void ptyxis_tab_respawn (PtyxisTab *self);
+static void ptyxis_tab_profile_signals_bind_cb (PtyxisTab     *self,
+                                                PtyxisProfile *profile,
+                                                GSignalGroup  *group);
 
 G_DEFINE_FINAL_TYPE (PtyxisTab, ptyxis_tab, GTK_TYPE_WIDGET)
 
@@ -912,31 +916,39 @@ ptyxis_tab_constructed (GObject *object)
                            G_CONNECT_SWAPPED);
   ptyxis_tab_update_scrollbar_policy (self);
 
-  g_signal_connect_object (G_OBJECT (self->profile),
-                           "notify::limit-scrollback",
-                           G_CALLBACK (ptyxis_tab_update_scrollback_lines),
+  /* Set up signal group for profile signals */
+  self->profile_signals = g_signal_group_new (PTYXIS_TYPE_PROFILE);
+  g_signal_connect_object (self->profile_signals,
+                           "bind",
+                           G_CALLBACK (ptyxis_tab_profile_signals_bind_cb),
                            self,
                            G_CONNECT_SWAPPED);
-  g_signal_connect_object (G_OBJECT (self->profile),
-                           "notify::scrollback-lines",
-                           G_CALLBACK (ptyxis_tab_update_scrollback_lines),
-                           self,
-                           G_CONNECT_SWAPPED);
-  ptyxis_tab_update_scrollback_lines (self);
-
-  g_signal_connect_object (G_OBJECT (self->profile),
-                           "notify::cell-height-scale",
-                           G_CALLBACK (ptyxis_tab_update_cell_height_scale),
-                           self,
-                           G_CONNECT_SWAPPED);
-  ptyxis_tab_update_cell_height_scale (self);
-
-  g_signal_connect_object (G_OBJECT (self->profile),
-                           "notify::cell-width-scale",
-                           G_CALLBACK (ptyxis_tab_update_cell_width_scale),
-                           self,
-                           G_CONNECT_SWAPPED);
-  ptyxis_tab_update_cell_width_scale (self);
+  g_signal_group_connect_object (self->profile_signals,
+                                 "notify::limit-scrollback",
+                                 G_CALLBACK (ptyxis_tab_update_scrollback_lines),
+                                 self,
+                                 G_CONNECT_SWAPPED);
+  g_signal_group_connect_object (self->profile_signals,
+                                 "notify::scrollback-lines",
+                                 G_CALLBACK (ptyxis_tab_update_scrollback_lines),
+                                 self,
+                                 G_CONNECT_SWAPPED);
+  g_signal_group_connect_object (self->profile_signals,
+                                 "notify::cell-height-scale",
+                                 G_CALLBACK (ptyxis_tab_update_cell_height_scale),
+                                 self,
+                                 G_CONNECT_SWAPPED);
+  g_signal_group_connect_object (self->profile_signals,
+                                 "notify::cell-width-scale",
+                                 G_CALLBACK (ptyxis_tab_update_cell_width_scale),
+                                 self,
+                                 G_CONNECT_SWAPPED);
+  g_signal_group_connect_object (self->profile_signals,
+                                 "custom-links-changed",
+                                 G_CALLBACK (ptyxis_tab_update_custom_links),
+                                 self,
+                                 G_CONNECT_SWAPPED);
+  g_signal_group_set_target (self->profile_signals, self->profile);
 
   g_signal_connect_object (settings,
                            "notify::word-char-exceptions",
@@ -952,14 +964,23 @@ ptyxis_tab_constructed (GObject *object)
                            G_CONNECT_SWAPPED);
   ptyxis_tab_update_inhibit (self);
 
-  g_signal_connect_object (G_OBJECT (self->profile),
-                           "custom-links-changed",
-                           G_CALLBACK (ptyxis_tab_update_custom_links),
-                           self,
-                           G_CONNECT_SWAPPED);
-  ptyxis_tab_update_custom_links (self);
-
   self->monitor = ptyxis_tab_monitor_new (self);
+}
+
+static void
+ptyxis_tab_profile_signals_bind_cb (PtyxisTab     *self,
+                                    PtyxisProfile *profile,
+                                    GSignalGroup  *group)
+{
+  g_assert (PTYXIS_IS_TAB (self));
+  g_assert (PTYXIS_IS_PROFILE (profile));
+  g_assert (G_IS_SIGNAL_GROUP (group));
+
+  /* Trigger all update functions when profile changes */
+  ptyxis_tab_update_scrollback_lines (self);
+  ptyxis_tab_update_cell_height_scale (self);
+  ptyxis_tab_update_cell_width_scale (self);
+  ptyxis_tab_update_custom_links (self);
 }
 
 static void
@@ -1156,6 +1177,7 @@ ptyxis_tab_dispose (GObject *object)
 
   g_clear_object (&self->cached_texture);
   g_clear_object (&self->profile);
+  g_clear_object (&self->profile_signals);
   g_clear_object (&self->process);
   g_clear_object (&self->monitor);
   g_clear_object (&self->container_at_creation);
@@ -1526,6 +1548,38 @@ ptyxis_tab_get_profile (PtyxisTab *self)
   g_return_val_if_fail (PTYXIS_IS_TAB (self), NULL);
 
   return self->profile;
+}
+
+/**
+ * ptyxis_tab_apply_profile:
+ * @self: a #PtyxisTab
+ * @new_profile: a #PtyxisProfile to apply
+ *
+ * Applies a profile to the tab by replacing the tab's profile reference
+ * with @new_profile. The tab will share the profile with other tabs,
+ * so when the profile is edited in preferences, all tabs using it will
+ * be updated automatically.
+ */
+void
+ptyxis_tab_apply_profile (PtyxisTab     *self,
+                          PtyxisProfile *new_profile)
+{
+  g_return_if_fail (PTYXIS_IS_TAB (self));
+  g_return_if_fail (PTYXIS_IS_PROFILE (new_profile));
+
+  /* Don't do anything if it's already the same profile */
+  if (self->profile == new_profile)
+    return;
+
+  /* Replace the profile with the selected one. */
+  g_clear_object (&self->profile);
+  self->profile = g_object_ref (new_profile);
+
+
+  g_signal_group_set_target (self->profile_signals, self->profile);
+
+  /* Notify that the profile property changed */
+  g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_PROFILE]);
 }
 
 const char *

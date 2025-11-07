@@ -17,6 +17,7 @@
     <file preprocess="xml-stripblanks">ptyxis-terminal.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-theme-selector.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-title-dialog.ui</file>
+    <file preprocess="xml-stripblanks">ptyxis-profile-dialog.ui</file>
     <file preprocess="xml-stripblanks">ptyxis-window.ui</file>
 
     <!-- Icons -->
