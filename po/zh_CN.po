@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-10-06 23:46+0000\n"
-"PO-Revision-Date: 2025-10-07 10:41+0800\n"
+"POT-Creation-Date: 2025-11-11 03:12+0000\n"
+"PO-Revision-Date: 2025-11-11 17:04+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -29,7 +29,7 @@ msgid "A container-oriented terminal for GNOME"
 msgstr "一款面向容器的 GNOME 终端"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:669
-#: src/ptyxis-tab.c:1581 src/ptyxis-util.c:318
+#: src/ptyxis-tab.c:1635 src/ptyxis-util.c:318
 msgid "Terminal"
 msgstr "终端"
 
@@ -612,7 +612,7 @@ msgid "The shortcut to show application preferences"
 msgstr "显示应用程序首选项的快捷键"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:436 src/ptyxis-preferences-window.ui:898
-#: src/ptyxis-window.c:1432 src/ptyxis-window.c:1440
+#: src/ptyxis-window.c:1467 src/ptyxis-window.c:1475
 msgid "Zoom Out"
 msgstr "缩小"
 
@@ -621,7 +621,7 @@ msgid "The shortcut to zoom out"
 msgstr "缩小视图的快捷键"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:442 src/ptyxis-preferences-window.ui:903
-#: src/ptyxis-window.c:1449
+#: src/ptyxis-window.c:1484
 msgid "Reset Zoom"
 msgstr "重置缩放"
 
@@ -630,7 +630,7 @@ msgid "The shortcut to reset zoom"
 msgstr "重置缩放的快捷键"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:448 src/ptyxis-preferences-window.ui:893
-#: src/ptyxis-window.c:1417 src/ptyxis-window.c:1425
+#: src/ptyxis-window.c:1452 src/ptyxis-window.c:1460
 msgid "Zoom In"
 msgstr "放大"
 
@@ -781,7 +781,7 @@ msgid "Shortcut to close the current window"
 msgstr "关闭当前窗口的快捷键"
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:561 src/ptyxis-preferences-window.ui:750
-#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1157 src/ptyxis-window.ui:833
+#: src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1170 src/ptyxis-window.ui:824
 msgid "Set Title"
 msgstr "设置标题"
 
@@ -976,7 +976,7 @@ msgstr "导入自定义色板"
 msgid "[-- COMMAND ARGUMENTS]"
 msgstr "[-- 命令参数]"
 
-#: src/ptyxis-application.c:1436
+#: src/ptyxis-application.c:1433
 msgid "translator-credits"
 msgstr ""
 "SuGotLand <sugotland@outlook.com>, 2024.\n"
@@ -1194,7 +1194,7 @@ msgid "Hyperlink"
 msgstr "超链接"
 
 #: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:217
-#: src/ptyxis-window.c:1661
+#: src/ptyxis-window.c:1701
 msgid "My Computer"
 msgstr "我的计算机"
 
@@ -1202,23 +1202,23 @@ msgstr "我的计算机"
 msgid "The quick brown fox jumps over the lazy dog"
 msgstr "The quick brown fox jumps over the lazy dog"
 
-#: src/ptyxis-preferences-window.c:274
+#: src/ptyxis-preferences-window.c:275
 msgid "Select Font"
 msgstr "选择字体"
 
-#: src/ptyxis-preferences-window.c:349
+#: src/ptyxis-preferences-window.c:350
 msgid "Show Fewer Palettes"
 msgstr "显示较少调色板"
 
-#: src/ptyxis-preferences-window.c:354 src/ptyxis-preferences-window.ui:46
+#: src/ptyxis-preferences-window.c:355 src/ptyxis-preferences-window.ui:46
 msgid "Show All Palettes"
 msgstr "显示所有调色板"
 
-#: src/ptyxis-preferences-window.c:379
+#: src/ptyxis-preferences-window.c:380
 msgid "Add Profile"
 msgstr "添加配置文件"
 
-#: src/ptyxis-preferences-window.c:481 src/ptyxis-profile-editor.c:270
+#: src/ptyxis-preferences-window.c:482 src/ptyxis-profile-editor.c:270
 msgid "Add Link"
 msgstr "添加链接"
 
@@ -1576,7 +1576,7 @@ msgid "Show this preferences window"
 msgstr "显示该首选项窗口"
 
 #: src/ptyxis-preferences-window.ui:945 src/ptyxis-preferences-window.ui:949
-#: src/ptyxis-window.c:1635 src/ptyxis-window.c:1797
+#: src/ptyxis-window.c:1675 src/ptyxis-window.c:1837
 msgid "Profiles"
 msgstr "配置文件"
 
@@ -1604,8 +1604,8 @@ msgstr "TTY 擦除"
 msgid "Untitled Profile"
 msgstr "无标题的配置文件"
 
-#: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:438
-#: src/ptyxis-terminal.c:470
+#: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:440
+#: src/ptyxis-terminal.c:472
 msgid "Copied to clipboard"
 msgstr "已复制到剪贴板"
 
@@ -1614,7 +1614,7 @@ msgstr "已复制到剪贴板"
 msgid "Removed profile “%s”"
 msgstr "配置文件“%s”已移除"
 
-#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:487 src/ptyxis-tab.c:544
+#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:491 src/ptyxis-tab.c:548
 msgid "Edit Profile"
 msgstr "编辑配置文件"
 
@@ -1698,16 +1698,16 @@ msgstr "设置快捷键"
 msgid "disabled"
 msgstr "已禁用"
 
-#: src/ptyxis-tab.c:328
+#: src/ptyxis-tab.c:332
 msgid "A foreground process is running"
 msgstr "有前台进程正在运行"
 
-#: src/ptyxis-tab.c:395
+#: src/ptyxis-tab.c:399
 #, c-format
 msgid "Process Exited from Signal %d"
 msgstr "进程已从信号 %d 退出"
 
-#: src/ptyxis-tab.c:398 src/ptyxis-tab.c:421
+#: src/ptyxis-tab.c:402 src/ptyxis-tab.c:425
 msgid "_Restart"
 msgstr "重启(_R)"
 
@@ -1715,32 +1715,32 @@ msgstr "重启(_R)"
 #. * display it again if the tab is removed from the parking lot and
 #. * restored into the window.
 #.
-#: src/ptyxis-tab.c:420
+#: src/ptyxis-tab.c:424
 msgid "Process Exited"
 msgstr "进程已退出"
 
-#: src/ptyxis-tab.c:486
+#: src/ptyxis-tab.c:490
 msgid "Failed to launch terminal"
 msgstr "启动终端失败"
 
-#: src/ptyxis-tab.c:542
+#: src/ptyxis-tab.c:546
 #, c-format
 msgid "Cannot locate container “%s”"
 msgstr "无法定位容器“%s”"
 
-#: src/ptyxis-tab.c:566
+#: src/ptyxis-tab.c:570
 msgid "Failed to create pseudo terminal device"
 msgstr "创建伪终端设备失败"
 
-#: src/ptyxis-tab.c:1584
+#: src/ptyxis-tab.c:1638
 msgid "Exited"
 msgstr "已退出"
 
-#: src/ptyxis-tab.c:1586
+#: src/ptyxis-tab.c:1640
 msgid "Failed"
 msgstr "已失败"
 
-#: src/ptyxis-tab.c:2171
+#: src/ptyxis-tab.c:2225
 msgid "Failed to open link"
 msgstr "打开链接失败"
 
@@ -1800,11 +1800,15 @@ msgstr "不选(_N)"
 msgid "Read-Only"
 msgstr "只读"
 
-#: src/ptyxis-terminal.ui:251 src/ptyxis-window.ui:388 src/ptyxis-window.ui:779
+#: src/ptyxis-terminal.ui:249
+msgid "Change Profile"
+msgstr "更改配置文件"
+
+#: src/ptyxis-terminal.ui:257 src/ptyxis-window.ui:388 src/ptyxis-window.ui:770
 msgid "Leave Fullscreen"
 msgstr "退出全屏"
 
-#: src/ptyxis-terminal.ui:257
+#: src/ptyxis-terminal.ui:263
 msgid "_Inspect Terminal"
 msgstr "检查终端(_I)"
 
@@ -1853,15 +1857,15 @@ msgstr "构建器终端"
 msgid "Ptyxis"
 msgstr "Ptyxis"
 
-#: src/ptyxis-window.c:1428
+#: src/ptyxis-window.c:1463
 msgid "Zoom in"
 msgstr "放大"
 
-#: src/ptyxis-window.c:1443
+#: src/ptyxis-window.c:1478
 msgid "Zoom out"
 msgstr "缩小"
 
-#: src/ptyxis-window.c:1629 src/ptyxis-window.c:1801
+#: src/ptyxis-window.c:1669 src/ptyxis-window.c:1841
 msgid "Containers"
 msgstr "容器"
 
@@ -1877,67 +1881,67 @@ msgstr "显示配置文件和容器"
 msgid "Filter…"
 msgstr "筛选器…"
 
-#: src/ptyxis-window.ui:598
+#: src/ptyxis-window.ui:589
 msgid "No Matching Results"
 msgstr "无匹配结果"
 
-#: src/ptyxis-window.ui:640
+#: src/ptyxis-window.ui:631
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: src/ptyxis-window.ui:648 src/ptyxis-window.ui:765
+#: src/ptyxis-window.ui:639 src/ptyxis-window.ui:756
 msgid "Show Open Tabs"
 msgstr "显示打开的标签页"
 
-#: src/ptyxis-window.ui:749
+#: src/ptyxis-window.ui:740
 msgid "New _Tab"
 msgstr "新建标签页(_T)"
 
-#: src/ptyxis-window.ui:756
+#: src/ptyxis-window.ui:747
 msgid "New _Window"
 msgstr "新建窗口(_W)"
 
-#: src/ptyxis-window.ui:773
+#: src/ptyxis-window.ui:764
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: src/ptyxis-window.ui:787
+#: src/ptyxis-window.ui:778
 msgid "_Preferences"
 msgstr "首选项(_P)"
 
-#: src/ptyxis-window.ui:791
+#: src/ptyxis-window.ui:782
 msgid "_Keyboard Shortcuts"
 msgstr "键盘快捷键(_K)"
 
-#: src/ptyxis-window.ui:795
+#: src/ptyxis-window.ui:786
 msgid "_About"
 msgstr "关于(_A)"
 
-#: src/ptyxis-window.ui:804
+#: src/ptyxis-window.ui:795
 msgid "Move _Left"
 msgstr "左移(_L)"
 
-#: src/ptyxis-window.ui:809
+#: src/ptyxis-window.ui:800
 msgid "Move _Right"
 msgstr "右移(_R)"
 
-#: src/ptyxis-window.ui:814
+#: src/ptyxis-window.ui:805
 msgid "Move to New _Window"
 msgstr "移到新窗口(_W)"
 
-#: src/ptyxis-window.ui:820
+#: src/ptyxis-window.ui:811
 msgid "_Pin Tab"
 msgstr "固定标签页(_P)"
 
-#: src/ptyxis-window.ui:825
+#: src/ptyxis-window.ui:816
 msgid "Un_pin Tab"
 msgstr "取消固定标签页(_P)"
 
-#: src/ptyxis-window.ui:840
+#: src/ptyxis-window.ui:831
 msgid "Close _Other Tabs"
 msgstr "关闭其它标签页(_O)"
 
-#: src/ptyxis-window.ui:845
+#: src/ptyxis-window.ui:836
 msgid "_Close Tab"
 msgstr "关闭标签页(_C)"
 
