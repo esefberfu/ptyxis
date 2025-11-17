@@ -100,7 +100,8 @@
             "builddir" : true,
             "buildsystem" : "meson",
             "config-opts" : [
-                "-Ddevelopment=true"
+                "-Ddevelopment=true",
+                "-Dlibc-compat=true"
             ],
             "sources" : [
                 {

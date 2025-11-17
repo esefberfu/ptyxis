@@ -45,6 +45,7 @@ ptyxis_agent_c_args = [
   '-DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_@0@_@1@'.format(PTYXIS_AGENT_MIN_GLIB_MAJOR, PTYXIS_AGENT_MIN_GLIB_MINOR),
 ]
 
+if get_option('libc-compat')
 libc_compat = true
 if target_machine.cpu_family() == 'x86_64'
   ptyxis_agent_c_args += ['-include', 'x86_64/force_link_glibc_2.17.h']
@@ -55,6 +56,7 @@ endif
 if libc_compat
   config_h.set10('LIBC_COMPAT', libc_compat)
   ptyxis_agent_link_args += ['-Wl,--wrap=__libc_start_main']
+endif
 endif
 
 executable('ptyxis-agent', ptyxis_agent_sources,
