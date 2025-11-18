@@ -1033,7 +1033,8 @@ ptyxis_application_finalize (GObject *object)
 {
   PtyxisApplication *self = (PtyxisApplication *)object;
 
-  g_hash_table_remove_all (self->exited);
+  if (self->exited != NULL)
+    g_hash_table_remove_all (self->exited);
 
   g_clear_object (&self->xdg_terminals_list_monitor);
   g_clear_object (&self->profiles);
