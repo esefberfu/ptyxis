@@ -226,6 +226,12 @@
       <description>Currently experimental feature to send accessibility information to screen readers.</description>
     </key>
 
+    <key name="enable-zoom-scroll-ctrl" type="b">
+      <default>true</default>
+      <summary>Enable zoom on scroll holding the control key</summary>
+      <description>Enable to adjust the zoom level on scroll scroll while holding the control key.</description>
+    </key>
+
     <key name="disable-padding" type="b">
       <default>false</default>
       <summary>Disable Padding around Terminal Emulator</summary>

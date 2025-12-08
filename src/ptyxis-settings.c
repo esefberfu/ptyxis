@@ -42,6 +42,7 @@ enum {
   PROP_DEFAULT_PROFILE_UUID,
   PROP_DISABLE_PADDING,
   PROP_ENABLE_A11Y,
+  PROP_ENABLE_ZOOM_SCROLL_CTRL,
   PROP_IGNORE_OSC_TITLE,
   PROP_FONT_DESC,
   PROP_FONT_NAME,
@@ -115,6 +116,8 @@ ptyxis_settings_changed_cb (PtyxisSettings *self,
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_TOAST_ON_COPY_CLIPBOARD]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_ENABLE_A11Y))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ENABLE_A11Y]);
+  else if (g_str_equal (key, PTYXIS_SETTING_KEY_ENABLE_ZOOM_SCROLL_CTRL))
+    g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ENABLE_ZOOM_SCROLL_CTRL]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_IGNORE_OSC_TITLE))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_IGNORE_OSC_TITLE]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_INHIBIT_LOGOUT))
@@ -284,6 +287,10 @@ ptyxis_settings_set_property (GObject      *object,
       ptyxis_settings_set_enable_a11y (self, g_value_get_boolean (value));
       break;
 
+    case PROP_ENABLE_ZOOM_SCROLL_CTRL:
+      ptyxis_settings_set_enable_zoom_scroll_ctrl (self, g_value_get_boolean (value));
+      break;
+
     case PROP_IGNORE_OSC_TITLE:
       ptyxis_settings_set_ignore_osc_title (self, g_value_get_boolean (value));
       break;
@@ -397,6 +404,13 @@ ptyxis_settings_class_init (PtyxisSettingsClass *klass)
     g_param_spec_boolean (PTYXIS_SETTING_KEY_ENABLE_A11Y, NULL, NULL,
                           FALSE,
                           (G_PARAM_READWRITE |
+                           G_PARAM_EXPLICIT_NOTIFY |
+                           G_PARAM_STATIC_STRINGS));
+
+  properties[PROP_ENABLE_ZOOM_SCROLL_CTRL] =
+    g_param_spec_boolean (PTYXIS_SETTING_KEY_ENABLE_ZOOM_SCROLL_CTRL, NULL, NULL,
+                          FALSE,
+                          (G_PARAM_READABLE |
                            G_PARAM_EXPLICIT_NOTIFY |
                            G_PARAM_STATIC_STRINGS));
 
@@ -716,6 +730,26 @@ ptyxis_settings_set_enable_a11y (PtyxisSettings *self,
   g_settings_set_boolean (self->settings,
                           PTYXIS_SETTING_KEY_ENABLE_A11Y,
                           enable_a11y);
+}
+
+gboolean
+ptyxis_settings_get_enable_zoom_scroll_ctrl (PtyxisSettings *self)
+{
+  g_return_val_if_fail (PTYXIS_IS_SETTINGS (self), FALSE);
+
+  return g_settings_get_boolean (self->settings,
+                                 PTYXIS_SETTING_KEY_ENABLE_ZOOM_SCROLL_CTRL);
+}
+
+void
+ptyxis_settings_set_enable_zoom_scroll_ctrl (PtyxisSettings *self,
+                                             gboolean        enable_zoom_scroll_ctrl)
+{
+  g_return_if_fail (PTYXIS_IS_SETTINGS (self));
+
+  g_settings_set_boolean (self->settings,
+                          PTYXIS_SETTING_KEY_ENABLE_ZOOM_SCROLL_CTRL,
+                          enable_zoom_scroll_ctrl);
 }
 
 gboolean

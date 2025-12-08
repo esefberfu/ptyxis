@@ -179,10 +179,15 @@ on_scroll_scrolled_cb (GtkEventControllerScroll *scroll,
 
   if ((mods & GDK_CONTROL_MASK) != 0)
     {
-      if (dy < 0)
-        ptyxis_tab_zoom_in (self);
-      else if (dy > 0)
-        ptyxis_tab_zoom_out (self);
+      PtyxisSettings *settings = ptyxis_application_get_settings (PTYXIS_APPLICATION_DEFAULT);
+
+      if (ptyxis_settings_get_enable_zoom_scroll_ctrl(settings))
+        {
+          if (dy < 0)
+            ptyxis_tab_zoom_in (self);
+          else if (dy > 0)
+            ptyxis_tab_zoom_out (self);
+	}
 
       return TRUE;
     }
