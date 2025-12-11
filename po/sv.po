@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-08-11 21:11+0000\n"
-"PO-Revision-Date: 2025-08-11 23:20+0200\n"
+"POT-Creation-Date: 2025-11-18 18:21+0000\n"
+"PO-Revision-Date: 2025-12-11 21:51+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:2 data/org.gnome.Ptyxis.metainfo.xml.in.in:6
 msgid "@APP_NAME@"
@@ -29,7 +29,7 @@ msgstr "@APP_NAME@"
 msgid "A container-oriented terminal for GNOME"
 msgstr "En behållarorienterad terminal för GNOME"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:655 src/ptyxis-tab.c:1465
+#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:669 src/ptyxis-tab.c:1624
 #: src/ptyxis-util.c:318
 msgid "Terminal"
 msgstr "Terminal"
@@ -39,18 +39,18 @@ msgstr "Terminal"
 msgid "terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;podman;toolbox;distrobox;"
 msgstr "terminal;prompt;ptyxis;skal;kommando;kommandorad;cmd;cli;konsol;behållare;podman;toolbox;distrobox;"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:23 src/org.gnome.Ptyxis.gschema.xml.in:405
-#: src/ptyxis-preferences-window.ui:720
+#: data/org.gnome.Ptyxis.desktop.in.in:23 src/org.gnome.Ptyxis.gschema.xml.in:418
+#: src/ptyxis-preferences-window.ui:734
 msgid "New Window"
 msgstr "Nytt fönster"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:27 src/org.gnome.Ptyxis.gschema.xml.in:399
-#: src/ptyxis-preferences-window.ui:746
+#: data/org.gnome.Ptyxis.desktop.in.in:27 src/org.gnome.Ptyxis.gschema.xml.in:412
+#: src/ptyxis-preferences-window.ui:760
 msgid "New Tab"
 msgstr "Ny flik"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:31 src/org.gnome.Ptyxis.gschema.xml.in:417
-#: src/ptyxis-preferences-window.ui:921
+#: data/org.gnome.Ptyxis.desktop.in.in:31 src/org.gnome.Ptyxis.gschema.xml.in:430
+#: src/ptyxis-preferences-window.ui:935
 msgid "Preferences"
 msgstr "Inställningar"
 
@@ -198,7 +198,7 @@ msgstr "UUID för alla profiler"
 msgid "A list of UUID for every profile"
 msgstr "En lista med UUID för varje profil"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:113 src/ptyxis-preferences-window.ui:308
+#: src/org.gnome.Ptyxis.gschema.xml.in:113 src/ptyxis-preferences-window.ui:322
 msgid "New Tab Position"
 msgstr "Position för ny flik"
 
@@ -206,7 +206,7 @@ msgstr "Position för ny flik"
 msgid "Where to place new tabs"
 msgstr "Var nya flikar placeras"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:119 src/ptyxis-preferences-window.ui:400
+#: src/org.gnome.Ptyxis.gschema.xml.in:119 src/ptyxis-preferences-window.ui:414
 msgid "Audible Bell"
 msgstr "Hörbar klocka"
 
@@ -246,7 +246,7 @@ msgstr "Typsnittsnamn"
 msgid "The font description to use if use-system-font is set to False"
 msgstr "Typsnittsbeskrivningen som ska användas om use-system-font är inställt på False"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:149 src/ptyxis-preferences-window.ui:235
+#: src/org.gnome.Ptyxis.gschema.xml.in:149 src/ptyxis-preferences-window.ui:249
 msgid "Cursor Shape"
 msgstr "Markörform"
 
@@ -298,7 +298,7 @@ msgstr "Gränssnittsstil"
 msgid "If light or dark interface style should be used"
 msgstr "Om ljus eller mörk gränssnittsstil ska användas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:189 src/ptyxis-preferences-window.ui:337
+#: src/org.gnome.Ptyxis.gschema.xml.in:189 src/ptyxis-preferences-window.ui:351
 msgid "Restore Session"
 msgstr "Återställ session"
 
@@ -306,7 +306,7 @@ msgstr "Återställ session"
 msgid "Restore tabs from previous session when starting Ptyxis"
 msgstr "Återställ flikar från föregående session när du startar Ptyxis"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:195 src/ptyxis-preferences-window.ui:343
+#: src/org.gnome.Ptyxis.gschema.xml.in:195 src/ptyxis-preferences-window.ui:357
 msgid "Restore Window Size"
 msgstr "Återställ fönsterstorlek"
 
@@ -372,173 +372,190 @@ msgstr "Ignorera OSC-titel"
 msgid "If OSC title should be ignored in tab titles."
 msgstr "Om OSC-titel ska ignoreras i fliktitlar."
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:254
+#: src/org.gnome.Ptyxis.gschema.xml.in:250
+msgid "Inhibit Logout"
+msgstr "Förhindra utloggning"
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:251
+msgid "Inhibit desktop logout when a foreground process is running in a tab."
+msgstr "Förhindra utloggning av skrivbord när en förgrundsprocess körs i en flik."
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:260
 msgid "Label"
 msgstr "Etikett"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:255
+#: src/org.gnome.Ptyxis.gschema.xml.in:261
 msgid "The label for the profile"
 msgstr "Etiketten för profilen"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:260
+#: src/org.gnome.Ptyxis.gschema.xml.in:266
 msgid "Login Shell"
 msgstr "Inloggningsskal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:261
+#: src/org.gnome.Ptyxis.gschema.xml.in:267
 msgid "Use a login shell"
 msgstr "Använd ett inloggningsskal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:266 src/ptyxis-preferences-window.ui:468
-#: src/ptyxis-profile-editor.ui:319
+#: src/org.gnome.Ptyxis.gschema.xml.in:272 src/ptyxis-preferences-window.ui:482
+#: src/ptyxis-profile-editor.ui:333
 msgid "Limit Scrollback"
 msgstr "Begränsa rullning tillbaka"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:267
+#: src/org.gnome.Ptyxis.gschema.xml.in:273
 msgid "Limit the number of lines to keep for scrollback"
 msgstr "Begränsa antalet rader att behålla för tillbakarullning"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:273 src/ptyxis-preferences-window.ui:477
-#: src/ptyxis-profile-editor.ui:328
+#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:491
+#: src/ptyxis-profile-editor.ui:342
 msgid "Scrollback Lines"
 msgstr "Bläddra tillbaka rader"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:274
+#: src/org.gnome.Ptyxis.gschema.xml.in:280
 msgid "The number of lines to keep in the scrollback, zero for no scrollback"
 msgstr "Antalet rader att behålla i rullningen, noll för ingen rullning"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:458
-#: src/ptyxis-profile-editor.ui:309
+#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:472
+#: src/ptyxis-profile-editor.ui:323
 msgid "Scroll on Output"
 msgstr "Rulla vid utdata"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:280
+#: src/org.gnome.Ptyxis.gschema.xml.in:286
 msgid "Scroll to the bottom upon new output"
 msgstr "Rulla till botten vid ny utdata"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:452
-#: src/ptyxis-profile-editor.ui:303
+#: src/org.gnome.Ptyxis.gschema.xml.in:291 src/ptyxis-preferences-window.ui:466
+#: src/ptyxis-profile-editor.ui:317
 msgid "Scroll on Keystroke"
 msgstr "Rulla vid tangenttryckning"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:286
+#: src/org.gnome.Ptyxis.gschema.xml.in:292
 msgid "Scroll to the bottom upon user keystroke"
 msgstr "Rulla till botten när användaren trycker på en tangent"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:291 src/ptyxis-profile-editor.ui:173
+#: src/org.gnome.Ptyxis.gschema.xml.in:297 src/ptyxis-profile-editor.ui:187
 msgid "Use Custom Command"
 msgstr "Använd anpassat kommando"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:292
+#: src/org.gnome.Ptyxis.gschema.xml.in:298
 msgid "If a custom command should be used"
 msgstr "Om ett anpassat kommando ska användas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:297
+#: src/org.gnome.Ptyxis.gschema.xml.in:303
 msgid "Use Proxy"
 msgstr "Använd proxy"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:298
+#: src/org.gnome.Ptyxis.gschema.xml.in:304
 msgid "Apply proxy settings from the host in the container"
 msgstr "Tillämpa proxyinställningar från värden i behållaren"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:303 src/ptyxis-profile-editor.ui:178
+#: src/org.gnome.Ptyxis.gschema.xml.in:309 src/ptyxis-profile-editor.ui:192
 msgid "Custom Command"
 msgstr "Anpassat kommando"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:304
+#: src/org.gnome.Ptyxis.gschema.xml.in:310
 msgid "A custom command for the shell"
 msgstr "Ett anpassat kommando för skalet"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:309 src/ptyxis-profile-editor.ui:197
+#: src/org.gnome.Ptyxis.gschema.xml.in:315 src/ptyxis-profile-editor.ui:211
 msgid "Default Container"
 msgstr "Standardbehållare"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:310
+#: src/org.gnome.Ptyxis.gschema.xml.in:316
 msgid "The default container to run the command in"
 msgstr "Standardbehållaren att köra kommandot i"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:315 src/ptyxis-profile-editor.ui:206
+#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-profile-editor.ui:220
 msgid "Preserve Container"
 msgstr "Bevara behållare"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:316
+#: src/org.gnome.Ptyxis.gschema.xml.in:322
 msgid "Preserve the active container when creating new tabs and windows"
 msgstr "Bevara den aktiva behållaren när du skapar nya flikar och fönster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-preferences-window.ui:537
-#: src/ptyxis-profile-editor.ui:267
+#: src/org.gnome.Ptyxis.gschema.xml.in:327 src/ptyxis-preferences-window.ui:551
+#: src/ptyxis-profile-editor.ui:281
 msgid "Exit Action"
 msgstr "Avslutningsåtgärd"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:322
+#: src/org.gnome.Ptyxis.gschema.xml.in:328
 msgid "The action to take when the shell exits"
 msgstr "Åtgärden som ska vidtas när skalet avslutas"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:327
+#: src/org.gnome.Ptyxis.gschema.xml.in:333
 msgid "Preserve Directory"
 msgstr "Bevara katalog"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:328
+#: src/org.gnome.Ptyxis.gschema.xml.in:334
 msgid "If the directory should be preserved for new terminals"
 msgstr "Om katalogen ska bevaras för nya terminaler"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:333 src/ptyxis-inspector.ui:102 src/ptyxis-preferences-window.ui:40
+#: src/org.gnome.Ptyxis.gschema.xml.in:339 src/ptyxis-inspector.ui:102 src/ptyxis-preferences-window.ui:40
 #: src/ptyxis-profile-editor.ui:65
 msgid "Palette"
 msgstr "Palett"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:334
+#: src/org.gnome.Ptyxis.gschema.xml.in:340
 msgid "The color palette to use for the profile, by name"
 msgstr "Färgpaletten som ska användas för profilen, efter namn"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:340
+#: src/org.gnome.Ptyxis.gschema.xml.in:346
 msgid "Opacity"
 msgstr "Opacitet"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:341
+#: src/org.gnome.Ptyxis.gschema.xml.in:347
 msgid "The opacity of the palette background"
 msgstr "Opaciteten för palettbakgrunden"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:346
+#: src/org.gnome.Ptyxis.gschema.xml.in:352
 msgid "Bold is Bright"
 msgstr "Fetstilt är ljust"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:347
+#: src/org.gnome.Ptyxis.gschema.xml.in:353
 msgid "Setting bold on one of the lower 8 colors in the palette will use bright variant (upper 8 colors)"
 msgstr ""
 "Att ställa in fetstil på en av de nedre 8 färgerna i paletten kommer använda ljusa varianter (övre 8 "
 "färger)"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:353 src/ptyxis-preferences-window.ui:175
+#: src/org.gnome.Ptyxis.gschema.xml.in:359 src/ptyxis-preferences-window.ui:175
 #: src/ptyxis-profile-editor.ui:143
 msgid "Line Spacing"
 msgstr "Radavstånd"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:354
+#: src/org.gnome.Ptyxis.gschema.xml.in:360
 msgid "The terminal’s cell height scale"
 msgstr "Terminalens cellhöjdskala"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:359
+#: src/org.gnome.Ptyxis.gschema.xml.in:366 src/ptyxis-preferences-window.ui:189
+#: src/ptyxis-profile-editor.ui:157
+msgid "Column Spacing"
+msgstr "Kolumnavstånd"
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:367
+msgid "The terminal’s cell width scale"
+msgstr "Terminalens cellbreddskala"
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:372
 msgid "CJK Ambiguous Width"
 msgstr "Tvetydig bredd för CJK"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:360
+#: src/org.gnome.Ptyxis.gschema.xml.in:373
 msgid "The size to apply to ambiguous width characters"
 msgstr "Storleken som ska tillämpas på tecken med tvetydig bredd"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:365 src/org.gnome.Ptyxis.gschema.xml.in:371
+#: src/org.gnome.Ptyxis.gschema.xml.in:378 src/org.gnome.Ptyxis.gschema.xml.in:384
 msgid "Backspace Binding"
 msgstr "Backstegsbindning"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:366 src/org.gnome.Ptyxis.gschema.xml.in:372
+#: src/org.gnome.Ptyxis.gschema.xml.in:379 src/org.gnome.Ptyxis.gschema.xml.in:385
 msgid "What to send to the PTY when a backspace is entered"
 msgstr "Vad som ska skickas till PTY:n när ett backsteg anges"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:377 src/ptyxis-preferences-window.ui:620
-#: src/ptyxis-profile-editor.ui:395
+#: src/org.gnome.Ptyxis.gschema.xml.in:390 src/ptyxis-preferences-window.ui:634
+#: src/ptyxis-profile-editor.ui:409
 msgid "Custom Links"
 msgstr "Anpassade länkar"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:378
+#: src/org.gnome.Ptyxis.gschema.xml.in:391
 msgid ""
 "A list of custom hyperlinks, each defined by a regular expression matching the text, and a replacement "
 "pattern"
@@ -546,303 +563,303 @@ msgstr ""
 "En lista över anpassade hyperlänkar, var och en definierad av ett reguljärt uttryck som matchar texten, "
 "och ett ersättningsmönster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:387 src/ptyxis-preferences-window.ui:658
+#: src/org.gnome.Ptyxis.gschema.xml.in:400 src/ptyxis-preferences-window.ui:672
 msgid "Copy to Clipboard"
 msgstr "Kopiera till urklipp"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:388
+#: src/org.gnome.Ptyxis.gschema.xml.in:401
 msgid "The shortcut to copy to clipboard"
 msgstr "Genvägen för att kopiera till urklipp"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:393 src/ptyxis-preferences-window.ui:663
+#: src/org.gnome.Ptyxis.gschema.xml.in:406 src/ptyxis-preferences-window.ui:677
 msgid "Paste from Clipboard"
 msgstr "Klistra in från urklipp"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:394
+#: src/org.gnome.Ptyxis.gschema.xml.in:407
 msgid "The shortcut to paste from the clipboard"
 msgstr "Genvägen för att klistra in från urklipp"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:400
+#: src/org.gnome.Ptyxis.gschema.xml.in:413
 msgid "The shortcut to create a new tab in the current window"
 msgstr "Genvägen för att skapa en ny flik i det aktuella fönstret"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:406
+#: src/org.gnome.Ptyxis.gschema.xml.in:419
 msgid "The shortcut to create a new tab in a new window"
 msgstr "Genvägen för att skapa en ny flik i ett nytt fönster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:411
+#: src/org.gnome.Ptyxis.gschema.xml.in:424
 msgid "Tab Overview"
 msgstr "Fliköversikt"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:412
+#: src/org.gnome.Ptyxis.gschema.xml.in:425
 msgid "The shortcut to show the tab overview"
 msgstr "Genvägen för att visa fliköversikten"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:418
+#: src/org.gnome.Ptyxis.gschema.xml.in:431
 msgid "The shortcut to show application preferences"
 msgstr "Genvägen för att visa programinställningar"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:423 src/ptyxis-preferences-window.ui:884 src/ptyxis-window.c:1427
-#: src/ptyxis-window.c:1435
+#: src/org.gnome.Ptyxis.gschema.xml.in:436 src/ptyxis-preferences-window.ui:898 src/ptyxis-window.c:1472
+#: src/ptyxis-window.c:1480
 msgid "Zoom Out"
 msgstr "Zooma ut"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:424
+#: src/org.gnome.Ptyxis.gschema.xml.in:437
 msgid "The shortcut to zoom out"
 msgstr "Genvägen för att zooma ut"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:429 src/ptyxis-preferences-window.ui:889 src/ptyxis-window.c:1444
+#: src/org.gnome.Ptyxis.gschema.xml.in:442 src/ptyxis-preferences-window.ui:903 src/ptyxis-window.c:1489
 msgid "Reset Zoom"
 msgstr "Återställ zoom"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:430
+#: src/org.gnome.Ptyxis.gschema.xml.in:443
 msgid "The shortcut to reset zoom"
 msgstr "Genvägen för att återställa zoom"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:435 src/ptyxis-preferences-window.ui:879 src/ptyxis-window.c:1412
-#: src/ptyxis-window.c:1420
+#: src/org.gnome.Ptyxis.gschema.xml.in:448 src/ptyxis-preferences-window.ui:893 src/ptyxis-window.c:1457
+#: src/ptyxis-window.c:1465
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:436
+#: src/org.gnome.Ptyxis.gschema.xml.in:449
 msgid "The shortcut to zoom in"
 msgstr "Genvägen för att zooma in"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:441 src/ptyxis-preferences-window.ui:899
+#: src/org.gnome.Ptyxis.gschema.xml.in:454 src/ptyxis-preferences-window.ui:913
 msgid "Toggle Fullscreen"
 msgstr "Växla helskärm"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:442
+#: src/org.gnome.Ptyxis.gschema.xml.in:455
 msgid "The shortcut to toggle fullscreen"
 msgstr "Genvägen för att växla helskärm"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:447
+#: src/org.gnome.Ptyxis.gschema.xml.in:460
 msgid "Reset Terminal"
 msgstr "Återställ terminal"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:448
+#: src/org.gnome.Ptyxis.gschema.xml.in:461
 msgid "Reset the terminal state for misbehaving clients"
 msgstr "Återställ terminaltillståndet för klienter som inte beter sig"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:453
+#: src/org.gnome.Ptyxis.gschema.xml.in:466
 msgid "Reset Terminal and Clear History"
 msgstr "Återställ terminal och rensa historik"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:454
+#: src/org.gnome.Ptyxis.gschema.xml.in:467
 msgid "Reset the terminal state and clear history for misbehaving clients"
 msgstr "Återställ terminaltillståndet och rensa historiken för klienter som inte beter sig"
 
 #. Translators: Refers to searching the terminal scrollback
-#: src/org.gnome.Ptyxis.gschema.xml.in:460 src/ptyxis-find-bar.ui:39 src/ptyxis-preferences-window.ui:701
+#: src/org.gnome.Ptyxis.gschema.xml.in:473 src/ptyxis-find-bar.ui:39 src/ptyxis-preferences-window.ui:715
 msgid "Search History"
 msgstr "Sökhistorik"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:461
+#: src/org.gnome.Ptyxis.gschema.xml.in:474
 msgid "Shortcut to begin searching the terminal history"
 msgstr "Genväg för att börja söka i terminalhistoriken"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:466 src/ptyxis-preferences-window.ui:672
+#: src/org.gnome.Ptyxis.gschema.xml.in:479 src/ptyxis-preferences-window.ui:686
 msgid "Select All"
 msgstr "Markera allt"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:467
+#: src/org.gnome.Ptyxis.gschema.xml.in:480
 msgid "Shortcut to select all the entire terminal scrollback"
 msgstr "Genväg för att markera hela terminalens rullning tillbaka"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:472
+#: src/org.gnome.Ptyxis.gschema.xml.in:485
 msgid "Select None"
 msgstr "Markera inget"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:473
+#: src/org.gnome.Ptyxis.gschema.xml.in:486
 msgid "Shortcut to clear the terminal selection"
 msgstr "Genväg för att rensa terminalmarkering"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:478
+#: src/org.gnome.Ptyxis.gschema.xml.in:491
 msgid "Popup Menu"
 msgstr "Popupmeny"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:479
+#: src/org.gnome.Ptyxis.gschema.xml.in:492
 msgid "Shortcut to show the popup menu for the terminal"
 msgstr "Genväg för att visa popupmenyn för terminalen"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:484
+#: src/org.gnome.Ptyxis.gschema.xml.in:497
 msgid "Primary Menu"
 msgstr "Primär meny"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:485
+#: src/org.gnome.Ptyxis.gschema.xml.in:498
 msgid "Shortcut to show the primary menu for the window"
 msgstr "Genväg för att visa primärmenyn för fönstret"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:490
+#: src/org.gnome.Ptyxis.gschema.xml.in:503
 msgid "Tab Menu"
 msgstr "Flikmeny"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:491
+#: src/org.gnome.Ptyxis.gschema.xml.in:504
 msgid "Shortcut to show the new tab menu"
 msgstr "Genväg för att visa den nya flikmenyn"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:497 src/ptyxis-preferences-window.ui:788
+#: src/org.gnome.Ptyxis.gschema.xml.in:510 src/ptyxis-preferences-window.ui:802
 msgid "Move to Previous Tab"
 msgstr "Gå till föregående flik"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:499
+#: src/org.gnome.Ptyxis.gschema.xml.in:512
 msgid "Shortcut to move to the previous tab"
 msgstr "Genväg för att gå till föregående flik"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:505 src/ptyxis-preferences-window.ui:793
+#: src/org.gnome.Ptyxis.gschema.xml.in:518 src/ptyxis-preferences-window.ui:807
 msgid "Move to Next Tab"
 msgstr "Gå till nästa flik"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:507
+#: src/org.gnome.Ptyxis.gschema.xml.in:520
 msgid "Shortcut to move to the next tab"
 msgstr "Genväg för att gå till nästa flik"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:512 src/ptyxis-preferences-window.ui:802
+#: src/org.gnome.Ptyxis.gschema.xml.in:525 src/ptyxis-preferences-window.ui:816
 msgid "Move Tab Left"
 msgstr "Flytta flik åt vänster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:513
+#: src/org.gnome.Ptyxis.gschema.xml.in:526
 msgid "Shortcut to move the current tab to the left one position"
 msgstr "Genväg för att flytta den aktuella fliken ett steg till vänster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:518 src/ptyxis-preferences-window.ui:808
+#: src/org.gnome.Ptyxis.gschema.xml.in:531 src/ptyxis-preferences-window.ui:822
 msgid "Move Tab Right"
 msgstr "Flytta flik åt höger"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:519
+#: src/org.gnome.Ptyxis.gschema.xml.in:532
 msgid "Shortcut to move the current tab to the right one position"
 msgstr "Genväg för att flytta den aktuella fliken ett steg till höger"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:524 src/ptyxis-preferences-window.ui:814
+#: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:828
 msgid "Move Tab to New Window"
 msgstr "Flytta flik till nytt fönster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:525
+#: src/org.gnome.Ptyxis.gschema.xml.in:538
 msgid "Shortcut to move the current tab into a new window"
 msgstr "Genväg för att flytta den aktuella fliken till ett nytt fönster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:530 src/ptyxis-preferences-window.ui:766
+#: src/org.gnome.Ptyxis.gschema.xml.in:543 src/ptyxis-preferences-window.ui:780
 msgid "Close Tab"
 msgstr "Stäng flik"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:531
+#: src/org.gnome.Ptyxis.gschema.xml.in:544
 msgid "Shortcut to close the current tab"
 msgstr "Genväg för att stänga den aktuella fliken"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:536 src/ptyxis-preferences-window.ui:772
+#: src/org.gnome.Ptyxis.gschema.xml.in:549 src/ptyxis-preferences-window.ui:786
 msgid "Close Other Tabs"
 msgstr "Stäng andra flikar"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:537
+#: src/org.gnome.Ptyxis.gschema.xml.in:550
 msgid "Shortcut to close all tabs in the window but the current one"
 msgstr "Genväg för att stänga alla flikar i fönstret utom den aktuella"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:542 src/ptyxis-preferences-window.ui:726
+#: src/org.gnome.Ptyxis.gschema.xml.in:555 src/ptyxis-preferences-window.ui:740
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:543
+#: src/org.gnome.Ptyxis.gschema.xml.in:556
 msgid "Shortcut to close the current window"
 msgstr "Genväg för att stänga det aktuella fönstret"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:548 src/ptyxis-preferences-window.ui:736 src/ptyxis-terminal.ui:244
-#: src/ptyxis-window.c:1152 src/ptyxis-window.ui:830
+#: src/org.gnome.Ptyxis.gschema.xml.in:561 src/ptyxis-preferences-window.ui:750 src/ptyxis-terminal.ui:244
+#: src/ptyxis-window.c:1175 src/ptyxis-window.ui:824
 msgid "Set Title"
 msgstr "Ställ in titel"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:549
+#: src/org.gnome.Ptyxis.gschema.xml.in:562
 msgid "The shortcut to show set title"
 msgstr "Genvägen för att visa ställ in titel"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:554
+#: src/org.gnome.Ptyxis.gschema.xml.in:567
 msgid "Focus Tab 1"
 msgstr "Fokusera flik 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:555
+#: src/org.gnome.Ptyxis.gschema.xml.in:568
 msgid "Shortcut to focus tab 1"
 msgstr "Genväg till fokusera flik 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:560
+#: src/org.gnome.Ptyxis.gschema.xml.in:573
 msgid "Focus Tab 2"
 msgstr "Fokusera flik 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:561
+#: src/org.gnome.Ptyxis.gschema.xml.in:574
 msgid "Shortcut to focus tab 2"
 msgstr "Genväg till fokusera flik 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:566
+#: src/org.gnome.Ptyxis.gschema.xml.in:579
 msgid "Focus Tab 3"
 msgstr "Fokusera flik 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:567
+#: src/org.gnome.Ptyxis.gschema.xml.in:580
 msgid "Shortcut to focus tab 3"
 msgstr "Genväg till fokusera flik 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:572
+#: src/org.gnome.Ptyxis.gschema.xml.in:585
 msgid "Focus Tab 4"
 msgstr "Fokusera flik 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:573
+#: src/org.gnome.Ptyxis.gschema.xml.in:586
 msgid "Shortcut to focus tab 4"
 msgstr "Genväg till fokusera flik 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:578
+#: src/org.gnome.Ptyxis.gschema.xml.in:591
 msgid "Focus Tab 5"
 msgstr "Fokusera flik 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:579
+#: src/org.gnome.Ptyxis.gschema.xml.in:592
 msgid "Shortcut to focus tab 5"
 msgstr "Genväg till fokusera flik 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:584
+#: src/org.gnome.Ptyxis.gschema.xml.in:597
 msgid "Focus Tab 6"
 msgstr "Fokusera flik 6"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:585
+#: src/org.gnome.Ptyxis.gschema.xml.in:598
 msgid "Shortcut to focus tab 6"
 msgstr "Genväg till fokusera flik 6"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:590
+#: src/org.gnome.Ptyxis.gschema.xml.in:603
 msgid "Focus Tab 7"
 msgstr "Fokusera flik 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:591
+#: src/org.gnome.Ptyxis.gschema.xml.in:604
 msgid "Shortcut to focus tab 7"
 msgstr "Genväg till fokusera flik 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:596
+#: src/org.gnome.Ptyxis.gschema.xml.in:609
 msgid "Focus Tab 8"
 msgstr "Fokusera flik 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:597
+#: src/org.gnome.Ptyxis.gschema.xml.in:610
 msgid "Shortcut to focus tab 8"
 msgstr "Genväg till fokusera flik 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:602
+#: src/org.gnome.Ptyxis.gschema.xml.in:615
 msgid "Focus Tab 9"
 msgstr "Fokusera flik 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:603
+#: src/org.gnome.Ptyxis.gschema.xml.in:616
 msgid "Shortcut to focus tab 9"
 msgstr "Genväg till fokusera flik 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:608
+#: src/org.gnome.Ptyxis.gschema.xml.in:621
 msgid "Focus Tab 10"
 msgstr "Fokusera flik 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:609
+#: src/org.gnome.Ptyxis.gschema.xml.in:622
 msgid "Shortcut to focus tab 10"
 msgstr "Genväg till fokusera flik 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:614 src/ptyxis-preferences-window.ui:778
+#: src/org.gnome.Ptyxis.gschema.xml.in:627 src/ptyxis-preferences-window.ui:792
 msgid "Undo Close Tab"
 msgstr "Ångra flikstängning"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:615
+#: src/org.gnome.Ptyxis.gschema.xml.in:628
 msgid "Undo closing of last tab"
 msgstr "Ångra stängning av senaste flik"
 
@@ -855,27 +872,27 @@ msgstr "--tab, --tab-with-profile eller --new-window kan inte användas tillsamm
 msgid "Cannot parse command: %s"
 msgstr "Kan inte analysera kommando: %s"
 
-#: src/ptyxis-application.c:1145
+#: src/ptyxis-application.c:1148
 msgid "Examples:"
 msgstr "Exempel:"
 
-#: src/ptyxis-application.c:1147
+#: src/ptyxis-application.c:1150
 msgid "Show the application preferences"
 msgstr "Visa programinställningarna"
 
 #. Used for new tabs/windows/etc when specified
-#: src/ptyxis-application.c:1150
+#: src/ptyxis-application.c:1153
 msgid "Use DIR for --tab, --tab-with-profile, --new-window, or -x"
 msgstr "Använd KAT för --tab, --tab-with-profile, --new-window eller -x"
 
-#: src/ptyxis-application.c:1150
+#: src/ptyxis-application.c:1153
 msgid "DIR"
 msgstr "KAT"
 
 #. By default, this implies a new ptyxis instance unless the options
 #. * below are provided to override that.
 #.
-#: src/ptyxis-application.c:1155
+#: src/ptyxis-application.c:1158
 msgid "Command to execute in new window"
 msgstr "Kommando att köra i ett nytt fönster"
 
@@ -883,69 +900,69 @@ msgstr "Kommando att köra i ett nytt fönster"
 #. * short command options for these to make it easier to sniff them in early args
 #. * checking from `main.c`.
 #.
-#: src/ptyxis-application.c:1161
+#: src/ptyxis-application.c:1164
 msgid "New terminal window"
 msgstr "Nytt terminalfönster"
 
-#: src/ptyxis-application.c:1162
+#: src/ptyxis-application.c:1165
 msgid "New terminal tab in active window"
 msgstr "Ny terminalflik i aktivt fönster"
 
-#: src/ptyxis-application.c:1163
+#: src/ptyxis-application.c:1166
 msgid "New terminal tab in active window using the profile UUID"
 msgstr "Ny terminalflik i aktivt fönster som använder profilens UUID"
 
-#: src/ptyxis-application.c:1163
+#: src/ptyxis-application.c:1166
 msgid "PROFILE_UUID"
 msgstr "PROFIL-UUID"
 
 #. Standalone (single instance mode)
-#: src/ptyxis-application.c:1166
+#: src/ptyxis-application.c:1169
 msgid "Start a new instance, ignoring existing instances"
 msgstr "Starta en ny instans, ignorera befintliga instanser"
 
-#: src/ptyxis-application.c:1168
+#: src/ptyxis-application.c:1171
 msgid "Set title for new tab"
 msgstr "Ställ in titel för ny flik"
 
-#: src/ptyxis-application.c:1169
+#: src/ptyxis-application.c:1172
 msgid "Maximize a newly created window"
 msgstr "Maximera ett nyligen skapat fönster"
 
-#: src/ptyxis-application.c:1170
+#: src/ptyxis-application.c:1173
 msgid "Fullscreen a newly created window"
 msgstr "Växla ett nyligen skapat fönster till helskärm"
 
 #. Import a custom .palette file. This works like dragging the file onto preferences
-#: src/ptyxis-application.c:1173
+#: src/ptyxis-application.c:1176
 msgid "Import a Ptyxis palette file"
 msgstr "Importera en Ptyxis-palettfil"
 
-#: src/ptyxis-application.c:1173
+#: src/ptyxis-application.c:1176
 msgid "FILE"
 msgstr "FIL"
 
-#: src/ptyxis-application.c:1180
+#: src/ptyxis-application.c:1183
 msgid "Run Separate Instance"
 msgstr "Kör separat instans"
 
-#: src/ptyxis-application.c:1184
+#: src/ptyxis-application.c:1187
 msgid "Open Preferences"
 msgstr "Öppna inställningar"
 
-#: src/ptyxis-application.c:1188
+#: src/ptyxis-application.c:1191
 msgid "Run Custom Command in New Window"
 msgstr "Kör anpassat kommando i nytt fönster"
 
-#: src/ptyxis-application.c:1193
+#: src/ptyxis-application.c:1196
 msgid "Import a custom palette"
 msgstr "Importera en anpassad palett"
 
-#: src/ptyxis-application.c:1196
+#: src/ptyxis-application.c:1199
 msgid "[-- COMMAND ARGUMENTS]"
 msgstr "[-- KOMMANDOARGUMENT]"
 
-#: src/ptyxis-application.c:1434
+#: src/ptyxis-application.c:1440
 msgid "translator-credits"
 msgstr ""
 "Luna Jernberg <lunajernberg@gnome.org>\n"
@@ -1006,7 +1023,7 @@ msgstr "Mål-URL"
 msgid "Removed custom link “%s”"
 msgstr "Tog bort anpassad länk ”%s”"
 
-#: src/ptyxis-custom-link-row.c:133 src/ptyxis-profile-editor.c:185 src/ptyxis-profile-row.c:106
+#: src/ptyxis-custom-link-row.c:133 src/ptyxis-profile-editor.c:186 src/ptyxis-profile-row.c:106
 msgid "Undo"
 msgstr "Ångra"
 
@@ -1046,7 +1063,7 @@ msgstr "Hela _ord"
 msgid "Use _Regular Expressions"
 msgstr "Använd _reguljära uttryck"
 
-#: src/ptyxis-find-bar.ui:128 src/ptyxis-preferences-window.ui:558 src/ptyxis-profile-editor.ui:288
+#: src/ptyxis-find-bar.ui:128 src/ptyxis-preferences-window.ui:572 src/ptyxis-profile-editor.ui:302
 msgid "Close"
 msgstr "Stäng"
 
@@ -1074,8 +1091,8 @@ msgstr "Kolumn"
 #. * This is fine for now, but I'd like it to be better and actually
 #. * show the proper `tcgetpgrp()` foreground.
 #.
-#: src/ptyxis-inspector.c:177 src/ptyxis-inspector.c:197 src/ptyxis-preferences-window.ui:494
-#: src/ptyxis-profile-editor.ui:170
+#: src/ptyxis-inspector.c:177 src/ptyxis-inspector.c:197 src/ptyxis-preferences-window.ui:508
+#: src/ptyxis-profile-editor.ui:184
 msgid "Shell"
 msgstr "Skal"
 
@@ -1143,7 +1160,7 @@ msgstr "Cellstorlek"
 msgid "Input"
 msgstr "Inmatning"
 
-#: src/ptyxis-inspector.ui:246 src/ptyxis-preferences-window.ui:232
+#: src/ptyxis-inspector.ui:246 src/ptyxis-preferences-window.ui:246
 msgid "Cursor"
 msgstr "Markör"
 
@@ -1159,7 +1176,7 @@ msgstr "Mus"
 msgid "Hyperlink"
 msgstr "Hyperlänk"
 
-#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:216 src/ptyxis-window.c:1656
+#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:217 src/ptyxis-window.c:1706
 msgid "My Computer"
 msgstr "Min dator"
 
@@ -1167,23 +1184,23 @@ msgstr "Min dator"
 msgid "The quick brown fox jumps over the lazy dog"
 msgstr "Flygande bäckasiner söka strax hwila på mjuka tuvor"
 
-#: src/ptyxis-preferences-window.c:273
+#: src/ptyxis-preferences-window.c:275
 msgid "Select Font"
 msgstr "Välj typsnitt"
 
-#: src/ptyxis-preferences-window.c:348
+#: src/ptyxis-preferences-window.c:350
 msgid "Show Fewer Palettes"
 msgstr "Visa färre paletter"
 
-#: src/ptyxis-preferences-window.c:353 src/ptyxis-preferences-window.ui:46
+#: src/ptyxis-preferences-window.c:355 src/ptyxis-preferences-window.ui:46
 msgid "Show All Palettes"
 msgstr "Visa alla paletter"
 
-#: src/ptyxis-preferences-window.c:378
+#: src/ptyxis-preferences-window.c:380
 msgid "Add Profile"
 msgstr "Lägg till profil"
 
-#: src/ptyxis-preferences-window.c:480 src/ptyxis-profile-editor.c:269
+#: src/ptyxis-preferences-window.c:482 src/ptyxis-profile-editor.c:270
 msgid "Add Link"
 msgstr "Lägg till länk"
 
@@ -1203,379 +1220,379 @@ msgstr "Använd system_typsnitt"
 msgid "Custom Font"
 msgstr "Anpassat typsnitt"
 
-#: src/ptyxis-preferences-window.ui:193
+#: src/ptyxis-preferences-window.ui:207
 msgid "Blinking Text"
 msgstr "Blinkande text"
 
-#: src/ptyxis-preferences-window.ui:202 src/ptyxis-preferences-window.ui:426
-#: src/ptyxis-preferences-window.ui:515 src/ptyxis-profile-editor.ui:216 src/ptyxis-profile-editor.ui:245
+#: src/ptyxis-preferences-window.ui:216 src/ptyxis-preferences-window.ui:440
+#: src/ptyxis-preferences-window.ui:529 src/ptyxis-profile-editor.ui:230 src/ptyxis-profile-editor.ui:259
 msgid "Never"
 msgstr "Aldrig"
 
-#: src/ptyxis-preferences-window.ui:208
+#: src/ptyxis-preferences-window.ui:222
 msgid "Focused"
 msgstr "Fokuserad"
 
-#: src/ptyxis-preferences-window.ui:214
+#: src/ptyxis-preferences-window.ui:228
 msgid "Unfocused"
 msgstr "Ofokuserad"
 
-#: src/ptyxis-preferences-window.ui:220 src/ptyxis-preferences-window.ui:438
-#: src/ptyxis-preferences-window.ui:527 src/ptyxis-profile-editor.ui:222 src/ptyxis-profile-editor.ui:257
+#: src/ptyxis-preferences-window.ui:234 src/ptyxis-preferences-window.ui:452
+#: src/ptyxis-preferences-window.ui:541 src/ptyxis-profile-editor.ui:236 src/ptyxis-profile-editor.ui:271
 msgid "Always"
 msgstr "Alltid"
 
-#: src/ptyxis-preferences-window.ui:244
+#: src/ptyxis-preferences-window.ui:258
 msgid "Block"
 msgstr "Block"
 
-#: src/ptyxis-preferences-window.ui:250
+#: src/ptyxis-preferences-window.ui:264
 msgid "I-Beam"
 msgstr "I-balk"
 
-#: src/ptyxis-preferences-window.ui:256
+#: src/ptyxis-preferences-window.ui:270
 msgid "Underline"
 msgstr "Understrykning"
 
-#: src/ptyxis-preferences-window.ui:266
+#: src/ptyxis-preferences-window.ui:280
 msgid "Cursor Blinking"
 msgstr "Markörblinkning"
 
-#: src/ptyxis-preferences-window.ui:275 src/ptyxis-preferences-window.ui:432
+#: src/ptyxis-preferences-window.ui:289 src/ptyxis-preferences-window.ui:446
 msgid "Follow System"
 msgstr "Följ system"
 
-#: src/ptyxis-preferences-window.ui:281
+#: src/ptyxis-preferences-window.ui:295
 msgid "Enabled"
 msgstr "Aktiverad"
 
-#: src/ptyxis-preferences-window.ui:287
+#: src/ptyxis-preferences-window.ui:301
 msgid "Disabled"
 msgstr "Inaktiverad"
 
-#: src/ptyxis-preferences-window.ui:301
+#: src/ptyxis-preferences-window.ui:315
 msgid "Behavior"
 msgstr "Beteende"
 
-#: src/ptyxis-preferences-window.ui:305
+#: src/ptyxis-preferences-window.ui:319
 msgid "Interface"
 msgstr "Gränssnitt"
 
-#: src/ptyxis-preferences-window.ui:317
+#: src/ptyxis-preferences-window.ui:331
 msgid "Next"
 msgstr "Nästa"
 
-#: src/ptyxis-preferences-window.ui:323
+#: src/ptyxis-preferences-window.ui:337
 msgid "Last"
 msgstr "Sista"
 
-#: src/ptyxis-preferences-window.ui:338
+#: src/ptyxis-preferences-window.ui:352
 msgid "Attempt to restore previous tabs when Ptyxis starts"
 msgstr "Försök att återställa tidigare flikar när Ptyxis startar"
 
-#: src/ptyxis-preferences-window.ui:344
+#: src/ptyxis-preferences-window.ui:358
 msgid "Restore the previous window size when creating a new window"
 msgstr "Återställ den tidigare fönsterstorleken när du skapar ett nytt fönster"
 
-#: src/ptyxis-preferences-window.ui:354
+#: src/ptyxis-preferences-window.ui:368
 msgid "Columns"
 msgstr "Kolumner"
 
-#: src/ptyxis-preferences-window.ui:368
+#: src/ptyxis-preferences-window.ui:382
 msgid "Rows"
 msgstr "Rader"
 
-#: src/ptyxis-preferences-window.ui:386
+#: src/ptyxis-preferences-window.ui:400
 msgid "Accessibility"
 msgstr "Hjälpmedel"
 
-#: src/ptyxis-preferences-window.ui:389
+#: src/ptyxis-preferences-window.ui:403
 msgid "Allow Screen Readers"
 msgstr "Tillåt skärmläsare"
 
-#: src/ptyxis-preferences-window.ui:390
+#: src/ptyxis-preferences-window.ui:404
 msgid "Permit screen readers such as Orca to read terminal content and typed text"
 msgstr "Tillåt skärmläsare som Orca att läsa terminalinnehåll och inskriven text"
 
-#: src/ptyxis-preferences-window.ui:397
+#: src/ptyxis-preferences-window.ui:411
 msgid "Bell"
 msgstr "Klocka"
 
-#: src/ptyxis-preferences-window.ui:401
+#: src/ptyxis-preferences-window.ui:415
 msgid "Emit an audible bell when requested by active tab"
 msgstr "Avge en hörbar klocka när aktiv flik begär det"
 
-#: src/ptyxis-preferences-window.ui:406
+#: src/ptyxis-preferences-window.ui:420
 msgid "Visual Bell"
 msgstr "Visuellt alarm"
 
-#: src/ptyxis-preferences-window.ui:407
+#: src/ptyxis-preferences-window.ui:421
 msgid "Emit a visual bell when requested by active tab"
 msgstr "Sänd ut ett visuellt alarm när aktiv flik begär det"
 
-#: src/ptyxis-preferences-window.ui:414 src/ptyxis-profile-editor.ui:300
+#: src/ptyxis-preferences-window.ui:428 src/ptyxis-profile-editor.ui:314
 msgid "Scrolling"
 msgstr "Rullning"
 
-#: src/ptyxis-preferences-window.ui:417
+#: src/ptyxis-preferences-window.ui:431
 msgid "Use Scrollbars"
 msgstr "Använd rullningslister"
 
-#: src/ptyxis-preferences-window.ui:453 src/ptyxis-profile-editor.ui:304
+#: src/ptyxis-preferences-window.ui:467 src/ptyxis-profile-editor.ui:318
 msgid "Scroll to the bottom upon input keystroke"
 msgstr "Rulla till botten vid inmatning av tangenttryckning"
 
-#: src/ptyxis-preferences-window.ui:459 src/ptyxis-profile-editor.ui:310
+#: src/ptyxis-preferences-window.ui:473 src/ptyxis-profile-editor.ui:324
 msgid "Scroll to the bottom when new content is available"
 msgstr "Rulla till botten när nytt innehåll är tillgängligt"
 
-#: src/ptyxis-preferences-window.ui:469 src/ptyxis-profile-editor.ui:320
+#: src/ptyxis-preferences-window.ui:483 src/ptyxis-profile-editor.ui:334
 msgid "Restrict the number of lines saved for scrollback"
 msgstr "Begränsa antalet rader som sparas för tillbakarullning"
 
-#: src/ptyxis-preferences-window.ui:478 src/ptyxis-profile-editor.ui:329
+#: src/ptyxis-preferences-window.ui:492 src/ptyxis-profile-editor.ui:343
 msgid "The number of lines to keep for scrollback"
 msgstr "Antalet rader att behålla för tillbakarullning"
 
-#: src/ptyxis-preferences-window.ui:497 src/ptyxis-profile-editor.ui:188
+#: src/ptyxis-preferences-window.ui:511 src/ptyxis-profile-editor.ui:202
 msgid "Use Login Shell"
 msgstr "Använd inloggningsskal"
 
-#: src/ptyxis-preferences-window.ui:506 src/ptyxis-profile-editor.ui:236
+#: src/ptyxis-preferences-window.ui:520 src/ptyxis-profile-editor.ui:250
 msgid "Preserve Working Directory"
 msgstr "Bevara arbetskatalog"
 
-#: src/ptyxis-preferences-window.ui:521 src/ptyxis-profile-editor.ui:251
+#: src/ptyxis-preferences-window.ui:535 src/ptyxis-profile-editor.ui:265
 msgid "Safe"
 msgstr "Säker"
 
-#: src/ptyxis-preferences-window.ui:546 src/ptyxis-profile-editor.ui:276
+#: src/ptyxis-preferences-window.ui:560 src/ptyxis-profile-editor.ui:290
 msgid "No Action"
 msgstr "Ingen åtgärd"
 
-#: src/ptyxis-preferences-window.ui:552 src/ptyxis-profile-editor.ui:282
+#: src/ptyxis-preferences-window.ui:566 src/ptyxis-profile-editor.ui:296
 msgid "Restart"
 msgstr "Starta om"
 
-#: src/ptyxis-preferences-window.ui:570 src/ptyxis-profile-editor.ui:345
+#: src/ptyxis-preferences-window.ui:584 src/ptyxis-profile-editor.ui:359
 msgid "Compatibility"
 msgstr "Kompatibilitet"
 
-#: src/ptyxis-preferences-window.ui:573 src/ptyxis-profile-editor.ui:348
+#: src/ptyxis-preferences-window.ui:587 src/ptyxis-profile-editor.ui:362
 msgid "Backspace Key"
 msgstr "Backstegstangent"
 
-#: src/ptyxis-preferences-window.ui:574 src/ptyxis-profile-editor.ui:349
+#: src/ptyxis-preferences-window.ui:588 src/ptyxis-profile-editor.ui:363
 msgid "Sequence to send for Backspace key"
 msgstr "Sekvens att skicka för backstegstangenten"
 
-#: src/ptyxis-preferences-window.ui:583 src/ptyxis-profile-editor.ui:358
+#: src/ptyxis-preferences-window.ui:597 src/ptyxis-profile-editor.ui:372
 msgid "Delete Key"
 msgstr "Delete-tangent"
 
-#: src/ptyxis-preferences-window.ui:584 src/ptyxis-profile-editor.ui:359
+#: src/ptyxis-preferences-window.ui:598 src/ptyxis-profile-editor.ui:373
 msgid "Sequence to send for Delete key"
 msgstr "Sekvens att skicka för Delete-tangenten"
 
-#: src/ptyxis-preferences-window.ui:593 src/ptyxis-profile-editor.ui:368
+#: src/ptyxis-preferences-window.ui:607 src/ptyxis-profile-editor.ui:382
 msgid "Ambiguous-width Characters"
 msgstr "Tvetydiga tecken"
 
-#: src/ptyxis-preferences-window.ui:602 src/ptyxis-profile-editor.ui:377
+#: src/ptyxis-preferences-window.ui:616 src/ptyxis-profile-editor.ui:391
 msgid "Narrow"
 msgstr "Smal"
 
-#: src/ptyxis-preferences-window.ui:608 src/ptyxis-profile-editor.ui:383
+#: src/ptyxis-preferences-window.ui:622 src/ptyxis-profile-editor.ui:397
 msgid "Wide"
 msgstr "Bred"
 
-#: src/ptyxis-preferences-window.ui:641
+#: src/ptyxis-preferences-window.ui:655
 msgid "Set as Default Terminal"
 msgstr "Ange som standardterminal"
 
-#: src/ptyxis-preferences-window.ui:651
+#: src/ptyxis-preferences-window.ui:665
 msgid "Shortcuts"
 msgstr "Genvägar"
 
-#: src/ptyxis-preferences-window.ui:677
+#: src/ptyxis-preferences-window.ui:691
 msgid "Clear Selection"
 msgstr "Rensa markering"
 
-#: src/ptyxis-preferences-window.ui:686 src/ptyxis-terminal.ui:230
+#: src/ptyxis-preferences-window.ui:700 src/ptyxis-terminal.ui:230
 msgid "Reset"
 msgstr "Återställ"
 
-#: src/ptyxis-preferences-window.ui:691 src/ptyxis-terminal.ui:236
+#: src/ptyxis-preferences-window.ui:705 src/ptyxis-terminal.ui:236
 msgid "Reset and Clear"
 msgstr "Återställ och rensa"
 
-#: src/ptyxis-preferences-window.ui:710
+#: src/ptyxis-preferences-window.ui:724
 msgid "Show Context Menu"
 msgstr "Visa snabbvalsmeny"
 
-#: src/ptyxis-preferences-window.ui:717
+#: src/ptyxis-preferences-window.ui:731
 msgid "Windows"
 msgstr "Fönster"
 
-#: src/ptyxis-preferences-window.ui:721
+#: src/ptyxis-preferences-window.ui:735
 msgid "Open a new tab in a new window"
 msgstr "Öppna en ny flik i ett nytt fönster"
 
-#: src/ptyxis-preferences-window.ui:727
+#: src/ptyxis-preferences-window.ui:741
 msgid "Close the current window"
 msgstr "Stäng aktuellt fönster"
 
-#: src/ptyxis-preferences-window.ui:743
+#: src/ptyxis-preferences-window.ui:757
 msgid "Tabs"
 msgstr "Flikar"
 
-#: src/ptyxis-preferences-window.ui:747
+#: src/ptyxis-preferences-window.ui:761
 msgid "Open a new tab in the current window"
 msgstr "Öppna en ny flik i det aktuella fönstret"
 
-#: src/ptyxis-preferences-window.ui:756
+#: src/ptyxis-preferences-window.ui:770
 msgid "View Tab Overview"
 msgstr "Visa fliköversikt"
 
-#: src/ptyxis-preferences-window.ui:757
+#: src/ptyxis-preferences-window.ui:771
 msgid "Show an overview of all tabs within the window"
 msgstr "Visa en översikt över alla flikar i fönstret"
 
-#: src/ptyxis-preferences-window.ui:767
+#: src/ptyxis-preferences-window.ui:781
 msgid "Close the current tab"
 msgstr "Stäng aktuell flik"
 
-#: src/ptyxis-preferences-window.ui:773
+#: src/ptyxis-preferences-window.ui:787
 msgid "Close all tabs except the active tab"
 msgstr "Stäng alla flikar utom den aktiva fliken"
 
-#: src/ptyxis-preferences-window.ui:779
+#: src/ptyxis-preferences-window.ui:793
 msgid "Undo closing the last tab"
 msgstr "Ångra stängning av den senaste fliken"
 
-#: src/ptyxis-preferences-window.ui:803
+#: src/ptyxis-preferences-window.ui:817
 msgid "Move the tab one position to the left"
 msgstr "Flytta fliken ett steg åt vänster"
 
-#: src/ptyxis-preferences-window.ui:809
+#: src/ptyxis-preferences-window.ui:823
 msgid "Move the tab one position to the right"
 msgstr "Flytta fliken ett steg åt höger"
 
-#: src/ptyxis-preferences-window.ui:815
+#: src/ptyxis-preferences-window.ui:829
 msgid "Detach the current tab and move it to a new window"
 msgstr "Koppla lös den aktuella fliken och flytta den till ett nytt fönster"
 
-#: src/ptyxis-preferences-window.ui:824
+#: src/ptyxis-preferences-window.ui:838
 msgid "Switch to Tab 1"
 msgstr "Ändra till flik 1"
 
-#: src/ptyxis-preferences-window.ui:829
+#: src/ptyxis-preferences-window.ui:843
 msgid "Switch to Tab 2"
 msgstr "Ändra till flik 2"
 
-#: src/ptyxis-preferences-window.ui:834
+#: src/ptyxis-preferences-window.ui:848
 msgid "Switch to Tab 3"
 msgstr "Ändra till flik 3"
 
-#: src/ptyxis-preferences-window.ui:839
+#: src/ptyxis-preferences-window.ui:853
 msgid "Switch to Tab 4"
 msgstr "Ändra till flik 4"
 
-#: src/ptyxis-preferences-window.ui:844
+#: src/ptyxis-preferences-window.ui:858
 msgid "Switch to Tab 5"
 msgstr "Ändra till flik 5"
 
-#: src/ptyxis-preferences-window.ui:849
+#: src/ptyxis-preferences-window.ui:863
 msgid "Switch to Tab 6"
 msgstr "Ändra till flik 6"
 
-#: src/ptyxis-preferences-window.ui:854
+#: src/ptyxis-preferences-window.ui:868
 msgid "Switch to Tab 7"
 msgstr "Ändra till flik 7"
 
-#: src/ptyxis-preferences-window.ui:859
+#: src/ptyxis-preferences-window.ui:873
 msgid "Switch to Tab 8"
 msgstr "Ändra till flik 8"
 
-#: src/ptyxis-preferences-window.ui:864
+#: src/ptyxis-preferences-window.ui:878
 msgid "Switch to Tab 9"
 msgstr "Ändra till flik 9"
 
-#: src/ptyxis-preferences-window.ui:869
+#: src/ptyxis-preferences-window.ui:883
 msgid "Switch to Tab 10"
 msgstr "Ändra till flik 10"
 
-#: src/ptyxis-preferences-window.ui:876
+#: src/ptyxis-preferences-window.ui:890
 msgid "Zoom"
 msgstr "Zoom"
 
-#: src/ptyxis-preferences-window.ui:896
+#: src/ptyxis-preferences-window.ui:910
 msgid "Application"
 msgstr "Program"
 
-#: src/ptyxis-preferences-window.ui:900
+#: src/ptyxis-preferences-window.ui:914
 msgid "Toggle in and out of fullscreen"
 msgstr "Växla in och ut från helskärm"
 
-#: src/ptyxis-preferences-window.ui:909
+#: src/ptyxis-preferences-window.ui:923
 msgid "Show Primary Menu"
 msgstr "Visa primär meny"
 
-#: src/ptyxis-preferences-window.ui:910
+#: src/ptyxis-preferences-window.ui:924
 msgid "Displays the primary menu for the terminal window"
 msgstr "Visar den primära menyn för terminalfönstret"
 
-#: src/ptyxis-preferences-window.ui:915
+#: src/ptyxis-preferences-window.ui:929
 msgid "Show New Tab Menu"
 msgstr "Visa ny flikmeny"
 
-#: src/ptyxis-preferences-window.ui:916
+#: src/ptyxis-preferences-window.ui:930
 msgid "Displays the new tab menu for the terminal window"
 msgstr "Visar den nya flikmenyn för terminalfönstret"
 
-#: src/ptyxis-preferences-window.ui:922
+#: src/ptyxis-preferences-window.ui:936
 msgid "Show this preferences window"
 msgstr "Visa detta inställningsfönster"
 
-#: src/ptyxis-preferences-window.ui:931 src/ptyxis-preferences-window.ui:935 src/ptyxis-window.c:1630
-#: src/ptyxis-window.c:1792
+#: src/ptyxis-preferences-window.ui:945 src/ptyxis-preferences-window.ui:949 src/ptyxis-window.c:1680
+#: src/ptyxis-window.c:1842
 msgid "Profiles"
 msgstr "Profiler"
 
-#: src/ptyxis-preferences-window.ui:954 src/ptyxis-profile-editor.ui:428
+#: src/ptyxis-preferences-window.ui:968 src/ptyxis-profile-editor.ui:442
 msgid "Automatic"
 msgstr "Automatisk"
 
-#: src/ptyxis-preferences-window.ui:960 src/ptyxis-profile-editor.ui:434
+#: src/ptyxis-preferences-window.ui:974 src/ptyxis-profile-editor.ui:448
 msgid "Control-H"
 msgstr "Ctrl-H"
 
-#: src/ptyxis-preferences-window.ui:966 src/ptyxis-profile-editor.ui:440
+#: src/ptyxis-preferences-window.ui:980 src/ptyxis-profile-editor.ui:454
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
-#: src/ptyxis-preferences-window.ui:972 src/ptyxis-profile-editor.ui:446
+#: src/ptyxis-preferences-window.ui:986 src/ptyxis-profile-editor.ui:460
 msgid "Escape Sequence"
 msgstr "Utrymningssekvens"
 
-#: src/ptyxis-preferences-window.ui:978 src/ptyxis-profile-editor.ui:452
+#: src/ptyxis-preferences-window.ui:992 src/ptyxis-profile-editor.ui:466
 msgid "TTY Erase"
 msgstr "TTY radera"
 
-#: src/ptyxis-profile.c:711
+#: src/ptyxis-profile.c:729
 msgid "Untitled Profile"
 msgstr "Namnlös profil"
 
-#: src/ptyxis-profile-editor.c:154 src/ptyxis-terminal.c:438 src/ptyxis-terminal.c:470
+#: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:440 src/ptyxis-terminal.c:472
 msgid "Copied to clipboard"
 msgstr "Kopierat till urklipp"
 
-#: src/ptyxis-profile-editor.c:183 src/ptyxis-profile-row.c:104
+#: src/ptyxis-profile-editor.c:184 src/ptyxis-profile-row.c:104
 #, c-format
 msgid "Removed profile “%s”"
 msgstr "Tog bort profil “%s”"
 
-#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:411 src/ptyxis-tab.c:468
+#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:481 src/ptyxis-tab.c:538
 msgid "Edit Profile"
 msgstr "Redigera profil"
 
@@ -1599,27 +1616,27 @@ msgstr "Färg"
 msgid "Use Bright Colors for Bold"
 msgstr "Använd ljusa färger för fetstil"
 
-#: src/ptyxis-profile-editor.ui:159
+#: src/ptyxis-profile-editor.ui:173
 msgid "Network"
 msgstr "Nätverk"
 
-#: src/ptyxis-profile-editor.ui:162
+#: src/ptyxis-profile-editor.ui:176
 msgid "Proxy"
 msgstr "Proxy"
 
-#: src/ptyxis-profile-editor.ui:163
+#: src/ptyxis-profile-editor.ui:177
 msgid "Applies the network proxy settings to the container environment"
 msgstr "Tillämpar nätverkets proxyinställningar på behållarmiljön"
 
-#: src/ptyxis-profile-editor.ui:198
+#: src/ptyxis-profile-editor.ui:212
 msgid "The default container to use with this profile"
 msgstr "Standardbehållaren att använda med denna profil"
 
-#: src/ptyxis-profile-editor.ui:207
+#: src/ptyxis-profile-editor.ui:221
 msgid "Preserve the current container when opening new tabs and windows"
 msgstr "Bevara den aktuella behållaren när du öppnar nya flikar och fönster"
 
-#: src/ptyxis-profile-editor.ui:413
+#: src/ptyxis-profile-editor.ui:427
 msgid "Remove Profile"
 msgstr "Ta bort profil"
 
@@ -1659,12 +1676,16 @@ msgstr "Ställ in genväg"
 msgid "disabled"
 msgstr "inaktiverad"
 
-#: src/ptyxis-tab.c:319
+#: src/ptyxis-tab.c:332
+msgid "A foreground process is running"
+msgstr "En förgrundsprocess körs"
+
+#: src/ptyxis-tab.c:389
 #, c-format
 msgid "Process Exited from Signal %d"
 msgstr "Process avslutad från signal %d"
 
-#: src/ptyxis-tab.c:322 src/ptyxis-tab.c:345
+#: src/ptyxis-tab.c:392 src/ptyxis-tab.c:415
 msgid "_Restart"
 msgstr "_Starta om"
 
@@ -1672,32 +1693,32 @@ msgstr "_Starta om"
 #. * display it again if the tab is removed from the parking lot and
 #. * restored into the window.
 #.
-#: src/ptyxis-tab.c:344
+#: src/ptyxis-tab.c:414
 msgid "Process Exited"
 msgstr "Process avslutad"
 
-#: src/ptyxis-tab.c:410
+#: src/ptyxis-tab.c:480
 msgid "Failed to launch terminal"
 msgstr "Misslyckades med att starta terminal"
 
-#: src/ptyxis-tab.c:466
+#: src/ptyxis-tab.c:536
 #, c-format
 msgid "Cannot locate container “%s”"
 msgstr "Kan inte hitta behållare “%s”"
 
-#: src/ptyxis-tab.c:490
+#: src/ptyxis-tab.c:560
 msgid "Failed to create pseudo terminal device"
 msgstr "Misslyckades med att skapa pseudoterminalenhet"
 
-#: src/ptyxis-tab.c:1468
+#: src/ptyxis-tab.c:1627
 msgid "Exited"
 msgstr "Avslutad"
 
-#: src/ptyxis-tab.c:1470
+#: src/ptyxis-tab.c:1629
 msgid "Failed"
 msgstr "Misslyckades"
 
-#: src/ptyxis-tab.c:2052
+#: src/ptyxis-tab.c:2214
 msgid "Failed to open link"
 msgstr "Misslyckades med att öppna länk"
 
@@ -1705,33 +1726,33 @@ msgstr "Misslyckades med att öppna länk"
 msgid "Command completed"
 msgstr "Kommando slutfört"
 
-#: src/ptyxis-terminal.ui:170
-msgid "Search…"
-msgstr "Sök…"
-
-#: src/ptyxis-terminal.ui:176
+#: src/ptyxis-terminal.ui:169
 msgid "_Open Link"
 msgstr "Ö_ppna länk"
 
-#: src/ptyxis-terminal.ui:184
+#: src/ptyxis-terminal.ui:174
+msgid "_Copy Link"
+msgstr "_Kopiera länk"
+
+#: src/ptyxis-terminal.ui:182
+msgid "Search…"
+msgstr "Sök…"
+
+#: src/ptyxis-terminal.ui:189
 msgid "_Copy"
 msgstr "_Kopiera"
 
-#: src/ptyxis-terminal.ui:185
+#: src/ptyxis-terminal.ui:190
 msgid "Copy selection from terminal to clipboard"
 msgstr "Kopiera markering från terminal till urklipp"
 
-#: src/ptyxis-terminal.ui:189
+#: src/ptyxis-terminal.ui:194
 msgid "Copy as _HTML"
 msgstr "Kopiera som _HTML"
 
-#: src/ptyxis-terminal.ui:190
+#: src/ptyxis-terminal.ui:195
 msgid "Copy selection from terminal to clipboard with HTML formatting"
 msgstr "Kopiera markering från terminal till urklipp med HTML-formatering"
-
-#: src/ptyxis-terminal.ui:195
-msgid "_Copy Link"
-msgstr "_Kopiera länk"
 
 #: src/ptyxis-terminal.ui:201
 msgid "_Paste"
@@ -1758,11 +1779,15 @@ msgstr "Markera _inget"
 msgid "Read-Only"
 msgstr "Skrivskyddad"
 
-#: src/ptyxis-terminal.ui:251 src/ptyxis-window.ui:385 src/ptyxis-window.ui:776
+#: src/ptyxis-terminal.ui:249
+msgid "Change Profile"
+msgstr "Byt profil"
+
+#: src/ptyxis-terminal.ui:257 src/ptyxis-window.ui:388 src/ptyxis-window.ui:770
 msgid "Leave Fullscreen"
 msgstr "Lämna helskärm"
 
-#: src/ptyxis-terminal.ui:257
+#: src/ptyxis-terminal.ui:263
 msgid "_Inspect Terminal"
 msgstr "_Inspektera terminal"
 
@@ -1811,91 +1836,91 @@ msgstr "Builders terminal"
 msgid "Ptyxis"
 msgstr "Ptyxis"
 
-#: src/ptyxis-window.c:1423
+#: src/ptyxis-window.c:1468
 msgid "Zoom in"
 msgstr "Zooma in"
 
-#: src/ptyxis-window.c:1438
+#: src/ptyxis-window.c:1483
 msgid "Zoom out"
 msgstr "Zooma ut"
 
-#: src/ptyxis-window.c:1624 src/ptyxis-window.c:1796
+#: src/ptyxis-window.c:1674 src/ptyxis-window.c:1846
 msgid "Containers"
 msgstr "Behållare"
 
-#: src/ptyxis-window.ui:400
+#: src/ptyxis-window.ui:403
 msgid "New Terminal"
 msgstr "Ny terminal"
 
-#: src/ptyxis-window.ui:413
+#: src/ptyxis-window.ui:416
 msgid "Show Profiles and Containers"
 msgstr "Visa profiler och behållare"
 
-#: src/ptyxis-window.ui:433
+#: src/ptyxis-window.ui:436
 msgid "Filter…"
 msgstr "Filtrera…"
 
-#: src/ptyxis-window.ui:595
+#: src/ptyxis-window.ui:589
 msgid "No Matching Results"
 msgstr "Inga matchande resultat"
 
-#: src/ptyxis-window.ui:637
+#: src/ptyxis-window.ui:631
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: src/ptyxis-window.ui:645 src/ptyxis-window.ui:762
+#: src/ptyxis-window.ui:639 src/ptyxis-window.ui:756
 msgid "Show Open Tabs"
 msgstr "Visa öppna flikar"
 
-#: src/ptyxis-window.ui:746
+#: src/ptyxis-window.ui:740
 msgid "New _Tab"
 msgstr "Ny _flik"
 
-#: src/ptyxis-window.ui:753
+#: src/ptyxis-window.ui:747
 msgid "New _Window"
 msgstr "Nytt _fönster"
 
-#: src/ptyxis-window.ui:770
+#: src/ptyxis-window.ui:764
 msgid "Fullscreen"
 msgstr "Helskärm"
 
-#: src/ptyxis-window.ui:784
+#: src/ptyxis-window.ui:778
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: src/ptyxis-window.ui:788
+#: src/ptyxis-window.ui:782
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: src/ptyxis-window.ui:792
+#: src/ptyxis-window.ui:786
 msgid "_About"
 msgstr "_Om"
 
-#: src/ptyxis-window.ui:801
+#: src/ptyxis-window.ui:795
 msgid "Move _Left"
 msgstr "Flytta _vänster"
 
-#: src/ptyxis-window.ui:806
+#: src/ptyxis-window.ui:800
 msgid "Move _Right"
 msgstr "Flytta _höger"
 
-#: src/ptyxis-window.ui:811
+#: src/ptyxis-window.ui:805
 msgid "Move to New _Window"
 msgstr "Flytta till nytt _fönster"
 
-#: src/ptyxis-window.ui:817
+#: src/ptyxis-window.ui:811
 msgid "_Pin Tab"
 msgstr "_Fäst flik"
 
-#: src/ptyxis-window.ui:822
+#: src/ptyxis-window.ui:816
 msgid "Un_pin Tab"
 msgstr "Av_fäst flik"
 
-#: src/ptyxis-window.ui:837
+#: src/ptyxis-window.ui:831
 msgid "Close _Other Tabs"
 msgstr "Stäng _andra flikar"
 
-#: src/ptyxis-window.ui:842
+#: src/ptyxis-window.ui:836
 msgid "_Close Tab"
 msgstr "_Stäng flik"
 
