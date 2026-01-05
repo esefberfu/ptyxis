@@ -29,8 +29,11 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (PtyxisShortcutRow, ptyxis_shortcut_row, PTYXIS, SHORTCUT_ROW, AdwActionRow)
 
-const char *ptyxis_shortcut_row_get_accelerator (PtyxisShortcutRow *self);
-void        ptyxis_shortcut_row_set_accelerator (PtyxisShortcutRow *self,
-                                                 const char        *accelerator);
+const char *ptyxis_shortcut_row_get_accelerator   (PtyxisShortcutRow *self);
+void        ptyxis_shortcut_row_set_accelerator   (PtyxisShortcutRow *self,
+                                                   const char        *accelerator);
+const char *ptyxis_shortcut_row_get_shortcut_name (PtyxisShortcutRow *self);
+void        ptyxis_shortcut_row_set_shortcut_name (PtyxisShortcutRow *self,
+                                                   const char        *shortcut_name);
 
 G_END_DECLS
