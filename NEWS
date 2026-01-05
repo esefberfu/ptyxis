@@ -3,10 +3,31 @@
  * Add a logout inhibitor when tabs have active programs running that
    are not the shell process. Can be disabled by toggling a GSetting
    named 'inhibit-logout'.
+ * Add dialog to change tab profile.
  * Improvements to --working-directory support.
  * cell-width-scale profile option.
+ * User palettes can now set primary/system-accent colors.
+ * Man page documentation for palettes.
+ * Improved tab focus handling when creating new tabs and windows.
+ * Move open/copy link actions to top of terminal context menu.
+ * Improved single-instance handling in preferences.
+ * Screen reader announcements for terminal size changes.
+ * Use default profile when requested profile UUID does not exist.
+ * Clear X11 urgency hint when window becomes active.
  * Fix visual bell area padding.
- * Fix foreground in linux.palette.
+ * Fix cursor color in linux.palette.
+ * Fix terminal snapshot rewriting for single color node.
+ * Handle failure to get portal path gracefully.
+ * Avoid Document Portal paths during Drag'n'Drop operations.
+ * Improved cleanup handling during application shutdown.
+ * Raise priority of force-quit fallback.
+ * Improved container handling for --init 1 containers.
+ * Remove unnecessary gate check for containers list.
+ * Make libc-compat builds optional.
+ * Use VTE -Dapp=false build option now that it is supported.
+ * Testsuite infrastructure for container provider unit testing.
+ * Include APP_ID and DESKTOP_SESSION in troubleshooting information.
+ * Translation updates.
 
 # Ptyxis 49.0
 
