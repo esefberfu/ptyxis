@@ -28,8 +28,9 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (PtyxisShortcuts, ptyxis_shortcuts, PTYXIS, SHORTCUTS, GObject)
 
-PtyxisShortcuts *ptyxis_shortcuts_new         (GSettings       *settings);
-void             ptyxis_shortcuts_update_menu (PtyxisShortcuts *self,
-                                               GMenu           *menu);
+PtyxisShortcuts *ptyxis_shortcuts_new                      (GSettings       *settings);
+void             ptyxis_shortcuts_update_menu              (PtyxisShortcuts *self,
+                                                            GMenu           *menu);
+char            *ptyxis_shortcuts_get_default_accelerator  (const char      *shortcut_name);
 
 G_END_DECLS

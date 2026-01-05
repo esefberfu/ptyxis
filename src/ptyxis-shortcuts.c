@@ -331,3 +331,36 @@ ptyxis_shortcuts_update_menu (PtyxisShortcuts *self,
         }
     }
 }
+
+/**
+ * ptyxis_shortcuts_get_default_accelerator:
+ * @shortcut_name: the name of the shortcut (property name)
+ *
+ * Returns the default accelerator value for the given shortcut name
+ * as defined in the GSettings schema.
+ *
+ * Returns: (transfer full): the default accelerator string
+ */
+char *
+ptyxis_shortcuts_get_default_accelerator (const char *shortcut_name)
+{
+  g_autoptr(GSettingsSchemaKey) key = NULL;
+  g_autoptr(GSettingsSchema) schema = NULL;
+  g_autoptr(GVariant) default_value = NULL;
+  GSettingsSchemaSource *source;
+
+  g_return_val_if_fail (shortcut_name != NULL, NULL);
+
+  source = g_settings_schema_source_get_default ();
+
+  if (!(schema = g_settings_schema_source_lookup (source, APP_SCHEMA_SHORTCUTS_ID, TRUE)))
+    return NULL;
+
+  if (!(key = g_settings_schema_get_key (schema, shortcut_name)))
+    return NULL;
+
+  if (!(default_value = g_settings_schema_key_get_default_value (key)))
+    return NULL;
+
+  return g_variant_dup_string (default_value, NULL);
+}
