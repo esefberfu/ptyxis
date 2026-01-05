@@ -43,6 +43,13 @@
                 <property name="action-name">window.close</property>
               </object>
             </child>
+            <child type="start">
+              <object class="GtkButton" id="reset_button">
+                <property name="label" translatable="yes">Reset</property>
+                <property name="action-name">shortcut.reset</property>
+                <property name="visible">False</property>
+              </object>
+            </child>
             <child type="end">
               <object class="GtkButton" id="accept_button">
                 <!-- do not use underline as it prevents alt+s as an accelerator -->
@@ -129,6 +136,7 @@
   <object class="GtkSizeGroup">
     <widgets>
       <widget name="cancel_button"/>
+      <widget name="reset_button"/>
       <widget name="accept_button"/>
     </widgets>
   </object>

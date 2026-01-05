@@ -31,12 +31,14 @@ struct _PtyxisShortcutAccelDialog
   AdwDialog             parent_instance;
 
   GtkButton            *accept_button;
+  GtkButton            *reset_button;
   GtkStack             *stack;
   GtkLabel             *display_label;
   GtkShortcutLabel     *display_shortcut;
   GtkLabel             *selection_label;
 
   char                 *shortcut_title;
+  char                 *default_accelerator;
 
   guint                 keyval;
   GdkModifierType       modifier;
@@ -50,6 +52,7 @@ enum {
   PROP_0,
   PROP_ACCELERATOR,
   PROP_SHORTCUT_TITLE,
+  PROP_DEFAULT_ACCELERATOR,
   N_PROPS
 };
 
@@ -62,6 +65,9 @@ static GParamSpec *properties[N_PROPS];
 static guint signals[N_SIGNALS];
 
 G_DEFINE_FINAL_TYPE (PtyxisShortcutAccelDialog, ptyxis_shortcut_accel_dialog, ADW_TYPE_DIALOG)
+
+static void
+ptyxis_shortcut_accel_dialog_update_reset_button (PtyxisShortcutAccelDialog *self);
 
 static gboolean
 ptyxis_shortcut_accel_dialog_is_editing (PtyxisShortcutAccelDialog *self)
@@ -208,6 +214,7 @@ ptyxis_shortcut_accel_dialog_key_pressed (GtkWidget             *widget,
       ptyxis_shortcut_accel_dialog_apply_state (self);
 
       g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_ACCELERATOR]);
+      ptyxis_shortcut_accel_dialog_update_reset_button (self);
 
       gtk_widget_grab_focus (GTK_WIDGET (self->accept_button));
 
@@ -267,10 +274,61 @@ ptyxis_shortcut_accel_dialog_key_released (GtkWidget             *widget,
 static void
 shortcut_set_cb (PtyxisShortcutAccelDialog *self)
 {
-  g_signal_emit (self, signals [SHORTCUT_SET], 0,
-                 ptyxis_shortcut_accel_dialog_get_accelerator (self));
+      g_signal_emit (self, signals [SHORTCUT_SET], 0,
+                     ptyxis_shortcut_accel_dialog_dup_accelerator (self));
 
   adw_dialog_close (ADW_DIALOG (self));
+}
+
+static void
+shortcut_reset_cb (PtyxisShortcutAccelDialog *self)
+{
+  g_assert (PTYXIS_IS_SHORTCUT_ACCEL_DIALOG (self));
+
+  if (self->default_accelerator != NULL)
+    {
+      ptyxis_shortcut_accel_dialog_set_accelerator (self, self->default_accelerator);
+      g_signal_emit (self, signals [SHORTCUT_SET], 0, self->default_accelerator);
+      adw_dialog_close (ADW_DIALOG (self));
+    }
+}
+
+static gboolean
+equal_normalized (const char *current_accel,
+                  const char *default_accel)
+{
+  GdkModifierType current_state, default_state;
+  guint current_keyval, default_keyval;
+
+  if (current_accel == NULL && default_accel == NULL)
+    return TRUE;
+
+  if (current_accel == NULL || default_accel == NULL)
+    return FALSE;
+
+  if (!gtk_accelerator_parse (current_accel, &current_keyval, &current_state))
+    return FALSE;
+
+  if (!gtk_accelerator_parse (default_accel, &default_keyval, &default_state))
+    return FALSE;
+
+  return current_keyval == default_keyval && current_state == default_state;
+}
+
+static void
+ptyxis_shortcut_accel_dialog_update_reset_button (PtyxisShortcutAccelDialog *self)
+{
+  g_autofree char *current_accelerator = NULL;
+  gboolean visible;
+
+  g_assert (PTYXIS_IS_SHORTCUT_ACCEL_DIALOG (self));
+
+  if (self->reset_button == NULL)
+    return;
+
+  current_accelerator = ptyxis_shortcut_accel_dialog_dup_accelerator (self);
+  visible = self->editing && !equal_normalized (current_accelerator, self->default_accelerator);
+  gtk_widget_set_visible (GTK_WIDGET (self->reset_button), visible);
 }
 
 static void
@@ -281,6 +339,7 @@ ptyxis_shortcut_accel_dialog_constructed (GObject *object)
   G_OBJECT_CLASS (ptyxis_shortcut_accel_dialog_parent_class)->constructed (object);
 
   gtk_widget_action_set_enabled (GTK_WIDGET (self), "shortcut.set", FALSE);
+  ptyxis_shortcut_accel_dialog_update_reset_button (self);
 }
 
 static void
@@ -289,6 +348,7 @@ ptyxis_shortcut_accel_dialog_finalize (GObject *object)
   PtyxisShortcutAccelDialog *self = (PtyxisShortcutAccelDialog *)object;
 
   g_clear_pointer (&self->shortcut_title, g_free);
+  g_clear_pointer (&self->default_accelerator, g_free);
 
   G_OBJECT_CLASS (ptyxis_shortcut_accel_dialog_parent_class)->finalize (object);
 }
@@ -304,11 +364,15 @@ ptyxis_shortcut_accel_dialog_get_property (GObject    *object,
   switch (prop_id)
     {
     case PROP_ACCELERATOR:
-      g_value_take_string (value, ptyxis_shortcut_accel_dialog_get_accelerator (self));
+      g_value_take_string (value, ptyxis_shortcut_accel_dialog_dup_accelerator (self));
       break;
 
     case PROP_SHORTCUT_TITLE:
       g_value_set_string (value, ptyxis_shortcut_accel_dialog_get_shortcut_title (self));
+      break;
+
+    case PROP_DEFAULT_ACCELERATOR:
+      g_value_set_string (value, ptyxis_shortcut_accel_dialog_get_default_accelerator (self));
       break;
 
     default:
@@ -334,6 +398,10 @@ ptyxis_shortcut_accel_dialog_set_property (GObject      *object,
       ptyxis_shortcut_accel_dialog_set_shortcut_title (self, g_value_get_string (value));
       break;
 
+    case PROP_DEFAULT_ACCELERATOR:
+      ptyxis_shortcut_accel_dialog_set_default_accelerator (self, g_value_get_string (value));
+      break;
+
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
     }
@@ -352,15 +420,22 @@ ptyxis_shortcut_accel_dialog_class_init (PtyxisShortcutAccelDialogClass *klass)
 
   properties [PROP_ACCELERATOR] =
     g_param_spec_string ("accelerator",
-                         "Accelerator",
-                         "Accelerator",
+                         NULL,
+                         NULL,
                          NULL,
                          (G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS));
 
   properties [PROP_SHORTCUT_TITLE] =
     g_param_spec_string ("shortcut-title",
-                         "Title",
-                         "Title",
+                         NULL,
+                         NULL,
+                         NULL,
+                         (G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS));
+
+  properties [PROP_DEFAULT_ACCELERATOR] =
+    g_param_spec_string ("default-accelerator",
+                         NULL,
+                         NULL,
                          NULL,
                          (G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY | G_PARAM_STATIC_STRINGS));
 
@@ -379,6 +454,7 @@ ptyxis_shortcut_accel_dialog_class_init (PtyxisShortcutAccelDialogClass *klass)
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Ptyxis/ptyxis-shortcut-accel-dialog.ui");
 
   gtk_widget_class_bind_template_child (widget_class, PtyxisShortcutAccelDialog, accept_button);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisShortcutAccelDialog, reset_button);
   gtk_widget_class_bind_template_child (widget_class, PtyxisShortcutAccelDialog, display_label);
   gtk_widget_class_bind_template_child (widget_class, PtyxisShortcutAccelDialog, display_shortcut);
   gtk_widget_class_bind_template_child (widget_class, PtyxisShortcutAccelDialog, selection_label);
@@ -387,6 +463,7 @@ ptyxis_shortcut_accel_dialog_class_init (PtyxisShortcutAccelDialogClass *klass)
   gtk_widget_class_bind_template_callback (widget_class, ptyxis_shortcut_accel_dialog_key_released);
 
   gtk_widget_class_install_action (widget_class, "shortcut.set", NULL, (GtkWidgetActionActivateFunc) shortcut_set_cb);
+  gtk_widget_class_install_action (widget_class, "shortcut.reset", NULL, (GtkWidgetActionActivateFunc) shortcut_reset_cb);
 
   gtk_widget_class_add_binding_action (widget_class, GDK_KEY_Escape, 0, "window.close", NULL);
 }
@@ -401,10 +478,12 @@ ptyxis_shortcut_accel_dialog_init (PtyxisShortcutAccelDialog *self)
   g_object_bind_property (self, "accelerator",
                           self->display_shortcut, "accelerator",
                           G_BINDING_SYNC_CREATE);
+
+  ptyxis_shortcut_accel_dialog_update_reset_button (self);
 }
 
-gchar *
-ptyxis_shortcut_accel_dialog_get_accelerator (PtyxisShortcutAccelDialog *self)
+char *
+ptyxis_shortcut_accel_dialog_dup_accelerator (PtyxisShortcutAccelDialog *self)
 {
   g_return_val_if_fail (PTYXIS_IS_SHORTCUT_ACCEL_DIALOG (self), NULL);
 
@@ -416,7 +495,7 @@ ptyxis_shortcut_accel_dialog_get_accelerator (PtyxisShortcutAccelDialog *self)
 
 void
 ptyxis_shortcut_accel_dialog_set_accelerator (PtyxisShortcutAccelDialog *self,
-                                              const gchar               *accelerator)
+                                              const char                *accelerator)
 {
   guint keyval;
   GdkModifierType state;
@@ -430,6 +509,7 @@ ptyxis_shortcut_accel_dialog_set_accelerator (PtyxisShortcutAccelDialog *self,
           self->keyval = 0;
           self->modifier = 0;
           g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_ACCELERATOR]);
+          ptyxis_shortcut_accel_dialog_update_reset_button (self);
         }
     }
   else if (gtk_accelerator_parse (accelerator, &keyval, &state))
@@ -439,15 +519,16 @@ ptyxis_shortcut_accel_dialog_set_accelerator (PtyxisShortcutAccelDialog *self,
           self->keyval = keyval;
           self->modifier = state;
           g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_ACCELERATOR]);
+          ptyxis_shortcut_accel_dialog_update_reset_button (self);
         }
     }
 }
 
 void
 ptyxis_shortcut_accel_dialog_set_shortcut_title (PtyxisShortcutAccelDialog *self,
-                                                 const gchar               *shortcut_title)
+                                                 const char                *shortcut_title)
 {
-  g_autofree gchar *label = NULL;
+  g_autofree char *label = NULL;
 
   g_return_if_fail (PTYXIS_IS_SHORTCUT_ACCEL_DIALOG (self));
 
@@ -466,12 +547,33 @@ ptyxis_shortcut_accel_dialog_set_shortcut_title (PtyxisShortcutAccelDialog *self
     }
 }
 
-const gchar *
+const char *
 ptyxis_shortcut_accel_dialog_get_shortcut_title (PtyxisShortcutAccelDialog *self)
 {
   g_return_val_if_fail (PTYXIS_IS_SHORTCUT_ACCEL_DIALOG (self), NULL);
 
   return self->shortcut_title;
+}
+
+const char *
+ptyxis_shortcut_accel_dialog_get_default_accelerator (PtyxisShortcutAccelDialog *self)
+{
+  g_return_val_if_fail (PTYXIS_IS_SHORTCUT_ACCEL_DIALOG (self), NULL);
+
+  return self->default_accelerator;
+}
+
+void
+ptyxis_shortcut_accel_dialog_set_default_accelerator (PtyxisShortcutAccelDialog *self,
+                                                      const char                *default_accelerator)
+{
+  g_return_if_fail (PTYXIS_IS_SHORTCUT_ACCEL_DIALOG (self));
+
+  if (g_set_str (&self->default_accelerator, default_accelerator))
+    {
+      ptyxis_shortcut_accel_dialog_update_reset_button (self);
+      g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_DEFAULT_ACCELERATOR]);
+    }
 }
 
 GtkWidget *

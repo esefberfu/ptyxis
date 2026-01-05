@@ -28,13 +28,16 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (PtyxisShortcutAccelDialog, ptyxis_shortcut_accel_dialog, PTYXIS, SHORTCUT_ACCEL_DIALOG, AdwDialog)
 
-GtkWidget  *ptyxis_shortcut_accel_dialog_new                (void);
-char       *ptyxis_shortcut_accel_dialog_get_accelerator    (PtyxisShortcutAccelDialog *self);
-void        ptyxis_shortcut_accel_dialog_set_accelerator    (PtyxisShortcutAccelDialog *self,
-                                                             const char                *accelerator);
-const char *ptyxis_shortcut_accel_dialog_get_shortcut_title (PtyxisShortcutAccelDialog *self);
-void        ptyxis_shortcut_accel_dialog_set_shortcut_title (PtyxisShortcutAccelDialog *self,
-                                                             const char                *title);
+GtkWidget  *ptyxis_shortcut_accel_dialog_new                     (void);
+char       *ptyxis_shortcut_accel_dialog_dup_accelerator         (PtyxisShortcutAccelDialog *self);
+void        ptyxis_shortcut_accel_dialog_set_accelerator         (PtyxisShortcutAccelDialog *self,
+                                                                  const char                *accelerator);
+const char *ptyxis_shortcut_accel_dialog_get_shortcut_title      (PtyxisShortcutAccelDialog *self);
+void        ptyxis_shortcut_accel_dialog_set_shortcut_title      (PtyxisShortcutAccelDialog *self,
+                                                                  const char                *title);
+const char *ptyxis_shortcut_accel_dialog_get_default_accelerator (PtyxisShortcutAccelDialog *self);
+void        ptyxis_shortcut_accel_dialog_set_default_accelerator (PtyxisShortcutAccelDialog *self,
+                                                                  const char                *default_accelerator);
 
 G_END_DECLS
 
