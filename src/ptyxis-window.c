@@ -1434,9 +1434,9 @@ ptyxis_window_notify_zoom_cb (PtyxisWindow *self,
 
   zoom = ptyxis_tab_get_zoom (tab);
 
-  can_zoom_in = zoom != PTYXIS_ZOOM_LEVEL_PLUS_7;
+  can_zoom_in = zoom != PTYXIS_ZOOM_LEVEL_PLUS_14;
   can_zoom_one = zoom != PTYXIS_ZOOM_LEVEL_DEFAULT;
-  can_zoom_out = zoom != PTYXIS_ZOOM_LEVEL_MINUS_7;
+  can_zoom_out = zoom != PTYXIS_ZOOM_LEVEL_MINUS_14;
 
   gtk_widget_action_set_enabled (GTK_WIDGET (self), "win.zoom-in", can_zoom_in);
   gtk_widget_action_set_enabled (GTK_WIDGET (self), "win.zoom-one", can_zoom_one);
