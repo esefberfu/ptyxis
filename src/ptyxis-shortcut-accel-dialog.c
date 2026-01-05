@@ -101,17 +101,19 @@ static gboolean
 should_drop_shift (guint keyval_was,
                    guint keyval_is)
 {
-  if (keyval_was == keyval_is)
-    {
-      /* Allow use of shift+arrow. See #55 */
-      if (keyval_was == GDK_KEY_Left ||
-          keyval_was == GDK_KEY_Right ||
-          keyval_was == GDK_KEY_Up ||
-          keyval_was == GDK_KEY_Down)
-        return FALSE;
+  /* Allow use of shift+arrow. See #55 */
+  if (keyval_was == GDK_KEY_Left ||
+      keyval_was == GDK_KEY_Right ||
+      keyval_was == GDK_KEY_Up ||
+      keyval_was == GDK_KEY_Down ||
+      keyval_is == GDK_KEY_Left ||
+      keyval_is == GDK_KEY_Right ||
+      keyval_is == GDK_KEY_Up ||
+      keyval_is == GDK_KEY_Down)
+    return FALSE;
 
-      return TRUE;
-    }
+  if (keyval_was == keyval_is)
+    return TRUE;
 
   return FALSE;
 }
