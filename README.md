@@ -59,8 +59,8 @@ and performance.
 - **Customizable Keyboard Shortcuts**: A comprehensive set of actions with
   highly configurable keyboard shortcuts accessible via the preferences.
 - **Robust User Profiles**: Create named profiles to fine-tune default
-  containers, startup commands, appearance settings (font, palette),
-  terminal behaviors, and compatibility modes.
+  containers, startup commands, palette, terminal behaviors, and
+  compatibility modes.
 - **`ptyxis-agent` Architecture**: A unique out-of-process helper
   (`ptyxis-agent`) enables full functionality even when Ptyxis is run as a
   Flatpak by managing PTY creation, direct container interaction, and host
