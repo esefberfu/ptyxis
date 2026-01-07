@@ -19,6 +19,7 @@ src/ptyxis-palette-preview.ui
 src/ptyxis-preferences-window.c
 src/ptyxis-preferences-window.ui
 src/ptyxis-profile.c
+src/ptyxis-profile-dialog.ui
 src/ptyxis-profile-editor.c
 src/ptyxis-profile-editor.ui
 src/ptyxis-profile-row.c
