@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2026-01-05 23:49+0000\n"
-"PO-Revision-Date: 2026-01-07 08:32+0800\n"
+"POT-Creation-Date: 2026-01-07 20:40+0000\n"
+"PO-Revision-Date: 2026-01-08 08:00+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -1615,6 +1615,18 @@ msgstr "TTY 擦除"
 msgid "Untitled Profile"
 msgstr "无标题的配置文件"
 
+#: src/ptyxis-profile-dialog.ui:29 src/ptyxis-terminal.ui:249
+msgid "Change Profile"
+msgstr "更改配置文件"
+
+#: src/ptyxis-profile-dialog.ui:42 src/ptyxis-profile-editor.ui:31
+msgid "Profile"
+msgstr "配置文件"
+
+#: src/ptyxis-profile-dialog.ui:43
+msgid "Select a profile to apply to this terminal"
+msgstr "选择要应用至此终端的配置文件"
+
 #: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:440
 #: src/ptyxis-terminal.c:472
 msgid "Copied to clipboard"
@@ -1628,10 +1640,6 @@ msgstr "配置文件“%s”已移除"
 #: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:504 src/ptyxis-tab.c:561
 msgid "Edit Profile"
 msgstr "编辑配置文件"
-
-#: src/ptyxis-profile-editor.ui:31
-msgid "Profile"
-msgstr "配置文件"
 
 #: src/ptyxis-profile-editor.ui:41
 msgid "Identifier"
@@ -1810,10 +1818,6 @@ msgstr "不选(_N)"
 #: src/ptyxis-terminal.ui:223
 msgid "Read-Only"
 msgstr "只读"
-
-#: src/ptyxis-terminal.ui:249
-msgid "Change Profile"
-msgstr "更改配置文件"
 
 #: src/ptyxis-terminal.ui:257 src/ptyxis-window.ui:388 src/ptyxis-window.ui:770
 msgid "Leave Fullscreen"
