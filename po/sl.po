@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2026-01-05 23:49+0000\n"
-"PO-Revision-Date: 2026-01-06 09:24+0100\n"
+"POT-Creation-Date: 2026-01-07 20:40+0000\n"
+"PO-Revision-Date: 2026-01-09 13:46+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n%100<=4 ? 2 : 3);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Ptyxis.desktop.in.in:2 data/org.gnome.Ptyxis.metainfo.xml.in.in:6
 msgid "@APP_NAME@"
@@ -1554,6 +1554,18 @@ msgstr "Brisanje TTY"
 msgid "Untitled Profile"
 msgstr "Neimenovani profil"
 
+#: src/ptyxis-profile-dialog.ui:29 src/ptyxis-terminal.ui:249
+msgid "Change Profile"
+msgstr "Zamenjaj profil"
+
+#: src/ptyxis-profile-dialog.ui:42 src/ptyxis-profile-editor.ui:31
+msgid "Profile"
+msgstr "Profil"
+
+#: src/ptyxis-profile-dialog.ui:43
+msgid "Select a profile to apply to this terminal"
+msgstr "Izberite profil, ki ga želite uporabiti za ta terminal"
+
 #: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:440 src/ptyxis-terminal.c:472
 msgid "Copied to clipboard"
 msgstr "Kopirano na odložišče"
@@ -1566,10 +1578,6 @@ msgstr "Odstranjeni profil »%s«"
 #: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:504 src/ptyxis-tab.c:561
 msgid "Edit Profile"
 msgstr "Uredi profil"
-
-#: src/ptyxis-profile-editor.ui:31
-msgid "Profile"
-msgstr "Profil"
 
 #: src/ptyxis-profile-editor.ui:41
 msgid "Identifier"
@@ -1748,10 +1756,6 @@ msgstr "_Brez izbora"
 #: src/ptyxis-terminal.ui:223
 msgid "Read-Only"
 msgstr "Samo za branje"
-
-#: src/ptyxis-terminal.ui:249
-msgid "Change Profile"
-msgstr "Zamenjaj profil"
 
 #: src/ptyxis-terminal.ui:257 src/ptyxis-window.ui:388 src/ptyxis-window.ui:770
 msgid "Leave Fullscreen"
