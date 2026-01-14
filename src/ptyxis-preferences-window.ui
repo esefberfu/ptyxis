@@ -974,6 +974,13 @@
                 <property name="shortcut-name">preferences</property>
               </object>
             </child>
+            <child>
+              <object class="PtyxisShortcutRow" id="shortcut_show_keyboard_shortcuts">
+                <property name="title" translatable="yes">Keyboard Shortcuts</property>
+                <property name="subtitle" translatable="yes">Show the keyboard shortcuts configuration</property>
+                <property name="shortcut-name">show-keyboard-shortcuts</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

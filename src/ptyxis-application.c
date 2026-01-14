@@ -66,9 +66,6 @@ static void ptyxis_application_about             (GSimpleAction *action,
 static void ptyxis_application_edit_profile      (GSimpleAction *action,
                                                   GVariant      *param,
                                                   gpointer       user_data);
-static void ptyxis_application_help_overlay      (GSimpleAction *action,
-                                                  GVariant      *param,
-                                                  gpointer       user_data);
 static void ptyxis_application_make_default      (GSimpleAction *action,
                                                   GVariant      *param,
                                                   gpointer       user_data);
@@ -90,7 +87,6 @@ static void ptyxis_application_apply_default_size(PtyxisApplication *self,
 static GActionEntry action_entries[] = {
   { "about", ptyxis_application_about },
   { "edit-profile", ptyxis_application_edit_profile, "s" },
-  { "help-overlay", ptyxis_application_help_overlay },
   { "preferences", ptyxis_application_preferences },
   { "focus-tab-by-uuid", ptyxis_application_focus_tab_by_uuid, "s" },
   { "new-window", ptyxis_application_new_window_action },
@@ -961,10 +957,6 @@ ptyxis_application_startup (GApplication *application)
                                    G_N_ELEMENTS (action_entries),
                                    self);
 
-  gtk_application_set_accels_for_action (GTK_APPLICATION (self),
-                                         "app.help-overlay",
-                                         (const char * const []) {"<ctrl>question", NULL});
-
   if (self->xdg_terminals_list_monitor != NULL)
     {
       g_signal_connect_object (self->xdg_terminals_list_monitor,
@@ -1498,21 +1490,6 @@ ptyxis_application_new_tab_action (GSimpleAction *action,
   ptyxis_window_add_tab (window, tab);
   ptyxis_window_set_active_tab (window, tab);
 
-  gtk_window_present (GTK_WINDOW (window));
-}
-
-static void
-ptyxis_application_help_overlay (GSimpleAction *action,
-                                 GVariant      *param,
-                                 gpointer       user_data)
-{
-  PtyxisPreferencesWindow *window;
-  G_GNUC_UNUSED PtyxisApplication *self = user_data;
-
-  g_assert (PTYXIS_IS_APPLICATION (self));
-
-  window = ptyxis_preferences_window_get_default ();
-  ptyxis_preferences_window_edit_shortcuts (window);
   gtk_window_present (GTK_WINDOW (window));
 }
 

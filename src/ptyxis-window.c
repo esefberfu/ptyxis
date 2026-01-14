@@ -1289,6 +1289,21 @@ ptyxis_window_preferences_action (GtkWidget  *widget,
 }
 
 static void
+ptyxis_window_show_keyboard_shortcuts_action (GtkWidget  *widget,
+                                              const char *action_name,
+                                              GVariant   *param)
+{
+  PtyxisWindow *self = (PtyxisWindow *)widget;
+  PtyxisPreferencesWindow *window;
+
+  g_assert (PTYXIS_IS_WINDOW (self));
+
+  window = ptyxis_preferences_window_get_default ();
+  ptyxis_preferences_window_edit_shortcuts (window);
+  gtk_window_present (GTK_WINDOW (window));
+}
+
+static void
 ptyxis_window_primary_menu_action (GtkWidget  *widget,
                                    const char *action_name,
                                    GVariant   *param)
@@ -2093,6 +2108,7 @@ ptyxis_window_class_init (PtyxisWindowClass *klass)
   gtk_widget_class_install_action (widget_class, "win.undo-close-tab", NULL, ptyxis_window_undo_close_tab_action);
   gtk_widget_class_install_action (widget_class, "my-computer", NULL, ptyxis_window_my_computer_action);
   gtk_widget_class_install_action (widget_class, "win.preferences", NULL, ptyxis_window_preferences_action);
+  gtk_widget_class_install_action (widget_class, "win.show-keyboard-shortcuts", NULL, ptyxis_window_show_keyboard_shortcuts_action);
 
   g_type_ensure (PTYXIS_TYPE_FIND_BAR);
   g_type_ensure (PTYXIS_TYPE_FULLSCREEN_BOX);

@@ -437,6 +437,12 @@
       <description>The shortcut to show application preferences</description>
     </key>
 
+    <key name="show-keyboard-shortcuts" type="s">
+      <default>'&lt;ctrl&gt;question'</default>
+      <summary>Keyboard Shortcuts</summary>
+      <description>The shortcut to show the keyboard shortcuts configuration</description>
+    </key>
+
     <key name="zoom-out" type="s">
       <default>'&lt;ctrl&gt;minus'</default>
       <summary>Zoom Out</summary>
