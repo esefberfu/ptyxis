@@ -31,6 +31,8 @@
 
 #include "ptyxis-window.h"
 
+#define TIME_WATERMARK_MSEC 250
+
 G_BEGIN_DECLS
 
 typedef struct _PtyxisTabNotify
@@ -44,6 +46,8 @@ typedef struct _PtyxisTabNotify
 
   gulong shell_precmd_handler;
   gulong shell_preexec_handler;
+
+  gint64 command_start_time;
 
   guint between_preexec_and_precmd : 1;
 } PtyxisTabNotify;
@@ -113,7 +117,11 @@ ptyxis_tab_notify_shell_precmd_cb (PtyxisTerminal  *terminal,
 
   if (notify->current_cmdline != NULL)
     {
-      ptyxis_tab_notify_show_notification (notify, notify->current_cmdline);
+      gint64 elapsed_time = g_get_monotonic_time () - notify->command_start_time;
+
+      if (elapsed_time >= TIME_WATERMARK_MSEC * 1000)
+        ptyxis_tab_notify_show_notification (notify, notify->current_cmdline);
+
       g_clear_pointer (&notify->current_cmdline, g_free);
     }
 }
@@ -144,6 +152,7 @@ ptyxis_tab_notify_shell_preexec_cb (PtyxisTerminal  *terminal,
   g_assert (PTYXIS_IS_TAB (notify->tab));
 
   notify->between_preexec_and_precmd = TRUE;
+  notify->command_start_time = g_get_monotonic_time ();
 
   g_set_str (&notify->current_cmdline, NULL);
 
@@ -170,6 +179,7 @@ ptyxis_tab_notify_init (PtyxisTabNotify *notify,
   notify->shell_preexec_source = 0;
   notify->between_preexec_and_precmd = FALSE;
   notify->current_cmdline = NULL;
+  notify->command_start_time = 0;
 
   notify->shell_precmd_handler =
     g_signal_connect (terminal,
