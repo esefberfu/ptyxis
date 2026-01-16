@@ -2,7 +2,7 @@
 .\" First parameter, NAME, should be all caps
 .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
 .\" other parameters are allowed: see man(7), man(1)
-.TH Ptyxis 1 "09 July 2024"
+.TH Ptyxis 1 "16 January 2026"
 .\" Please adjust this date whenever revising the manpage.
 .\"
 .\" Some roff macros, for reference:
@@ -26,9 +26,9 @@ ptyxis \- a container-oriented terminal
 
 .SH DESCRIPTION
 .B ptyxis
-is a container-oriented, designed for the GNOME desktop.
+is a container-oriented terminal, designed for the GNOME desktop.
 It provides tight integration with podman, toolbox, distrobox,
-and jhbuild to simplfy container-based development and system
+and jhbuild to simplify container-based development and system
 management.
 .br
 
