@@ -1,14 +1,14 @@
 # Georgian translation for ptyxis.
 # Copyright (C) 2024 ptyxis's authors
 # This file is distributed under the same license as the ptyxis package.
-# Ekaterine Papava <papava.e@gtu.ge>, 2024-2025.
+# Ekaterine Papava <papava.e@gtu.ge>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ptyxis main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/chergert/ptyxis/issues\n"
-"POT-Creation-Date: 2025-11-10 23:24+0000\n"
-"PO-Revision-Date: 2025-11-11 04:10+0100\n"
+"POT-Creation-Date: 2026-01-14 19:40+0000\n"
+"PO-Revision-Date: 2026-01-18 03:12+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -25,7 +25,7 @@ msgstr "@APP_NAME@"
 msgid "A container-oriented terminal for GNOME"
 msgstr "კონტეინერებზე ორიენტირებული ტერმინალი GNOME-სთვის"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:669 src/ptyxis-tab.c:1635 src/ptyxis-util.c:318
+#: data/org.gnome.Ptyxis.desktop.in.in:12 src/ptyxis-preferences-window.ui:669 src/ptyxis-tab.c:1647 src/ptyxis-util.c:318
 msgid "Terminal"
 msgstr "ტერმინალი"
 
@@ -34,15 +34,15 @@ msgstr "ტერმინალი"
 msgid "terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;podman;toolbox;distrobox;"
 msgstr "terminal;prompt;ptyxis;shell;command;commandline;cmd;cli;console;container;podman;toolbox;distrobox;ბრძანება;ბრძანებისსტრიქონი;კონსოლი;კონტეინერი;"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:23 src/org.gnome.Ptyxis.gschema.xml.in:418 src/ptyxis-preferences-window.ui:734
+#: data/org.gnome.Ptyxis.desktop.in.in:23 src/org.gnome.Ptyxis.gschema.xml.in:424 src/ptyxis-preferences-window.ui:742
 msgid "New Window"
 msgstr "ახალი ფანჯარა"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:27 src/org.gnome.Ptyxis.gschema.xml.in:412 src/ptyxis-preferences-window.ui:760
+#: data/org.gnome.Ptyxis.desktop.in.in:27 src/org.gnome.Ptyxis.gschema.xml.in:418 src/ptyxis-preferences-window.ui:771
 msgid "New Tab"
 msgstr "ახალი ჩანართი"
 
-#: data/org.gnome.Ptyxis.desktop.in.in:31 src/org.gnome.Ptyxis.gschema.xml.in:430 src/ptyxis-preferences-window.ui:935
+#: data/org.gnome.Ptyxis.desktop.in.in:31 src/org.gnome.Ptyxis.gschema.xml.in:436 src/ptyxis-preferences-window.ui:972
 msgid "Preferences"
 msgstr "მორგება"
 
@@ -115,47 +115,47 @@ msgstr ""
 msgid "Christian Hergert"
 msgstr "კრისტიან ჰერგერტი"
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:52
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:53
 msgid "A column and row size indicator is displayed when resizing the window"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:57
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:58
 msgid "Containers are automatically discovered and displayed"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:62
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:63
 msgid "Many behaviors of the terminal may be tweaked to user preference"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:67
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:68
 msgid "You may rename a tab by providing a prefix to the title"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:72
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:73
 msgid "Palettes provide an integrated dark mode"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:77
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:78
 msgid "You can see an overview of your tabs at any time"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:82
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:83
 msgid "Many shortcuts may be remapped to user preference"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:87
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:88
 msgid "Built-in color palettes provide both dark and light mode variants"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:92
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:93
 msgid "Profiles allow for overriding a number of features such as default container"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:97
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:98
 msgid "The terminal will remind you when you're root on the local system"
 msgstr ""
 
-#: data/org.gnome.Ptyxis.metainfo.xml.in.in:102
+#: data/org.gnome.Ptyxis.metainfo.xml.in.in:103
 msgid "The terminal will remind you when you're on a remote system"
 msgstr ""
 
@@ -329,534 +329,550 @@ msgid "Currently experimental feature to send accessibility information to scree
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:231
-msgid "Disable Padding around Terminal Emulator"
+msgid "Enable zoom on scroll holding the control key"
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:232
-msgid "Do not pad around the terminal emulator widget. Setting to true may have significant performance impacts."
+msgid "Enable to adjust the zoom level on scroll scroll while holding the control key."
 msgstr ""
 
 #: src/org.gnome.Ptyxis.gschema.xml.in:237
+msgid "Disable Padding around Terminal Emulator"
+msgstr ""
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:238
+msgid "Do not pad around the terminal emulator widget. Setting to true may have significant performance impacts."
+msgstr ""
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:243
 msgid "Prompt when active tab is closed"
 msgstr "კითხვა აქტიური ჩანართის დახურვისას"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:238
+#: src/org.gnome.Ptyxis.gschema.xml.in:244
 msgid "If a tab (or window) is closed with active foreground processes, prompt the user for confirmation."
 msgstr ""
 
 #. Translators: OSC stands for "Operating System Command" and is referencing in-band escape sequences from the child process to set the title
-#: src/org.gnome.Ptyxis.gschema.xml.in:244
+#: src/org.gnome.Ptyxis.gschema.xml.in:250
 msgid "Ignore OSC Title"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:245
+#: src/org.gnome.Ptyxis.gschema.xml.in:251
 msgid "If OSC title should be ignored in tab titles."
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:250
+#: src/org.gnome.Ptyxis.gschema.xml.in:256
 msgid "Inhibit Logout"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:251
+#: src/org.gnome.Ptyxis.gschema.xml.in:257
 msgid "Inhibit desktop logout when a foreground process is running in a tab."
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:260
+#: src/org.gnome.Ptyxis.gschema.xml.in:266
 msgid "Label"
 msgstr "ჭდე"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:261
+#: src/org.gnome.Ptyxis.gschema.xml.in:267
 msgid "The label for the profile"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:266
+#: src/org.gnome.Ptyxis.gschema.xml.in:272
 msgid "Login Shell"
 msgstr "შესვლს გარსი"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:267
+#: src/org.gnome.Ptyxis.gschema.xml.in:273
 msgid "Use a login shell"
 msgstr "შესვლის გარსის გამოყენება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:272 src/ptyxis-preferences-window.ui:482 src/ptyxis-profile-editor.ui:333
+#: src/org.gnome.Ptyxis.gschema.xml.in:278 src/ptyxis-preferences-window.ui:482 src/ptyxis-profile-editor.ui:333
 msgid "Limit Scrollback"
 msgstr "აჩოჩების ლიმიტი"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:273
+#: src/org.gnome.Ptyxis.gschema.xml.in:279
 msgid "Limit the number of lines to keep for scrollback"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:279 src/ptyxis-preferences-window.ui:491 src/ptyxis-profile-editor.ui:342
+#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:491 src/ptyxis-profile-editor.ui:342
 msgid "Scrollback Lines"
 msgstr "ჩოჩიის ხაზები"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:280
+#: src/org.gnome.Ptyxis.gschema.xml.in:286
 msgid "The number of lines to keep in the scrollback, zero for no scrollback"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:285 src/ptyxis-preferences-window.ui:472 src/ptyxis-profile-editor.ui:323
+#: src/org.gnome.Ptyxis.gschema.xml.in:291 src/ptyxis-preferences-window.ui:472 src/ptyxis-profile-editor.ui:323
 msgid "Scroll on Output"
 msgstr "გამოტანისას აჩოჩება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:286
+#: src/org.gnome.Ptyxis.gschema.xml.in:292
 msgid "Scroll to the bottom upon new output"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:291 src/ptyxis-preferences-window.ui:466 src/ptyxis-profile-editor.ui:317
+#: src/org.gnome.Ptyxis.gschema.xml.in:297 src/ptyxis-preferences-window.ui:466 src/ptyxis-profile-editor.ui:317
 msgid "Scroll on Keystroke"
 msgstr "აჩოჩება ღილაკის დაჭერისას"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:292
+#: src/org.gnome.Ptyxis.gschema.xml.in:298
 msgid "Scroll to the bottom upon user keystroke"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:297 src/ptyxis-profile-editor.ui:187
+#: src/org.gnome.Ptyxis.gschema.xml.in:303 src/ptyxis-profile-editor.ui:187
 msgid "Use Custom Command"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:298
+#: src/org.gnome.Ptyxis.gschema.xml.in:304
 msgid "If a custom command should be used"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:303
+#: src/org.gnome.Ptyxis.gschema.xml.in:309
 msgid "Use Proxy"
 msgstr "პროქსის გამოყენება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:304
+#: src/org.gnome.Ptyxis.gschema.xml.in:310
 msgid "Apply proxy settings from the host in the container"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:309 src/ptyxis-profile-editor.ui:192
+#: src/org.gnome.Ptyxis.gschema.xml.in:315 src/ptyxis-profile-editor.ui:192
 msgid "Custom Command"
 msgstr "ხელით შეყვანილი ბრძანება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:310
+#: src/org.gnome.Ptyxis.gschema.xml.in:316
 msgid "A custom command for the shell"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:315 src/ptyxis-profile-editor.ui:211
+#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-profile-editor.ui:211
 msgid "Default Container"
 msgstr "ნაგულისხმევი კონტეინერი"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:316
+#: src/org.gnome.Ptyxis.gschema.xml.in:322
 msgid "The default container to run the command in"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:321 src/ptyxis-profile-editor.ui:220
+#: src/org.gnome.Ptyxis.gschema.xml.in:327 src/ptyxis-profile-editor.ui:220
 msgid "Preserve Container"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:322
+#: src/org.gnome.Ptyxis.gschema.xml.in:328
 msgid "Preserve the active container when creating new tabs and windows"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:327 src/ptyxis-preferences-window.ui:551 src/ptyxis-profile-editor.ui:281
+#: src/org.gnome.Ptyxis.gschema.xml.in:333 src/ptyxis-preferences-window.ui:551 src/ptyxis-profile-editor.ui:281
 msgid "Exit Action"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:328
+#: src/org.gnome.Ptyxis.gschema.xml.in:334
 msgid "The action to take when the shell exits"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:333
+#: src/org.gnome.Ptyxis.gschema.xml.in:339
 msgid "Preserve Directory"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:334
+#: src/org.gnome.Ptyxis.gschema.xml.in:340
 msgid "If the directory should be preserved for new terminals"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:339 src/ptyxis-inspector.ui:102 src/ptyxis-preferences-window.ui:40 src/ptyxis-profile-editor.ui:65
+#: src/org.gnome.Ptyxis.gschema.xml.in:345 src/ptyxis-inspector.ui:102 src/ptyxis-preferences-window.ui:40 src/ptyxis-profile-editor.ui:65
 msgid "Palette"
 msgstr "პალიტრა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:340
+#: src/org.gnome.Ptyxis.gschema.xml.in:346
 msgid "The color palette to use for the profile, by name"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:346
+#: src/org.gnome.Ptyxis.gschema.xml.in:352
 msgid "Opacity"
 msgstr "გაუმჭირვალობა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:347
+#: src/org.gnome.Ptyxis.gschema.xml.in:353
 msgid "The opacity of the palette background"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:352
+#: src/org.gnome.Ptyxis.gschema.xml.in:358
 msgid "Bold is Bright"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:353
+#: src/org.gnome.Ptyxis.gschema.xml.in:359
 msgid "Setting bold on one of the lower 8 colors in the palette will use bright variant (upper 8 colors)"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:359 src/ptyxis-preferences-window.ui:175 src/ptyxis-profile-editor.ui:143
+#: src/org.gnome.Ptyxis.gschema.xml.in:365 src/ptyxis-preferences-window.ui:175 src/ptyxis-profile-editor.ui:143
 msgid "Line Spacing"
 msgstr "ხაზებს შუა მანძილი"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:360
+#: src/org.gnome.Ptyxis.gschema.xml.in:366
 msgid "The terminal’s cell height scale"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:366 src/ptyxis-preferences-window.ui:189 src/ptyxis-profile-editor.ui:157
+#: src/org.gnome.Ptyxis.gschema.xml.in:372 src/ptyxis-preferences-window.ui:189 src/ptyxis-profile-editor.ui:157
 msgid "Column Spacing"
 msgstr "სვეტების დაშორება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:367
+#: src/org.gnome.Ptyxis.gschema.xml.in:373
 msgid "The terminal’s cell width scale"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:372
+#: src/org.gnome.Ptyxis.gschema.xml.in:378
 msgid "CJK Ambiguous Width"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:373
+#: src/org.gnome.Ptyxis.gschema.xml.in:379
 msgid "The size to apply to ambiguous width characters"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:378 src/org.gnome.Ptyxis.gschema.xml.in:384
+#: src/org.gnome.Ptyxis.gschema.xml.in:384 src/org.gnome.Ptyxis.gschema.xml.in:390
 msgid "Backspace Binding"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:379 src/org.gnome.Ptyxis.gschema.xml.in:385
+#: src/org.gnome.Ptyxis.gschema.xml.in:385 src/org.gnome.Ptyxis.gschema.xml.in:391
 msgid "What to send to the PTY when a backspace is entered"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:390 src/ptyxis-preferences-window.ui:634 src/ptyxis-profile-editor.ui:409
+#: src/org.gnome.Ptyxis.gschema.xml.in:396 src/ptyxis-preferences-window.ui:634 src/ptyxis-profile-editor.ui:409
 msgid "Custom Links"
 msgstr "მორგებული ბმულები"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:391
+#: src/org.gnome.Ptyxis.gschema.xml.in:397
 msgid "A list of custom hyperlinks, each defined by a regular expression matching the text, and a replacement pattern"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:400 src/ptyxis-preferences-window.ui:672
+#: src/org.gnome.Ptyxis.gschema.xml.in:406 src/ptyxis-preferences-window.ui:672
 msgid "Copy to Clipboard"
 msgstr "ბუფერში კოპირება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:401
+#: src/org.gnome.Ptyxis.gschema.xml.in:407
 msgid "The shortcut to copy to clipboard"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:406 src/ptyxis-preferences-window.ui:677
+#: src/org.gnome.Ptyxis.gschema.xml.in:412 src/ptyxis-preferences-window.ui:678
 msgid "Paste from Clipboard"
 msgstr "გაცვლის ბუფერიდან ჩასმა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:407
+#: src/org.gnome.Ptyxis.gschema.xml.in:413
 msgid "The shortcut to paste from the clipboard"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:413
+#: src/org.gnome.Ptyxis.gschema.xml.in:419
 msgid "The shortcut to create a new tab in the current window"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:419
+#: src/org.gnome.Ptyxis.gschema.xml.in:425
 msgid "The shortcut to create a new tab in a new window"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:424
+#: src/org.gnome.Ptyxis.gschema.xml.in:430
 msgid "Tab Overview"
 msgstr "ჩანართის მიმოხილვა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:425
+#: src/org.gnome.Ptyxis.gschema.xml.in:431
 msgid "The shortcut to show the tab overview"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:431
+#: src/org.gnome.Ptyxis.gschema.xml.in:437
 msgid "The shortcut to show application preferences"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:436 src/ptyxis-preferences-window.ui:898 src/ptyxis-window.c:1467 src/ptyxis-window.c:1475
+#: src/org.gnome.Ptyxis.gschema.xml.in:442 src/ptyxis-preferences-window.ui:979
+msgid "Keyboard Shortcuts"
+msgstr "კლავიატურის მალსახმობები"
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:443
+msgid "The shortcut to show the keyboard shortcuts configuration"
+msgstr ""
+
+#: src/org.gnome.Ptyxis.gschema.xml.in:448 src/ptyxis-preferences-window.ui:930 src/ptyxis-window.c:1510 src/ptyxis-window.c:1518
 msgid "Zoom Out"
 msgstr "დაპატარავება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:437
+#: src/org.gnome.Ptyxis.gschema.xml.in:449
 msgid "The shortcut to zoom out"
 msgstr "მალსახმობი გასადიდებლად"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:442 src/ptyxis-preferences-window.ui:903 src/ptyxis-window.c:1484
+#: src/org.gnome.Ptyxis.gschema.xml.in:454 src/ptyxis-preferences-window.ui:936 src/ptyxis-window.c:1527
 msgid "Reset Zoom"
 msgstr "გადიდების საწყისი პარამეტრები"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:443
+#: src/org.gnome.Ptyxis.gschema.xml.in:455
 msgid "The shortcut to reset zoom"
 msgstr "მალსახმობი მასშტაბის გასანულებლად"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:448 src/ptyxis-preferences-window.ui:893 src/ptyxis-window.c:1452 src/ptyxis-window.c:1460
+#: src/org.gnome.Ptyxis.gschema.xml.in:460 src/ptyxis-preferences-window.ui:924 src/ptyxis-window.c:1495 src/ptyxis-window.c:1503
 msgid "Zoom In"
 msgstr "გადიდება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:449
+#: src/org.gnome.Ptyxis.gschema.xml.in:461
 msgid "The shortcut to zoom in"
 msgstr "მალსახმობი გასადიდებლად"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:454 src/ptyxis-preferences-window.ui:913
+#: src/org.gnome.Ptyxis.gschema.xml.in:466 src/ptyxis-preferences-window.ui:947
 msgid "Toggle Fullscreen"
 msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:455
+#: src/org.gnome.Ptyxis.gschema.xml.in:467
 msgid "The shortcut to toggle fullscreen"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:460
+#: src/org.gnome.Ptyxis.gschema.xml.in:472
 msgid "Reset Terminal"
 msgstr "ტერმინალის ჩამოყრა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:461
+#: src/org.gnome.Ptyxis.gschema.xml.in:473
 msgid "Reset the terminal state for misbehaving clients"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:466
+#: src/org.gnome.Ptyxis.gschema.xml.in:478
 msgid "Reset Terminal and Clear History"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:467
+#: src/org.gnome.Ptyxis.gschema.xml.in:479
 msgid "Reset the terminal state and clear history for misbehaving clients"
 msgstr ""
 
 #. Translators: Refers to searching the terminal scrollback
-#: src/org.gnome.Ptyxis.gschema.xml.in:473 src/ptyxis-find-bar.ui:39 src/ptyxis-preferences-window.ui:715
+#: src/org.gnome.Ptyxis.gschema.xml.in:485 src/ptyxis-find-bar.ui:39 src/ptyxis-preferences-window.ui:721
 msgid "Search History"
 msgstr "ძებნის ისტორია"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:474
+#: src/org.gnome.Ptyxis.gschema.xml.in:486
 msgid "Shortcut to begin searching the terminal history"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:479 src/ptyxis-preferences-window.ui:686
+#: src/org.gnome.Ptyxis.gschema.xml.in:491 src/ptyxis-preferences-window.ui:688
 msgid "Select All"
 msgstr "ყველას მონიშვნა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:480
+#: src/org.gnome.Ptyxis.gschema.xml.in:492
 msgid "Shortcut to select all the entire terminal scrollback"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:485
+#: src/org.gnome.Ptyxis.gschema.xml.in:497
 msgid "Select None"
 msgstr "მონიშვნის მოხსნა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:486
+#: src/org.gnome.Ptyxis.gschema.xml.in:498
 msgid "Shortcut to clear the terminal selection"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:491
+#: src/org.gnome.Ptyxis.gschema.xml.in:503
 msgid "Popup Menu"
 msgstr "მხტუნარა მენიუ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:492
+#: src/org.gnome.Ptyxis.gschema.xml.in:504
 msgid "Shortcut to show the popup menu for the terminal"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:497
+#: src/org.gnome.Ptyxis.gschema.xml.in:509
 msgid "Primary Menu"
 msgstr "ძირითადი მენიუს"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:498
+#: src/org.gnome.Ptyxis.gschema.xml.in:510
 msgid "Shortcut to show the primary menu for the window"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:503
+#: src/org.gnome.Ptyxis.gschema.xml.in:515
 msgid "Tab Menu"
 msgstr "ჩანართის მენიუ"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:504
+#: src/org.gnome.Ptyxis.gschema.xml.in:516
 msgid "Shortcut to show the new tab menu"
 msgstr ""
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:510 src/ptyxis-preferences-window.ui:802
+#: src/org.gnome.Ptyxis.gschema.xml.in:522 src/ptyxis-preferences-window.ui:818
 msgid "Move to Previous Tab"
 msgstr "წინა ჩანართზე გადასვლა"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:512
+#: src/org.gnome.Ptyxis.gschema.xml.in:524
 msgid "Shortcut to move to the previous tab"
 msgstr ""
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:518 src/ptyxis-preferences-window.ui:807
+#: src/org.gnome.Ptyxis.gschema.xml.in:530 src/ptyxis-preferences-window.ui:824
 msgid "Move to Next Tab"
 msgstr "შემდეგი ჩანართზე გადასვლა"
 
 #. Translators: in this context, "Move" means to switch tabs
-#: src/org.gnome.Ptyxis.gschema.xml.in:520
+#: src/org.gnome.Ptyxis.gschema.xml.in:532
 msgid "Shortcut to move to the next tab"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:525 src/ptyxis-preferences-window.ui:816
+#: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:834
 msgid "Move Tab Left"
 msgstr "ჩანართის მარცხნივ გადატანა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:526
+#: src/org.gnome.Ptyxis.gschema.xml.in:538
 msgid "Shortcut to move the current tab to the left one position"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:531 src/ptyxis-preferences-window.ui:822
+#: src/org.gnome.Ptyxis.gschema.xml.in:543 src/ptyxis-preferences-window.ui:841
 msgid "Move Tab Right"
 msgstr "ჩანართის მარჯვნივ გადატანა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:532
+#: src/org.gnome.Ptyxis.gschema.xml.in:544
 msgid "Shortcut to move the current tab to the right one position"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:537 src/ptyxis-preferences-window.ui:828
+#: src/org.gnome.Ptyxis.gschema.xml.in:549 src/ptyxis-preferences-window.ui:848
 msgid "Move Tab to New Window"
 msgstr "ჩანართის ახალ ფანჯარაში გადატანა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:538
+#: src/org.gnome.Ptyxis.gschema.xml.in:550
 msgid "Shortcut to move the current tab into a new window"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:543 src/ptyxis-preferences-window.ui:780
+#: src/org.gnome.Ptyxis.gschema.xml.in:555 src/ptyxis-preferences-window.ui:793
 msgid "Close Tab"
 msgstr "ჩანართის დახურვა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:544
+#: src/org.gnome.Ptyxis.gschema.xml.in:556
 msgid "Shortcut to close the current tab"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:549 src/ptyxis-preferences-window.ui:786
+#: src/org.gnome.Ptyxis.gschema.xml.in:561 src/ptyxis-preferences-window.ui:800
 msgid "Close Other Tabs"
 msgstr "სხვა ჩანართების დახურვა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:550
+#: src/org.gnome.Ptyxis.gschema.xml.in:562
 msgid "Shortcut to close all tabs in the window but the current one"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:555 src/ptyxis-preferences-window.ui:740
+#: src/org.gnome.Ptyxis.gschema.xml.in:567 src/ptyxis-preferences-window.ui:749
 msgid "Close Window"
 msgstr "ფანჯრის დახურვა"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:556
+#: src/org.gnome.Ptyxis.gschema.xml.in:568
 msgid "Shortcut to close the current window"
 msgstr ""
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:561 src/ptyxis-preferences-window.ui:750 src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1170
-#: src/ptyxis-window.ui:824
+#: src/org.gnome.Ptyxis.gschema.xml.in:573 src/ptyxis-preferences-window.ui:760 src/ptyxis-terminal.ui:244 src/ptyxis-window.c:1198
+#: src/ptyxis-window.ui:835
 msgid "Set Title"
 msgstr "სათაურის მითითება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:562
+#: src/org.gnome.Ptyxis.gschema.xml.in:574
 msgid "The shortcut to show set title"
 msgstr "მალსახმობი მითითებული სათაურის საჩვენებლად"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:567
+#: src/org.gnome.Ptyxis.gschema.xml.in:579
 msgid "Focus Tab 1"
 msgstr "ფოკუსი ჩანართზე 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:568
+#: src/org.gnome.Ptyxis.gschema.xml.in:580
 msgid "Shortcut to focus tab 1"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 1"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:573
+#: src/org.gnome.Ptyxis.gschema.xml.in:585
 msgid "Focus Tab 2"
 msgstr "ფოკუსი ჩანართზე 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:574
+#: src/org.gnome.Ptyxis.gschema.xml.in:586
 msgid "Shortcut to focus tab 2"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 2"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:579
+#: src/org.gnome.Ptyxis.gschema.xml.in:591
 msgid "Focus Tab 3"
 msgstr "ფოკუსი ჩანართზე 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:580
+#: src/org.gnome.Ptyxis.gschema.xml.in:592
 msgid "Shortcut to focus tab 3"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 3"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:585
+#: src/org.gnome.Ptyxis.gschema.xml.in:597
 msgid "Focus Tab 4"
 msgstr "ფოკუსი ჩანართზე 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:586
+#: src/org.gnome.Ptyxis.gschema.xml.in:598
 msgid "Shortcut to focus tab 4"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 4"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:591
+#: src/org.gnome.Ptyxis.gschema.xml.in:603
 msgid "Focus Tab 5"
 msgstr "ფოკუსი ჩანართზე 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:592
+#: src/org.gnome.Ptyxis.gschema.xml.in:604
 msgid "Shortcut to focus tab 5"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 5"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:597
+#: src/org.gnome.Ptyxis.gschema.xml.in:609
 msgid "Focus Tab 6"
 msgstr "ფოკუსი ჩანართზე 6"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:598
+#: src/org.gnome.Ptyxis.gschema.xml.in:610
 msgid "Shortcut to focus tab 6"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 6"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:603
+#: src/org.gnome.Ptyxis.gschema.xml.in:615
 msgid "Focus Tab 7"
 msgstr "ფოკუსი ჩანართზე 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:604
+#: src/org.gnome.Ptyxis.gschema.xml.in:616
 msgid "Shortcut to focus tab 7"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 7"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:609
+#: src/org.gnome.Ptyxis.gschema.xml.in:621
 msgid "Focus Tab 8"
 msgstr "ფოკუსი ჩანართზე 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:610
+#: src/org.gnome.Ptyxis.gschema.xml.in:622
 msgid "Shortcut to focus tab 8"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 8"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:615
+#: src/org.gnome.Ptyxis.gschema.xml.in:627
 msgid "Focus Tab 9"
 msgstr "ფოკუსი ჩანართზე 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:616
+#: src/org.gnome.Ptyxis.gschema.xml.in:628
 msgid "Shortcut to focus tab 9"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 9"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:621
+#: src/org.gnome.Ptyxis.gschema.xml.in:633
 msgid "Focus Tab 10"
 msgstr "ფოკუსი ჩანართზე 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:622
+#: src/org.gnome.Ptyxis.gschema.xml.in:634
 msgid "Shortcut to focus tab 10"
 msgstr "მალსახმობი ფოკუსის გადასატანად ჩანართზე 10"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:627 src/ptyxis-preferences-window.ui:792
+#: src/org.gnome.Ptyxis.gschema.xml.in:639 src/ptyxis-preferences-window.ui:807
 msgid "Undo Close Tab"
 msgstr "ჩანართის დახურვის გაუქმება"
 
-#: src/org.gnome.Ptyxis.gschema.xml.in:628
+#: src/org.gnome.Ptyxis.gschema.xml.in:640
 msgid "Undo closing of last tab"
 msgstr ""
 
-#: src/ptyxis-application.c:465
+#: src/ptyxis-application.c:461
 msgid "--tab, --tab-with-profile, or --new-window may not be used together"
 msgstr ""
 
-#: src/ptyxis-application.c:511
+#: src/ptyxis-application.c:507
 #, c-format
 msgid "Cannot parse command: %s"
 msgstr ""
 
-#: src/ptyxis-application.c:1147
+#: src/ptyxis-application.c:1140
 msgid "Examples:"
 msgstr "მაგალითები:"
 
-#: src/ptyxis-application.c:1149
+#: src/ptyxis-application.c:1142
 msgid "Show the application preferences"
 msgstr "აპლიკაციის პარამეტრების ჩვენება"
 
 #. Used for new tabs/windows/etc when specified
-#: src/ptyxis-application.c:1152
+#: src/ptyxis-application.c:1145
 msgid "Use DIR for --tab, --tab-with-profile, --new-window, or -x"
 msgstr ""
 
-#: src/ptyxis-application.c:1152
+#: src/ptyxis-application.c:1145
 msgid "DIR"
 msgstr "საქაღალდე"
 
 #. By default, this implies a new ptyxis instance unless the options
 #. * below are provided to override that.
 #.
-#: src/ptyxis-application.c:1157
+#: src/ptyxis-application.c:1150
 msgid "Command to execute in new window"
 msgstr ""
 
@@ -864,69 +880,69 @@ msgstr ""
 #. * short command options for these to make it easier to sniff them in early args
 #. * checking from `main.c`.
 #.
-#: src/ptyxis-application.c:1163
+#: src/ptyxis-application.c:1156
 msgid "New terminal window"
 msgstr "ტერმინალის ახალი ფანჯარა"
 
-#: src/ptyxis-application.c:1164
+#: src/ptyxis-application.c:1157
 msgid "New terminal tab in active window"
 msgstr ""
 
-#: src/ptyxis-application.c:1165
+#: src/ptyxis-application.c:1158
 msgid "New terminal tab in active window using the profile UUID"
 msgstr ""
 
-#: src/ptyxis-application.c:1165
+#: src/ptyxis-application.c:1158
 msgid "PROFILE_UUID"
 msgstr ""
 
 #. Standalone (single instance mode)
-#: src/ptyxis-application.c:1168
+#: src/ptyxis-application.c:1161
 msgid "Start a new instance, ignoring existing instances"
 msgstr ""
 
-#: src/ptyxis-application.c:1170
+#: src/ptyxis-application.c:1163
 msgid "Set title for new tab"
 msgstr ""
 
-#: src/ptyxis-application.c:1171
+#: src/ptyxis-application.c:1164
 msgid "Maximize a newly created window"
 msgstr ""
 
-#: src/ptyxis-application.c:1172
+#: src/ptyxis-application.c:1165
 msgid "Fullscreen a newly created window"
 msgstr ""
 
 #. Import a custom .palette file. This works like dragging the file onto preferences
-#: src/ptyxis-application.c:1175
+#: src/ptyxis-application.c:1168
 msgid "Import a Ptyxis palette file"
 msgstr ""
 
-#: src/ptyxis-application.c:1175
+#: src/ptyxis-application.c:1168
 msgid "FILE"
 msgstr "FILE"
 
-#: src/ptyxis-application.c:1182
+#: src/ptyxis-application.c:1175
 msgid "Run Separate Instance"
 msgstr ""
 
-#: src/ptyxis-application.c:1186
+#: src/ptyxis-application.c:1179
 msgid "Open Preferences"
 msgstr "მორგების ფანჯრის გახსნა"
 
-#: src/ptyxis-application.c:1190
+#: src/ptyxis-application.c:1183
 msgid "Run Custom Command in New Window"
 msgstr ""
 
-#: src/ptyxis-application.c:1195
+#: src/ptyxis-application.c:1188
 msgid "Import a custom palette"
 msgstr ""
 
-#: src/ptyxis-application.c:1198
+#: src/ptyxis-application.c:1191
 msgid "[-- COMMAND ARGUMENTS]"
 msgstr ""
 
-#: src/ptyxis-application.c:1433
+#: src/ptyxis-application.c:1432
 msgid "translator-credits"
 msgstr "Giorgi Maghlakelidze https://launchpad.net/~dracid"
 
@@ -1134,7 +1150,7 @@ msgstr "თაგუნა"
 msgid "Hyperlink"
 msgstr "ჰიპერბმული"
 
-#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:217 src/ptyxis-window.c:1701
+#: src/ptyxis-menu-row.c:166 src/ptyxis-profile-editor.c:217 src/ptyxis-window.c:1749
 msgid "My Computer"
 msgstr "ჩემი კომპიუტერი"
 
@@ -1142,23 +1158,23 @@ msgstr "ჩემი კომპიუტერი"
 msgid "The quick brown fox jumps over the lazy dog"
 msgstr "ბაყაყი წყალში ყიყინებს"
 
-#: src/ptyxis-preferences-window.c:275
+#: src/ptyxis-preferences-window.c:276
 msgid "Select Font"
 msgstr "აირჩიეთ ფონტი"
 
-#: src/ptyxis-preferences-window.c:350
+#: src/ptyxis-preferences-window.c:351
 msgid "Show Fewer Palettes"
 msgstr "ნაკლები პალიტრის ჩვენება"
 
-#: src/ptyxis-preferences-window.c:355 src/ptyxis-preferences-window.ui:46
+#: src/ptyxis-preferences-window.c:356 src/ptyxis-preferences-window.ui:46
 msgid "Show All Palettes"
 msgstr "ყველა პალიტრის ჩვენება"
 
-#: src/ptyxis-preferences-window.c:380
+#: src/ptyxis-preferences-window.c:381
 msgid "Add Profile"
 msgstr "პროფილის დამატება"
 
-#: src/ptyxis-preferences-window.c:482 src/ptyxis-profile-editor.c:270
+#: src/ptyxis-preferences-window.c:483 src/ptyxis-profile-editor.c:270
 msgid "Add Link"
 msgstr "ბმულის დამატება"
 
@@ -1372,172 +1388,188 @@ msgstr "ნაგულისხმევ ტერმინალად და�
 msgid "Shortcuts"
 msgstr "მალსახმობი"
 
-#: src/ptyxis-preferences-window.ui:691
+#: src/ptyxis-preferences-window.ui:694
 msgid "Clear Selection"
 msgstr "მონიშნულის გასუფთავება"
 
-#: src/ptyxis-preferences-window.ui:700 src/ptyxis-terminal.ui:230
+#: src/ptyxis-preferences-window.ui:704 src/ptyxis-shortcut-accel-dialog.ui:48 src/ptyxis-terminal.ui:230
 msgid "Reset"
 msgstr "ჩამოყრა"
 
-#: src/ptyxis-preferences-window.ui:705 src/ptyxis-terminal.ui:236
+#: src/ptyxis-preferences-window.ui:710 src/ptyxis-terminal.ui:236
 msgid "Reset and Clear"
 msgstr "განულება და გაწმენდა"
 
-#: src/ptyxis-preferences-window.ui:724
+#: src/ptyxis-preferences-window.ui:731
 msgid "Show Context Menu"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:731
+#: src/ptyxis-preferences-window.ui:739
 msgid "Windows"
 msgstr "ფანჯრები"
 
-#: src/ptyxis-preferences-window.ui:735
+#: src/ptyxis-preferences-window.ui:743
 msgid "Open a new tab in a new window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:741
+#: src/ptyxis-preferences-window.ui:750
 msgid "Close the current window"
 msgstr "მიმდინარე ფანჯრის დახურვა"
 
-#: src/ptyxis-preferences-window.ui:757
+#: src/ptyxis-preferences-window.ui:768
 msgid "Tabs"
 msgstr "ჩანართები"
 
-#: src/ptyxis-preferences-window.ui:761
+#: src/ptyxis-preferences-window.ui:772
 msgid "Open a new tab in the current window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:770
+#: src/ptyxis-preferences-window.ui:782
 msgid "View Tab Overview"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:771
+#: src/ptyxis-preferences-window.ui:783
 msgid "Show an overview of all tabs within the window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:781
+#: src/ptyxis-preferences-window.ui:794
 msgid "Close the current tab"
 msgstr "მიმდინარე ჩანართის დახურვა"
 
-#: src/ptyxis-preferences-window.ui:787
+#: src/ptyxis-preferences-window.ui:801
 msgid "Close all tabs except the active tab"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:793
+#: src/ptyxis-preferences-window.ui:808
 msgid "Undo closing the last tab"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:817
+#: src/ptyxis-preferences-window.ui:835
 msgid "Move the tab one position to the left"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:823
+#: src/ptyxis-preferences-window.ui:842
 msgid "Move the tab one position to the right"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:829
+#: src/ptyxis-preferences-window.ui:849
 msgid "Detach the current tab and move it to a new window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:838
+#: src/ptyxis-preferences-window.ui:859
 msgid "Switch to Tab 1"
 msgstr "გადართვა ჩანართზე 1"
 
-#: src/ptyxis-preferences-window.ui:843
+#: src/ptyxis-preferences-window.ui:865
 msgid "Switch to Tab 2"
 msgstr "გადართვა ჩანართზე 2"
 
-#: src/ptyxis-preferences-window.ui:848
+#: src/ptyxis-preferences-window.ui:871
 msgid "Switch to Tab 3"
 msgstr "გადართვა ჩანართზე 3"
 
-#: src/ptyxis-preferences-window.ui:853
+#: src/ptyxis-preferences-window.ui:877
 msgid "Switch to Tab 4"
 msgstr "გადართვა ჩანართზე 4"
 
-#: src/ptyxis-preferences-window.ui:858
+#: src/ptyxis-preferences-window.ui:883
 msgid "Switch to Tab 5"
 msgstr "გადართვა ჩანართზე 5"
 
-#: src/ptyxis-preferences-window.ui:863
+#: src/ptyxis-preferences-window.ui:889
 msgid "Switch to Tab 6"
 msgstr "გადართვა ჩანართზე 6"
 
-#: src/ptyxis-preferences-window.ui:868
+#: src/ptyxis-preferences-window.ui:895
 msgid "Switch to Tab 7"
 msgstr "გადართვა ჩანართზე 7"
 
-#: src/ptyxis-preferences-window.ui:873
+#: src/ptyxis-preferences-window.ui:901
 msgid "Switch to Tab 8"
 msgstr "გადართვა ჩანართზე 8"
 
-#: src/ptyxis-preferences-window.ui:878
+#: src/ptyxis-preferences-window.ui:907
 msgid "Switch to Tab 9"
 msgstr "გადართვა ჩანართზე 9"
 
-#: src/ptyxis-preferences-window.ui:883
+#: src/ptyxis-preferences-window.ui:913
 msgid "Switch to Tab 10"
 msgstr "გადართე·10·ჩანართზე"
 
-#: src/ptyxis-preferences-window.ui:890
+#: src/ptyxis-preferences-window.ui:921
 msgid "Zoom"
 msgstr "მასშტაბი"
 
-#: src/ptyxis-preferences-window.ui:910
+#: src/ptyxis-preferences-window.ui:944
 msgid "Application"
 msgstr "პროგრამა"
 
-#: src/ptyxis-preferences-window.ui:914
+#: src/ptyxis-preferences-window.ui:948
 msgid "Toggle in and out of fullscreen"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:923
+#: src/ptyxis-preferences-window.ui:958
 msgid "Show Primary Menu"
 msgstr "მენიუს ძირითადი ზოლის ჩვენება"
 
-#: src/ptyxis-preferences-window.ui:924
+#: src/ptyxis-preferences-window.ui:959
 msgid "Displays the primary menu for the terminal window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:929
+#: src/ptyxis-preferences-window.ui:965
 msgid "Show New Tab Menu"
 msgstr "ახალი ჩანართის მენიუს ჩვენება"
 
-#: src/ptyxis-preferences-window.ui:930
+#: src/ptyxis-preferences-window.ui:966
 msgid "Displays the new tab menu for the terminal window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:936
+#: src/ptyxis-preferences-window.ui:973
 msgid "Show this preferences window"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:945 src/ptyxis-preferences-window.ui:949 src/ptyxis-window.c:1675 src/ptyxis-window.c:1837
+#: src/ptyxis-preferences-window.ui:980
+msgid "Show the keyboard shortcuts configuration"
+msgstr ""
+
+#: src/ptyxis-preferences-window.ui:990 src/ptyxis-preferences-window.ui:994 src/ptyxis-window.c:1723 src/ptyxis-window.c:1885
 msgid "Profiles"
 msgstr "პროფილები"
 
-#: src/ptyxis-preferences-window.ui:968 src/ptyxis-profile-editor.ui:442
+#: src/ptyxis-preferences-window.ui:1013 src/ptyxis-profile-editor.ui:442
 msgid "Automatic"
 msgstr "ავტომატური"
 
-#: src/ptyxis-preferences-window.ui:974 src/ptyxis-profile-editor.ui:448
+#: src/ptyxis-preferences-window.ui:1019 src/ptyxis-profile-editor.ui:448
 msgid "Control-H"
 msgstr "Control-H"
 
-#: src/ptyxis-preferences-window.ui:980 src/ptyxis-profile-editor.ui:454
+#: src/ptyxis-preferences-window.ui:1025 src/ptyxis-profile-editor.ui:454
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
-#: src/ptyxis-preferences-window.ui:986 src/ptyxis-profile-editor.ui:460
+#: src/ptyxis-preferences-window.ui:1031 src/ptyxis-profile-editor.ui:460
 msgid "Escape Sequence"
 msgstr ""
 
-#: src/ptyxis-preferences-window.ui:992 src/ptyxis-profile-editor.ui:466
+#: src/ptyxis-preferences-window.ui:1037 src/ptyxis-profile-editor.ui:466
 msgid "TTY Erase"
 msgstr "TTY წაშლა"
 
 #: src/ptyxis-profile.c:729
 msgid "Untitled Profile"
+msgstr ""
+
+#: src/ptyxis-profile-dialog.ui:29 src/ptyxis-terminal.ui:249
+msgid "Change Profile"
+msgstr "პროფილის შეცვლა"
+
+#: src/ptyxis-profile-dialog.ui:42 src/ptyxis-profile-editor.ui:31
+msgid "Profile"
+msgstr "პროფილი"
+
+#: src/ptyxis-profile-dialog.ui:43
+msgid "Select a profile to apply to this terminal"
 msgstr ""
 
 #: src/ptyxis-profile-editor.c:155 src/ptyxis-terminal.c:440 src/ptyxis-terminal.c:472
@@ -1549,13 +1581,9 @@ msgstr "დაკოპირდა გაცვლის ბაფერში"
 msgid "Removed profile “%s”"
 msgstr ""
 
-#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:491 src/ptyxis-tab.c:548
+#: src/ptyxis-profile-editor.ui:22 src/ptyxis-tab.c:504 src/ptyxis-tab.c:561
 msgid "Edit Profile"
 msgstr "პროფილის ჩასწორება"
-
-#: src/ptyxis-profile-editor.ui:31
-msgid "Profile"
-msgstr "პროფილი"
 
 #: src/ptyxis-profile-editor.ui:41
 msgid "Identifier"
@@ -1606,7 +1634,7 @@ msgid "_Duplicate…"
 msgstr ""
 
 #. Translators: <b>%s</b> is used to show the provided text in bold
-#: src/ptyxis-shortcut-accel-dialog.c:455
+#: src/ptyxis-shortcut-accel-dialog.c:538
 #, c-format
 msgid "Enter new shortcut to change <b>%s</b>."
 msgstr "შეიყვანეთ <b>%s</b>-ის შემცვლელი მალსახმობი."
@@ -1617,15 +1645,15 @@ msgid "Cancel"
 msgstr "გაუქმება"
 
 #. do not use underline as it prevents alt+s as an accelerator
-#: src/ptyxis-shortcut-accel-dialog.ui:49
+#: src/ptyxis-shortcut-accel-dialog.ui:56
 msgid "Set"
 msgstr "დაყენება"
 
-#: src/ptyxis-shortcut-accel-dialog.ui:89
+#: src/ptyxis-shortcut-accel-dialog.ui:96
 msgid "Press Escape to cancel or Backspace to disable."
 msgstr "დააწექით Escape-ს გასაუქმებლად ან Backspace-ს, გასათიშად."
 
-#: src/ptyxis-shortcut-row.c:75
+#: src/ptyxis-shortcut-row.c:84
 msgid "Set Shortcut"
 msgstr "მალსახმობის დაყენება"
 
@@ -1633,16 +1661,16 @@ msgstr "მალსახმობის დაყენება"
 msgid "disabled"
 msgstr "გამორთულია"
 
-#: src/ptyxis-tab.c:332
+#: src/ptyxis-tab.c:355
 msgid "A foreground process is running"
 msgstr "მიმდინარეობს წინა პლანზე გაშვებული პროცესის შესრულება"
 
-#: src/ptyxis-tab.c:399
+#: src/ptyxis-tab.c:412
 #, c-format
 msgid "Process Exited from Signal %d"
 msgstr ""
 
-#: src/ptyxis-tab.c:402 src/ptyxis-tab.c:425
+#: src/ptyxis-tab.c:415 src/ptyxis-tab.c:438
 msgid "_Restart"
 msgstr "გადატვირთვა"
 
@@ -1650,66 +1678,66 @@ msgstr "გადატვირთვა"
 #. * display it again if the tab is removed from the parking lot and
 #. * restored into the window.
 #.
-#: src/ptyxis-tab.c:424
+#: src/ptyxis-tab.c:437
 msgid "Process Exited"
 msgstr ""
 
-#: src/ptyxis-tab.c:490
+#: src/ptyxis-tab.c:503
 msgid "Failed to launch terminal"
 msgstr ""
 
-#: src/ptyxis-tab.c:546
+#: src/ptyxis-tab.c:559
 #, c-format
 msgid "Cannot locate container “%s”"
 msgstr ""
 
-#: src/ptyxis-tab.c:570
+#: src/ptyxis-tab.c:583
 msgid "Failed to create pseudo terminal device"
 msgstr ""
 
-#: src/ptyxis-tab.c:1638
+#: src/ptyxis-tab.c:1650
 msgid "Exited"
 msgstr "გამოსული"
 
-#: src/ptyxis-tab.c:1640
+#: src/ptyxis-tab.c:1652
 msgid "Failed"
 msgstr "ჩავარდა"
 
-#: src/ptyxis-tab.c:2225
+#: src/ptyxis-tab.c:2237
 msgid "Failed to open link"
 msgstr "ბმულის გახსნის შეცდომა"
 
-#: src/ptyxis-tab-notify.h:89
+#: src/ptyxis-tab-notify.h:93
 msgid "Command completed"
 msgstr "ბრძანება დასრულდა"
 
-#: src/ptyxis-terminal.ui:170
-msgid "Search…"
-msgstr "ძებნა…"
-
-#: src/ptyxis-terminal.ui:176
+#: src/ptyxis-terminal.ui:169
 msgid "_Open Link"
 msgstr "_ბმულის გახსნა"
 
-#: src/ptyxis-terminal.ui:184
+#: src/ptyxis-terminal.ui:174
+msgid "_Copy Link"
+msgstr "დაა_კოპირე ბმულის მისამართი"
+
+#: src/ptyxis-terminal.ui:182
+msgid "Search…"
+msgstr "ძებნა…"
+
+#: src/ptyxis-terminal.ui:189
 msgid "_Copy"
 msgstr "_კოპირება"
 
-#: src/ptyxis-terminal.ui:185
+#: src/ptyxis-terminal.ui:190
 msgid "Copy selection from terminal to clipboard"
 msgstr "მონიშნული ტექსტის ტერმინალიდან გაცვლის ბუფერში კოპირება"
 
-#: src/ptyxis-terminal.ui:189
+#: src/ptyxis-terminal.ui:194
 msgid "Copy as _HTML"
 msgstr "_HTML-ად კოპირება"
 
-#: src/ptyxis-terminal.ui:190
+#: src/ptyxis-terminal.ui:195
 msgid "Copy selection from terminal to clipboard with HTML formatting"
 msgstr "მონიშნულის კოპირება ტერმინალიდან ბუფერში HTML დაფორმატებით"
-
-#: src/ptyxis-terminal.ui:195
-msgid "_Copy Link"
-msgstr "დაა_კოპირე ბმულის მისამართი"
 
 #: src/ptyxis-terminal.ui:201
 msgid "_Paste"
@@ -1735,11 +1763,7 @@ msgstr "მონიშვნის _მოხსნა"
 msgid "Read-Only"
 msgstr "მხოლოდ-კითხვადი"
 
-#: src/ptyxis-terminal.ui:249
-msgid "Change Profile"
-msgstr "პროფილის შეცვლა"
-
-#: src/ptyxis-terminal.ui:257 src/ptyxis-window.ui:388 src/ptyxis-window.ui:770
+#: src/ptyxis-terminal.ui:257 src/ptyxis-window.ui:398 src/ptyxis-window.ui:780
 msgid "Leave Fullscreen"
 msgstr "სრული ეკრანიდან გამოსვლა"
 
@@ -1792,90 +1816,90 @@ msgstr ""
 msgid "Ptyxis"
 msgstr "Ptyxis"
 
-#: src/ptyxis-window.c:1463
+#: src/ptyxis-window.c:1506
 msgid "Zoom in"
 msgstr "გადიდება"
 
-#: src/ptyxis-window.c:1478
+#: src/ptyxis-window.c:1521
 msgid "Zoom out"
 msgstr "დაპატარავება"
 
-#: src/ptyxis-window.c:1669 src/ptyxis-window.c:1841
+#: src/ptyxis-window.c:1717 src/ptyxis-window.c:1889
 msgid "Containers"
 msgstr "კონტეინერები"
 
-#: src/ptyxis-window.ui:403
+#: src/ptyxis-window.ui:413
 msgid "New Terminal"
 msgstr "ახალი ტერმინალი"
 
-#: src/ptyxis-window.ui:416
+#: src/ptyxis-window.ui:426
 msgid "Show Profiles and Containers"
 msgstr ""
 
-#: src/ptyxis-window.ui:436
+#: src/ptyxis-window.ui:446
 msgid "Filter…"
 msgstr "ფილტრი…"
 
-#: src/ptyxis-window.ui:589
+#: src/ptyxis-window.ui:599
 msgid "No Matching Results"
 msgstr ""
 
-#: src/ptyxis-window.ui:631
+#: src/ptyxis-window.ui:641
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
-#: src/ptyxis-window.ui:639 src/ptyxis-window.ui:756
+#: src/ptyxis-window.ui:649 src/ptyxis-window.ui:766
 msgid "Show Open Tabs"
 msgstr "ღია ჩანართებს ჩვენება"
 
-#: src/ptyxis-window.ui:740
+#: src/ptyxis-window.ui:750
 msgid "New _Tab"
 msgstr "ახალი _ჩანართი"
 
-#: src/ptyxis-window.ui:747
+#: src/ptyxis-window.ui:757
 msgid "New _Window"
 msgstr "ახალი ფანჯარა"
 
-#: src/ptyxis-window.ui:764
+#: src/ptyxis-window.ui:774
 msgid "Fullscreen"
 msgstr "სრულ ეკრანზე"
 
-#: src/ptyxis-window.ui:778
+#: src/ptyxis-window.ui:788
 msgid "_Preferences"
 msgstr "_პარამეტრები"
 
-#: src/ptyxis-window.ui:782
+#: src/ptyxis-window.ui:793
 msgid "_Keyboard Shortcuts"
 msgstr "კლავიატურის მალსახმობები"
 
-#: src/ptyxis-window.ui:786
+#: src/ptyxis-window.ui:797
 msgid "_About"
 msgstr "_შესახებ"
 
-#: src/ptyxis-window.ui:795
+#: src/ptyxis-window.ui:806
 msgid "Move _Left"
 msgstr "_მარცხნივ გაწევა"
 
-#: src/ptyxis-window.ui:800
+#: src/ptyxis-window.ui:811
 msgid "Move _Right"
 msgstr "მარჯვნივ _გაწევა"
 
-#: src/ptyxis-window.ui:805
+#: src/ptyxis-window.ui:816
 msgid "Move to New _Window"
 msgstr ""
 
-#: src/ptyxis-window.ui:811
+#: src/ptyxis-window.ui:822
 msgid "_Pin Tab"
 msgstr ""
 
-#: src/ptyxis-window.ui:816
+#: src/ptyxis-window.ui:827
 msgid "Un_pin Tab"
 msgstr ""
 
-#: src/ptyxis-window.ui:831
+#: src/ptyxis-window.ui:842
 msgid "Close _Other Tabs"
 msgstr "_სხვა ჩანართების დახურვა"
 
-#: src/ptyxis-window.ui:836
+#: src/ptyxis-window.ui:847
 msgid "_Close Tab"
 msgstr "ჩანარ_თის დახურვა"
