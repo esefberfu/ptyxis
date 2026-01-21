@@ -972,6 +972,8 @@ ptyxis_window_tab_focus_action (GtkWidget  *widget,
                                 GVariant   *param)
 {
   PtyxisWindow *self = (PtyxisWindow *)widget;
+  guint nth = 0;
+  guint n_pages;
   int position;
 
   g_assert (PTYXIS_IS_WINDOW (self));
@@ -979,20 +981,21 @@ ptyxis_window_tab_focus_action (GtkWidget  *widget,
   g_assert (g_variant_is_of_type (param, G_VARIANT_TYPE_INT32));
 
   position = g_variant_get_int32 (param);
+  n_pages = adw_tab_view_get_n_pages (self->tab_view);
 
-  if (position == 0)
-    {
-      int n_pages = adw_tab_view_get_n_pages (self->tab_view);
-      if (n_pages > 0)
-        {
-          AdwTabPage *page = adw_tab_view_get_nth_page (self->tab_view, n_pages - 1);
-          adw_tab_view_set_selected_page (self->tab_view, page);
-        }
-    }
-  else if (position > 0 && position <= adw_tab_view_get_n_pages (self->tab_view))
-    {
-      AdwTabPage *page = adw_tab_view_get_nth_page (self->tab_view, position - 1);
+  if (n_pages == 0)
+    return;
 
+  if (position <= 0)
+    nth = n_pages - 1;
+  else if (position > 0 && (guint)position <= n_pages)
+    nth = (guint)position - 1;
+  else
+    nth = n_pages - 1;
+
+  if (nth < n_pages)
+    {
+      AdwTabPage *page = adw_tab_view_get_nth_page (self->tab_view, nth);
       adw_tab_view_set_selected_page (self->tab_view, page);
     }
 }
