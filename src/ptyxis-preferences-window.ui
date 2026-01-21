@@ -914,6 +914,12 @@
                 <property name="shortcut-name">focus-tab-10</property>
               </object>
             </child>
+            <child>
+              <object class="PtyxisShortcutRow" id="shortcut_focus_tab_last">
+                <property name="title" translatable="yes">Switch to Last Tab</property>
+                <property name="shortcut-name">focus-tab-last</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>

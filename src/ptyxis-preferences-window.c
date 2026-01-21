@@ -104,6 +104,7 @@ struct _PtyxisPreferencesWindow
   PtyxisShortcutRow    *shortcut_focus_tab_7;
   PtyxisShortcutRow    *shortcut_focus_tab_8;
   PtyxisShortcutRow    *shortcut_focus_tab_9;
+  PtyxisShortcutRow    *shortcut_focus_tab_last;
   PtyxisShortcutRow    *shortcut_move_next_tab;
   PtyxisShortcutRow    *shortcut_move_previous_tab;
   PtyxisShortcutRow    *shortcut_move_tab_left;
@@ -960,6 +961,9 @@ ptyxis_preferences_window_constructed (GObject *object)
   g_object_bind_property (shortcuts, "focus-tab-10",
                           self->shortcut_focus_tab_10, "accelerator",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  g_object_bind_property (shortcuts, "focus-tab-last",
+                          self->shortcut_focus_tab_last, "accelerator",
+                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
 
   g_object_bind_property (shortcuts, "toggle-fullscreen",
                           self->shortcut_toggle_fullscreen, "accelerator",
@@ -1183,6 +1187,7 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, shortcut_focus_tab_7);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, shortcut_focus_tab_8);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, shortcut_focus_tab_9);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, shortcut_focus_tab_last);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, shortcut_move_next_tab);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, shortcut_move_previous_tab);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, shortcut_move_tab_left);

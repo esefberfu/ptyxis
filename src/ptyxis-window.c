@@ -980,7 +980,16 @@ ptyxis_window_tab_focus_action (GtkWidget  *widget,
 
   position = g_variant_get_int32 (param);
 
-  if (position > 0 && position <= adw_tab_view_get_n_pages (self->tab_view))
+  if (position == 0)
+    {
+      int n_pages = adw_tab_view_get_n_pages (self->tab_view);
+      if (n_pages > 0)
+        {
+          AdwTabPage *page = adw_tab_view_get_nth_page (self->tab_view, n_pages - 1);
+          adw_tab_view_set_selected_page (self->tab_view, page);
+        }
+    }
+  else if (position > 0 && position <= adw_tab_view_get_n_pages (self->tab_view))
     {
       AdwTabPage *page = adw_tab_view_get_nth_page (self->tab_view, position - 1);
 

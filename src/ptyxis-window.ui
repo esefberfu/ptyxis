@@ -364,6 +364,17 @@
             <property name="arguments">10</property>
           </object>
         </child>
+        <child>
+          <object class="GtkShortcut">
+            <binding name="trigger">
+              <lookup name="focus-tab-last" type="PtyxisShortcuts">
+                <lookup name="shortcuts">PtyxisWindow</lookup>
+              </lookup>
+            </binding>
+            <property name="action">action(tab.focus)</property>
+            <property name="arguments">0</property>
+          </object>
+        </child>
       </object>
     </child>
     <property name="content">

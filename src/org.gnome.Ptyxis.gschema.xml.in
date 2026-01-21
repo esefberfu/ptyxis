@@ -634,6 +634,12 @@
       <description>Shortcut to focus tab 10</description>
     </key>
 
+    <key name="focus-tab-last" type="s">
+      <default>''</default>
+      <summary>Focus Last Tab</summary>
+      <description>Shortcut to focus the last tab</description>
+    </key>
+
     <key name="undo-close-tab" type="s">
       <default>'&lt;ctrl&gt;&lt;shift&gt;&lt;alt&gt;t'</default>
       <summary>Undo Close Tab</summary>
