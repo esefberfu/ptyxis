@@ -2,6 +2,10 @@
 
 A clear and concise description of what is going wrong.
 
+**Note that Ptyxis does not use the issue tracker for user support or feature requests.**
+
+For user support, please use https://discourse.gnome.org/c/applications/7 and for feature requests reference https://gitlab.gnome.org/chergert/ptyxis/-/blob/bfae9dee4fb86d7020cf796195858ebf798c85d1/README.md#L367
+
 ---
 
 ### Steps to Reproduce
