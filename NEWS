@@ -1,3 +1,18 @@
+# Ptyxis 50.beta
+
+ * Add "Switch to Last Tab" shortcut (Alt+9).
+ * Use tab-focus action to handle tab bar overflow gracefully.
+ * Shortcut dialog: add reset button for default accelerator; allow
+   shift+arrow selection; make keyboard-shortcuts shortcut configurable.
+ * Add setting to enable/disable zoom on scroll with Ctrl.
+ * Make zoom less sensitive.
+ * Support for apx containers.
+ * Agent: ignore --no-tty/-tty when distrobox.unshare_groups=1.
+ * Ignore tab notifications shorter than 250 ms.
+ * Fix palette 'Foreground' typo.
+ * Fix man page and README.
+ * Translation updates.
+
 # Ptyxis 50.alpha
 
  * Add a logout inhibitor when tabs have active programs running that
