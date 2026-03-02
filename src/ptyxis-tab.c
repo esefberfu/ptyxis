@@ -1692,7 +1692,7 @@ ptyxis_tab_dup_subtitle (PtyxisTab *self)
   if (current_directory_uri != NULL && current_directory_uri[0] != 0)
     return ptyxis_tab_collapse_uri (current_directory_uri);
 
-  return NULL;
+  return g_strdup ("");
 }
 
 char *
