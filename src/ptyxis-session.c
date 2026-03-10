@@ -272,7 +272,7 @@ ptyxis_session_restore (PtyxisApplication *app,
           if (zoom != PTYXIS_ZOOM_LEVEL_DEFAULT)
             ptyxis_tab_set_zoom (the_tab, zoom);
 
-          ptyxis_window_add_tab (the_window, the_tab);
+          ptyxis_window_add_tab_at_end (the_window, the_tab);
           ptyxis_window_set_tab_pinned (the_window, the_tab, pinned);
 
           if (is_active)
@@ -292,7 +292,7 @@ ptyxis_session_restore (PtyxisApplication *app,
                */
               the_profile = ptyxis_application_dup_default_profile (app);
               the_tab = ptyxis_tab_new (the_profile);
-              ptyxis_window_add_tab (the_window, the_tab);
+              ptyxis_window_add_tab_at_end (the_window, the_tab);
 
               if (!active_tab)
                 active_tab = the_tab;

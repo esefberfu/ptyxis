@@ -2451,6 +2451,26 @@ ptyxis_window_add_tab (PtyxisWindow *self,
     gtk_window_set_default_size (GTK_WINDOW (self), -1, -1);
 }
 
+void
+ptyxis_window_add_tab_at_end (PtyxisWindow *self,
+                              PtyxisTab    *tab)
+{
+  AdwTabPage *page;
+  int position;
+
+  g_return_if_fail (PTYXIS_IS_WINDOW (self));
+  g_return_if_fail (PTYXIS_IS_TAB (tab));
+
+  position = adw_tab_view_get_n_pages (self->tab_view);
+  page = adw_tab_view_insert (self->tab_view, GTK_WIDGET (tab), position);
+
+  ptyxis_window_setup_page (self, tab, page);
+
+  /* Resize if we are going from 1->2 tabs */
+  if (adw_tab_view_get_n_pages (self->tab_view) == 2)
+    gtk_window_set_default_size (GTK_WINDOW (self), -1, -1);
+}
+
 PtyxisTab *
 ptyxis_window_get_active_tab (PtyxisWindow *self)
 {

@@ -39,6 +39,8 @@ PtyxisWindow  *ptyxis_window_new_for_command     (PtyxisProfile      *profile,
 PtyxisWindow  *ptyxis_window_new_for_profile     (PtyxisProfile      *profile);
 void           ptyxis_window_add_tab             (PtyxisWindow       *self,
                                                   PtyxisTab          *tab);
+void           ptyxis_window_add_tab_at_end      (PtyxisWindow       *self,
+                                                  PtyxisTab          *tab);
 PtyxisTab     *ptyxis_window_add_tab_for_command (PtyxisWindow       *self,
                                                   PtyxisProfile      *profile,
                                                   const char * const *argv,
