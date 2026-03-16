@@ -1,3 +1,8 @@
+# Ptyxis 50.0
+
+ * window: fix restore with "Next" for new-tab-position.
+ * tab: fix NULL warning from libadwaita via subtitle property.
+
 # Ptyxis 50.rc
 
  * Translation updates.
@@ -284,4 +289,3 @@ Chances since 46.0
 Thanks to everyone who filed bugs and contributed patches!
 
 -- Christian
-
