@@ -1,3 +1,7 @@
+# Ptyxis 50.1
+
+ * Fix GNOME CI pipeline which fails on alpha/beta/rc in metainfo
+
 # Ptyxis 50.0
 
  * window: fix restore with "Next" for new-tab-position.
