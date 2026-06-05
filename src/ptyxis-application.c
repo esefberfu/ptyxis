@@ -643,7 +643,11 @@ ptyxis_application_command_line (GApplication            *app,
       tab = ptyxis_tab_new (profile);
       terminal = ptyxis_tab_get_terminal (tab);
 
-      if (window == NULL || !did_restore)
+      /* In single window mode, reuse the existing window (add a tab) rather
+       * than spawning a new one.
+       */
+      if (window == NULL ||
+          (!did_restore && !ptyxis_settings_get_single_window_mode (self->settings)))
         {
           window = ptyxis_window_new_empty ();
           ptyxis_application_apply_default_size (self, terminal);
@@ -1460,6 +1464,21 @@ ptyxis_application_new_window_action (GSimpleAction *action,
 
   g_assert (!action || G_IS_SIMPLE_ACTION (action));
   g_assert (PTYXIS_IS_APPLICATION (self));
+
+  /* Single window mode: when a window already exists, open a new tab in it
+   * instead of spawning a separate window.
+   */
+  if (ptyxis_settings_get_single_window_mode (self->settings) &&
+      (window = get_current_window (self)) != NULL)
+    {
+      g_autoptr(PtyxisProfile) profile = ptyxis_application_dup_default_profile (self);
+      PtyxisTab *tab = ptyxis_tab_new (profile);
+
+      ptyxis_window_add_tab (window, tab);
+      ptyxis_window_set_active_tab (window, tab);
+      gtk_window_present (GTK_WINDOW (window));
+      return;
+    }
 
   window = ptyxis_window_new ();
   gtk_application_add_window (GTK_APPLICATION (self), GTK_WINDOW (window));

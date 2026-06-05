@@ -56,6 +56,7 @@ struct _PtyxisPreferencesWindow
 
   AdwSwitchRow         *audible_bell;
   AdwSwitchRow         *copy_on_select;
+  AdwSwitchRow         *single_window_mode;
   AdwComboRow          *backspace_binding;
   AdwSpinRow           *cell_height_scale;
   AdwSpinRow           *cell_width_scale;
@@ -892,6 +893,9 @@ ptyxis_preferences_window_constructed (GObject *object)
   g_object_bind_property (settings, "copy-on-select",
                           self->copy_on_select, "active",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  g_object_bind_property (settings, "single-window-mode",
+                          self->single_window_mode, "active",
+                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_object_bind_property (settings, "visual-bell",
                           self->visual_bell, "active",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
@@ -1142,6 +1146,7 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
 
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, audible_bell);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, copy_on_select);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, single_window_mode);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, backspace_binding);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_height_scale);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_width_scale);

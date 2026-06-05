@@ -226,6 +226,12 @@
       <description>Automatically copy selected text to the clipboard.</description>
     </key>
 
+    <key name="single-window-mode" type="b">
+      <default>false</default>
+      <summary>Single Window Mode</summary>
+      <description>Open new terminals as tabs in the existing window instead of a new window.</description>
+    </key>
+
     <key name="enable-a11y" type="b">
       <default>false</default>
       <summary>Enable Accessibility</summary>

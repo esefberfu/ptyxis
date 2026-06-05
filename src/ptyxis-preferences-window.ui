@@ -342,6 +342,12 @@
                 </property>
               </object>
             </child>
+            <child>
+              <object class="AdwSwitchRow" id="single_window_mode">
+                <property name="title" translatable="yes">Single Window Mode</property>
+                <property name="subtitle" translatable="yes">Open new terminals as tabs in the existing window instead of a new window</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>

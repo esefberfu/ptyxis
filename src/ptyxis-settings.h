@@ -45,6 +45,7 @@ G_BEGIN_DECLS
 #define PTYXIS_SETTING_KEY_TEXT_BLINK_MODE         "text-blink-mode"
 #define PTYXIS_SETTING_KEY_TOAST_ON_COPY_CLIPBOARD "toast-on-copy-clipboard"
 #define PTYXIS_SETTING_KEY_COPY_ON_SELECT          "copy-on-select"
+#define PTYXIS_SETTING_KEY_SINGLE_WINDOW_MODE      "single-window-mode"
 #define PTYXIS_SETTING_KEY_USE_SYSTEM_FONT         "use-system-font"
 #define PTYXIS_SETTING_KEY_VISUAL_BELL             "visual-bell"
 #define PTYXIS_SETTING_KEY_VISUAL_PROCESS_LEADER   "visual-process-leader"
@@ -168,6 +169,9 @@ void                    ptyxis_settings_set_toast_on_copy_clipboard (PtyxisSetti
 gboolean                ptyxis_settings_get_copy_on_select          (PtyxisSettings             *self);
 void                    ptyxis_settings_set_copy_on_select          (PtyxisSettings             *self,
                                                                      gboolean                    copy_on_select);
+gboolean                ptyxis_settings_get_single_window_mode      (PtyxisSettings             *self);
+void                    ptyxis_settings_set_single_window_mode      (PtyxisSettings             *self,
+                                                                     gboolean                    single_window_mode);
 gboolean                ptyxis_settings_get_disable_padding         (PtyxisSettings             *self);
 void                    ptyxis_settings_set_disable_padding         (PtyxisSettings             *self,
                                                                      gboolean                    disable_padding);

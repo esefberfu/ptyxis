@@ -58,6 +58,7 @@ enum {
   PROP_TEXT_BLINK_MODE,
   PROP_TOAST_ON_COPY_CLIPBOARD,
   PROP_COPY_ON_SELECT,
+  PROP_SINGLE_WINDOW_MODE,
   PROP_USE_SYSTEM_FONT,
   PROP_VISUAL_BELL,
   PROP_VISUAL_PROCESS_LEADER,
@@ -117,6 +118,8 @@ ptyxis_settings_changed_cb (PtyxisSettings *self,
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_TOAST_ON_COPY_CLIPBOARD]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_COPY_ON_SELECT))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_COPY_ON_SELECT]);
+  else if (g_str_equal (key, PTYXIS_SETTING_KEY_SINGLE_WINDOW_MODE))
+    g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_SINGLE_WINDOW_MODE]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_ENABLE_A11Y))
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_ENABLE_A11Y]);
   else if (g_str_equal (key, PTYXIS_SETTING_KEY_ENABLE_ZOOM_SCROLL_CTRL))
@@ -247,6 +250,10 @@ ptyxis_settings_get_property (GObject    *object,
       g_value_set_boolean (value, ptyxis_settings_get_copy_on_select (self));
       break;
 
+    case PROP_SINGLE_WINDOW_MODE:
+      g_value_set_boolean (value, ptyxis_settings_get_single_window_mode (self));
+      break;
+
     case PROP_USE_SYSTEM_FONT:
       g_value_set_boolean (value, ptyxis_settings_get_use_system_font (self));
       break;
@@ -360,6 +367,10 @@ ptyxis_settings_set_property (GObject      *object,
 
     case PROP_COPY_ON_SELECT:
       ptyxis_settings_set_copy_on_select (self, g_value_get_boolean (value));
+      break;
+
+    case PROP_SINGLE_WINDOW_MODE:
+      ptyxis_settings_set_single_window_mode (self, g_value_get_boolean (value));
       break;
 
     case PROP_USE_SYSTEM_FONT:
@@ -550,6 +561,13 @@ ptyxis_settings_class_init (PtyxisSettingsClass *klass)
 
   properties[PROP_COPY_ON_SELECT] =
     g_param_spec_boolean (PTYXIS_SETTING_KEY_COPY_ON_SELECT, NULL, NULL,
+                          FALSE,
+                          (G_PARAM_READWRITE |
+                           G_PARAM_EXPLICIT_NOTIFY |
+                           G_PARAM_STATIC_STRINGS));
+
+  properties[PROP_SINGLE_WINDOW_MODE] =
+    g_param_spec_boolean (PTYXIS_SETTING_KEY_SINGLE_WINDOW_MODE, NULL, NULL,
                           FALSE,
                           (G_PARAM_READWRITE |
                            G_PARAM_EXPLICIT_NOTIFY |
@@ -1161,6 +1179,25 @@ ptyxis_settings_set_copy_on_select (PtyxisSettings *self,
   g_settings_set_boolean (self->settings,
                           PTYXIS_SETTING_KEY_COPY_ON_SELECT,
                           copy_on_select);
+}
+
+gboolean
+ptyxis_settings_get_single_window_mode (PtyxisSettings *self)
+{
+  g_return_val_if_fail (PTYXIS_IS_SETTINGS (self), FALSE);
+
+  return g_settings_get_boolean (self->settings, PTYXIS_SETTING_KEY_SINGLE_WINDOW_MODE);
+}
+
+void
+ptyxis_settings_set_single_window_mode (PtyxisSettings *self,
+                                        gboolean        single_window_mode)
+{
+  g_return_if_fail (PTYXIS_IS_SETTINGS (self));
+
+  g_settings_set_boolean (self->settings,
+                          PTYXIS_SETTING_KEY_SINGLE_WINDOW_MODE,
+                          single_window_mode);
 }
 
 void
