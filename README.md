@@ -8,6 +8,10 @@ with extra features on top of upstream.
 - **Copy on Select** — when enabled, selecting text in the terminal copies it to
   the clipboard automatically (no explicit copy action needed). Toggle it in
   **Preferences → Behavior → Clipboard → Copy on Select** (off by default).
+- **Single Window Mode** — when enabled, new terminals open as a tab in the
+  existing window instead of a new window (affects New Window / Ctrl+Shift+N and
+  the launcher action). Toggle it in
+  **Preferences → Behavior → Interface → Single Window Mode** (off by default).
 
 ## Building this fork
 
