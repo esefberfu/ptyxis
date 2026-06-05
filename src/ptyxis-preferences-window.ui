@@ -425,6 +425,17 @@
         </child>
         <child>
           <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Clipboard</property>
+            <child>
+              <object class="AdwSwitchRow" id="copy_on_select">
+                <property name="title" translatable="yes">Copy on Select</property>
+                <property name="subtitle" translatable="yes">Automatically copy selected text to the clipboard</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">Scrolling</property>
             <child>
               <object class="AdwComboRow" id="scrollbar_policy">

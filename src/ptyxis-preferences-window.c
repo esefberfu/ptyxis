@@ -55,6 +55,7 @@ struct _PtyxisPreferencesWindow
   guint                 filter_show_more : 1;
 
   AdwSwitchRow         *audible_bell;
+  AdwSwitchRow         *copy_on_select;
   AdwComboRow          *backspace_binding;
   AdwSpinRow           *cell_height_scale;
   AdwSpinRow           *cell_width_scale;
@@ -888,6 +889,9 @@ ptyxis_preferences_window_constructed (GObject *object)
   g_object_bind_property (settings, "audible-bell",
                           self->audible_bell, "active",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  g_object_bind_property (settings, "copy-on-select",
+                          self->copy_on_select, "active",
+                          G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   g_object_bind_property (settings, "visual-bell",
                           self->visual_bell, "active",
                           G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
@@ -1137,6 +1141,7 @@ ptyxis_preferences_window_class_init (PtyxisPreferencesWindowClass *klass)
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Ptyxis/ptyxis-preferences-window.ui");
 
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, audible_bell);
+  gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, copy_on_select);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, backspace_binding);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_height_scale);
   gtk_widget_class_bind_template_child (widget_class, PtyxisPreferencesWindow, cell_width_scale);

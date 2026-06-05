@@ -454,7 +454,22 @@ paste_clipboard_action (GtkWidget  *widget,
 static void
 ptyxis_terminal_selection_changed (VteTerminal *terminal)
 {
-  ptyxis_terminal_update_clipboard_actions (PTYXIS_TERMINAL (terminal));
+  PtyxisTerminal *self = PTYXIS_TERMINAL (terminal);
+  PtyxisSettings *settings = ptyxis_application_get_settings (PTYXIS_APPLICATION_DEFAULT);
+
+  ptyxis_terminal_update_clipboard_actions (self);
+
+  /* "Copy on select": as soon as text is selected, copy it to the
+   * clipboard so it can be pasted with the regular paste action.
+   */
+  if (ptyxis_settings_get_copy_on_select (settings) &&
+      vte_terminal_get_has_selection (terminal))
+    {
+      g_autofree char *text = vte_terminal_get_text_selected (terminal, VTE_FORMAT_TEXT);
+
+      if (text && text[0] != 0)
+        gdk_clipboard_set_text (gtk_widget_get_clipboard (GTK_WIDGET (self)), text);
+    }
 }
 
 static void
