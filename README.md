@@ -12,6 +12,10 @@ with extra features on top of upstream.
   existing window instead of a new window (affects New Window / Ctrl+Shift+N and
   the launcher action). Toggle it in
   **Preferences → Behavior → Interface → Single Window Mode** (off by default).
+- **Split panes** — split a tab into multiple terminals via the terminal's
+  right-click menu (**Split Right**, **Split Down**, **Close Pane**). Panes can
+  be split recursively and resized by dragging the handle; the focused pane is
+  outlined. Note: split layouts are not saved across restarts.
 
 ## Building this fork
 
