@@ -1,3 +1,28 @@
+# 🍴 Fork Notice
+
+This is a personal fork of [GNOME/ptyxis](https://gitlab.gnome.org/GNOME/ptyxis)
+with extra features on top of upstream.
+
+## Added features
+
+- **Copy on Select** — when enabled, selecting text in the terminal copies it to
+  the clipboard automatically (no explicit copy action needed). Toggle it in
+  **Preferences → Behavior → Clipboard → Copy on Select** (off by default).
+
+## Building this fork
+
+A containerized build setup is included so you can build without touching the
+host system. See **[DEV.md](DEV.md)**:
+
+```bash
+./dev build-image   # one time
+./dev run           # build in a container, run natively on the host
+```
+
+Everything below this notice is the original upstream README.
+
+---
+
 ![Ptyxis Logo](https://gitlab.gnome.org/chergert/ptyxis/-/raw/main/data/icons/ptyxis.svg)
 
 [![License: GPL v3+](https://img.shields.io/badge/License-GPL%20v3%2B-blue.svg)](https://gitlab.gnome.org/chergert/ptyxis/-/blob/main/COPYING)
