@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+# Ptyxis geliştirme yardımcısı.
+#   - DERLEME container içinde yapılır (host kütüphaneleri kirletilmez).
+#   - ÇALIŞTIRMA doğrudan host'ta yapılır (host = Ubuntu 26.04, aynı GTK/VTE
+#     sürümleri), böylece container'da Wayland/GPU geçişi derdi yaşanmaz.
+#
+# Püf nokta: container, repoyu HOST İLE AYNI YOLA mount eder ve prefix de o yolun
+# altındadır. Böylece derlemeye gömülen LIBEXECDIR (ptyxis-agent yolu) host'ta da
+# geçerli olur ve binary host'ta sorunsuz çalışır.
+set -euo pipefail
+
+IMAGE="ptyxis-dev"
+SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PREFIX="$SRC_DIR/build/install"
+UID_GID="$(id -u):$(id -g)"
+
+# Container'ı host kullanıcısı olarak ve repoyu host ile AYNI yola bağlayarak çalıştır.
+docker_run() {
+  docker run --rm -it \
+    --user "$UID_GID" \
+    -e HOME=/tmp/devhome \
+    -v "$SRC_DIR":"$SRC_DIR" \
+    -w "$SRC_DIR" \
+    "$@"
+}
+
+case "${1:-help}" in
+  build-image)
+    echo ">> Docker image '$IMAGE' oluşturuluyor..."
+    docker build -t "$IMAGE" "$SRC_DIR/container"
+    ;;
+
+  setup)
+    # prefix host yoluyla aynı: binary host'ta agent'ı $PREFIX/libexec'te bulur.
+    # -Ddevelopment=true: app-id -> org.gnome.Ptyxis.Devel (ayrı D-Bus adı + şema),
+    # böylece sistemdeki Ptyxis açıkken yan yana çalışır.
+    docker_run "$IMAGE" meson setup build --prefix="$PREFIX" -Ddevelopment=true --reconfigure 2>/dev/null || \
+    docker_run "$IMAGE" meson setup build --prefix="$PREFIX" -Ddevelopment=true
+    ;;
+
+  compile|build)
+    docker_run "$IMAGE" ninja -C build
+    ;;
+
+  install)
+    docker_run "$IMAGE" meson install -C build
+    ;;
+
+  test)
+    docker_run "$IMAGE" meson test -C build
+    ;;
+
+  release)
+    # Sistemdekiyle aynı app-id'li (org.gnome.Ptyxis), optimize release build.
+    # /usr/local için build-release/stage altına stage'lenir (root gerekmez).
+    docker_run "$IMAGE" sh -c '
+      set -e
+      meson setup build-release --prefix=/usr/local --buildtype=release \
+        -Ddevelopment=false --reconfigure 2>/dev/null || \
+      meson setup build-release --prefix=/usr/local --buildtype=release -Ddevelopment=false
+      ninja -C build-release
+      rm -rf build-release/stage
+      DESTDIR="$PWD/build-release/stage" meson install -C build-release
+    '
+    echo ""
+    echo ">> Stage hazır: build-release/stage/usr/local"
+    echo ">> Sisteme kurmak için (HOST'ta, sudo ile):"
+    echo "     sudo cp -a build-release/stage/usr/local/. /usr/local/"
+    echo "     sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas"
+    echo "     sudo update-desktop-database /usr/local/share/applications"
+    ;;
+
+  clean)
+    rm -rf "$SRC_DIR/build"
+    echo ">> ./build temizlendi."
+    ;;
+
+  shell)
+    docker_run "$IMAGE" bash
+    ;;
+
+  run)
+    # 1) Container'da derle + kur (kod değişikliklerini yansıt)
+    docker_run "$IMAGE" sh -c 'ninja -C build && meson install -C build' >/dev/null
+    # 2) Binary'yi DOĞRUDAN HOST'ta çalıştır (host Wayland/GPU'su kullanılır)
+    echo ">> Host'ta çalıştırılıyor: $PREFIX/bin/ptyxis"
+    GSETTINGS_SCHEMA_DIR="$PREFIX/share/glib-2.0/schemas" \
+      exec "$PREFIX/bin/ptyxis" "${@:2}"
+    ;;
+
+  *)
+    cat <<EOF
+Ptyxis geliştirme yardımcısı (derleme: container, çalıştırma: host)
+
+Kullanım: ./dev <komut>
+
+  build-image   Build container image'ini oluştur (ilk kez / Dockerfile değişince)
+  setup         meson setup build (prefix=build/install)
+  compile       ninja -C build     [alias: build]
+  install       meson install -C build  (-> build/install)
+  test          meson test -C build
+  run           Container'da derle+kur, sonra HOST'ta çalıştır
+  shell         Container içinde interaktif kabuk
+  clean         ./build dizinini sil
+
+Tipik akış:
+  ./dev build-image   # bir kez
+  ./dev setup
+  ./dev run           # derler, kurar, host'ta açar
+EOF
+    ;;
+esac

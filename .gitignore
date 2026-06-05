@@ -1,1 +1,5 @@
 .flatpak-builder
+
+# Container tabanlı build çıktıları (./dev)
+/build/
+/build-release/
