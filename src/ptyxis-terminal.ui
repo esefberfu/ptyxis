@@ -220,6 +220,20 @@
     </section>
     <section>
       <item>
+        <attribute name="label" translatable="yes">Split _Right</attribute>
+        <attribute name="action">tab.split-right</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Split _Down</attribute>
+        <attribute name="action">tab.split-down</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Close _Pane</attribute>
+        <attribute name="action">tab.close-pane</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">Read-Only</attribute>
         <attribute name="action">win.tab.read-only</attribute>
       </item>
