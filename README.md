@@ -23,6 +23,50 @@ host system. See **[DEV.md](DEV.md)**:
 ./dev run           # build in a container, run natively on the host
 ```
 
+## Installation — replacing your system terminal
+
+To replace the Ptyxis on your desktop with this fork, build an optimized
+release and install it under `/usr/local` (which shadows the distro package in
+`/usr` without fighting your package manager).
+
+1. Build and stage the release (no root needed):
+
+   ```bash
+   ./dev release
+   ```
+
+2. Install it to `/usr/local` (needs root):
+
+   ```bash
+   sudo cp -a build-release/stage/usr/local/. /usr/local/
+   sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
+   sudo update-desktop-database /usr/local/share/applications
+   ```
+
+3. **Log out and back in** (or `killall ptyxis ptyxis-agent` and relaunch) so the
+   running instance is replaced by the new binary.
+
+Verify the new build is active:
+
+```bash
+ps -eo args | grep '[p]tyxis --gapplication-service'   # should show /usr/local/bin/ptyxis
+gsettings list-keys org.gnome.Ptyxis | grep -E 'copy-on-select|single-window-mode'
+```
+
+### Reverting to the distro package
+
+```bash
+sudo rm -f /usr/local/bin/ptyxis /usr/local/libexec/ptyxis-agent \
+  /usr/local/share/applications/org.gnome.Ptyxis.desktop \
+  /usr/local/share/dbus-1/services/org.gnome.Ptyxis.service \
+  /usr/local/share/glib-2.0/schemas/org.gnome.Ptyxis.gschema.xml
+sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
+```
+
+Then log out and back in. Note: `/usr/local` is not managed by your package
+manager, so distro updates won't touch this build — rebuild to pick up upstream
+changes.
+
 Everything below this notice is the original upstream README.
 
 ---
