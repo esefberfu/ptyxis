@@ -3,3 +3,6 @@
 # Container tabanlı build çıktıları (./dev)
 /build/
 /build-release/
+
+# IDE
+/.idea/
