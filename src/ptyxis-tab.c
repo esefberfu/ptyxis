@@ -2465,6 +2465,7 @@ ptyxis_tab_poll_agent_cb (GObject      *object,
   PtyxisProcessLeaderKind leader_kind;
   gboolean has_foreground_process;
   gboolean changed = FALSE;
+  gboolean inhibit_changed = FALSE;
   PtyxisTab *self;
   GPid the_pid;
 
@@ -2494,6 +2495,7 @@ ptyxis_tab_poll_agent_cb (GObject      *object,
   if (self->has_foreground_process != has_foreground_process)
     {
       changed = TRUE;
+      inhibit_changed = TRUE;
       self->has_foreground_process = has_foreground_process;
     }
 
@@ -2527,7 +2529,8 @@ ptyxis_tab_poll_agent_cb (GObject      *object,
       if (the_cmdline != NULL && (space = strchr (the_cmdline, ' ')))
         program_name = g_strndup (the_cmdline, space - the_cmdline);
 
-      g_set_str (&self->program_name, program_name);
+      if (g_set_str (&self->program_name, program_name))
+        inhibit_changed = TRUE;
 
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_COMMAND_LINE]);
     }
@@ -2535,8 +2538,8 @@ ptyxis_tab_poll_agent_cb (GObject      *object,
   if (changed)
     g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_TITLE]);
 
-  /* Update inhibit state when foreground process changes */
-  ptyxis_tab_update_inhibit (self);
+  if (inhibit_changed)
+    ptyxis_tab_update_inhibit (self);
 
   g_task_return_boolean (task, changed);
 }
