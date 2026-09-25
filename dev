@@ -64,10 +64,23 @@ case "${1:-help}" in
     '
     echo ""
     echo ">> Stage hazır: build-release/stage/usr/local"
-    echo ">> Sisteme kurmak için (HOST'ta, sudo ile):"
-    echo "     sudo cp -a build-release/stage/usr/local/. /usr/local/"
-    echo "     sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas"
-    echo "     sudo update-desktop-database /usr/local/share/applications"
+    echo ">> Sisteme kurmak için: ./dev release-install"
+    ;;
+
+  release-install)
+    # Stage'i /usr/local'a kopyala. --remove-destination: hedef dosya önce silinip
+    # yeniden oluşturulur; böylece ptyxis/ptyxis-agent çalışırken "Text file busy"
+    # hatası alınmaz (açık süreçler eski inode'u kullanmaya devam eder).
+    STAGE="$SRC_DIR/build-release/stage/usr/local"
+    if [ ! -d "$STAGE" ]; then
+      echo ">> Stage bulunamadı: $STAGE — önce ./dev release çalıştırın." >&2
+      exit 1
+    fi
+    sudo cp -a --remove-destination "$STAGE/." /usr/local/
+    sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
+    sudo update-desktop-database /usr/local/share/applications
+    echo ">> /usr/local'a kuruldu. Değişikliklerin etkili olması için açık Ptyxis"
+    echo "   pencerelerini kapatıp yeniden açın."
     ;;
 
   clean)
@@ -100,6 +113,8 @@ Kullanım: ./dev <komut>
   install       meson install -C build  (-> build/install)
   test          meson test -C build
   run           Container'da derle+kur, sonra HOST'ta çalıştır
+  release       Release build (prefix=/usr/local) -> build-release/stage
+  release-install  Stage'i sudo ile /usr/local'a kur (Ptyxis açıkken de çalışır)
   shell         Container içinde interaktif kabuk
   clean         ./build dizinini sil
 

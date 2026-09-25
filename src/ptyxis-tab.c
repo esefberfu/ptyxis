@@ -1387,15 +1387,30 @@ ptyxis_tab_pane_spawn_cb (GObject      *object,
 
 static void
 ptyxis_tab_spawn_pane (PtyxisTab      *self,
-                       PtyxisTerminal *terminal)
+                       PtyxisTerminal *terminal,
+                       PtyxisTerminal *source)
 {
   g_autoptr(PtyxisIpcContainer) container = NULL;
   g_autofree char *default_container = NULL;
+  g_autofree char *cwd_uri = NULL;
   g_autoptr(GError) error = NULL;
   VtePty *pty;
 
   g_assert (PTYXIS_IS_TAB (self));
   g_assert (PTYXIS_IS_TERMINAL (terminal));
+  g_assert (!source || PTYXIS_IS_TERMINAL (source));
+
+  /* Start the new pane in the directory the pane we split from is in, falling
+   * back to the tab's working directory when the shell doesn't report one.
+   */
+  if (source != NULL)
+    cwd_uri = ptyxis_terminal_dup_current_directory_uri (source);
+
+  if (ptyxis_str_empty0 (cwd_uri))
+    {
+      g_clear_pointer (&cwd_uri, g_free);
+      cwd_uri = g_strdup (self->previous_working_directory_uri);
+    }
 
   default_container = ptyxis_profile_dup_default_container (self->profile);
 
@@ -1423,7 +1438,7 @@ ptyxis_tab_spawn_pane (PtyxisTab      *self,
   ptyxis_application_spawn_async (PTYXIS_APPLICATION_DEFAULT,
                                   container,
                                   self->profile,
-                                  self->previous_working_directory_uri,
+                                  cwd_uri,
                                   pty,
                                   (const char * const *)self->command,
                                   NULL,
@@ -1441,10 +1456,14 @@ ptyxis_tab_split (PtyxisTab      *self,
   GtkWidget *parent;
   GtkWidget *new_sw;
   GtkWidget *paned;
+  PtyxisTerminal *source;
   PtyxisTerminal *new_terminal;
   int size;
 
   g_assert (PTYXIS_IS_TAB (self));
+
+  /* The pane being split; the new one inherits its working directory. */
+  source = self->terminal;
 
   active_sw = GTK_WIDGET (self->scrolled_window);
   parent = gtk_widget_get_parent (active_sw);
@@ -1496,7 +1515,7 @@ ptyxis_tab_split (PtyxisTab      *self,
   if (size > 0)
     gtk_paned_set_position (GTK_PANED (paned), size / 2);
 
-  ptyxis_tab_spawn_pane (self, new_terminal);
+  ptyxis_tab_spawn_pane (self, new_terminal, source);
 
   gtk_widget_grab_focus (GTK_WIDGET (new_terminal));
   ptyxis_tab_set_active_terminal (self, new_terminal);

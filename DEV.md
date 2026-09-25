@@ -20,7 +20,9 @@ Geliştirme sürümü `org.gnome.Ptyxis.Devel` app-id'siyle çalışır, böylec
 sistemde kurulu Ptyxis ile yan yana açılabilir.
 
 Diğer komutlar: `./dev compile`, `./dev install`, `./dev test`, `./dev shell`,
-`./dev clean`. Sistemdekini değiştirecek release build için: `./dev release`.
+`./dev clean`. Sistemdekini değiştirecek release build için: `./dev release`,
+ardından `./dev release-install` (sudo ile `/usr/local`'a kurar; Ptyxis açıkken
+de çalışır, yeni sürüm pencereler yeniden açılınca devreye girer).
 
 ## Bu fork'taki özellik
 
